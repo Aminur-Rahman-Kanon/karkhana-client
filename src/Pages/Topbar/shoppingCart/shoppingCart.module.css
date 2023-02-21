@@ -1,0 +1,23 @@
+.shoppingCartMain {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.shoppingCartIcon {
+    font-size: 20px;
+    color: rgb(71, 71, 71);
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.shoppingCartIcon:hover {
+    animation: cartItem 0.2s ease-out forwards;
+}
+
+@keyframes cartItem {
+    100% {
+        color: #cb8161;
+        transform: scale(1.1);
+    }
+}

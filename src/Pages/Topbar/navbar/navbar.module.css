@@ -1,0 +1,80 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+.navBarMain {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Lato', sans-serif;
+    letter-spacing: 1px;
+}
+
+.navElements {
+    margin: 0 15px;
+}
+
+.logo {
+    width: 125px;
+    padding: 15px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    background-color: #d0b09b;
+}
+
+.navElement {
+    list-style: none;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navList {
+    margin: 10px;
+    padding: 10px;
+}
+
+.navItem {
+    text-decoration: none;
+    color: rgb(68, 68, 68);
+}
+
+.navItem:hover {
+    color: #cb8161;
+}
+
+.navActive {
+    text-decoration: none;
+    color: #cb8161;
+}
+
+@media (max-width: 1045px) {
+    .navBarMain {
+        flex-flow: column;
+        padding: 20px 0;
+    }
+
+    .navElement {
+        flex-flow: column;
+        margin: 0;
+        padding: 0;
+        align-items: flex-start;
+    }
+
+    .navElements:nth-child(1){
+        order: 2;
+    }
+    .navElements:nth-child(2){
+        order: 1;
+        margin: 20px 0 50px 0;
+    }
+    .navElements:nth-child(3){
+        order: 3;
+    }
+}
+
+@media (max-width: 950px) and (max-height: 450px) {
+    .navBarMain {
+        flex-flow: row;
+    }
+}

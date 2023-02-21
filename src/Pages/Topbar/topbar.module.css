@@ -1,0 +1,46 @@
+.topbarMain {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 115px;
+    width: 100%;
+    padding: 0 25px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 200;
+}
+
+.topbarItems {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.searchIcon {
+    font-size: 20px;
+    color: rgb(71, 71, 71);
+    cursor: pointer;
+}
+
+.searchIcon:hover {
+    animation: search 0.2s ease-out forwards;
+}
+
+@keyframes search {
+    100% {
+        color: #cb8161;
+        transform: scale(1.1);
+    }
+}
+
+@media (max-width: 1045px) {
+    .topbarMain {
+        height: unset;
+        padding: 20px 10px;
+    }
+    #navbar {
+        display: none;
+    }
+}

@@ -1,0 +1,32 @@
+.sidedrawerMain {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 380px;
+    max-width: 70%;
+    background-color: #F1EEE9;
+    border: 1px solid lightgray;
+    transition: transform 0.5s ease-out;
+    transform: translateX(0);
+    z-index: 200;
+}
+
+.sidedrawerMain.sidedrawerOff {
+    transform: translateX(-100%);
+}
+
+@media (min-width: 1046px) {
+    .sidedrawerMain {
+        display: none;
+    }
+}
+
+@media (max-width: 950px) and (max-height: 450px) {
+    .sidedrawerMain {
+        width: 450px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+}

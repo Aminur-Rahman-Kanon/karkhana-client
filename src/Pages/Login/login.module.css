@@ -1,0 +1,102 @@
+.loginMain {
+    position: relative;
+    width: 100%;
+}
+
+.loginBg {
+    width: 100%;
+    height: 100vh;
+    background-image: url('../../Assets/login.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.loginContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #9554008a;
+    width: 50%;
+    min-width: 400px;
+    padding: 50px 15px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginInputContainer {
+    width: 300px;
+    height: 45px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgb(226, 226, 226);
+    border-radius: 5px;
+}
+
+.loginInputContainer.wrongInput {
+    border: 1px solid #8b080869;
+    background-color: #8b080869;
+}
+
+.loginInput {
+    width: 80%;
+    height: 35px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: white;
+}
+
+.loginInput::placeholder {
+    color: lightgray;
+}
+
+.loginInputIcon {
+    width: 20px;
+    padding: 8px;
+    background-color: #8b080869;
+    color: rgb(230, 229, 229);
+    border: 1px solid #8b080869;
+    border-radius: 5px;
+}
+
+.loginBtn {
+    height: 40px;
+    width: 200px;
+    margin: 30px 0;
+    border: 1px solid #8b080869;
+    border-radius: 2px;
+    background-color: #8b080869;
+    color: white;
+    cursor: pointer;
+}
+
+.loginBtn:hover {
+    background-color: #8b0808a6;
+}
+
+.loginBtn:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.loginBtn:disabled:hover {
+    background-color: #e77f00c9;
+}
+
+@media (max-width: 500px) {
+    .loginContainer {
+        width: 95%;
+        min-width: unset;
+    }
+    .loginInputContainer {
+        width: 100%;
+    }
+}

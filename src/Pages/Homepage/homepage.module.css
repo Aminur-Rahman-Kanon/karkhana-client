@@ -1,0 +1,520 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond&display=swap');
+
+.hompageMain {
+    width: 100%;
+    font-family: 'Cormorant Garamond', serif;
+}
+
+.headerIntro {
+    height: 100vh;
+    width: 100%;
+    padding-top: 180px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../../Assets/testBg.jpg');
+    background-position: center;
+    background-size: cover;
+}
+
+.headerIntroItems {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.headerIntroItem {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.headerIntroH1 {
+    font-size: 45px;
+    font-weight: 500;
+    color: #cb8161;
+    letter-spacing: 1px;
+}
+
+.headerIntroBtn {
+    height: 40px;
+    width: 300px;
+    margin: 40px;
+    border: 1px solid #cb8161;
+    border-radius: 5px;
+    background-color: #cb8161;
+    color: white;
+    cursor: pointer;
+}
+
+.shortcutMain {
+    width: 100%;
+    margin: 50px auto;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.shortcutItem {
+    position: relative;
+    width: 380px;
+    height: 300px;
+    margin: 10px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.shortcutItem1 {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    background-image: url('../../Assets/shortcut1.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    filter: brightness(0.7);
+}
+
+.shortcutItemH2 {
+    font-size: 30px;
+    letter-spacing: 1px;
+}
+
+.shortcutItem:hover .shortcutItem1, .shortcutItem:hover .shortcutItem2, .shortcutItem:hover .shortcutItem3 {
+    transform: scale(1.2);
+    transition: all 0.5s;
+}
+
+.shortcutItem2 {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    background-image: url('../../Assets/shortcut2.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    filter: brightness(0.7);
+}
+
+.shortcutItem3 {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+    background-image: url('../../Assets/shortcut3.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: hidden;
+    filter: brightness(0.7);
+}
+
+.shortcutItemLink {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.shortcutLink {
+    text-decoration: none;
+    height: 40px;
+    width: 200px;
+    background-color: #ad6c4d;
+    border: 1px solid #ad6c4d;
+    color: white;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 1px;
+}
+
+.shoppingCategoryMain {
+    width: 100%;
+    margin: 20px auto;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.shoppingCategoryContainer {
+    width: 100%;
+    margin-top: 50px;
+    display: flex;
+    overflow: scroll;
+    justify-content: center;
+    align-items: center;
+}
+
+.shoppingCategoryContainer::-webkit-scrollbar {
+    display: none;
+}
+
+.shoppingCategoryItems {
+    width: 200px;
+    margin: 0 10px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.shoppingCategoryItems:hover .shoppingCategoryImg {
+    animation: shoppingImg 0.8s ease-out forwards;
+}
+
+@keyframes shoppingImg {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(45deg);
+    }
+    50% {
+        transform: rotate(0deg);
+    }
+    75% {
+        transform: rotate(45deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.shoppingCategoryItem {
+    width: 90%;
+    margin: 10px;
+    padding: 30px;
+    box-sizing: border-box;
+    background-color: rgba(211, 211, 211, 0.541);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.shoppingCategoryImg {
+    width: 120px;
+}
+
+.shoppingLink {
+    font-weight: 600;
+    letter-spacing: 1px;
+    cursor: pointer;
+}
+
+.shoppingLink:hover {
+    animation: shoppingLink 0.4s ease-out forwards;
+}
+
+@keyframes shoppingLink {
+    100% {
+        transform: scale(1.1);
+        color: #cb8161;
+    }
+}
+
+.middleIntroMain {
+    width: 100%;
+    margin: 50px auto;
+    padding: 30px 0;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #cb81612f;
+}
+
+.middleIntroContainer {
+    width: 100%;
+    margin-top: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.middleIntroItems {
+    width: 50%;
+    padding-left: 40px;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.middleIntroItemContainer {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.middleIntroItem {
+    width: 100%;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.middleIntroImg {
+    width: 80px;
+    padding: 15px;
+    margin-right:10px;
+    border-radius: 50%;
+    background-color: #cb847669;
+}
+
+.middleIntroItemHeader {
+    margin: 0 10px;
+    text-align: left;
+}
+
+.middleIntroItemsBg {
+    width: 50%;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.middleIntroBgImg {
+    width: 100%;
+}
+
+.middleIntroH1 {
+    font-size: 40px;
+    margin: 10px;
+    box-sizing: border-box;
+    font-weight: 500;
+    letter-spacing: 1px;
+    color: #cb8161;
+}
+
+.middleIntroLink {
+    height: 40px;
+    width: 300px;
+    margin: 20px;
+    border: 1px solid #cb8161;
+    border-radius: 5px;
+    background-color: #cb8161;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.middleIntroLink:hover {
+    background-color: #c57452;
+}
+
+.summerCollectionMain {
+    width: 100%;
+    padding: 50px 10px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.summerCollectionContainer {
+    position: relative;
+    width: 550px;
+    height: 350px;
+    margin: 0 15px;
+    overflow: hidden;
+}
+
+.summerCollectionContainer:hover .summerCollectionBg1, .summerCollectionContainer:hover .summerCollectionBg2{
+    transform: scale(1.2);
+    transition: all 0.5s;
+}
+
+.summerCollectionBg1 {
+    width: 100%;
+    height: 100%;
+    background-image: url('../../Assets/summer2.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: brightness(0.7);
+}
+
+.summerCollectionBg2 {
+    width: 100%;
+    height: 100%;
+    background-image: url('../../Assets/summer1.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: brightness(0.7);
+}
+
+.summerCollectionItems {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.summerCollectionP {
+    font-size: 22px;
+    font-weight: 600;
+    margin: 5px;
+}
+
+.summerCollectionLink {
+    text-decoration: none;
+    height: 40px;
+    width: 200px;
+    margin-top: 30px;
+    border: 1px solid white;
+    border-radius: 5px;
+    background-color: transparent;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+}
+
+.summerCollectionLink:hover {
+    background-color: white;
+    color: #c57452;
+}
+
+@media (max-width: 1080px) {
+    .shoppingCategoryContainer {
+        justify-content: flex-start;
+    }
+
+    .middleIntroContainer {
+        flex-flow: column-reverse;
+    }
+
+    .middleIntroItems {
+        width: 100%;
+        padding-left: unset;
+        padding: 30px;
+    }
+
+    .middleIntroItemsBg {
+        width: 100%;
+    }
+}
+
+@media (max-width: 850px) {
+    .headerIntro {
+        flex-flow: column-reverse;
+        padding-top: 80px;
+    }
+    .headerIntroItems {
+        width: 100%;
+        padding: 0;
+    }
+
+    .banner {
+        width: 10%;
+    }
+
+    .shortcutMain {
+        flex-flow: column;
+    }
+
+    .shortcutItem {
+        width: 98%;
+        height: 400px;
+    }
+
+    .shortcutItemLink {
+        top: 60%;
+        left: 4%;
+        transform: unset;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 768px) {
+    .summerCollectionMain {
+        flex-flow: column;
+    }
+
+    .summerCollectionContainer {
+        width: 100%;
+        height: 405px;
+        margin: 10px 0;
+    }
+}
+
+@media (max-width: 465px) {
+    .headerIntroBtn {
+        width: 95%;
+    }
+    .headerIntro {
+        padding-top: 100px;
+        height: auto;
+    }
+
+    .shortcutItem {
+        width: 100%;
+        height: 250px;
+    }
+
+    .shortcutItemLink {
+        top: 40%;
+    }
+
+    .middleIntroItems {
+        padding: 10px;
+    }
+
+    .middleIntroImg {
+        width: 50px;
+    }
+
+    .middleIntroItem {
+        margin: 10px 0;
+    }
+
+    .middleIntroLink {
+        width: 100%;
+    }
+}
+
+@media (max-width: 950px) and (max-height: 450px) {
+    .headerIntro {
+        height: 600px;
+    }
+}

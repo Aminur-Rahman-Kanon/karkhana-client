@@ -1,0 +1,25 @@
+.bannerImgContainer{
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bannerImg {
+    width: 80%;
+}
+
+
+@media (max-width: 850px) {
+    .bannerImgContainer {
+        width: 50%;
+    }
+}
+
+@media (max-width: 450px) {
+    .bannerImgContainer {
+        width: 90%;
+    }
+}
