@@ -6,6 +6,7 @@ import Sidedrawer from './Pages/Others/Sidedrawer/sidedrawer';
 import Backdrop from './Pages/Others/Backdrop/backdrop';
 import Footer from './Pages/Footer/footer';
 import Login from './Pages/Login/login';
+import Register from './Pages/Register/register';
 import { useEffect, useState } from 'react';
 
 function App() {
@@ -46,6 +47,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Homepage />}/>
         <Route path="/login" element={<Login />}/>
+        <Route path="/register" element={<Register />}/>
         <Route path="*" element={<h1>404</h1>}/>
       </Routes>
       <Footer />

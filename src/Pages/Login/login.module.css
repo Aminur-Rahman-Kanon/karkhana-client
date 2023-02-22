@@ -5,7 +5,7 @@
 
 .loginBg {
     width: 100%;
-    height: 100vh;
+    height: 800px;
     background-image: url('../../Assets/login.jpg');
     background-position: center;
     background-size: cover;
@@ -27,6 +27,25 @@
     flex-flow: column;
     justify-content: center;
     align-items: center;
+}
+
+.loginInputSection {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.errorDisplay {
+    width: 95%;
+    height: 30px;
+    background-color: #8b000054;
+    border-radius: 5px;
+}
+
+.errorMsg {
+    margin: 5px;
+    color: rgb(235, 233, 233);
 }
 
 .loginInputContainer {
@@ -88,7 +107,23 @@
 }
 
 .loginBtn:disabled:hover {
-    background-color: #e77f00c9;
+    background-color: #8b080869;
+}
+
+.registerLink {
+    text-decoration: none;
+    color: rgb(226, 226, 226);
+}
+
+.registerLink:hover {
+    animation: registerLink 0.3s ease-out forwards;
+}
+
+@keyframes registerLink {
+    100% {
+        transform: scale(1.1);
+        color: white;
+    }
 }
 
 @media (max-width: 500px) {
@@ -97,6 +132,10 @@
         min-width: unset;
     }
     .loginInputContainer {
+        width: 100%;
+    }
+
+    .errorDisplay {
         width: 100%;
     }
 }

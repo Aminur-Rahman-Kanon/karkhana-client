@@ -1,0 +1,138 @@
+.registerMain {
+    position: relative;
+    width: 100%;
+}
+
+.registerContainerBg {
+    width: 100%;
+    height: 950px;
+    background-image: url('../../Assets/register.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: brightness(0.8);
+}
+
+.resgisteFormContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    min-width: 450px;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background-color: #dab0c4ad;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.inputContainer {
+    position: relative;
+    width: 350px;
+    height: 45px;
+    margin: 10px;
+    border: 1px solid #ffffffad;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputContainer:nth-child(3), .inputContainer:nth-child(5) {
+    margin-bottom: 15px;
+}
+
+.inputContainer.wrongInput {
+    border: 1px solid #8b000063;
+    background-color: #8b000063;
+}
+
+.input {
+    width: 80%;
+    height: 35px;
+    padding: 0 10px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: white;
+}
+
+.input::placeholder {
+    color: rgb(105, 105, 105);
+}
+
+.inputIcon {
+    width: 20px;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    background-color: #b1909e;
+    color: white;
+}
+
+.errorMsg {
+    display: block;
+    position: absolute;
+    top: 50px;
+    margin: 0px;
+    color: darkred;
+}
+
+.registerBtn {
+    height: 40px;
+    width: 350px;
+    margin: 20px 0;
+    border: 1px solid #b1909e;
+    background-color: #b1909e;
+    /* background-color: #ad6c4d; */
+    color: white;
+    cursor: pointer;
+}
+
+.registerBtn:hover {
+    background-color: #ad7f92;
+    /* background-color: #a85f3d; */
+}
+
+.registerBtn:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.registerBtn:disabled:hover {
+    background-color: #b1909e;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+@media (max-width: 550px) {
+    .resgisteFormContainer {
+        width: 95%;
+        min-width: unset;
+    }
+
+    .inputContainer {
+        width: 100%;
+    }
+
+    .input {
+        width: 90%;
+    }
+
+    .registerBtn {
+        width: 100%;
+    }
+}
