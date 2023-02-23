@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './register.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSignature, faAt, faLock } from '@fortawesome/free-solid-svg-icons';
@@ -232,6 +233,11 @@ const Register = () => {
                 </div>
 
                 <button disabled={btnDisable} className={styles.registerBtn} onClick={ submitFormHandler }>Register</button>
+
+                <div className={styles.loginPrompt}>
+                    <p style={{color: '#4a4a4a'}}>Registered Already</p>
+                    <Link to="/login" className={styles.loginLink}>Login</Link>
+                </div>
             </form>
         </div>
         </>
