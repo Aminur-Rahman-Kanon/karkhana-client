@@ -15,7 +15,7 @@ const Login = () => {
     const [passwordValidity, setPasswordValidity] = useState(true);
 
     const [spinner, setSpinner] = useState(false);
-    const [status, setStatus] = useState();
+    const [status, setStatus] = useState('');
     const [modal, setModal] = useState(false);
     const [backdrop, setBackdrop] = useState(false);
 
@@ -47,8 +47,6 @@ const Login = () => {
         return () => clearTimeout(timer);
     }, [email])
 
-    console.log(emailValidity);
-
     useEffect(() => {
         if ((email && emailValidity) && (password && passwordValidity)){
             setBtnDisable(false)
@@ -72,13 +70,16 @@ const Login = () => {
             })
         }).then(res => res.json()).then(data => {
             if (data.status === 'success'){
-                sessionStorage.setItem(JSON.stringify(data.user));
+                console.log(data);
+                sessionStorage.setItem('user', JSON.stringify(data.user));
                 window.location.href = '/';
             }
             else if (data.status === 'user not found'){
+                console.log(data);
                 setStatus(data.status);
             }
             else if (data.status === "password doesn't match"){
+                console.log(data);
                 setStatus(data.status);
             }
         }).catch(err => {
@@ -90,8 +91,8 @@ const Login = () => {
     }
 
     const statusDisplay = <div className={styles.statusMsgMain}>
-        <h2>Something went wrong</h2>
-        <p>Please check internet connection</p>
+        <h2 className={styles.statusMsgH2}>Something went wrong</h2>
+        <p className={styles.statusMsgP}>Please check internet connection</p>
 
         <button className={styles.statusMsgBtn} onClick={() => {
             setStatus('');
@@ -103,7 +104,15 @@ const Login = () => {
     
     return (
         <>
-        <Backdrop backdrop={backdrop} />
+        <Backdrop backdrop={backdrop} toggleBackdrop={() => {
+            if (modal){
+                setModal(false);
+                setBackdrop(false);
+            }
+            else {
+                setBackdrop(false);
+            }
+        }}/>
         <Modal modal={modal}>
             {statusDisplay}
         </Modal>
@@ -150,3 +159,4 @@ const Login = () => {
 }
 
 export default Login;
+

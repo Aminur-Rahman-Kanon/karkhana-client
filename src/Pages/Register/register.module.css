@@ -118,6 +118,40 @@ input[type=number] {
   -moz-appearance: textfield;
 }
 
+.displayStatusMsgMain {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.displayStatusMsgH1 {
+    color: #c38aa8;
+    margin: 10px;
+    text-align: center;
+}
+
+.displayStatusMsgP {
+    color: rgb(59, 59, 59);
+    text-align: center;
+}
+
+.displayStatusMsgBtn {
+    height: 40px;
+    width: 200px;
+    margin: 20px;
+    border-radius: 5px;
+    border: 1px solid #c38aa8c9;
+    background-color: #c38aa8c9;
+    color: white;
+    cursor: pointer;
+}
+
+.displayStatusMsgBtn:hover {
+    background-color: #be7ea0c9;
+}
+
 @media (max-width: 550px) {
     .resgisteFormContainer {
         width: 95%;
@@ -133,6 +167,10 @@ input[type=number] {
     }
 
     .registerBtn {
+        width: 100%;
+    }
+
+    .displayStatusMsgBtn {
         width: 100%;
     }
 }

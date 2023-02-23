@@ -1,0 +1,3 @@
+
+mongo_username = karkhana
+mongo_pass = karkhanawebservice123

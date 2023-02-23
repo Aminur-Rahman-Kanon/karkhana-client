@@ -13,9 +13,11 @@ const Register = () => {
 
     const [email, setEmail] = useState('');
     const [emailValidity, setEmailValidity] = useState(true);
+    const [pendingEmail, setPendingEmail] = useState(true);
 
     const [phoneNumber, setPhoneNumber] = useState('');
     const [phoneNumberValidity, setPhoneNumberValidity] = useState(true);
+    const [pendingPhoneNumber, setPendingPhoneNumber] = useState(true);
 
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState(false);
@@ -40,10 +42,12 @@ const Register = () => {
                     const domain = email.slice(email.indexOf('@') + 1, email.indexOf('.com'));
                     if (domain){
                         setEmailValidity(true);
+                        setPendingEmail(false);
                     }
                 }
                 else {
                     setEmailValidity(false);
+                    setPendingEmail(true);
                 }
             }
         }, 1200)
@@ -54,7 +58,14 @@ const Register = () => {
     useEffect(() => {
         const phoneNumberHandler = setTimeout(() => {
             if (phoneNumber){
-                phoneNumber.length === 11 ? setPhoneNumberValidity(true) : setPhoneNumberValidity(false);
+                if (phoneNumber.length === 11){
+                    setPhoneNumberValidity(true);
+                    setPendingPhoneNumber(false);
+                }
+                else {
+                    setPhoneNumberValidity(false);
+                    setPendingPhoneNumber(true);
+                }
             }
         }, 1200)
 
@@ -78,16 +89,14 @@ const Register = () => {
         return () => clearTimeout(passwordHandler);
     }, [password, confirmPassword])
 
-    console.log(phoneNumberValidity);
-
     useEffect(() => {
-        if (firstName && lastName && (email && emailValidity) && (phoneNumber && phoneNumberValidity) && (password && confirmPassword && !pendingPassword &&passwordMatch)){
+        if (firstName && lastName && (email && !pendingEmail && emailValidity) && (phoneNumber&& !pendingPhoneNumber && phoneNumberValidity) && (password && confirmPassword && !pendingPassword &&passwordMatch)){
             setBtnDisable(false);
         }
         else {
             setBtnDisable(true);
         }
-    }, [firstName, lastName, email, phoneNumber, password, confirmPassword, pendingPassword, passwordMatch])
+    }, [firstName, lastName, email, pendingEmail, phoneNumber, pendingPhoneNumber, password, confirmPassword, pendingPassword, passwordMatch])
 
     const submitFormHandler = (e) => {
         e.preventDefault();
@@ -103,16 +112,25 @@ const Register = () => {
             })
         }).then(res => res.json()).then(data => {
             if (data.status === 'success'){
+                console.log(data.status);
                 setSpinner(false);
                 setStatus(data.status);
                 setModal(true);
                 setBackdrop(true);
             }
             else if (data.status === 'user exist'){
+                console.log(data.status);
                 setSpinner(false);
                 setStatus(data.status);
             }
+            else {
+                setSpinner(false)
+                setStatus('error');
+                setModal(true);
+                setBackdrop(true);
+            }
         }).catch(err => {
+            console.log(err);
             setSpinner(false);
             setStatus('error');
             setBackdrop(true);
@@ -124,14 +142,15 @@ const Register = () => {
 
     if (status === 'success'){
         displayStatusMsg = <div className={styles.displayStatusMsgMain}>
-            <h2>User registered</h2>
+            <h2 className={styles.displayStatusMsgH1}>User registered</h2>
+            <p className={styles.displayStatusMsgP}>Thank you for joining us</p>
             <button className={styles.displayStatusMsgBtn} onClick={() => window.location.href = '/login'}>Ok</button>
         </div>
     }
     else if (status === 'error'){
         displayStatusMsg = <div className={styles.displayStatusMsgMain}>
-            <h2>Something went wrong</h2>
-            <p>Please try again</p>
+            <h2 className={styles.displayStatusMsgH1}>Something went wrong</h2>
+            <p className={styles.displayStatusMsgP}>Please try again</p>
             <button className={styles.displayStatusMsgBtn} onClick={() => {
                 setStatus('');
                 setModal(false);
@@ -142,7 +161,15 @@ const Register = () => {
 
     return (
         <>
-        <Backdrop backdrop={backdrop} toggleBackdrop={() => setBackdrop(false)}/>
+        <Backdrop backdrop={backdrop} toggleBackdrop={() => {
+            if (modal){
+                setModal(false);
+                setBackdrop(false);
+            }
+            else {
+                setBackdrop(false);
+            }
+        }}/>
         <Modal modal={modal}>
             {displayStatusMsg}
         </Modal>
