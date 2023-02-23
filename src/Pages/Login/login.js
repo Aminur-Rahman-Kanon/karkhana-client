@@ -60,7 +60,7 @@ const Login = () => {
         e.preventDefault();
         setSpinner(true);
 
-        fetch('http://localhost:8000/login', {
+        fetch('https://karkhana-server.onrender.com/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
