@@ -1,18 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
 .shoppingCartMain {
+    padding: 5px;
+    box-sizing: border-box;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: 'Lato', sans-serif;
 }
 
 .shoppingCartContainer {
     position: relative;
-    margin: 10px;
+    margin: 5px;
 }
 
-.userContainer {
+.userContainers {
     position: absolute;
     top: 21px;
-    left:-45px;
+    left:50%;
+    transform: translate(-50%, 0);
     width: 120px;
     max-height: 0;
     margin-top: 0.7px;
@@ -29,6 +35,11 @@
     transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
 }
 
+.userContainer {
+    padding: 15px;
+    box-sizing: border-box;
+}
+
 .shoppingCartLink {
     text-decoration: none;
     display: flex;
@@ -40,13 +51,13 @@
 
 .shoppingCartIcon {
     font-size: 20px;
-    color: rgb(71, 71, 71);
+    color: lightgray;
     cursor: pointer;
 }
 
 
-.shoppingCartContainer:hover .userContainer {
-    max-height: 80px;
+.shoppingCartContainer:hover .userContainers {
+    max-height: 120px;
     opacity: 1;
 }
 
@@ -54,9 +65,36 @@
     animation: cartItem 0.2s ease-out forwards;
 }
 
+.userProfile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.userProfileP {
+    margin: 2px;
+    text-transform: capitalize;
+    color: rgb(68, 68, 68);
+}
+
 @keyframes cartItem {
     100% {
         color: lightgray;
         transform: scale(1.1);
     }
+}
+
+.logoutBtn {
+    height: 30px;
+    width: 100px;
+    border: 1px solid #d5b199;
+    border-radius: 2px;
+    background-color: #d5b199;
+    color: white;
+    cursor: pointer;
+}
+
+.logoutBtn:hover {
+    background-color: #cea284;
 }

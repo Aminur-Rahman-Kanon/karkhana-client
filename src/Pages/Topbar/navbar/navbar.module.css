@@ -36,7 +36,7 @@
 
 .navItem {
     text-decoration: none;
-    color: rgb(68, 68, 68);
+    color: lightgray;
 }
 
 .navItem:hover {

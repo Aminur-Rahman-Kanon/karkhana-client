@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from './homepage.module.css';
 import Banner from "./Banner/banner";
 import { Link } from "react-router-dom";
@@ -10,15 +10,26 @@ import earRing from '../../Assets/earRing.png'
 import ring from '../../Assets/ring.png'
 import necklace from '../../Assets/necklace.png';
 import middleIntroImg from '../../Assets/middleIntro.jpg';
+import 'aos/dist/aos.css';
+import Aos from "aos";
 
 const Homepage = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0);;
+        Aos.init({ duration: 1500 })
+    }, [])
 
     return (
         <div className={styles.hompageMain}>
             <div className={styles.headerIntro}>
-                <div className={styles.headerIntroItems}>
+                <div data-aos="fade-right" className={`${styles.headerIntroItems} ${styles.banner}`}>
                     <div className={styles.headerIntroItem}>
                         <h1 className={styles.headerIntroH1}>Discover a World of Jewellary</h1>
+                        <h4 className={styles.headerIntroH4}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi convallis mauris sit amet magna suscipit rhoncus. Nulla ligula elit, pulvinar nec lectus et, dictum aliquet sapien.</h4>
+                        <div className={styles.codMain}>
+                            <h2 className={styles.codH2}>CASH ON DELIVERY INSIDE DHAKA</h2>
+                        </div>
                         <button className={styles.headerIntroBtn}>Shop now</button>
                     </div>
                 </div>
