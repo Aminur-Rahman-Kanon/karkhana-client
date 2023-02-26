@@ -21,6 +21,6 @@
 
 @media (max-width: 450px) {
     .bannerImgContainer {
-        width: 90%;
+        width: 100%;
     }
 }

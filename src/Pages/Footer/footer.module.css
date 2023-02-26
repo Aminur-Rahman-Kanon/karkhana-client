@@ -10,7 +10,6 @@
     padding: 30px 10px;
     box-sizing: border-box;
     display: flex;
-    /* flex-wrap: wrap; */
     justify-content: center;
     align-items: flex-start;
 }

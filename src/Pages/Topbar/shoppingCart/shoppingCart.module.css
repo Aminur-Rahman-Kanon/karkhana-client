@@ -75,7 +75,7 @@
 .userProfileP {
     margin: 2px;
     text-transform: capitalize;
-    color: rgb(68, 68, 68);
+    color: lightgray;
 }
 
 @keyframes cartItem {

@@ -5,6 +5,7 @@ import styles from './login.module.css';
 import Backdrop from "../Others/Backdrop/backdrop";
 import Modal from "../Others/Modal/modal";
 import { Link } from "react-router-dom";
+import Spinner from "../Others/Spinner/spinner";
 
 const Login = () => {
 
@@ -104,6 +105,7 @@ const Login = () => {
     
     return (
         <>
+        <Spinner spinner={spinner}/>
         <Backdrop backdrop={backdrop} toggleBackdrop={() => {
             if (modal){
                 setModal(false);

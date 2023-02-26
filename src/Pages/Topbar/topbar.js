@@ -10,14 +10,14 @@ const Topbar = ({toggleSidedrawer}) => {
 
     return (
         <div className={styles.topbarMain}>
-            <div className={styles.topbarItems}>
+            <div className={styles.topbarItems} style={{minWidth: '90px'}}>
                 <DrawToggle toggleSidedrawer={toggleSidedrawer}/>
                 <FontAwesomeIcon icon={faMagnifyingGlass} className={styles.searchIcon} />
             </div>
             <div className={styles.topbarItems} id={styles.navbar}>
                 <Navbar />
             </div>
-            <div className={styles.topbarItems}>
+            <div className={styles.topbarItems} style={{minWidth: '90px'}}>
                 <ShoppingCart />
             </div>
         </div>

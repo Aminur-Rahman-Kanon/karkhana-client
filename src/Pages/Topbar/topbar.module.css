@@ -4,7 +4,7 @@
     left: 0;
     height: 115px;
     width: 100%;
-    padding: 0 25px;
+    padding: 0 15px;
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
@@ -20,7 +20,7 @@
 
 .searchIcon {
     font-size: 20px;
-    color: rgb(71, 71, 71);
+    color: lightgray;
     cursor: pointer;
 }
 

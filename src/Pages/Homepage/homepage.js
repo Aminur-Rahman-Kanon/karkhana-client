@@ -40,7 +40,7 @@ const Homepage = () => {
                 </div>
             </div>
 
-            <div className={styles.shortcutMain}>
+            <div data-aos="fade-right" className={styles.shortcutMain}>
                 <div className={styles.shortcutItem}>
                     <div className={styles.shortcutItem1}>
 
@@ -72,7 +72,7 @@ const Homepage = () => {
 
             <div className={styles.shoppingCategoryMain}>
                 <h1>TOP CATEGORIES</h1>
-                <div className={styles.shoppingCategoryContainer}>
+                <div data-aos="flip-left" className={styles.shoppingCategoryContainer}>
                     <div className={styles.shoppingCategoryItems}>
                         <Link to="" className={styles.shoppingCategoryItem}>
                             <img src={bracelet} className={styles.shoppingCategoryImg} />
@@ -115,14 +115,14 @@ const Homepage = () => {
                                 <img src={diamond} alt="karkhana specs" className={styles.middleIntroImg} />
                                 <div className={styles.middleIntroItemHeader}>
                                     <h4>FAIR PRICING</h4>
-                                    <p style={{fontSize: '18px'}}>Nullam quis ante. Pellentesque libero tortor, tincidunt et, tinciduntamet est.In hac habitasse platea dictumst. Praesent nec nisl a purus blandit viverra</p>
+                                    <p className={styles.middleIntroP}>Nullam quis ante. Pellentesque libero tortor, tincidunt et, tinciduntamet est.In hac habitasse platea dictumst. Praesent nec nisl a purus blandit viverra</p>
                                 </div>
                             </div>
                             <div className={styles.middleIntroItem}>
                                 <img src={necklaces} alt="karkhana specs" className={styles.middleIntroImg} />
                                 <div className={styles.middleIntroItemHeader}>
                                     <h4>HIGH QUALITY</h4>
-                                    <p style={{fontSize: '18px'}}>Nullam quis ante. Pellentesque libero tortor, tincidunt et, tinciduntamet est.In hac habitasse platea dictumst. Praesent nec nisl a purus blandit viverra</p>
+                                    <p className={styles.middleIntroP}>Nullam quis ante. Pellentesque libero tortor, tincidunt et, tinciduntamet est.In hac habitasse platea dictumst. Praesent nec nisl a purus blandit viverra</p>
                                 </div>
                             </div>
                         </div>
@@ -136,7 +136,7 @@ const Homepage = () => {
             </div>
 
             <div className={styles.summerCollectionMain}>
-                <div className={styles.summerCollectionContainer}>
+                <div data-aos="zoom-in-up" className={styles.summerCollectionContainer}>
                     <div className={styles.summerCollectionBg1}>
 
                     </div>
@@ -146,7 +146,7 @@ const Homepage = () => {
                         <Link to="" className={styles.summerCollectionLink}>EXPLORE</Link>
                     </div>
                 </div>
-                <div className={styles.summerCollectionContainer}>
+                <div data-aos="zoom-in-up" className={styles.summerCollectionContainer}>
                     <div className={styles.summerCollectionBg2}>
 
                     </div>

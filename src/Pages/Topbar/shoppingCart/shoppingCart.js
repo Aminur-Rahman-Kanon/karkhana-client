@@ -27,7 +27,7 @@ const ShoppingCart = () => {
             <div className={styles.userContainer}>
                 <div className={styles.profileItem}>
                     <FontAwesomeIcon className={styles.profileIcon} />
-                    <a href="/login" className={styles.shoppingCartLink}>Profile</a>
+                    <a href="/profile" className={styles.shoppingCartLink}>Profile</a>
                 </div>
                 <div className={styles.profileItem}>
                     <FontAwesomeIcon className={styles.profileIcon} />

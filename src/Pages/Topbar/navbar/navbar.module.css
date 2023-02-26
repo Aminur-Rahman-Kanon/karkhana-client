@@ -71,6 +71,14 @@
     .navElements:nth-child(3){
         order: 3;
     }
+
+    .navItem {
+        color: #d2957a;
+    }
+
+    .navActive, .navItem:hover {
+        color: #e48353;
+    }
 }
 
 @media (max-width: 950px) and (max-height: 450px) {
