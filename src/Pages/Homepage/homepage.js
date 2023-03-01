@@ -26,7 +26,7 @@ const Homepage = () => {
                 <div data-aos="fade-right" className={`${styles.headerIntroItems} ${styles.banner}`}>
                     <div className={styles.headerIntroItem}>
                         <h1 className={styles.headerIntroH1}>Discover a World of Jewellary</h1>
-                        <h4 className={styles.headerIntroH4}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi convallis mauris sit amet magna suscipit rhoncus. Nulla ligula elit, pulvinar nec lectus et, dictum aliquet sapien.</h4>
+                        <p className={styles.headerIntroH4}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi convallis mauris sit amet magna suscipit rhoncus. Nulla ligula elit, pulvinar nec lectus et, dictum aliquet sapien.</p>
                         <div className={styles.codMain}>
                             <h2 className={styles.codH2}>CASH ON DELIVERY INSIDE DHAKA</h2>
                         </div>
@@ -40,8 +40,8 @@ const Homepage = () => {
                 </div>
             </div>
 
-            <div data-aos="fade-right" className={styles.shortcutMain}>
-                <div className={styles.shortcutItem}>
+            <div className={styles.shortcutMain}>
+                <div data-aos="fade-right" className={styles.shortcutItem}>
                     <div className={styles.shortcutItem1}>
 
                     </div>
@@ -50,7 +50,7 @@ const Homepage = () => {
                         <Link to="" className={styles.shortcutLink}>SHOP NOW</Link>
                     </div>
                 </div>
-                <div className={styles.shortcutItem}>
+                <div data-aos="fade-right" className={styles.shortcutItem}>
                     <div className={styles.shortcutItem2}>
 
                     </div>
@@ -59,7 +59,7 @@ const Homepage = () => {
                         <Link to="" className={styles.shortcutLink}>SHOP NOW</Link>
                     </div>
                 </div>
-                <div className={styles.shortcutItem}>
+                <div data-aos="fade-right" className={styles.shortcutItem}>
                     <div className={styles.shortcutItem3}>
 
                     </div>
@@ -106,31 +106,33 @@ const Homepage = () => {
                 </div>
             </div>
 
-            <div className={styles.middleIntroMain}>
-                <h1 className={styles.middleIntroH1}>HANDCRAFTED & ETHICALLY SOURCED</h1>
-                <div className={styles.middleIntroContainer}>
-                    <div className={styles.middleIntroItems}>
-                        <div className={styles.middleIntroItemContainer}>
-                            <div className={styles.middleIntroItem}>
-                                <img src={diamond} alt="karkhana specs" className={styles.middleIntroImg} />
-                                <div className={styles.middleIntroItemHeader}>
-                                    <h4>FAIR PRICING</h4>
-                                    <p className={styles.middleIntroP}>Nullam quis ante. Pellentesque libero tortor, tincidunt et, tinciduntamet est.In hac habitasse platea dictumst. Praesent nec nisl a purus blandit viverra</p>
+            <div className={styles.middleIntro}>
+                <div className={styles.middleIntroMain}>
+                    <h1 className={styles.middleIntroH1}>HANDCRAFTED & ETHICALLY SOURCED</h1>
+                    <div className={styles.middleIntroContainer}>
+                        <div className={styles.middleIntroItems}>
+                            <div className={styles.middleIntroItemContainer}>
+                                <div className={styles.middleIntroItem}>
+                                    <img src={diamond} alt="karkhana specs" className={styles.middleIntroImg} />
+                                    <div className={styles.middleIntroItemHeader}>
+                                        <h4>FAIR PRICING</h4>
+                                        <p className={styles.middleIntroP}>Nullam quis ante. Pellentesque libero tortor, tincidunt et, tinciduntamet est.In hac habitasse platea dictumst. Praesent nec nisl a purus blandit viverra</p>
+                                    </div>
+                                </div>
+                                <div className={styles.middleIntroItem}>
+                                    <img src={necklaces} alt="karkhana specs" className={styles.middleIntroImg} />
+                                    <div className={styles.middleIntroItemHeader}>
+                                        <h4>HIGH QUALITY</h4>
+                                        <p className={styles.middleIntroP}>Nullam quis ante. Pellentesque libero tortor, tincidunt et, tinciduntamet est.In hac habitasse platea dictumst. Praesent nec nisl a purus blandit viverra</p>
+                                    </div>
                                 </div>
                             </div>
-                            <div className={styles.middleIntroItem}>
-                                <img src={necklaces} alt="karkhana specs" className={styles.middleIntroImg} />
-                                <div className={styles.middleIntroItemHeader}>
-                                    <h4>HIGH QUALITY</h4>
-                                    <p className={styles.middleIntroP}>Nullam quis ante. Pellentesque libero tortor, tincidunt et, tinciduntamet est.In hac habitasse platea dictumst. Praesent nec nisl a purus blandit viverra</p>
-                                </div>
-                            </div>
-                        </div>
 
-                        <Link to="" className={styles.middleIntroLink}>LEARN MORE</Link>
-                    </div>
-                    <div className={styles.middleIntroItemsBg}>
-                        <img src={middleIntroImg} className={styles.middleIntroBgImg}/>
+                            <Link to="" className={styles.middleIntroLink}>LEARN MORE</Link>
+                        </div>
+                        <div className={styles.middleIntroItemsBg}>
+                            <img src={middleIntroImg} className={styles.middleIntroBgImg}/>
+                        </div>
                     </div>
                 </div>
             </div>
