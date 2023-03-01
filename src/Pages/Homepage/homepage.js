@@ -15,10 +15,30 @@ import Aos from "aos";
 
 const Homepage = () => {
 
+    const [featuredProducts, setFeaturedProducts] = useState([]);
+
     useEffect(() => {
-        window.scrollTo(0, 0);;
-        Aos.init({ duration: 1500 })
+        // window.scrollTo(0, 0);
+        Aos.init({ duration: 1500, once: true })
+
+        fetch('https://karkhana-server.onrender.com/featured-products').then(res => res.json()).then(data => setFeaturedProducts(data.products.featured)).catch(err => console.log(err))
     }, [])
+
+    const featuredProductsDisplay = featuredProducts.length > 0 ? featuredProducts.map(products => {
+        return <div className={styles.featuredProductsItem}>
+            <div className={styles.featuredImgContainer}>
+                <img src={products.img} alt={products.name} className={styles.featuredImg}/>
+            </div>
+            <div className={styles.productsDetails}>
+                <p className={styles.productsDetailsP}>{products.name}</p>
+                <p className={styles.productsDetailsP}>Price: {products.price} ৳</p>
+            </div>
+        </div>
+    })
+    :
+    <div className={styles.featuredProductsDefault}>
+        <h4 className={styles.productsDetailsH3}>No products to display</h4>
+    </div>
 
     return (
         <div className={styles.hompageMain}>
@@ -103,6 +123,13 @@ const Homepage = () => {
                         </div>
                         <p className={styles.shoppingLink}>RINGS</p>
                     </div>
+                </div>
+            </div>
+
+            <div className={styles.featuredProducts}>
+                <h1 className={styles.featuredProductsH1}>FEATURED PRODUCTS</h1>
+                <div className={styles.featuredProductsDisplayMain}>
+                    {featuredProductsDisplay}
                 </div>
             </div>
 

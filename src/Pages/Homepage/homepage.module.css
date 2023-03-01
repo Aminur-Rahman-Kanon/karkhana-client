@@ -504,6 +504,103 @@
     color: #c57452;
 }
 
+.featuredProducts {
+    width: 100%;
+    min-height: 100vh;
+    padding: 50px 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../../Assets/featuredBg.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.featuredProductsH1 {
+    color: lightgray;
+    letter-spacing: 2px;
+}
+
+.featuredProductsDisplayMain {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.featuredProductsItem {
+    width: 250px;
+    min-height: 320px;
+    margin: 10px;
+    border: 1px solid grey;
+    background-color: rgba(255, 255, 255, 0.897);
+    border-radius: 10px;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: center;
+    cursor: pointer;
+    overflow: hidden;
+}
+
+.featuredProductsItem:hover .featuredImgContainer {
+    animation: featuredProducts 0.5s ease-out forwards;
+}
+
+.featuredProductsDefault {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.productsDetailsH3 {
+    font-size: 25px;
+    letter-spacing: 1px;
+    font-weight: 600;
+    color: white;
+}
+
+@keyframes featuredProducts {
+    100% {
+        transform: scale(1.1);
+        transition: all 0.5s;
+        filter: brightness(1);
+    }
+}
+
+.featuredImgContainer {
+    width: 100%;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    filter: brightness(0.8);
+}
+
+.featuredImg {
+    width: 95%;
+}
+
+.productsDetails {
+    margin: 10px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.productsDetailsP {
+    margin: 10px;
+    font-family: 'lato', sans-serif;
+    font-size: 20px;
+}
+
 @media (max-width: 1080px) {
     .shoppingCategoryContainer {
         justify-content: flex-start;
@@ -568,6 +665,10 @@
         font-size: 20px;
         margin: 10px
     }
+    .featuredProductsItem {
+        width: 200px;
+        min-height: 150px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -580,6 +681,7 @@
         height: 405px;
         margin: 10px 0;
     }
+
 }
 
 @media (max-width: 465px) {
@@ -611,6 +713,11 @@
 
     .middleIntroLink {
         width: 100%;
+    }
+
+    .featuredProductsItem {
+        width: 95%;
+        min-height: unset;
     }
 }
 
