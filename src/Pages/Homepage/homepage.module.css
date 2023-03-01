@@ -627,7 +627,8 @@
     }
 
     .middleIntro {
-        min-height: 1300px;
+        height: auto;
+        padding: 70px 0;
     }
 
     .summerCollectionMain {
