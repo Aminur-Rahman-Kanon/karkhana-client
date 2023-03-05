@@ -16,8 +16,6 @@ const ShoppingCart = () => {
 
     }, [])
 
-    console.log(loggedInUser);
-
     const loginSection =  Object.keys(loggedInUser).length > 0 ? <div className={styles.shoppingCartContainer}>
         <div className={styles.userProfile}>
             <p className={styles.userProfileP}>{loggedInUser.firstName}</p>
@@ -26,11 +24,11 @@ const ShoppingCart = () => {
         <div className={styles.userContainers}>
             <div className={styles.userContainer}>
                 <div className={styles.profileItem}>
-                    <FontAwesomeIcon className={styles.profileIcon} />
+                    {/* <FontAwesomeIcon className={styles.profileIcon} /> */}
                     <a href="/profile" className={styles.shoppingCartLink}>Profile</a>
                 </div>
                 <div className={styles.profileItem}>
-                    <FontAwesomeIcon className={styles.profileIcon} />
+                    {/* <FontAwesomeIcon className={styles.profileIcon} /> */}
                     <a href="/login" className={styles.shoppingCartLink}>Orders</a>
                 </div>
                 <button className={styles.logoutBtn} onClick={() => {

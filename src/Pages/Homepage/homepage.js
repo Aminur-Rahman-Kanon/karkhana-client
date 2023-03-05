@@ -25,7 +25,7 @@ const Homepage = () => {
     }, [])
 
     const featuredProductsDisplay = featuredProducts.length > 0 ? featuredProducts.map(products => {
-        return <div className={styles.featuredProductsItem}>
+        return <div key={products.name} className={styles.featuredProductsItem}>
             <div className={styles.featuredImgContainer}>
                 <img src={products.img} alt={products.name} className={styles.featuredImg}/>
             </div>

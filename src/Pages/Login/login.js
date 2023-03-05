@@ -61,7 +61,7 @@ const Login = () => {
         e.preventDefault();
         setSpinner(true);
 
-        fetch('https://karkhana-server.onrender.com/login', {
+        fetch('http://localhost:8000/login', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -76,11 +76,11 @@ const Login = () => {
                 window.location.href = '/';
             }
             else if (data.status === 'user not found'){
-                console.log(data);
+                setSpinner(false);
                 setStatus(data.status);
             }
             else if (data.status === "password doesn't match"){
-                console.log(data);
+                setSpinner(false);
                 setStatus(data.status);
             }
         }).catch(err => {

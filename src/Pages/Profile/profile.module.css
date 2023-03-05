@@ -1,8 +1,165 @@
 .profileMain {
     width: 100%;
-    height: 100vh;
-    background-image: url('../../Assets/profileBg.jpg');
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
+    height: 100%;
+    padding-top: 100px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profileContainer {
+    width: 100%;
+    padding: 15px;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.profileHeader {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 25px;
+    margin-left: 5px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #d5b199;
+    margin-left: 30px;
+}
+
+.profileSection {
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.profileAvatarContainer {
+    width: 300px;
+    min-width: 220px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.avatarContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    background-color: #dab29740;
+}
+
+.avatar {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.categoryContainer {
+    width: 100%;
+    background-color: #d5b199;
+    border-radius: 8px;
+}
+
+.profileInfoP {
+    margin: 15px;
+    font-weight: 600;
+    color: white
+}
+
+.profileInfoContainer {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profileSettings {
+    width: calc(100% - 350px);
+    padding: 0 40px;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.profileSettingsNavContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profileSettingsBtn {
+    position: relative;
+    width: 150px;
+    min-width: 100px;
+    height: 30px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: #d89060;
+    cursor: pointer;
+}
+
+.profileSettingsBtnInactive {
+    color: #ca926d9f;
+}
+
+@media (max-width: 850px) {
+    .profileSettings {
+        width: 70%;
+    }
+
+    .profileHeader {
+        margin-left: unset;
+    }
+
+    .profileAvatarContainer {
+        min-width: unset;
+    }
+}
+
+@media (max-width: 650px) {
+    .profileMain {
+        height: unset;
+    }
+    .profileContainer {
+        align-items: center;
+    }
+    .profileSection {
+        flex-flow: column;
+        align-items: center;
+    }
+    .profileAvatarContainer {
+        width: 95%;
+        max-width: 300px;
+    }
+
+    .profileSettings {
+        width: 100%;
+        margin-top: 25px;
+        padding: 5px;
+    }
+
+    .profileSettingsBtn {
+        min-width: unset;
+        text-align: center;
+    }
+
+    .profileSettingsBtn::after {
+        left: 28px;
+    }
+
+    .profileSettingsNavContainer {
+        margin: 10px auto;
+        justify-content: center;
+    }
 }

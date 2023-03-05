@@ -1,0 +1,184 @@
+.profileMain {
+    width: 100%;
+}
+
+.profileFormContainer {
+    min-height: 450px;
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.profileFormItems {
+    position: relative;
+    width: 400px;
+    margin: 10px 0;
+    height: 45px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.profileFormInput {
+    width: 350px;
+    height: 30px;
+    padding-left: 10px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: rgb(70, 70, 70);
+}
+
+.profileFormFileInput{
+    position: relative;
+    width: 400px;
+    height: 45px;
+    margin: 10px 0;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.profileFormFileInput.wrongFileInput {
+    border: 1px solid darkred;
+}
+
+.fileInput {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+input::file-selector-button {
+    height: 30px;
+    width: 100px;
+    border: 1px solid #d5b199;
+    border-radius: 3px;
+    background-color: #d5b199;
+    color: rgb(245, 245, 245);
+    cursor: pointer;
+}
+
+input::file-selector-button:hover {
+    background-color: rgb(212, 166, 135);
+    color: white;
+}
+
+.imgError {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, 50px);
+    color: darkred;
+}
+
+.profileFormIcon {
+    font-size: 20px;
+    padding: 0 5px;
+    color: #c79471;
+}
+
+.updateBtn {
+    height: 40px;
+    width: 150px;
+    margin-top: 35px;
+    border: 1px solid #d5b199;
+    border-radius: 5px;
+    background-color: #d5b199;
+    color: rgb(245, 245, 245);
+    cursor: pointer;
+}
+
+.updateBtn:hover {
+    background-color: rgb(212, 166, 135);
+    color: white;
+}
+
+.updateBtn:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.updateBtn:disabled:hover {
+    background-color: #d5b199;
+}
+
+.selectInput {
+    width: 400px;
+    height: 45px;
+    margin: 10px 0;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    background-color: white;
+    padding-left: 10px;
+    appearance: none;
+    background-image: url('../../../Assets/downArrow.png');
+    background-repeat: no-repeat;
+    background-position: calc(100% - 15px) center;
+    background-size: 10px;
+    color: rgb(70, 70, 70);
+}
+
+.passwordMatch {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 100%;
+    transform: translate(-50%, 50px);
+    color: darkred;
+}
+
+.statusDisplayMain {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "lato", sans-serif;
+}
+
+.statusDisplayBtn {
+    height: 40px;
+    width: 120px;
+    margin-top: 20px;
+    border: 1px solid #d5b199;
+    border-radius: 5px;
+    background-color: #d5b199;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+.statusDisplayBtn:hover {
+    background-color: #c79471;
+}
+
+@media (max-width: 850px) {
+    .profileSettings {
+        width: 100%;
+    }
+    .profileFormItems, .profileFormFileInput, .selectInput {
+        width: 95%;
+    }
+    .profileFormInput {
+        width: 90%;
+    }
+    .profileFormContainer {
+        padding: 0;
+    }
+}
+
+@media (max-width: 650px) {
+    .profileFormContainer {
+        align-items: center;
+    }
+}

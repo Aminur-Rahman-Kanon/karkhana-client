@@ -1,50 +1,58 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from './profile.module.css';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faLocationDot, faReceipt, faShieldHalved } from '@fortawesome/free-solid-svg-icons';
+import user from '../../Assets/avatar.png';
+import ProfileForm from "./profileForm/profileForm";
 
 const Profile = () => {
 
+    const [formType, setFormTYpe] = useState('user information');
+
+    const [img, setImg] = useState(null);
+
+    const [name, setName] = useState('');
+
+    if (Object.keys(sessionStorage).length > 0){
+        if (sessionStorage.key(0) === 'user'){
+            const user = JSON.parse(sessionStorage.getItem('user'));
+            const userName = `${user.firstName} ${user.lastName}`
+            if (!name){
+                setName(userName);
+            }
+            if (user.imgLink && !img){
+                setImg(user.imgLink);
+            }
+        }
+    }
+
     return (
         <div className={styles.profileMain}>
-            <div className={styles.prifleNavMain}>
-                <div className={styles.profileNavItem}>
-                    <FontAwesomeIcon icon={faUser} className={styles.profileIcon}/>
-                    <p className={styles.profileNavP}>User Info</p>
-                </div>
-                <div className={styles.profileNavItem}>
-                    <FontAwesomeIcon icon={faLocationDot} className={styles.profileIcon}/>
-                    <p className={styles.profileNavP}>addresses</p>
-                </div><div className={styles.profileNavItem}>
-                    <FontAwesomeIcon icon={faReceipt} className={styles.profileIcon}/>
-                    <p className={styles.profileNavP}>Orders</p>
-                </div><div className={styles.profileNavItem}>
-                    <FontAwesomeIcon icon={faShieldHalved} className={styles.profileIcon}/>
-                    <p className={styles.profileNavP}>Change Password</p>
-                </div>
-            </div>
-            <div className={styles.profileNavDisplay}>
-                <div className={styles.userProfile}>
-                    <div className={styles.avatarContainer}>
-                        <img src="" alt="profile" className={styles.avatar}/>
+            <div className={styles.profileContainer}>
+                <h1 className={styles.profileHeader}>Update Profile</h1>
+                <div className={styles.profileSection}>
+                    <div className={styles.profileAvatarContainer}>
+                        <div className={styles.avatarContainer}>
+                            <img src={img || user} alt="karkhana user" className={styles.avatar}/>
+                        </div>
+                        <div className={styles.profileInfoContainer}>
+                            <h3 className={styles.profileInfoH3}>Name: {name || 'No information'}</h3>
+                            <div className={styles.categoryContainer}>
+                                <p className={styles.profileInfoP}>Category: Home</p>
+                            </div>
+                        </div>
                     </div>
-                    <div className={styles.userProfileDetails}>
-                        <div className={styles.userProfileDetailsItem}>
-                            <label>First name:</label>
-                            <input type="text" className={styles.userProfileInput} />
+
+                    <div className={styles.profileSettings}>
+                        <div className={styles.profileSettingsNavContainer}>
+                            <button className={formType === 'user information' ? styles.profileSettingsBtn : `${styles.profileSettingsBtn} ${styles.profileSettingsBtnInactive}`}
+                                    onClick={() => setFormTYpe('user information')}>User Information</button>
+                            <button className={formType === 'address' ? styles.profileSettingsBtn : `${styles.profileSettingsBtn} ${styles.profileSettingsBtnInactive}`}
+                                    onClick={() => setFormTYpe('address')}>Address</button>
+                            <button className={formType === 'password' ? styles.profileSettingsBtn : `${styles.profileSettingsBtn} ${styles.profileSettingsBtnInactive}`}
+                                    onClick={() => setFormTYpe('password')}>Change Password</button>
+                            <button className={formType === 'orders' ? styles.profileSettingsBtn : `${styles.profileSettingsBtn} ${styles.profileSettingsBtnInactive}`}
+                                    onClick={() => setFormTYpe('orders')}>Orders</button>
                         </div>
-                        <div className={styles.userProfileDetailsItem}>
-                            <label>Last name:</label>
-                            <input type="text" className={styles.userProfileInput} />
-                        </div>
-                        <div className={styles.userProfileDetailsItem}>
-                            <label>Email:</label>
-                            <input type="email" className={styles.userProfileInput} />
-                        </div>
-                        <div className={styles.userProfileDetailsItem}>
-                            <label>Phone Number:</label>
-                            <input type="number" className={styles.userProfileInput} />
-                        </div>
+                        <ProfileForm formType={formType} />
                     </div>
                 </div>
             </div>
