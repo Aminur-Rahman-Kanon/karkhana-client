@@ -87,7 +87,7 @@ const ProfileForm = ({formType}) => {
             if (avatar.name.split('.').at(-1) === 'jpg' || avatar.name.split('.').at(-1) === 'jpeg'){
                 const ext = avatar.name.split('.').at(-1);
                 setAvatarValidity(true);
-                setImgLink(`http://localhost:8000/Users/${email}.${ext}`);
+                setImgLink(`https://karkhana-server.onrender.com/Users/${email}.${ext}`);
                 setUserInfoBtn(false);
             }
             else {
@@ -111,7 +111,7 @@ const ProfileForm = ({formType}) => {
         formData.append("data", JSON.stringify(userData))
 
         
-        await fetch('http://localhost:8000/update-profile', {
+        await fetch('https://karkhana-server.onrender.com/update-profile', {
             method: 'POST',
             body: formData
         }).then(res => res.json()).then(data => {
@@ -152,7 +152,7 @@ const ProfileForm = ({formType}) => {
         statusDisplay = <div className={styles.statusDisplayMain}>
             <h2 className={styles.statusDisplayH2}>Update Completed</h2>
             <button className={styles.statusDisplayBtn} onClick={async () => {
-                await fetch('http://localhost:8000/redirect-user', {
+                await fetch('https://karkhana-server.onrender.com/redirect-user', {
                     method: 'POST',
                     headers: {
                         "Content-Type": 'application/json'
