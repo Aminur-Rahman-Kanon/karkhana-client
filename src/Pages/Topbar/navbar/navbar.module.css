@@ -8,9 +8,21 @@
     letter-spacing: 1px;
 }
 
+#logoEl {
+    border-radius: 50%;
+    width: 120px;
+    height: 110px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #d0b09b;
+    overflow: hidden;
+}
+
 .navElements {
     margin: 0 15px;
 }
+
 
 .logo {
     width: 125px;
@@ -36,7 +48,9 @@
 
 .navItem {
     text-decoration: none;
-    color: lightgray;
+    /* color: lightgray; */
+    /* color: #cb816173; */
+    color: #7a7a7a;
 }
 
 .navItem:hover {
@@ -45,7 +59,7 @@
 
 .navActive {
     text-decoration: none;
-    color: #cb8161;
+    color: #ad6c4d;
 }
 
 @media (max-width: 1045px) {

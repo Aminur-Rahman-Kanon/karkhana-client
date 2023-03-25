@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faBagShopping } from '@fortawesome/free-solid-svg-icons';
 import styles from './shoppingCart.module.css';
 import { Link } from "react-router-dom";
 
@@ -56,7 +56,7 @@ const ShoppingCart = () => {
 
             <div className={styles.shoppingCartContainer}>
                 <Link to="" className={styles.shoppingCartItem}>
-                    <FontAwesomeIcon icon={faCartShopping} className={styles.shoppingCartIcon}/>
+                    <FontAwesomeIcon icon={faBagShopping} className={styles.shoppingCartIcon}/>
                 </Link>
             </div>
         </div>

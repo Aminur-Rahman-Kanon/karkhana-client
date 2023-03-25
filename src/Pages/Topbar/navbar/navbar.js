@@ -18,8 +18,8 @@ const Navbar = () => {
                     <li className={styles.navList}><a href="/products" className={location === '/products' ? styles.navActive : styles.navItem}>Products</a></li>
                 </ul>
             </div>
-            <div className={styles.navElements}>
-                <img src={logo} className={styles.logo}/>
+            <div className={styles.navElements} id={styles.logoEl}>
+                <a href='/'><img src={logo} className={styles.logo}/></a>
             </div>
             <div className={styles.navElements}>
                 <ul className={styles.navElement}>

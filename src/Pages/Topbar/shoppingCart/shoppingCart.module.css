@@ -33,6 +33,7 @@
     transition-property: all;
     transition-duration: .5s;
     transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+    z-index: 100;
 }
 
 .userContainer {
@@ -50,8 +51,10 @@
 }
 
 .shoppingCartIcon {
-    font-size: 20px;
-    color: lightgray;
+    font-size: 25px;
+    /* color: lightgray; */
+    margin: 0 5px;
+    color: #ca9876;
     cursor: pointer;
 }
 
@@ -75,7 +78,7 @@
 .userProfileP {
     margin: 2px;
     text-transform: capitalize;
-    color: lightgray;
+    color: #7a7a7a;
 }
 
 @keyframes cartItem {

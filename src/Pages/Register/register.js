@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './register.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSignature, faAt, faLock } from '@fortawesome/free-solid-svg-icons';
+import { faSignature, faAt, faLock, faPhone } from '@fortawesome/free-solid-svg-icons';
 import Backdrop from '../Others/Backdrop/backdrop';
 import Modal from '../Others/Modal/modal';
 
@@ -214,7 +214,7 @@ const Register = () => {
                            className={styles.input}
                            placeholder="Phone number"
                            onChange={(e) => setPhoneNumber(e.target.value)}/>
-                    <FontAwesomeIcon icon={faLock} className={styles.inputIcon}/>
+                    <FontAwesomeIcon icon={faPhone} className={styles.inputIcon}/>
                 </div>
                 <div className={styles.inputContainer}>
                     <input type="password"
