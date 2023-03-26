@@ -151,6 +151,7 @@
 .featuredProductsH2 {
     font-size: 30px;
     letter-spacing: 1px;
+    font-family: 'Proza Libre', sans-serif;
 }
 
 .featuredProductsContainer {
@@ -207,6 +208,16 @@
     padding: 10px;
     box-sizing: border-box;
     display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.exclusiveItems {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
     justify-content: space-between;
     align-items: center;
 }
@@ -226,7 +237,7 @@
 
 .exclusiveItemImgContainer {
     position: relative;
-    height: 300px;
+    height: 320px;
     width: 100%;
     margin-bottom: 30px;
 }
@@ -314,6 +325,74 @@
     margin: 5px auto;
 }
 
+
+.itemCategoryContainer {
+    width: 100%;
+    margin: 20px auto;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.itemCategories {
+    width: 100%;
+    margin-top: 50px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    overflow: scroll;
+    scrollbar-width: none;
+}
+
+.itemCategories::-webkit-scrollbar {
+    display: none;
+}
+
+.itemCategory {
+    width: 200px;
+    margin: 15px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.itemCategoryImgContainer {
+    width: 150px;
+    height: 150px;
+    border: 1px solid lightgray;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.itemCategoryImg {
+    width: 60%;
+}
+
+.itemCategory:hover .itemCategoryImg {
+    animation: itemCategory 0.7s ease-out forwards;
+}
+
+.itemCategory:hover .itemCategoryP {
+    color: #b95b1d;
+}
+
+@keyframes itemCategory {
+    50% {
+        transform: scale(1.3);
+    }
+
+    100% {
+        transform: scale(1.1);
+    }
+}
+
 @media (max-width: 1049px) {
     .featuredProductsItem {
         width: 250px;
@@ -332,7 +411,7 @@
 }
 
 @media (max-width: 767px) {
-    .exclusiveItemContainer {
+    .exclusiveItems {
         flex-flow: column;
     }
 

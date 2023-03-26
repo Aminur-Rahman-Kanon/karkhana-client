@@ -11,9 +11,9 @@
     width: 22px;
     height: 1px;
     margin: 2px 0;
-    border: 1px solid lightgray;
+    border: 1px solid #ca9876;
     border-radius: 10px;
-    background-color: lightgray;
+    background-color: #ca9876;
 }
 
 @media (max-width: 1045px) {
