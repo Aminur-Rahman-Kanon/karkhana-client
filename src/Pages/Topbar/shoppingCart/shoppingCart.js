@@ -58,6 +58,7 @@ const ShoppingCart = () => {
                 <Link to="" className={styles.shoppingCartItem}>
                     <FontAwesomeIcon icon={faBagShopping} className={styles.shoppingCartIcon}/>
                 </Link>
+                <span className={styles.itemCount}>0</span>
             </div>
         </div>
     )

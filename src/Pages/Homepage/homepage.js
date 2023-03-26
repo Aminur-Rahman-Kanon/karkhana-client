@@ -5,7 +5,7 @@ import banner1 from '../../Assets/bg/bannerBg1.jpg';
 import banner2 from '../../Assets/bg/bannerBg2.jpg';
 import banner3 from '../../Assets/bg/bannerBg3.jpg';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
+import { faAngleLeft, faAngleRight, faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 const bannerItems = [
     {item: 1, img: banner1, firstHeader: "Karkhana", secondHeader: "Free delivery inside Dhaka"},
@@ -20,7 +20,7 @@ const Homepage = () => {
     const [bannerSlice, setBannerSlice] = useState(0);
 
     useEffect(() => {
-        fetch('http://localhost:8000/featuredProducts').then(res => res.json()).then(data => {
+        fetch('https://karkhana-server.onrender.com/featuredProducts').then(res => res.json()).then(data => {
             if (data.status === 'success'){
                 setFeaturedProducts(data.data);
             }
@@ -56,8 +56,25 @@ const Homepage = () => {
         </div>
     })
 
-    let displayFeaturedProducts = null;
-    let topSellers = null;
+    let displayFeaturedProducts = Array.from(Array(30).keys()).map(item => {
+        return <div key={item} className={styles.featuredProductsItem} id={styles.loader}>
+        <div className={styles.productsImgContainer}>
+            <FontAwesomeIcon icon={faSpinner} spinPulse className={styles.spinnerPulse} />
+        </div>
+        <div className={styles.loadingName}></div>
+        <div className={styles.loadingLink}></div>
+    </div>
+    });
+
+    let topSellers = Array.from(Array(6).keys()).map(item => {
+        return <div key={item} className={styles.featuredProductsItem} id={styles.loader}>
+        <div className={styles.productsImgContainer}>
+            <FontAwesomeIcon icon={faSpinner} spinPulse className={styles.spinnerPulse} />
+        </div>
+        <div className={styles.loadingName}></div>
+        <div className={styles.loadingLink}></div>
+    </div>
+    });
 
     if (featuredProducts.length) {
         displayFeaturedProducts = featuredProducts.slice(0, 15).map(products => {
@@ -85,21 +102,45 @@ const Homepage = () => {
         <div className={styles.homepageMain}>
             {displayBanner}
             
-            <div className={styles.featuredProducts}>
+            <section className={styles.featuredProducts}>
                 <h2 className={styles.featuredProductsH2}>Featured Products</h2>
                 
                 <div className={styles.featuredProductsContainer}>
                     {displayFeaturedProducts}
                 </div>
-            </div>
+            </section>
 
-            <div className={styles.featuredProducts}>
+            <section className={styles.featuredProducts}>
                 <h2 className={styles.featuredProductsH2}>Top Sellers</h2>
                 
                 <div className={styles.featuredProductsContainer}>
                     {topSellers}
                 </div>
-            </div>
+            </section>
+
+            <section className={styles.exclusiveItemContainer}>
+                <div className={styles.exclusiveItem}>
+                    <div className={styles.exclusiveItemImgContainer}>
+                        <img src="http://localhost:8000/assets/products/exclusive/exclusive1.jpg" alt="karkhana exclusive item" className={styles.exclusiveItemImg}/>
+                        <div className={styles.exclusiveItemHeader}>
+                            <h2>Exclusive Item 1</h2>
+                        </div>
+                    </div>
+                    <span className={styles.exclusiveItemP}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</span>
+                    <Link to="" className={styles.exclusiveLink}>SHOP NOW</Link>
+                </div>
+
+                <div className={styles.exclusiveItem}>
+                    <div className={styles.exclusiveItemImgContainer}>
+                        <img src="http://localhost:8000/assets/products/exclusive/exclusive2.jpg" alt="karkhana exclusive item" className={styles.exclusiveItemImg}/>
+                        <div className={styles.exclusiveItemHeader}>
+                            <h2>Exclusive Item 2</h2>
+                        </div>
+                    </div>
+                    <span className={styles.exclusiveItemP}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</span>
+                    <Link to="" className={styles.exclusiveLink}>SHOP NOW</Link>
+                </div>
+            </section>
         </div>
     )
 }
