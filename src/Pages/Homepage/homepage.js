@@ -121,7 +121,7 @@ const Homepage = () => {
             <section className={styles.exclusiveItemContainer}>
                 <div className={styles.exclusiveItem}>
                     <div className={styles.exclusiveItemImgContainer}>
-                        <img src="http://localhost:8000/assets/products/exclusive/exclusive1.jpg" alt="karkhana exclusive item" className={styles.exclusiveItemImg}/>
+                        <img src="https://karkhana-server.onrender.com/assets/products/exclusive/exclusive1.jpg" alt="karkhana exclusive item" className={styles.exclusiveItemImg}/>
                         <div className={styles.exclusiveItemHeader}>
                             <h2>Exclusive Item 1</h2>
                         </div>
@@ -132,7 +132,7 @@ const Homepage = () => {
 
                 <div className={styles.exclusiveItem}>
                     <div className={styles.exclusiveItemImgContainer}>
-                        <img src="http://localhost:8000/assets/products/exclusive/exclusive2.jpg" alt="karkhana exclusive item" className={styles.exclusiveItemImg}/>
+                        <img src="https://karkhana-server.onrender.com/assets/products/exclusive/exclusive2.jpg" alt="karkhana exclusive item" className={styles.exclusiveItemImg}/>
                         <div className={styles.exclusiveItemHeader}>
                             <h2>Exclusive Item 2</h2>
                         </div>
