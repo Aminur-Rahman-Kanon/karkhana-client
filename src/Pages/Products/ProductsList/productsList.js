@@ -4,6 +4,7 @@ import styles from './productsList.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 import Backdrop from "../../Others/Backdrop/backdrop";
+import Modal from '../../Others/Modal/modal';
 
 const ProductsList = () => {
 
@@ -11,36 +12,43 @@ const ProductsList = () => {
 
     const [sidebar, setSidebar] = useState(false);
 
-    const [backdrop, setBackdop] = useState(false);
+    const [backdrop, setBackdrop] = useState(false);
 
     const [products, setProducts] = useState([]);
 
     const [error, setError] = useState(false);
 
+    const [status, setStatus] = useState('');
+
+    const [modal, setModal] = useState(false);
+
     useEffect(() => {
         window.scrollTo(0, 0);
         if (params.hasOwnProperty("productId")){
-            fetch('https://karkhana-server.onrender.com/products/earRings')
+            fetch(`https://karkhana-server.onrender.com/products/${params.productId}`)
             .then(res => res.json())
             .then(result => {
                 if (result.status === 'success'){
                     setProducts(result.data);
                 }
                 else {
-                    setError(true);
+                    setStatus(result.status);
+                    setModal(true);
                 }
             })
-            .catch(err => console.log(err));
+            .catch(err => {
+                setError(true);
+                setModal(true);
+            });
         }
     }, [])
 
-    console.log(products);
+    console.log(status);
 
     useEffect(() => {
         if (backdrop){
             document.body.style.position = 'fixed';
             document.body.style.overflow = 'hidden';
-            // document.body.style.width = '100%'
         }
         else {
             document.body.style.position = 'unset';
@@ -74,23 +82,48 @@ const ProductsList = () => {
     const openSidebar = () => {
         if (!sidebar){
             setSidebar(true);
-            setBackdop(true);
+            setBackdrop(true);
         }
     }
 
     const closeSidebar = () => {
         if (sidebar){
             setSidebar(false);
-            setBackdop(false)
+            setBackdrop(false)
         }
         else {
-            setBackdop(false);
+            setBackdrop(false);
         }
+    }
+
+    let displayStatus = <div className={styles.statusMsgContainer}>
+        <h2 className={styles.statusMsgHeader}>Something went wrong</h2>
+        <p className={styles.statusMsgP}>Please try again</p>
+        <button className={styles.statusMsgBtn} onClick={() => {
+            setError(false);
+            setStatus('');
+            setModal(false);
+        }}>Ok</button>
+    </div>
+
+    if (status === 'database error'){
+        displayStatus = <div className={styles.statusMsgContainer}>
+            <h2 className={styles.statusMsgHeader}>Database error</h2>
+            <p className={styles.statusMsgP}>Please try again or contact the admin</p>
+            <button className={styles.statusMsgBtn} onClick={() => {
+            setError(false);
+            setStatus('');
+            setModal(false);
+        }}>Ok</button>
+        </div>
     }
 
     return (
         <>
         <Backdrop backdrop={ backdrop } toggleBackdrop={ closeSidebar }/>
+        <Modal modal={modal}>
+            {displayStatus}
+        </Modal>
         <div className={styles.productsListMain}>
             <div className={styles.productsListContainer}>
                 <div className={styles.sidebarSwitcher} onClick={ openSidebar }>

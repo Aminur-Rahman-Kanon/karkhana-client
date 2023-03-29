@@ -10,6 +10,7 @@
     justify-content: center;
     align-items: center;
     z-index: 1000;
+    border: 1px solid #b95b1d;
     background-color: white;
     border-radius: 10px;
 }

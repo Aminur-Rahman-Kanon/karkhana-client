@@ -108,7 +108,7 @@
 
 .productsContainer {
     width: 30%;
-    /* min-height: 300px; */
+    min-height: 260px;
     margin: 10px;
     padding: 10px;
     box-sizing: border-box;
@@ -116,6 +116,8 @@
     flex-flow: column;
     justify-content: center;
     align-items: center;
+    border: 1px solid lightgray;
+    border-radius: 5px;
 }
 
 .spinnerPulse {
@@ -132,19 +134,53 @@
 }
 
 .productsImgContainer {
-    width: 50%;
+    width: 100%;
+    height: 270px;
     margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
 }
 
 .productsImg {
-    width: 100%;
+    width: 70%;
     cursor: pointer;
     scale: 1;
     transition: scale 0.4s ease-out;
 }
 
+.statusMsgContainer {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    color: #b95b1d;
+}
 
-@media (max-width: 809px) {
+.statusMsgHeader {
+    margin: 5px;
+    text-align: center;
+}
+
+.statusMsgBtn {
+    height: 40px;
+    width: 150px;
+    margin-top: 25px;
+    border: 1px solid #b95b1d;
+    background-color: white;
+    color: #b95b1d;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.statusMsgBtn:hover {
+    background-color: #b95b1d;
+    color: white;
+}
+
+@media (max-width: 900px) {
     .defaultItemContainer {
         width: 45%;
     }
@@ -181,7 +217,7 @@
     }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 767px) {
     .ProductsLists {
         width: 90%;
     }
@@ -198,5 +234,9 @@
     .sidebarSwitcher {
         padding: 10px;
         left: -45px;
+    }
+
+    .statusMsgBtn {
+        width: 100%;
     }
 }

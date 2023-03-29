@@ -13,7 +13,7 @@ import Banner from "./banner/banner";
 
 
 const itemCategories = [
-    {item: 1, id: 'bracelets', img: bracelet, name: 'Bracelet'},
+    {item: 1, id: 'bracelet', img: bracelet, name: 'Bracelet'},
     {item: 2, id: 'others', img: others, name: 'Others'},
     {item: 3, id: 'finger-rings', img: fingerRing, name: 'Finger Ring'},
     {item: 4, id: 'ear-rings', img: earRing, name: 'Ear Ring'},
