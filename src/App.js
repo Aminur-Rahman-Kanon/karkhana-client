@@ -9,6 +9,8 @@ import Footer from './Pages/Footer/footer';
 import Login from './Pages/Login/login';
 import Register from './Pages/Register/register';
 import Profile from './Pages/Profile/profile';
+import ProductsList from './Pages/Products/ProductsList/productsList';
+
 
 function App() {
 
@@ -47,6 +49,7 @@ function App() {
       <Sidedrawer sidedrawer={sidedrawer}/>
       <Routes>
         <Route path='/' element={<Homepage />}/>
+        <Route path='/:productId' element={<ProductsList />}/>
         <Route path="/login" element={<Login />}/>
         <Route path="/register" element={<Register />}/>
         <Route path="/profile" element={<Profile />}/>

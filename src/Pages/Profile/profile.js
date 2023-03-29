@@ -24,6 +24,8 @@ const Profile = () => {
         }
     }
 
+    console.log(img);
+
     return (
         <div className={styles.profileMain}>
             <div className={styles.profileContainer}>

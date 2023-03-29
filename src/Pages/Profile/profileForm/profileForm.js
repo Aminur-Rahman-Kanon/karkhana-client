@@ -87,7 +87,7 @@ const ProfileForm = ({formType}) => {
             if (avatar.name.split('.').at(-1) === 'jpg' || avatar.name.split('.').at(-1) === 'jpeg'){
                 const ext = avatar.name.split('.').at(-1);
                 setAvatarValidity(true);
-                setImgLink(`https://karkhana-server.onrender.com/Users/${email}.${ext}`);
+                setImgLink(`https://karkhana-server.onrender.com/assets/users/${email}.${ext}`);
                 // setImgLink(`http://localhost:8000/assets/users/${email}.${ext}`);
                 setUserInfoBtn(false);
             }

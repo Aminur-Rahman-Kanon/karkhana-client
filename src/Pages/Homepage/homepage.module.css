@@ -10,6 +10,11 @@
     align-items: center;
 }
 
+.bannerContainer {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
 
 .bannerMain {
     position: relative;
@@ -29,17 +34,6 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    animation: imgChange 0.5s ease-out forwards;
-}
-
-@keyframes imgChange {
-    0% {
-        transform: translateX(100%);
-    }
-
-    100% {
-        transform: translateX(0);
-    }
 }
 
 .bannerHeading {
@@ -91,51 +85,35 @@
     color: black;
 }
 
-.indexContainer {
-    width: 100%;
-    position: absolute;
-    bottom: 10%;
-    left: 50%;
-    transform: translate(-50%, -10%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.bannerBtn {
+    border: none;
+    outline: none;
+    background-color: transparent;
 }
 
-.index {
-    width: 12px;
-    height: 12px;
-    margin: 0 8px;
-    border-radius: 50%;
-    background-color: rgb(194, 194, 194);
-}
-
-.index.active {
-    background-color: white;
-}
-
-.paginationContainer {
+.arrowContainer {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     width: 100%;
-    padding: 0 50px;
+    padding: 20px;
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
     align-items: center;
+
 }
 
 .arrow {
     font-size: 40px;
-    color: white;
+    color: rgb(255, 255, 255);
     opacity: 0;
     cursor: pointer;
     transition: opacity 0.5s ease-out;
 }
 
-.bannerMain:hover .arrow {
+.bannerContainer:hover .arrow {
     opacity: 1;
 }
 
@@ -151,6 +129,7 @@
 .featuredProductsH2 {
     font-size: 30px;
     letter-spacing: 1px;
+    color: #ad6c4d;
     font-family: 'Proza Libre', sans-serif;
 }
 
@@ -191,14 +170,25 @@
     scale: 1.2;
 }
 
+.productsName {
+    margin: 10px 0 0 0;
+    color: #ad6c4d;
+    text-transform: capitalize;
+}
+
 .productsLink {
     text-decoration: none;
     font-size: 18px;
-    color: #cf7d45;
+    color: #7e370ca8;
 }
 
 .productsLink:hover {
-    animation: productsLink 0.4s ease-out forwards;
+    animation: productsLink 0.3s ease-out forwards;
+}
+
+.productPrice {
+    margin: 10px;
+    color: #7e370ca8;
 }
 
 .exclusiveItemContainer {
@@ -302,7 +292,8 @@
 
 @keyframes productsLink {
     100% {
-        transform: scale(1.1);
+        color: #7E370C;
+        /* transform: scale(1.1); */
     }
 }
 
@@ -352,6 +343,7 @@
 }
 
 .itemCategory {
+    text-decoration: none;color: rgb(87, 87, 87);
     width: 200px;
     margin: 15px;
     display: flex;
@@ -381,6 +373,7 @@
 
 .itemCategory:hover .itemCategoryP {
     color: #b95b1d;
+    font-weight: 600;
 }
 
 @keyframes itemCategory {
@@ -393,7 +386,11 @@
     }
 }
 
-@media (max-width: 1049px) {
+@media (max-width: 1045px) {
+    .homepageMain {
+        margin: 0;
+    }
+
     .featuredProductsItem {
         width: 250px;
     }
@@ -411,6 +408,10 @@
 }
 
 @media (max-width: 767px) {
+    .arrowContainer {
+        transform: translate(-50%, 0%);
+    }
+
     .exclusiveItems {
         flex-flow: column;
     }
@@ -427,11 +428,6 @@
 @media (max-width: 650px) {
     .bannerH2 {
         font-size: 40px;
-    }
-
-    .paginationContainer {
-        transform: translate(-50%, 50%);
-        padding: 0 10px;
     }
 
     .arrow {
