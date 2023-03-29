@@ -133,12 +133,12 @@ const ProductsList = () => {
                     <div className={styles.categoryType}>
                         <h2 className={styles.categoryH2}>Categories</h2>
                         <ul className={styles.sidebarLists}>
-                            <li className={`${styles.sidebarList} ${styles.active}`}>Bracelets</li>
-                            <li className={styles.sidebarList}>Finger Rings</li>
-                            <li className={styles.sidebarList}>Ear Rings</li>
-                            <li className={styles.sidebarList}>Necklace</li>
-                            <li className={styles.sidebarList}>Toe Ring</li>
-                            <li className={styles.sidebarList}>Others</li>
+                            <a href="/bracelet" className={styles.sidebarLink}><li className={`${styles.sidebarList} ${styles.active}`}>Bracelets</li></a>
+                            <a href="/finger-rings" className={styles.sidebarLink}><li className={styles.sidebarList}>Finger Rings</li></a>
+                            <a href="/ear-rings" className={styles.sidebarLink}><li className={styles.sidebarList}>Ear Rings</li></a>
+                            <a href="/necklace" className={styles.sidebarLink}><li className={styles.sidebarList}>Necklace</li></a>
+                            <a href="/toe-rings" className={styles.sidebarLink}><li className={styles.sidebarList}>Toe Ring</li></a>
+                            <a href="others" className={styles.sidebarLink}><li className={styles.sidebarList}>Others</li></a>
                         </ul>
                     </div>
 

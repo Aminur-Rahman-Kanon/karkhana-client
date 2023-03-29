@@ -52,6 +52,10 @@
     margin: 0;
 }
 
+.sidebarLink {
+    text-decoration: none;
+}
+
 .categoryType {
     width: 100%;
     padding: 0 15px;
