@@ -20,7 +20,7 @@ const ProductsList = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
         if (params.hasOwnProperty("productId")){
-            fetch('http://localhost:8000/products/earRings')
+            fetch('https://karkhana-server.onrender.com/products/earRings')
             .then(res => res.json())
             .then(result => {
                 if (result.status === 'success'){
