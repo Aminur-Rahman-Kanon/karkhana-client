@@ -40,6 +40,10 @@ const ProductsList = () => {
 
     const pageCount = Math.ceil(products.length / itemPerPage);
 
+    const productsHeader = params.productId && params.productId.split('-').join(' ');
+
+    console.log(productsHeader);
+
     const handlePageClick = (event) => {
         const newOffset = (event.selected * itemPerPage) % products.length;
         setItemOffset(newOffset);
@@ -108,9 +112,6 @@ const ProductsList = () => {
             });
     }
 
-    console.log(priceFrom);
-    console.log(priceTo);
-
 
     const openSidebar = () => {
         if (!sidebar){
@@ -158,6 +159,7 @@ const ProductsList = () => {
             {displayStatus}
         </Modal>
         <div className={styles.productsListMain}>
+            <h2 className={styles.productHeader}>{productsHeader}</h2>
             <div className={styles.productsListContainer}>
                 <div className={styles.sidebarSwitcher} onClick={ openSidebar }>
                     <p className={styles.sidebarSwitcherP}>Show Sidebar</p>

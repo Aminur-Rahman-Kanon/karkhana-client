@@ -7,6 +7,14 @@
     margin: 20px auto;
 }
 
+.productHeader {
+    font-size: 30px;
+    text-transform: capitalize;
+    color: #ad6c4d;
+    font-family: 'Proza Libre', sans-serif;
+    letter-spacing: 1px;
+}
+
 .productsListContainer {
     width: 100%;
     padding: 5px;
