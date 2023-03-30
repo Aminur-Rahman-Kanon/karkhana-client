@@ -20,6 +20,8 @@ const ProductsList = () => {
 
     const [products, setProducts] = useState([]);
 
+    const [filteredProducts, setFilteredProducts] = useState([]);
+
     const [error, setError] = useState(false);
 
     const [status, setStatus] = useState('');
@@ -32,21 +34,33 @@ const ProductsList = () => {
 
     const [itemOffset, setItemOffset] = useState(0);
 
+    const [itemNotFound, setItemNotFound] = useState(false);
+
     const itemPerPage = 9;
 
     const endOffset = itemOffset + itemPerPage;
 
-    const currentItems = products.length && products.slice(itemOffset, endOffset);
+    let pageCount = 0;
 
-    const pageCount = Math.ceil(products.length / itemPerPage);
+    if (filteredProducts.length){
+        pageCount = Math.ceil(filteredProducts.length / itemPerPage);
+    }
+
+    else {
+        pageCount = Math.ceil(products.length / itemPerPage);
+    }
 
     const productsHeader = params.productId && params.productId.split('-').join(' ');
 
-    console.log(productsHeader);
-
     const handlePageClick = (event) => {
-        const newOffset = (event.selected * itemPerPage) % products.length;
-        setItemOffset(newOffset);
+        if (filteredProducts.length){
+            const newOffset = (event.selected * itemPerPage) % filteredProducts.length;
+            setItemOffset(newOffset);
+        }
+        else {
+            const newOffset = (event.selected * itemPerPage) % products.length;
+            setItemOffset(newOffset);
+        }
     }
 
     useEffect(() => {
@@ -72,7 +86,7 @@ const ProductsList = () => {
 
     useEffect(() => {
         window.scrollTo(0, 0);
-    }, [itemOffset])
+    }, [itemOffset, filteredProducts.length])
 
     useEffect(() => {
         if (backdrop){
@@ -96,7 +110,8 @@ const ProductsList = () => {
     });
 
     if (products.length){
-        defaultView = products.slice(itemOffset, endOffset).map(item => {
+        if (!itemNotFound &&filteredProducts.length){
+            defaultView = filteredProducts.slice(itemOffset, endOffset).map(item => {
             return <div key={item._id} className={styles.productsContainer} id={styles.loader}>
                     <div className={styles.productsImgContainer}>
                         <img src={item.img} className={styles.productsImg}/>
@@ -110,8 +125,52 @@ const ProductsList = () => {
                     <div className={styles.productsPrice}>৳ {item.price}</div>
                 </div>
             });
+        }
+        else if (itemNotFound) {
+            defaultView = <div className={styles.notFoundContainer}>
+                <h2 className={styles.notFoundHeader}>Nothing found based on your range</h2>
+                <button className={styles.notFoundBtn}>Ok</button>
+            </div>
+        }
+
+        else {
+            defaultView = products.slice(itemOffset, endOffset).map(item => {
+            return <div key={item._id} className={styles.productsContainer} id={styles.loader}>
+                    <div className={styles.productsImgContainer}>
+                        <img src={item.img} className={styles.productsImg}/>
+                        <div className={styles.shoppingLinkContainer}>
+                            <a href="" className={styles.shoppingLink}>
+                                <FontAwesomeIcon icon={faCartShopping} className={styles.shoppingLinkIcon}/>
+                            </a>
+                        </div>
+                    </div>
+                    <div className={styles.productsName}>{item.name}</div>
+                    <div className={styles.productsPrice}>৳ {item.price}</div>
+                </div>
+            });
+        }
     }
 
+    console.log(itemNotFound);
+
+    const filterItem = () => {
+        if (priceFrom && priceTo) {
+            const filteredData = products.filter(item => Number(item.price) >= priceFrom && Number(item.price) <= priceTo);
+            console.log(filteredData);
+            if (filteredData.length){
+                setItemNotFound(false)
+                setFilteredProducts(filteredData);
+            }
+            else {
+                setItemNotFound(true);
+                setItemOffset(0)
+            }
+        }
+        else {
+            setItemNotFound(false);
+            setFilteredProducts([]);
+        }
+    }
 
     const openSidebar = () => {
         if (!sidebar){
@@ -159,7 +218,6 @@ const ProductsList = () => {
             {displayStatus}
         </Modal>
         <div className={styles.productsListMain}>
-            <h2 className={styles.productHeader}>{productsHeader}</h2>
             <div className={styles.productsListContainer}>
                 <div className={styles.sidebarSwitcher} onClick={ openSidebar }>
                     <p className={styles.sidebarSwitcherP}>Show Sidebar</p>
@@ -179,24 +237,27 @@ const ProductsList = () => {
 
                     <div className={styles.categoryType}>
                         <h2 className={styles.categoryH2}>Price Range</h2>
-                        <p>From</p>
+                        <p>From: {priceFrom}</p>
                         <Slider value={priceFrom}
                                 min={0}
                                 max={5000}
                                 className={styles.slider}
                                 onChange={(value) => setPriceFrom(value)}/>
-                        <p>To</p>
+                        <p>To: {priceTo}</p>
                         <Slider value={priceTo}
                                 min={0}
                                 max={5000}
                                 className={styles.slider}
                                 onChange={(value) => setPriceTo(value)}/>
-                        <button className={styles.filterBtn}>Apply</button>
+                        <button disabled={!priceFrom || !priceTo} className={styles.filterBtn} onClick={filterItem}>Apply</button>
                     </div>
                 </div>
 
                 <div className={styles.ProductsLists}>
-                    {defaultView}
+                    <h2 className={styles.productHeader}>{productsHeader}</h2>
+                    <div className={styles.productsDisplayContainer}>
+                        {defaultView}
+                    </div>
                 </div>
             </div>
 
@@ -210,7 +271,7 @@ const ProductsList = () => {
                            disabledClassName={styles.paginationDisabled}
                            onPageChange={handlePageClick}
                            pageRangeDisplayed={5}
-                           pageCount={pageCount}
+                           pageCount={itemNotFound ? 0 : pageCount}
                            previousLabel="< previous"
                            renderOnZeroPageCount={null}/>
         </div>

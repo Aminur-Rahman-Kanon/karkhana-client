@@ -101,6 +101,14 @@
 .ProductsLists {
     width: 80%;
     display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.productsDisplayContainer {
+    width: 100%;
+    display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
     align-items: center;
@@ -168,7 +176,7 @@
     left: 50%;
     transform: translate(-50%, -10%);
     width: 90%;
-    height: 45px;
+    height: 35px;
     background-color: #b95b1dbd;
     border-radius: 5px;
     display: none;
@@ -177,7 +185,7 @@
 }
 
 .shoppingLinkIcon {
-    font-size: 25px;
+    font-size: 18px;
     color: white;
 }
 
@@ -185,9 +193,8 @@
     display: flex;
 }
 
-.shoppingLinkContainer:hover .productsImg {
+.shoppingLinkContainer:hover .shoppingLinkIcon {
     transform: scale(1.2);
-    filter: brightness(0.7);
 }
 
 @keyframes productsImg {
@@ -284,6 +291,40 @@
 }
 
 .filterBtn:hover {
+    background-color: #b95b1d;
+    color: white;
+}
+
+.filterBtn:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.filterBtn:disabled:hover {
+    background-color: white;
+    color: #b95b1d;
+}
+
+.notFoundContainer {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.notFoundBtn {
+    height: 40px;
+    width: 150px;
+    margin-top: 20px;
+    border: 1px solid #b95b1d;
+    color: #b95b1d;
+    background-color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.notFoundBtn:hover {
     background-color: #b95b1d;
     color: white;
 }
