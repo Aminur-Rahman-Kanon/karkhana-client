@@ -2,7 +2,7 @@
 
 
 .productsListMain {
-    position: relative;
+    /* position: relative; */
     width: 100%;
     margin: 20px auto;
 }
@@ -38,9 +38,10 @@
 }
 
 .sidebarSwitcher {
-    position: absolute;
-    top: 55px;
+    position: fixed;
+    top: 50%;
     left: -36px;
+    transform: translateY(-50%);
     display: none;
     padding: 10px;
     transform: rotate(270deg);
