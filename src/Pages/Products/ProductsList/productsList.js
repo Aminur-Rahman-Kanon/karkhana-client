@@ -2,9 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styles from './productsList.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpinner } from '@fortawesome/free-solid-svg-icons'
+import { faSpinner, faCartShopping } from '@fortawesome/free-solid-svg-icons'
 import Backdrop from "../../Others/Backdrop/backdrop";
 import Modal from '../../Others/Modal/modal';
+import ReactPaginate from 'react-paginate';
+import Slider from 'react-rangeslider';
+import 'react-rangeslider/lib/index.css'
+
 
 const ProductsList = () => {
 
@@ -21,6 +25,25 @@ const ProductsList = () => {
     const [status, setStatus] = useState('');
 
     const [modal, setModal] = useState(false);
+
+    const [priceFrom, setPriceFrom] = useState(0);
+
+    const [priceTo, setPriceTo] = useState(0);
+
+    const [itemOffset, setItemOffset] = useState(0);
+
+    const itemPerPage = 9;
+
+    const endOffset = itemOffset + itemPerPage;
+
+    const currentItems = products.length && products.slice(itemOffset, endOffset);
+
+    const pageCount = Math.ceil(products.length / itemPerPage);
+
+    const handlePageClick = (event) => {
+        const newOffset = (event.selected * itemPerPage) % products.length;
+        setItemOffset(newOffset);
+    }
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -43,7 +66,9 @@ const ProductsList = () => {
         }
     }, [])
 
-    console.log(status);
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [itemOffset])
 
     useEffect(() => {
         if (backdrop){
@@ -67,16 +92,24 @@ const ProductsList = () => {
     });
 
     if (products.length){
-        defaultView = products.map(item => {
+        defaultView = products.slice(itemOffset, endOffset).map(item => {
             return <div key={item._id} className={styles.productsContainer} id={styles.loader}>
                     <div className={styles.productsImgContainer}>
                         <img src={item.img} className={styles.productsImg}/>
+                        <div className={styles.shoppingLinkContainer}>
+                            <a href="" className={styles.shoppingLink}>
+                                <FontAwesomeIcon icon={faCartShopping} className={styles.shoppingLinkIcon}/>
+                            </a>
+                        </div>
                     </div>
                     <div className={styles.productsName}>{item.name}</div>
                     <div className={styles.productsPrice}>৳ {item.price}</div>
                 </div>
             });
     }
+
+    console.log(priceFrom);
+    console.log(priceTo);
 
 
     const openSidebar = () => {
@@ -133,18 +166,30 @@ const ProductsList = () => {
                     <div className={styles.categoryType}>
                         <h2 className={styles.categoryH2}>Categories</h2>
                         <ul className={styles.sidebarLists}>
-                            <a href="/bracelet" className={styles.sidebarLink}><li className={`${styles.sidebarList} ${styles.active}`}>Bracelets</li></a>
-                            <a href="/finger-rings" className={styles.sidebarLink}><li className={styles.sidebarList}>Finger Rings</li></a>
-                            <a href="/ear-rings" className={styles.sidebarLink}><li className={styles.sidebarList}>Ear Rings</li></a>
-                            <a href="/necklace" className={styles.sidebarLink}><li className={styles.sidebarList}>Necklace</li></a>
-                            <a href="/toe-rings" className={styles.sidebarLink}><li className={styles.sidebarList}>Toe Ring</li></a>
-                            <a href="others" className={styles.sidebarLink}><li className={styles.sidebarList}>Others</li></a>
+                            <a href="/bracelet" className={styles.sidebarLink}><li className={params.productId === 'bracelet' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Bracelets</li></a>
+                            <a href="/finger-rings" className={styles.sidebarLink}><li className={params.productId === 'finger-rings' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Finger Rings</li></a>
+                            <a href="/ear-rings" className={styles.sidebarLink}><li className={params.productId === 'ear-rings' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Ear Rings</li></a>
+                            <a href="/necklace" className={styles.sidebarLink}><li className={params.productId === 'necklace' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Necklace</li></a>
+                            <a href="/toe-rings" className={styles.sidebarLink}><li className={params.productId === 'toe-rings' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Toe Ring</li></a>
+                            <a href="others" className={styles.sidebarLink}><li className={params.productId === 'others' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Others</li></a>
                         </ul>
                     </div>
 
                     <div className={styles.categoryType}>
                         <h2 className={styles.categoryH2}>Price Range</h2>
-                        <p>Price high to low</p>
+                        <p>From</p>
+                        <Slider value={priceFrom}
+                                min={0}
+                                max={5000}
+                                className={styles.slider}
+                                onChange={(value) => setPriceFrom(value)}/>
+                        <p>To</p>
+                        <Slider value={priceTo}
+                                min={0}
+                                max={5000}
+                                className={styles.slider}
+                                onChange={(value) => setPriceTo(value)}/>
+                        <button className={styles.filterBtn}>Apply</button>
                     </div>
                 </div>
 
@@ -152,6 +197,20 @@ const ProductsList = () => {
                     {defaultView}
                 </div>
             </div>
+
+            <ReactPaginate breakLabel="..."
+                           nextLabel="next >"
+                           className={styles.paginationContainer}
+                           pageClassName={styles.paginationItem}
+                           previousClassName={styles.previousItem}
+                           nextClassName={styles.nextItem}
+                           activeClassName={styles.paginationActive}
+                           disabledClassName={styles.paginationDisabled}
+                           onPageChange={handlePageClick}
+                           pageRangeDisplayed={5}
+                           pageCount={pageCount}
+                           previousLabel="< previous"
+                           renderOnZeroPageCount={null}/>
         </div>
         </>
     )

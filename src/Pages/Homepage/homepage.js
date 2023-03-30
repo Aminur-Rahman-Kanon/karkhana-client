@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from './homepage.module.css';
-import bracelet from '../../Assets/bracelet.png';
-import others from '../../Assets/charms.png';
-import fingerRing from '../../Assets/ring.png';
-import earRing from '../../Assets/earRing.png';
-import necklace from '../../Assets/necklace.png';
-import toeRing from '../../Assets/daimond.png';
+import bracelet from '../../Assets/bracelet.jpg';
+import others from '../../Assets/nepali.jpg';
+import fingerRing from '../../Assets/fingerRing.jpg';
+import earRing from '../../Assets/earRing.jpg';
+import necklace from '../../Assets/necklace.jpg';
+import toeRing from '../../Assets/toeRing.jpg';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import Banner from "./banner/banner";
