@@ -10,9 +10,10 @@
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    border: 1px solid #b95b1d;
+    border: 1px solid #ad6c4d4f;
     background-color: white;
     border-radius: 10px;
+    box-shadow: 5px 5px 12px 1px #ad6c4d;
 }
 
 @media (max-width: 550px) {

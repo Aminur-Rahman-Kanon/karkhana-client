@@ -10,6 +10,7 @@ import Login from './Pages/Login/login';
 import Register from './Pages/Register/register';
 import Profile from './Pages/Profile/profile';
 import ProductsList from './Pages/Products/ProductsList/productsList';
+import ProductsDetails from './Pages/Products/ProductsDetails/productsDetails';
 
 
 function App() {
@@ -50,6 +51,7 @@ function App() {
       <Routes>
         <Route path='/' element={<Homepage />}/>
         <Route path='/:productId' element={<ProductsList />}/>
+        <Route path='/:productId/:productDetails' element={<ProductsDetails />}/>
         <Route path="/login" element={<Login />}/>
         <Route path="/register" element={<Register />}/>
         <Route path="/profile" element={<Profile />}/>

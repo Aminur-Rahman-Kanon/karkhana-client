@@ -113,45 +113,43 @@ const ProductsList = () => {
         if (!itemNotFound &&filteredProducts.length){
             defaultView = filteredProducts.slice(itemOffset, endOffset).map(item => {
             return <div key={item._id} className={styles.productsContainer} id={styles.loader}>
-                    <div className={styles.productsImgContainer}>
-                        <img src={item.img} className={styles.productsImg}/>
-                        <div className={styles.shoppingLinkContainer}>
-                            <a href="" className={styles.shoppingLink}>
-                                <FontAwesomeIcon icon={faCartShopping} className={styles.shoppingLinkIcon}/>
-                            </a>
+                    <a href={`/${params.productId}/${item.name}`} className={styles.productsLink}>
+                        <div className={styles.productsImgContainer}>
+                            <img src={item.img} className={styles.productsImg}/>
                         </div>
-                    </div>
-                    <div className={styles.productsName}>{item.name}</div>
-                    <div className={styles.productsPrice}>৳ {item.price}</div>
+                        <div className={styles.productsName}>{item.name}</div>
+                        <div className={styles.productsPrice}>৳ {item.price}</div>
+                    </a>
                 </div>
             });
         }
         else if (itemNotFound) {
             defaultView = <div className={styles.notFoundContainer}>
                 <h2 className={styles.notFoundHeader}>Nothing found based on your range</h2>
-                <button className={styles.notFoundBtn}>Ok</button>
             </div>
         }
 
         else {
             defaultView = products.slice(itemOffset, endOffset).map(item => {
             return <div key={item._id} className={styles.productsContainer} id={styles.loader}>
-                    <div className={styles.productsImgContainer}>
-                        <img src={item.img} className={styles.productsImg}/>
-                        <div className={styles.shoppingLinkContainer}>
-                            <a href="" className={styles.shoppingLink}>
-                                <FontAwesomeIcon icon={faCartShopping} className={styles.shoppingLinkIcon}/>
-                            </a>
+                    <a href={`/${params.productId}/${item.name}`} className={styles.productsLink}>
+                        <div className={styles.productsImgContainer}>
+                            <img src={item.img} className={styles.productsImg}/>
                         </div>
-                    </div>
-                    <div className={styles.productsName}>{item.name}</div>
-                    <div className={styles.productsPrice}>৳ {item.price}</div>
+                        <div className={styles.productsName}>{item.name}</div>
+                        <div className={styles.productsPrice}><span className={styles.currency}>৳</span> {item.price}</div>
+                    </a>
                 </div>
             });
         }
     }
 
-    console.log(itemNotFound);
+    else if(status === 'not found') {
+        console.log(status);
+        defaultView = <div className={styles.fallbackContainer}>
+            <h2 className={styles.fallbackHeader}>Nothing found</h2>
+        </div>
+    }
 
     const filterItem = () => {
         if (priceFrom && priceTo) {
@@ -160,16 +158,21 @@ const ProductsList = () => {
             if (filteredData.length){
                 setItemNotFound(false)
                 setFilteredProducts(filteredData);
+                setSidebar(false);
+                setBackdrop(false);
             }
             else {
                 setItemNotFound(true);
-                setItemOffset(0)
+                setItemOffset(0);
+                setSidebar(false);
+                setBackdrop(false);
             }
         }
-        else {
-            setItemNotFound(false);
-            setFilteredProducts([]);
-        }
+    }
+
+    const resetFilter = () => {
+        setPriceFrom(0);
+        setPriceTo(0);
     }
 
     const openSidebar = () => {
@@ -193,8 +196,6 @@ const ProductsList = () => {
         <h2 className={styles.statusMsgHeader}>Something went wrong</h2>
         <p className={styles.statusMsgP}>Please try again</p>
         <button className={styles.statusMsgBtn} onClick={() => {
-            setError(false);
-            setStatus('');
             setModal(false);
         }}>Ok</button>
     </div>
@@ -237,24 +238,29 @@ const ProductsList = () => {
 
                     <div className={styles.categoryType}>
                         <h2 className={styles.categoryH2}>Price Range</h2>
-                        <p>From: {priceFrom}</p>
+                        <p className={styles.rangeLabel}>From: {priceFrom}</p>
                         <Slider value={priceFrom}
                                 min={0}
                                 max={5000}
                                 className={styles.slider}
                                 onChange={(value) => setPriceFrom(value)}/>
-                        <p>To: {priceTo}</p>
+                        <p className={styles.rangeLabel}>To: {priceTo}</p>
                         <Slider value={priceTo}
                                 min={0}
                                 max={5000}
                                 className={styles.slider}
                                 onChange={(value) => setPriceTo(value)}/>
-                        <button disabled={!priceFrom || !priceTo} className={styles.filterBtn} onClick={filterItem}>Apply</button>
+                        <button disabled={!priceFrom || !priceTo}
+                                className={styles.filterBtn}
+                                onClick={ resetFilter }>Reset</button>
+                        <button disabled={(!priceFrom || !priceTo) || (priceFrom >= priceTo)}
+                                className={styles.filterBtn}
+                                onClick={filterItem}>Apply</button>
                     </div>
                 </div>
 
                 <div className={styles.ProductsLists}>
-                    <h2 className={styles.productHeader}>{productsHeader}</h2>
+                    <h2 className={styles.productHeader}>{products.length ?.productsHeader}</h2>
                     <div className={styles.productsDisplayContainer}>
                         {defaultView}
                     </div>

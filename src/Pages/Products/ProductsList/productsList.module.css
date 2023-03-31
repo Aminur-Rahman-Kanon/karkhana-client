@@ -68,6 +68,7 @@
 .categoryType {
     width: 100%;
     padding: 0 15px;
+    margin: 10px 0;
     box-sizing: border-box;
     display: flex;
     flex-flow: column;
@@ -78,10 +79,12 @@
 .categoryH2 {
     font-family: 'Proza Libre', sans-serif;
     color: #ad6c4d;
+    margin: 10px 0; 
 }
 
 .sidebarLists {
     list-style: none;
+    margin: 5px 0;
     padding: 0 10px;
     display: flex;
     flex-flow: column;
@@ -110,8 +113,14 @@
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
+}
+
+.productsLink {
+    width: 100%;
+    text-decoration: none;
+    color: rgb(48, 48, 48);
 }
 
 .defaultItemContainer {
@@ -127,11 +136,15 @@
     align-items: center;
 }
 
+.fallbackHeader {
+    margin-right: 100px;
+}
+
 .productsContainer {
     width: 30%;
     min-height: 260px;
     margin: 10px;
-    padding: 10px;
+    /* padding: 10px; */
     box-sizing: border-box;
     display: flex;
     flex-flow: column;
@@ -170,44 +183,21 @@
     cursor: pointer;
 }
 
-.shoppingLinkContainer {
-    position: absolute;
-    bottom: 10%;
-    left: 50%;
-    transform: translate(-50%, -10%);
-    width: 90%;
-    height: 35px;
-    background-color: #b95b1dbd;
-    border-radius: 5px;
-    display: none;
-    justify-content: center;
-    align-items: center;
+.productsPrice {
+    font-weight: 600;
 }
 
-.shoppingLinkIcon {
+.currency {
     font-size: 18px;
-    color: white;
 }
 
-.productsImgContainer:hover .shoppingLinkContainer {
-    display: flex;
-}
-
-.shoppingLinkContainer:hover .shoppingLinkIcon {
-    transform: scale(1.2);
+.productsImgContainer:hover  .productsImg{
+    animation: productsImg 0.4s ease-out forwards;
 }
 
 @keyframes productsImg {
     100% {
         transform: scale(1.2);
-        filter: brightness(0.7);
-    }
-}
-
-@keyframes productsImgs {
-    100% {
-        transform: scale(1.2);
-        filter: brightness(0.7);
     }
 }
 
@@ -217,7 +207,7 @@
     flex-flow: column;
     justify-content: center;
     align-items: center;
-    color: #b95b1d;
+    color: #ad6c4d;
 }
 
 .statusMsgHeader {
@@ -229,15 +219,15 @@
     height: 40px;
     width: 150px;
     margin-top: 25px;
-    border: 1px solid #b95b1d;
+    border: 1px solid #ad6c4d;
     background-color: white;
-    color: #b95b1d;
+    color: #ad6c4d;
     border-radius: 5px;
     cursor: pointer;
 }
 
 .statusMsgBtn:hover {
-    background-color: #b95b1d;
+    background-color: #ad6c4d;
     color: white;
 }
 
@@ -277,12 +267,17 @@
 
 .slider {
     width: 100%;
+    margin: 10px;
+}
+
+.rangeLabel {
+    margin: 10px;
 }
 
 .filterBtn {
-    height: 40px;
+    height: 35px;
     width: 150px;
-    margin: 20px auto;
+    margin: 20px auto 0 auto;
     border: 1px solid #b95b1d;
     border-radius: 5px;
     background-color: white;
@@ -313,25 +308,13 @@
     align-items: center;
 }
 
-.notFoundBtn {
-    height: 40px;
-    width: 150px;
-    margin-top: 20px;
-    border: 1px solid #b95b1d;
-    color: #b95b1d;
-    background-color: white;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.notFoundBtn:hover {
-    background-color: #b95b1d;
-    color: white;
-}
-
 @media (max-width: 900px) {
     .defaultItemContainer {
         width: 45%;
+    }
+
+    .fallbackHeader {
+        margin-right: 0;
     }
 
     .sidebarContainer {
@@ -378,7 +361,7 @@
 
 @media (max-width: 500px) {
     .defaultItemContainer, .productsContainer {
-        width: 95%;
+        width: 90%;
     }
     .sidebarSwitcher {
         padding: 10px;
