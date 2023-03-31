@@ -21,7 +21,7 @@ const ProductsDetails = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
 
-        fetch(`http://localhost:8000/product-details/${productId}/${productDetails}`)
+        fetch(`https://karkhana-server.onrender.com/product-details/${productId}/${productDetails}`)
         .then(res => res.json()).then(product => {
             if (product.status === 'success' && product.data.length){
                 setItem(product.data);
