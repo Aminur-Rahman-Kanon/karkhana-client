@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner, faStar, faAngleDown, faAngleUp, faEye, faE } from '@fortawesome/free-solid-svg-icons';
 import styles from './productsDetails.module.css';
+import AdditionalDetails from "./AdditionalDetails/additionalDetails";
 
 const ProductsDetails = () => {
 
@@ -15,8 +16,6 @@ const ProductsDetails = () => {
     const [error, setError] = useState(false);
 
     const [quantity, setQuantity] = useState(0);
-
-    console.log(productId, productDetails);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -32,8 +31,6 @@ const ProductsDetails = () => {
         })
         .catch(err => setError(true));
     }, [])
-
-    console.log(item);
 
     let displayProduct = <div className={styles.defaultProductContainer}>
         <div className={styles.defaultImgContainer}>
@@ -67,7 +64,7 @@ const ProductsDetails = () => {
 
             <div className={styles.watchListContainer}>
                 <FontAwesomeIcon icon={faEye} className={styles.watchListIcon}/>
-                <p className={styles.watchListP}>10 customers are viewing this products</p>
+                <p className={styles.watchListP}>10 customers are watching this products</p>
             </div>
 
             <div className={styles.productsDetails}><span className={styles.currency}>৳</span>{item[0].price}</div>
@@ -99,9 +96,10 @@ const ProductsDetails = () => {
 
     return (
         <div className={styles.productsDetailsMain}>
-            <div className={styles.productsDetailsContainer}>
+            <section className={styles.productsDetailsContainer}>
                 {displayProduct}
-            </div>
+            </section>
+            <AdditionalDetails />
         </div>
     )
 }

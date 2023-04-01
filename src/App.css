@@ -11,3 +11,12 @@ body {
   margin: 0;
   padding: 0;
 }
+
+::-webkit-scrollbar {
+  background: lightgray;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #ad6c4d;
+  border-radius: 10px;
+}
