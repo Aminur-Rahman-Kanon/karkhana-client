@@ -1,15 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpinner, faStar, faAngleDown, faAngleUp, faEye, faE } from '@fortawesome/free-solid-svg-icons';
+import { faSpinner, faStar, faAngleDown, faAngleUp, faEye, faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import styles from './productsDetails.module.css';
 import AdditionalDetails from "./AdditionalDetails/additionalDetails";
 
 const ProductsDetails = () => {
 
+    const relatedItemRef = useRef(null);
+
+    const otherItemRef = useRef(null);
+
     const { productId, productDetails } = useParams();
 
     const [item, setItem] = useState([]);
+
+    const [relatedItem, setRelatedItem] = useState([]);
 
     const [status, setStatus] = useState('');
 
@@ -17,20 +23,32 @@ const ProductsDetails = () => {
 
     const [quantity, setQuantity] = useState(0);
 
+    const itemPerPage = 4;
+
     useEffect(() => {
         window.scrollTo(0, 0);
 
-        fetch(`https://karkhana-server.onrender.com/product-details/${productId}/${productDetails}`)
-        .then(res => res.json()).then(product => {
-            if (product.status === 'success' && product.data.length){
-                setItem(product.data);
-            }
-            else {
-                setStatus('not found');
+        fetch(`https://karkhana-server.onrender.com/products/${productId}`)
+        .then(res => res.json()).then(data => {
+            if (data.status === 'success' && data.data.length){
+                const filteredItem = [];
+                const relatedItem = [];
+
+                data.data.map(item => {
+                    if (item.name === productDetails){
+                        filteredItem.push(item);
+                    }
+                    else {
+                        relatedItem.push(item);
+                    }
+                })
+
+                setItem(filteredItem);
+                setRelatedItem(relatedItem);
             }
         })
         .catch(err => setError(true));
-    }, [])
+    }, []);
 
     let displayProduct = <div className={styles.defaultProductContainer}>
         <div className={styles.defaultImgContainer}>
@@ -53,7 +71,7 @@ const ProductsDetails = () => {
         </div>
 
         <div className={styles.sidePanelContainer}>
-            <div className={styles.productsDetails} style={{fontSize: '26px'}}>{item[0].name}</div>
+            <div className={styles.productsDetails} style={{fontSize: '20px'}}>{item[0].name}</div>
             <div className={styles.ratingContainer}>
                 <FontAwesomeIcon icon={faStar} className={styles.star}/>
                 <FontAwesomeIcon icon={faStar} className={styles.star}/>
@@ -67,7 +85,7 @@ const ProductsDetails = () => {
                 <p className={styles.watchListP}>10 customers are watching this products</p>
             </div>
 
-            <div className={styles.productsDetails}><span className={styles.currency}>৳</span>{item[0].price}</div>
+            <div className={styles.productsDetails}><span className={styles.currency}>&#2547; </span>{item[0].price}</div>
             <div className={styles.availablity}>Available: Yes</div>
             <div className={styles.productDetailsContainer}>
                 <h2 className={styles.productHeader}>Details</h2>
@@ -94,12 +112,82 @@ const ProductsDetails = () => {
     </div>
     }
 
+    let relatedProducts = <div className={styles.relatedProductsContainer}>
+        <h2 className={styles.defaultHeadings}>No Products Found</h2>
+    </div>
+
+    let otherProducts = <div className={styles.relatedProductsContainer}>
+        <h2 className={styles.defaultHeadings}>No Products Found</h2>
+        </div>
+
+    if (relatedItem.length){
+        relatedProducts = relatedItem.map(products => {
+            return <div key={products._id} className={styles.relatedProduct}>
+                <a href={`https://karkhana.onrender.com/${productId}/${products.name}`} className={styles.relatedProductLink}>
+                    <div className={styles.relatedProductImgContainer}>
+                        <img src={products.img} alt={products.name} className={styles.relatedProductImg}/>
+                    </div>
+                    <div className={styles.relatedProductDetailsContainer}>
+                        <h3 className={styles.relatedProductDetailsHeader}>{products.name}</h3>
+                        <p className={styles.relatedProductDetailsP}>&#2547; {products.price}</p>
+                    </div>
+                </a>
+            </div>
+        })
+
+        otherProducts = relatedItem.slice(-8).map(products => {
+            return <div key={products._id} className={styles.relatedProduct}>
+                <a href={`https://karkhana.onrender.com/${productId}/${products.name}`} className={styles.relatedProductLink}>
+                    <div className={styles.relatedProductImgContainer}>
+                        <img src={products.img} alt={products.name} className={styles.relatedProductImg}/>
+                    </div>
+                    <div className={styles.relatedProductDetailsContainer}>
+                        <h3 className={styles.relatedProductDetailsHeader}>{products.name}</h3>
+                        <p className={styles.relatedProductDetailsP}>&#2547; {products.price}</p>
+                    </div>
+                </a>
+            </div>
+        })
+    }
+
     return (
         <div className={styles.productsDetailsMain}>
             <section className={styles.productsDetailsContainer}>
                 {displayProduct}
             </section>
             <AdditionalDetails />
+
+            <section className={styles.relatedProductsMain}>
+                <h2 className={styles.relatedProductsHeader}>Related Products</h2>
+                <div className={styles.relatedItemsItemContainer} ref={relatedItemRef}>
+                    {relatedProducts}
+                </div>
+                <div className={styles.pagintaionContainer}>
+                    <button disabled={!relatedItem.length} className={styles.angleIconContainer} onClick={() => relatedItemRef.current.scrollBy(-270, 0)}>
+                        <FontAwesomeIcon icon={faAngleLeft} className={styles.angleIcon}/>
+                    </button>
+
+                    <button disabled={!relatedItem.length} className={styles.angleIconContainer} onClick={() => relatedItemRef.current.scrollBy(270, 0)}>
+                        <FontAwesomeIcon icon={faAngleRight} className={styles.angleIcon}/>
+                    </button>
+                </div>
+            </section>
+
+            <section className={styles.relatedProductsMain}>
+                <h2 className={styles.relatedProductsHeader}>Customers Also Viewed</h2>
+                <div className={styles.relatedItemsItemContainer} ref={otherItemRef}>
+                    {otherProducts}
+                </div>
+                <div className={styles.pagintaionContainer}>
+                    <button disabled={!relatedItem.length} className={styles.angleIconContainer} onClick={() => otherItemRef.current.scrollBy(-270, 0)}>
+                        <FontAwesomeIcon icon={faAngleLeft} className={styles.angleIcon}/>
+                    </button>
+
+                    <button disabled={!relatedItem.length} className={styles.angleIconContainer} onClick={() => otherItemRef.current.scrollBy(270, 0)}>
+                        <FontAwesomeIcon icon={faAngleRight} className={styles.angleIcon}/>
+                    </button>
+                </div>
+            </section>
         </div>
     )
 }

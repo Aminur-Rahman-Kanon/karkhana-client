@@ -2,6 +2,7 @@
 
 .additionalInfoContainer {
     width: 100%;
+    margin: 20px auto;
 }
 
 .inforHeaderItems {
@@ -43,12 +44,17 @@
     width: 0;
     height: 4px;
     background-color: #ad6c4d;
-    transition: width 0.4s ease-out;
     z-index: 0;
 }
 
 .infoHeader:hover::before {
-    width: 100%;
+    animation: detailsHover 0.4s ease-out forwards
+}
+
+@keyframes detailsHover {
+    100% {
+        width: 100%;
+    }
 }
 
 .infoHeader.active {
@@ -58,13 +64,17 @@
     z-index: -1;
 }
 
+.angleContainer {
+    display: none;
+}
+
 .infoHeaderDetails {
     display: none;
 }
 
-.show {
+/* .show {
     display: block;
-}
+} */
 
 
 .detailsContainer {
@@ -238,6 +248,8 @@
     margin: 10px 0;
     padding: 5px 0;
     font-size: 15px;
+    /* text-align: center;
+    border: 1px solid lightgray; */
 }
 
 @media (max-width: 992px) {
@@ -256,7 +268,24 @@
     }
 
     .infoHeader {
-        position: unset;
+        position: 'unset';
+        justify-content: space-between;
+    }
+
+    .infoHeader.active {
+        z-index: 0;
+    }
+
+    .angleContainer {
+        display: block;
+    }
+
+    .angleIcon {
+        margin-right: 20px;
+    }
+
+    .infoHeaderH2 {
+        margin-left: 20px;
     }
 
     .inforHeaderItems {

@@ -212,6 +212,8 @@ const ProductsList = () => {
         </div>
     }
 
+    console.log(productsHeader);
+
     return (
         <>
         <Backdrop backdrop={ backdrop } toggleBackdrop={ closeSidebar }/>
@@ -260,7 +262,7 @@ const ProductsList = () => {
                 </div>
 
                 <div className={styles.ProductsLists}>
-                    <h2 className={styles.productHeader}>{products.length ?.productsHeader}</h2>
+                    <h2 className={styles.productHeader}>{products.length ? productsHeader : null}</h2>
                     <div className={styles.productsDisplayContainer}>
                         {defaultView}
                     </div>

@@ -1,10 +1,10 @@
-import React, { useEffect, useState, useLayoutEffect } from "react";
+import React, { useEffect, useState, useLayoutEffect, useRef } from "react";
 import styles from './additionalDetails.module.css';
 import profile from '../../../../Assets/profile.jpg';
 import avatar from '../../../../Assets/avatar.png'
 import obama from '../../../../Assets/obama.jpg';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { faStar, faAngleUp, faAngleDown } from "@fortawesome/free-solid-svg-icons";
 
 const reviews = [
     {img: profile, name: 'Karkhana User', comment: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla at venenatis eros. Nulla efficitur, orci ut cursus consectetur, nisi elit convallis odio khdkhdkhkjhdhwj khjkdh djhh dh khkhd hhk hjdd'},
@@ -14,10 +14,16 @@ const reviews = [
 
 const AdditionalDetails = () => {
 
+    const detailsRef = useRef(null);
+    const reviewRef = useRef(null);
+    const shippingRef = useRef(null);
+    const chargesRef = useRef(null);
+
     useEffect(() => {
         if (screenWidth <= 992){
             if (displayItem !== ''){
                 setDisplayItem('');
+                setInfoDisplayToggle('');
             }
         }
     }, [])
@@ -39,7 +45,7 @@ const AdditionalDetails = () => {
 
     
     
-    const [displayItem, setDisplayItem] = useState('details');
+    const [displayItem, setDisplayItem] = useState('');
 
     const [infoDisplayToggle, setInfoDisplayToggle] = useState('');
 
@@ -165,19 +171,40 @@ const AdditionalDetails = () => {
             break;
     }
 
+    console.log(infoDisplayToggle, displayItem);
+
+    const detailsIntoView = (item) => {
+        switch(item){
+            case "details":
+                detailsRef.current.scrollIntoView(true);
+                break;
+            case "reviews":
+                reviewRef.current.scrollIntoView(true);
+                break;
+            case "shipping":
+                shippingRef.current.scrollIntoView(true);
+                break;
+            case "charges":
+                chargesRef.current.scrollIntoView(true);
+                break;
+            default: 
+                break;
+        }
+    }
+
     const displayItemHanlder = (item) => {
+        console.log('working');
         if (window.screen.width <= 992){
-            if (!infoDisplayToggle){
-                setInfoDisplayToggle(item);
-                setDisplayItem(item);
-            }
-            else if(item === infoDisplayToggle) {
+            if (displayItem === item && infoDisplayToggle === item){
+                console.log('foo');
+                setDisplayItem('');
                 setInfoDisplayToggle('');
-                setDisplayItem(item);
             }
             else {
+                console.log('bar');
                 setDisplayItem(item);
-                setInfoDisplayToggle(item)
+                setInfoDisplayToggle(item);
+                detailsIntoView(item);
             }
         }
         else {
@@ -189,34 +216,66 @@ const AdditionalDetails = () => {
         <section className={styles.additionalInfoContainer}>
             <div className={styles.inforHeaderItems}>
                 <div className={styles.infoHeaderItem}>
-                    <div className={displayItem === 'details' ? `${styles.infoHeader} ${styles.active}` : styles.infoHeader} onClick={() => displayItemHanlder('details') } id="initialActive">
+                    <div className={displayItem === 'details' || displayItem == '' ? `${styles.infoHeader} ${styles.active}` : styles.infoHeader} onClick={() => displayItemHanlder('details') } ref={detailsRef}>
                         <p className={styles.infoHeaderH2}>Details</p>
+                        <div className={styles.angleContainer}>
+                            <FontAwesomeIcon icon={faAngleUp}
+                                            className={styles.angleIcon}
+                                            style={displayItem === 'details' ? {display: 'block'} : {display: 'none'}}/>
+                            <FontAwesomeIcon icon={faAngleDown}
+                                            className={styles.angleIcon}
+                                            style={displayItem ===  '' || displayItem !== 'details' ? {display: 'block'} : {display: 'none'}}/>
+                        </div>
                     </div>
-                    <div className={styles.infoHeaderDetails} style={displayItem === 'details' && infoDisplayToggle && screenWidth <= 992 ? {display: 'block'} : {display: 'none'}}>
+                    <div className={styles.infoHeaderDetails} style={displayItem === 'details' && infoDisplayToggle === 'details' && screenWidth <= 992 ? {display: 'block'} : {display: 'none'}}>
                         {displayItemContainer}
                     </div>
                 </div>
                 <div className={styles.infoHeaderItem}>
-                    <div className={displayItem === 'reviews' ? `${styles.infoHeader} ${styles.active}` : styles.infoHeader} onClick={() => displayItemHanlder('reviews') }>
+                    <div className={displayItem === 'reviews' ? `${styles.infoHeader} ${styles.active}` : styles.infoHeader} onClick={() => displayItemHanlder('reviews') } ref={reviewRef}>
                         <p className={styles.infoHeaderH2}>Customer review</p>
+                        <div className={styles.angleContainer}>
+                            <FontAwesomeIcon icon={faAngleUp}
+                                            className={styles.angleIcon}
+                                            style={displayItem === 'reviews' ? {display: 'block'} : {display: 'none'}}/>
+                            <FontAwesomeIcon icon={faAngleDown}
+                                            className={styles.angleIcon}
+                                            style={displayItem ===  '' || displayItem !== 'reviews' ? {display: 'block'} : {display: 'none'}}/>
+                        </div>
                     </div>
-                    <div className={styles.infoHeaderDetails} style={displayItem === 'reviews' && infoDisplayToggle && screenWidth <= 992 ? {display: 'block'} : {display: 'none'}}>
+                    <div className={styles.infoHeaderDetails} style={displayItem === 'reviews' && infoDisplayToggle === 'reviews' && screenWidth <= 992 ? {display: 'block'} : {display: 'none'}}>
                         {displayItemContainer}
                     </div>
                 </div>
                 <div className={styles.infoHeaderItem}>
-                    <div className={displayItem === 'shipping' ? `${styles.infoHeader} ${styles.active}` : styles.infoHeader} onClick={() => displayItemHanlder('shipping') }>
+                    <div className={displayItem === 'shipping' ? `${styles.infoHeader} ${styles.active}` : styles.infoHeader} onClick={() => displayItemHanlder('shipping') } ref={shippingRef}>
                         <p className={styles.infoHeaderH2}>Shipping & return</p>
+                        <div className={styles.angleContainer}>
+                            <FontAwesomeIcon icon={faAngleUp}
+                                            className={styles.angleIcon}
+                                            style={displayItem === 'shipping' ? {display: 'block'} : {display: 'none'}}/>
+                            <FontAwesomeIcon icon={faAngleDown}
+                                            className={styles.angleIcon}
+                                            style={displayItem ===  '' || displayItem !== 'shipping' ? {display: 'block'} : {display: 'none'}}/>
+                        </div>
                     </div>
-                    <div className={styles.infoHeaderDetails} style={displayItem === 'shipping' && infoDisplayToggle && screenWidth <= 992 ? {display: 'block'} : {display: 'none'}}>
+                    <div className={styles.infoHeaderDetails} style={displayItem === 'shipping' && infoDisplayToggle === 'shipping' && screenWidth <= 992 ? {display: 'block'} : {display: 'none'}}>
                         {displayItemContainer}
                     </div>
                 </div>
                 <div className={styles.infoHeaderItem}>
-                    <div className={displayItem === 'charges' ? `${styles.infoHeader} ${styles.active}` : styles.infoHeader} onClick={() => displayItemHanlder('charges') }>
+                    <div className={displayItem === 'charges' ? `${styles.infoHeader} ${styles.active}` : styles.infoHeader} onClick={() => displayItemHanlder('charges') } ref={chargesRef}>
                         <p className={styles.infoHeaderH2}>Charges</p>
+                        <div className={styles.angleContainer}>
+                            <FontAwesomeIcon icon={faAngleUp}
+                                            className={styles.angleIcon}
+                                            style={displayItem === 'charges' ? {display: 'block'} : {display: 'none'}}/>
+                            <FontAwesomeIcon icon={faAngleDown}
+                                            className={styles.angleIcon}
+                                            style={displayItem ===  '' || displayItem !== 'charges' ? {display: 'block'} : {display: 'none'}}/>
+                        </div>
                     </div>
-                    <div className={styles.infoHeaderDetails} style={displayItem === 'charges' && infoDisplayToggle && screenWidth <= 992 ? {display: 'block'} : {display: 'none'}}>
+                    <div className={styles.infoHeaderDetails} style={displayItem === 'charges' && infoDisplayToggle === 'charges' && screenWidth <= 992 ? {display: 'block'} : {display: 'none'}}>
                         {displayItemContainer}
                     </div>
                 </div>
