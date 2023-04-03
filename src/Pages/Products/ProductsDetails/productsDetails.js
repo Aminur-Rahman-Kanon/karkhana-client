@@ -4,6 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner, faStar, faAngleDown, faAngleUp, faEye, faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 import styles from './productsDetails.module.css';
 import AdditionalDetails from "./AdditionalDetails/additionalDetails";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const ProductsDetails = () => {
 
@@ -51,6 +53,12 @@ const ProductsDetails = () => {
         })
         .catch(err => setError(true));
     }, []);
+
+    const addToCart = () => {
+        toast.success('Order Placed !!!', {
+            position: toast.POSITION.TOP_RIGHT
+        });
+    }
 
     let displayProduct = <div className={styles.defaultProductContainer}>
         <div className={styles.defaultImgContainer}>
@@ -107,7 +115,11 @@ const ProductsDetails = () => {
                 </div>
             </div>
             <div className={styles.productDetailsBtnGroup}>
-                <button disabled={!quantity} className={styles.productDetailsBtn} id={styles.cartBtn}>Add to Cart</button>
+                <button disabled={!quantity}
+                        className={styles.productDetailsBtn}
+                        id={styles.cartBtn}
+                        onClick={ addToCart }
+                        >Add to Cart</button>
                 <button className={styles.productDetailsBtn}>+ Wishlist</button>
             </div>
         </div>
@@ -153,6 +165,9 @@ const ProductsDetails = () => {
     }
 
     return (
+        <>
+        <ToastContainer autoClose={1000}
+                        limit={5}/>
         <div className={styles.productsDetailsMain}>
             <section className={styles.productsDetailsContainer}>
                 {displayProduct}
@@ -191,6 +206,7 @@ const ProductsDetails = () => {
                 </div>
             </section>
         </div>
+        </>
     )
 }
 

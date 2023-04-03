@@ -237,6 +237,9 @@
     height: 320px;
     width: 100%;
     margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .exclusiveItemImg {
@@ -324,6 +327,41 @@
     margin: 5px auto;
 }
 
+.defaultExclusiveItems {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.defaultExclusiveItem {
+    width: 450px;
+    /* height: 250px; */
+    margin: 15px;
+    padding: 15px;
+    box-sizing: border-box;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.defaultExclusiveItemImgContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 50px auto;
+}
+
+.defaultExclusiveName, .defaultExclusiveLink {
+    width: 80%;
+    height: 40px;
+    background-color: lightgray;
+    margin: 10px;
+}
 
 .itemCategoryContainer {
     width: 100%;
@@ -446,8 +484,12 @@
         opacity: 1;
     }
 
-    .exclusiveItem {
+    .exclusiveItem, .defaultExclusiveItem {
         width: 95%;
+    }
+
+    .defaultExclusiveItems {
+        flex-flow: column;
     }
 }
 

@@ -117,7 +117,22 @@ const Homepage = () => {
         </Link>
     })
 
-    let exclusiveItem = null;
+    let exclusiveItem = <div className={styles.defaultExclusiveItems}>
+        <div className={styles.defaultExclusiveItem}>
+                <div className={styles.defaultExclusiveItemImgContainer}>
+                    <FontAwesomeIcon icon={faSpinner} spinPulse className={styles.spinnerPulse} />
+                </div>
+                <div className={styles.defaultExclusiveName}></div>
+                <div className={styles.defaultExclusiveLink}></div>
+            </div>
+            <div className={styles.defaultExclusiveItem}>
+                <div className={styles.defaultExclusiveItemImgContainer}>
+                    <FontAwesomeIcon icon={faSpinner} spinPulse className={styles.spinnerPulse} />
+                </div>
+                <div className={styles.defaultExclusiveName}></div>
+                <div className={styles.defaultExclusiveLink}></div>
+            </div>
+    </div>;
 
     if (exclusiveProducts.length){
         exclusiveItem = exclusiveProducts.map(exclusiveItem => {
