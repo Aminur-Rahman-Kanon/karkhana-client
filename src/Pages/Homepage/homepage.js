@@ -25,10 +25,13 @@ const Homepage = () => {
 
     const [featuredProducts, setFeaturedProducts] = useState([]);
 
+    const [exclusiveProducts, setExclusiveProducts] = useState([]);
+
     useEffect(() => {
-        fetch('https://karkhana-server.onrender.com/featuredProducts').then(res => res.json()).then(data => {
-            if (data.status === 'success'){
-                setFeaturedProducts(data.data);
+        fetch('https://karkhana-server.onrender.com/featuredProducts').then(res => res.json()).then(result => {
+            if (result.status === 'success'){
+                setFeaturedProducts(result.data.featured);
+                setExclusiveProducts(result.data.exclusive)
             }
         }).catch(err => console.log(err))
     }, [])
@@ -66,35 +69,41 @@ const Homepage = () => {
     if (featuredProducts.length) {
         displayFeaturedProducts = featuredProducts.slice(0, 6).map(products => {
             return <div key={products._id} className={styles.featuredProductsItem}>
-                <div className={styles.productsImgContainer}>
-                    <img src={products.img} alt={products.name} className={styles.productsImg}/>
-                </div>
-                <h3 className={styles.productsName}>{products.name}</h3>
-                <p className={styles.productPrice}>৳ {products.price}</p>
-                <Link to="" className={styles.productsLink}>Buy Now</Link>
+                <a href={`https://karkhana.onrender.com/featured/${products.name}`} className={styles.featuredProductLink}>
+                    <div className={styles.productsImgContainer}>
+                        <img src={products.img} alt={products.name} className={styles.productsImg}/>
+                    </div>
+                    <h3 className={styles.productsName}>{products.name}</h3>
+                    <p className={styles.productPrice}>৳ {products.price}</p>
+                    {/* <Link to="" className={styles.productsLink}>Buy Now</Link> */}
+
+                </a>
             </div>
         })
-
         
         trendingCategories = featuredProducts.slice(6, 12).map(products => {
             return <div key={products._id} className={styles.featuredProductsItem}>
-                <div className={styles.productsImgContainer}>
-                    <img src={products.img} alt={products.name} className={styles.productsImg}/>
-                </div>
-                <h3 className={styles.productsName}>{products.name}</h3>
-                <p className={styles.productPrice}>৳ {products.price}</p>
-                <Link to="" className={styles.productsLink}>Buy Now</Link>
+                <a href={`https://karkhana.onrender.com/featured/${products.name}`} className={styles.featuredProductLink}>
+                    <div className={styles.productsImgContainer}>
+                        <img src={products.img} alt={products.name} className={styles.productsImg}/>
+                    </div>
+                    <h3 className={styles.productsName}>{products.name}</h3>
+                    <p className={styles.productPrice}>৳ {products.price}</p>
+                    {/* <Link to="" className={styles.productsLink}>Buy Now</Link> */}
+                </a>
             </div>
         })
 
         topSellers = featuredProducts.slice(12, 18).map(products => {
             return <div key={products._id} className={styles.featuredProductsItem}>
-                <div className={styles.productsImgContainer}>
-                    <img src={products.img} alt={products.name} className={styles.productsImg}/>
-                </div>
-                <h3 className={styles.productsName}>{products.name}</h3>
-                <p className={styles.productPrice}>৳ {products.price}</p>
-                <Link to="" className={styles.productsLink}>Buy Now</Link>
+                <a href={`https://karkhana.onrender.com/featured/${products.name}`} className={styles.featuredProductLink}>
+                    <div className={styles.productsImgContainer}>
+                        <img src={products.img} alt={products.name} className={styles.productsImg}/>
+                    </div>
+                    <h3 className={styles.productsName}>{products.name}</h3>
+                    <p className={styles.productPrice}>৳ {products.price}</p>
+                </a>
+                {/* <Link to="" className={styles.productsLink}>Buy Now</Link> */}
             </div>
         })
     }
@@ -107,6 +116,23 @@ const Homepage = () => {
             <p className={styles.itemCategoryP}>{item.name}</p>
         </Link>
     })
+
+    let exclusiveItem = null;
+
+    if (exclusiveProducts.length){
+        exclusiveItem = exclusiveProducts.map(exclusiveItem => {
+            return <div key={exclusiveItem._id} className={styles.exclusiveItem}>
+                <div className={styles.exclusiveItemImgContainer}>
+                    <img src={exclusiveItem.img} alt={exclusiveItem.name} className={styles.exclusiveItemImg}/>
+                    <div className={styles.exclusiveItemHeader}>
+                        <h2>{exclusiveItem.name}</h2>
+                    </div>
+                </div>
+                <span className={styles.exclusiveItemP}>{exclusiveItem.details}</span>
+                <Link to={`/exclusive/${exclusiveItem.name}`} className={styles.exclusiveLink}>SHOP NOW</Link>
+            </div>
+        })
+    }
     
     return (
         <div className={styles.homepageMain}>
@@ -148,27 +174,7 @@ const Homepage = () => {
             <section className={styles.exclusiveItemContainer}>
                 <h2 className={styles.featuredProductsH2}>Exclusive Items</h2>
                 <div className={styles.exclusiveItems}>
-                    <div className={styles.exclusiveItem}>
-                        <div className={styles.exclusiveItemImgContainer}>
-                            <img src="https://karkhana-server.onrender.com/assets/products/exclusive/exclusive1.jpg" alt="karkhana exclusive item" className={styles.exclusiveItemImg}/>
-                            <div className={styles.exclusiveItemHeader}>
-                                <h2>Exclusive Item 1</h2>
-                            </div>
-                        </div>
-                        <span className={styles.exclusiveItemP}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</span>
-                        <Link to="" className={styles.exclusiveLink}>SHOP NOW</Link>
-                    </div>
-
-                    <div className={styles.exclusiveItem}>
-                        <div className={styles.exclusiveItemImgContainer}>
-                            <img src="https://karkhana-server.onrender.com/assets/products/exclusive/exclusive2.jpg" alt="karkhana exclusive item" className={styles.exclusiveItemImg}/>
-                            <div className={styles.exclusiveItemHeader}>
-                                <h2>Exclusive Item 2</h2>
-                            </div>
-                        </div>
-                        <span className={styles.exclusiveItemP}>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</span>
-                        <Link to="" className={styles.exclusiveLink}>SHOP NOW</Link>
-                    </div>
+                    {exclusiveItem}
                 </div>
             </section>
         </div>

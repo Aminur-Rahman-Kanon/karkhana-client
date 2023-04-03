@@ -126,6 +126,11 @@
     align-items: center;
 }
 
+.featuredProductLink {
+    text-decoration: none;
+    width: 100%;
+}
+
 .featuredProductsH2 {
     font-size: 30px;
     letter-spacing: 1px;
@@ -216,13 +221,14 @@
 .exclusiveItem {
     position: relative;
     width: 48%;
+    min-height: 500px;
     padding-bottom: 30px;
     border: 1px solid lightgray;
     border-radius: 5px;
     margin: 30px auto;
     display: flex;
     flex-flow: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
 }
 
@@ -236,6 +242,7 @@
 .exclusiveItemImg {
     width: 100%;
     height: 100%;
+    object-fit: cover;
 }
 
 .exclusiveItemHeader {
