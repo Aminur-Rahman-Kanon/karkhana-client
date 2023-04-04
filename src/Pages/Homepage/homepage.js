@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import styles from './homepage.module.css';
 import bracelet from '../../Assets/bracelet.jpg';
@@ -8,8 +8,10 @@ import earRing from '../../Assets/earRing.jpg';
 import necklace from '../../Assets/necklace.jpg';
 import toeRing from '../../Assets/toeRing.jpg';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSpinner } from "@fortawesome/free-solid-svg-icons";
+import { faSpinner, faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import Banner from "./banner/banner";
+import { ToastContainer, toast } from 'react-toastify';
+import { ContextApi } from "../../App";
 
 
 const itemCategories = [
@@ -23,9 +25,13 @@ const itemCategories = [
 
 const Homepage = () => {
 
+    const context = useContext(ContextApi);
+
     const [featuredProducts, setFeaturedProducts] = useState([]);
 
     const [exclusiveProducts, setExclusiveProducts] = useState([]);
+
+    const cartItemStorage = sessionStorage.getItem('cart');
 
     useEffect(() => {
         fetch('https://karkhana-server.onrender.com/featuredProducts').then(res => res.json()).then(result => {
@@ -35,6 +41,45 @@ const Homepage = () => {
             }
         }).catch(err => console.log(err))
     }, [])
+
+    // console.log(sessionStorage.key());
+
+
+    const addToCart = async (e, item) => {
+        e.preventDefault();
+        const user = sessionStorage.getItem('user')
+        if (!user) {
+            return toast.info("Please log in to continue", {
+                position: toast.POSITION.TOP_RIGHT
+            })
+        }
+        else {
+            const cartItem = JSON.parse(cartItemStorage);
+            console.log(item.name);
+            if (cartItemStorage === null) {
+                const itemToStore = {};
+                itemToStore[item.name] = [item];
+                sessionStorage.setItem('cart', JSON.stringify(itemToStore));
+                context.setCartItem(context.cartItem + 1);
+            }
+            else {
+                if (Object.keys(cartItem).includes(item.name)) {
+                    cartItem[item.name].push(item)
+                    sessionStorage.setItem('cart', JSON.stringify(cartItem));
+                    context.setCartItem(context.cartItem + 1);
+                }
+                else {
+                    cartItem[item.name] = [item];
+                    sessionStorage.setItem('cart', JSON.stringify(cartItem))
+                    context.setCartItem(context.cartItem + 1);
+                }
+            }
+            
+            return toast.success(`${item.name} added to Cart`, {
+                position: toast.POSITION.TOP_RIGHT
+            })
+        }
+    }
 
     let displayFeaturedProducts = Array.from(Array(6).keys()).map(item => {
         return <div key={item} className={styles.featuredProductsItem} id={styles.loader}>
@@ -73,11 +118,15 @@ const Homepage = () => {
                     <div className={styles.productsImgContainer}>
                         <img src={products.img} alt={products.name} className={styles.productsImg}/>
                     </div>
-                    <h3 className={styles.productsName}>{products.name}</h3>
-                    <p className={styles.productPrice}>৳ {products.price}</p>
-                    {/* <Link to="" className={styles.productsLink}>Buy Now</Link> */}
-
+                    <div className={styles.addToCartContainer} onClick={(e) => addToCart(e, products) }>
+                        <FontAwesomeIcon icon={faCartShopping} className={styles.shoppingIcon}/>
+                        <p className={styles.shoppingP}>Add To Cart</p>
+                    </div>
                 </a>
+                <div className={styles.productDetails}>
+                    <a href={`https://karkhana.onrender.com/featured/${products.name}`} className={styles.productsName}>{products.name}</a>
+                    <p className={styles.productPrice}>	&#2547; {products.price}</p>
+                </div>
             </div>
         })
         
@@ -86,11 +135,16 @@ const Homepage = () => {
                 <a href={`https://karkhana.onrender.com/featured/${products.name}`} className={styles.featuredProductLink}>
                     <div className={styles.productsImgContainer}>
                         <img src={products.img} alt={products.name} className={styles.productsImg}/>
+                        <div className={styles.addToCartContainer} onClick={(e) => addToCart(e, products) }>
+                            <FontAwesomeIcon icon={faCartShopping} className={styles.shoppingIcon}/>
+                            <p className={styles.shoppingP}>Add To Cart</p>
+                        </div>
                     </div>
-                    <h3 className={styles.productsName}>{products.name}</h3>
-                    <p className={styles.productPrice}>৳ {products.price}</p>
-                    {/* <Link to="" className={styles.productsLink}>Buy Now</Link> */}
                 </a>
+                <div className={styles.productDetails}>
+                    <a href={`https://karkhana.onrender.com/featured/${products.name}`} className={styles.productsName}>{products.name}</a>
+                    <p className={styles.productPrice}>	&#2547; {products.price}</p>
+                </div>
             </div>
         })
 
@@ -99,11 +153,16 @@ const Homepage = () => {
                 <a href={`https://karkhana.onrender.com/featured/${products.name}`} className={styles.featuredProductLink}>
                     <div className={styles.productsImgContainer}>
                         <img src={products.img} alt={products.name} className={styles.productsImg}/>
+                        <div className={styles.addToCartContainer} onClick={(e) => addToCart(e, products) }>
+                            <FontAwesomeIcon icon={faCartShopping} className={styles.shoppingIcon}/>
+                            <p className={styles.shoppingP}>Add To Cart</p>
+                        </div>
                     </div>
-                    <h3 className={styles.productsName}>{products.name}</h3>
-                    <p className={styles.productPrice}>৳ {products.price}</p>
                 </a>
-                {/* <Link to="" className={styles.productsLink}>Buy Now</Link> */}
+                <div className={styles.productDetails}>
+                    <a href={`https://karkhana.onrender.com/featured/${products.name}`} className={styles.productsName}>{products.name}</a>
+                    <p className={styles.productPrice}>	&#2547; {products.price}</p>
+                </div>
             </div>
         })
     }
@@ -143,15 +202,20 @@ const Homepage = () => {
                         <h2>{exclusiveItem.name}</h2>
                     </div>
                 </div>
-                <span className={styles.exclusiveItemP}>{exclusiveItem.details}</span>
+                <div className={styles.exclusiveItemDetailsContainer}>
+                    <div className={styles.exclusiveItemP}>{exclusiveItem.details}</div>
+                    <div className={styles.exclusiveItemPrice}>	&#2547; {exclusiveItem.price}</div>
+                </div>
                 <Link to={`/exclusive/${exclusiveItem.name}`} className={styles.exclusiveLink}>SHOP NOW</Link>
             </div>
         })
     }
     
     return (
+        <>
+        <ToastContainer autoClose={1500} limit={5} />
         <div className={styles.homepageMain}>
-            <Banner />
+            {/* <Banner /> */}
 
             <section className={styles.itemCategoryContainer}>
                 <h2 className={styles.featuredProductsH2}>Categories</h2>
@@ -193,6 +257,7 @@ const Homepage = () => {
                 </div>
             </section>
         </div>
+        </>
     )
 }
 

@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, createContext } from 'react';
 import Topbar from './Pages/Topbar/topbar';
 import Homepage from './Pages/Homepage/homepage';
 import './App.css';
@@ -12,12 +12,15 @@ import Profile from './Pages/Profile/profile';
 import ProductsList from './Pages/Products/ProductsList/productsList';
 import ProductsDetails from './Pages/Products/ProductsDetails/productsDetails';
 
+export const ContextApi = createContext(null);
 
 function App() {
 
   const [sidedrawer, setSidedrawer] = useState(false);
   
   const [backdrop, setBackdrop] = useState(false);
+
+  const [cartItem, setCartItem] = useState(0);
 
   useEffect(() => {
     if (backdrop) {
@@ -45,19 +48,21 @@ function App() {
 
   return (
     <div className="App">
-      <Backdrop backdrop={ backdrop } toggleBackdrop={ closeSidedrawer }/>
-      <Topbar toggleSidedrawer={ openSideDrawer }/>
-      <Sidedrawer sidedrawer={sidedrawer}/>
-      <Routes>
-        <Route path='/' element={<Homepage />}/>
-        <Route path='/:productId' element={<ProductsList />}/>
-        <Route path='/:productId/:productDetails' element={<ProductsDetails />}/>
-        <Route path="/login" element={<Login />}/>
-        <Route path="/register" element={<Register />}/>
-        <Route path="/profile" element={<Profile />}/>
-        <Route path="*" element={<h1>404</h1>}/>
-      </Routes>
-      <Footer />
+      <ContextApi.Provider value={{cartItem, setCartItem}} >
+        <Backdrop backdrop={ backdrop } toggleBackdrop={ closeSidedrawer }/>
+        <Topbar toggleSidedrawer={ openSideDrawer }/>
+        <Sidedrawer sidedrawer={sidedrawer}/>
+        <Routes>
+          <Route path='/' element={<Homepage />}/>
+          <Route path='/:productId' element={<ProductsList />}/>
+          <Route path='/:productId/:productDetails' element={<ProductsDetails />}/>
+          <Route path="/login" element={<Login />}/>
+          <Route path="/register" element={<Register />}/>
+          <Route path="/profile" element={<Profile />}/>
+          <Route path="*" element={<h1>404</h1>}/>
+        </Routes>
+        <Footer />
+      </ContextApi.Provider>
     </div>
   );
 }
