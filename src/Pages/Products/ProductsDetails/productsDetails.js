@@ -173,18 +173,29 @@ const ProductsDetails = () => {
             const cartItem = JSON.parse(cartItemStorage);
             if (cartItemStorage === null) {
                 const itemToStore = {};
-                itemToStore[item.name] = [item];
+                itemToStore[item.name] = [];
+                [...Array(quantity).keys()].map(i => {
+                    itemToStore[item.name].push(item);
+                })
+                // itemToStore[item.name] = [item];
                 sessionStorage.setItem('cart', JSON.stringify(itemToStore));
                 context.setCartItem(context.cartItem + 1);
             }
             else {
                 if (Object.keys(cartItem).includes(item.name)) {
-                    cartItem[item.name].push(item)
+                    [...Array(quantity).keys()].map(i => {
+                        cartItem[item.name].push(item);
+                    })
+                    // cartItem[item.name].push(item)
                     sessionStorage.setItem('cart', JSON.stringify(cartItem));
                     context.setCartItem(context.cartItem + 1);
                 }
                 else {
-                    cartItem[item.name] = [item];
+                    cartItem[item.name] = [];
+                    [...Array(quantity).keys()].map(i => {
+                        cartItem[item.name].push(item)
+                    })
+                    // cartItem[item.name] = [item];
                     sessionStorage.setItem('cart', JSON.stringify(cartItem))
                     context.setCartItem(context.cartItem + 1);
                 }

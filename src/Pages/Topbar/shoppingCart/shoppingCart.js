@@ -126,9 +126,9 @@ const ShoppingCart = () => {
         <div className={styles.shoppingCartMain}>
             {loginSection}
             <div className={styles.shoppingCartContainer}>
-                <Link to="" className={styles.shoppingCartItem}>
+                <div className={styles.shoppingCartItem}>
                     <FontAwesomeIcon icon={faBagShopping} className={styles.shoppingCartIcon}/>
-                </Link>
+                </div>
                 <span className={styles.itemCount}>{Object.keys(cartItems).length || 0}</span>
                 <div className={styles.cartContainer}>
                     {displayCartItems}
