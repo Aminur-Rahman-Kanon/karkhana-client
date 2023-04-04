@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSpinner, faStar, faAngleDown, faAngleUp, faEye, faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
@@ -6,8 +6,11 @@ import styles from './productsDetails.module.css';
 import AdditionalDetails from "./AdditionalDetails/additionalDetails";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { ContextApi } from "../../../App";
 
 const ProductsDetails = () => {
+
+    const context = useContext(ContextApi);
 
     const relatedItemRef = useRef(null);
 
