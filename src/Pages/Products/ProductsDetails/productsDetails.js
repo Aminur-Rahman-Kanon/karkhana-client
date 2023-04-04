@@ -28,7 +28,7 @@ const ProductsDetails = () => {
 
     const [quantity, setQuantity] = useState(0);
 
-    const itemPerPage = 4;
+    const cartItemStorage = sessionStorage.getItem('cart');
 
     useEffect(() => {
         window.scrollTo(0, 0);
