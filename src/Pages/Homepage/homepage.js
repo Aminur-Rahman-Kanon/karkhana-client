@@ -42,9 +42,6 @@ const Homepage = () => {
         }).catch(err => console.log(err))
     }, [])
 
-    // console.log(sessionStorage.key());
-
-
     const addToCart = async (e, item) => {
         e.preventDefault();
         const user = sessionStorage.getItem('user')
@@ -215,7 +212,7 @@ const Homepage = () => {
         <>
         <ToastContainer autoClose={1500} limit={5} />
         <div className={styles.homepageMain}>
-            {/* <Banner /> */}
+            <Banner />
 
             <section className={styles.itemCategoryContainer}>
                 <h2 className={styles.featuredProductsH2}>Categories</h2>

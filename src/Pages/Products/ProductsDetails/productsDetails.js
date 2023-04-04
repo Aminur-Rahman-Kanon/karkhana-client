@@ -54,12 +54,6 @@ const ProductsDetails = () => {
         .catch(err => setError(true));
     }, []);
 
-    const addToCart = () => {
-        toast.success('Order Placed !!!', {
-            position: toast.POSITION.TOP_RIGHT
-        });
-    }
-
     let displayProduct = <div className={styles.defaultProductContainer}>
         <div className={styles.defaultImgContainer}>
             <FontAwesomeIcon icon={faSpinner} spinPulse className={styles.spinner} />
@@ -118,7 +112,7 @@ const ProductsDetails = () => {
                 <button disabled={!quantity}
                         className={styles.productDetailsBtn}
                         id={styles.cartBtn}
-                        onClick={ addToCart }
+                        onClick={(e) => addToCart(e, item[0]) }
                         >Add to Cart</button>
                 <button className={styles.productDetailsBtn}>+ Wishlist</button>
             </div>
@@ -162,6 +156,41 @@ const ProductsDetails = () => {
                 </a>
             </div>
         })
+    }
+
+    const addToCart = async (e, item) => {
+        e.preventDefault();
+        const user = sessionStorage.getItem('user')
+        if (!user) {
+            return toast.info("Please log in to continue", {
+                position: toast.POSITION.TOP_RIGHT
+            })
+        }
+        else {
+            const cartItem = JSON.parse(cartItemStorage);
+            if (cartItemStorage === null) {
+                const itemToStore = {};
+                itemToStore[item.name] = [item];
+                sessionStorage.setItem('cart', JSON.stringify(itemToStore));
+                context.setCartItem(context.cartItem + 1);
+            }
+            else {
+                if (Object.keys(cartItem).includes(item.name)) {
+                    cartItem[item.name].push(item)
+                    sessionStorage.setItem('cart', JSON.stringify(cartItem));
+                    context.setCartItem(context.cartItem + 1);
+                }
+                else {
+                    cartItem[item.name] = [item];
+                    sessionStorage.setItem('cart', JSON.stringify(cartItem))
+                    context.setCartItem(context.cartItem + 1);
+                }
+            }
+            
+            return toast.success(`${item.name} added to Cart`, {
+                position: toast.POSITION.TOP_RIGHT
+            })
+        }
     }
 
     return (
