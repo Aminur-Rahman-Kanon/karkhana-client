@@ -43,10 +43,10 @@ const ProductsDetails = () => {
 
                 data.data.map(item => {
                     if (item.name === productDetails){
-                        filteredItem.push(item);
+                        return filteredItem.push(item);
                     }
                     else {
-                        relatedItem.push(item);
+                        return relatedItem.push(item);
                     }
                 })
 
@@ -175,7 +175,7 @@ const ProductsDetails = () => {
                 const itemToStore = {};
                 itemToStore[item.name] = [];
                 [...Array(quantity).keys()].map(i => {
-                    itemToStore[item.name].push(item);
+                    return itemToStore[item.name].push(item);
                 })
                 // itemToStore[item.name] = [item];
                 sessionStorage.setItem('cart', JSON.stringify(itemToStore));
@@ -184,7 +184,7 @@ const ProductsDetails = () => {
             else {
                 if (Object.keys(cartItem).includes(item.name)) {
                     [...Array(quantity).keys()].map(i => {
-                        cartItem[item.name].push(item);
+                        return cartItem[item.name].push(item);
                     })
                     // cartItem[item.name].push(item)
                     sessionStorage.setItem('cart', JSON.stringify(cartItem));
@@ -193,7 +193,7 @@ const ProductsDetails = () => {
                 else {
                     cartItem[item.name] = [];
                     [...Array(quantity).keys()].map(i => {
-                        cartItem[item.name].push(item)
+                        return cartItem[item.name].push(item)
                     })
                     // cartItem[item.name] = [item];
                     sessionStorage.setItem('cart', JSON.stringify(cartItem))
@@ -201,7 +201,7 @@ const ProductsDetails = () => {
                 }
             }
             
-            return toast.success(`${item.name} added to Cart`, {
+            return toast.success(`${quantity} ${item.name} added to Cart`, {
                 position: toast.POSITION.TOP_RIGHT
             })
         }

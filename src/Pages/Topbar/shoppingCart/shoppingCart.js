@@ -9,13 +9,9 @@ const ShoppingCart = () => {
 
     const context = useContext(ContextApi);
 
-    console.log(context);
-
     const [loggedInUser, setLoggedInUser] = useState({});
 
     const [cartItems, setCartItems] = useState({});
-    
-
     
     useEffect(() => {
         const shoppingCartItems = sessionStorage.getItem('cart') ? JSON.parse(sessionStorage.getItem('cart')) : null;
@@ -117,7 +113,7 @@ const ShoppingCart = () => {
             </div>
             <div className={styles.displayCartBtns}>
                 <Link to="" className={styles.checkoutBtn}>CHECK OUT NOW</Link>
-                <Link to="" className={styles.cartBtn}>VIEW CART</Link>
+                <a href="/shopping-cart" className={styles.cartBtn}>VIEW CART</a>
             </div>
         </div>
     }

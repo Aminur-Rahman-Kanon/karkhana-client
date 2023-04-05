@@ -11,6 +11,7 @@ import Register from './Pages/Register/register';
 import Profile from './Pages/Profile/profile';
 import ProductsList from './Pages/Products/ProductsList/productsList';
 import ProductsDetails from './Pages/Products/ProductsDetails/productsDetails';
+import DisplayCart from './Pages/DisplayCart/displayCart';
 
 export const ContextApi = createContext(null);
 
@@ -24,13 +25,14 @@ function App() {
 
   useEffect(() => {
     if (backdrop) {
-      document.body.style.position = 'fixed';
-      document.body.style.overflow = 'hidden';
+      // document.body.scrollBy(document.documentElement.scrollTop || document.body.scrollTop, document.documentElement.scrollLeft);
+      document.body.style.position = 'sticky';
+      document.body.style.overflowY = 'hidden';
     }
     
     return () => {
       document.body.style.position = 'unset';
-      document.body.style.overflow = 'auto';
+      document.body.style.overflowY = 'auto';
     }
   }, [backdrop])
 
@@ -43,8 +45,6 @@ function App() {
     setSidedrawer(true);
     setBackdrop(true);
   }
-
-  console.log(backdrop);
 
   return (
     <div className="App">
@@ -59,6 +59,7 @@ function App() {
           <Route path="/login" element={<Login />}/>
           <Route path="/register" element={<Register />}/>
           <Route path="/profile" element={<Profile />}/>
+          <Route path='/shopping-cart' element={<DisplayCart />}/>
           <Route path="*" element={<h1>404</h1>}/>
         </Routes>
         <Footer />

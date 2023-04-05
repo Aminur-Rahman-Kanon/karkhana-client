@@ -37,7 +37,8 @@
         position: sticky;
         top: 0;
         left: 0;
-        z-index: 500;
+        z-index: 400;
+        margin-top: 0;
         background-color: #ffffffe0;
         height: unset;
         padding: 10px;

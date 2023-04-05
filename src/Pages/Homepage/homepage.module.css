@@ -209,6 +209,11 @@
     height: 320px;
     object-fit: cover;
     cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.productsImg:hover {
+    transform: scale(1.1);
 }
 
 .productDetails {

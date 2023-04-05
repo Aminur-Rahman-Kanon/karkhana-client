@@ -10,7 +10,7 @@
     border: 1px solid lightgray;
     transition: transform 0.3s ease-out;
     transform: translateX(0);
-    z-index: 200;
+    z-index: 1100;
 }
 
 .sidedrawerMain.sidedrawerOff {

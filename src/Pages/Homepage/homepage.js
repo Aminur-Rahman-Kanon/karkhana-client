@@ -33,6 +33,8 @@ const Homepage = () => {
 
     const cartItemStorage = sessionStorage.getItem('cart');
 
+    console.log(Array.from(Array(2)));
+
     useEffect(() => {
         fetch('https://karkhana-server.onrender.com/featuredProducts').then(res => res.json()).then(result => {
             if (result.status === 'success'){

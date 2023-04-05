@@ -4,8 +4,8 @@ const Backdrop = ({backdrop, toggleBackdrop}) => {
 
     const style = {
         width: '100%',
-        height: '100vh',
-        zIndex: '100',
+        height: '100%',
+        zIndex: '500',
         backgroundColor: '#1a1a1aa6',
         position: 'absolute',
         top: '0',

@@ -205,7 +205,7 @@
 }
 
 .checkoutBtn {
-    height: 40px;
+    height: 35px;
     width: 250px;
     margin: 10px auto;
     border: 1px solid #ad6c4d;
@@ -216,7 +216,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 13px;
+    font-size: 12px;
 }
 
 .checkoutBtn:hover {
@@ -224,7 +224,7 @@
 }
 
 .cartBtn {
-    height: 40px;
+    height: 35px;
     width: 250px;
     margin: 10px auto;
     border: 1px solid black;
@@ -234,7 +234,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 13px;
+    font-size: 12px;
 }
 
 .cartBtn:hover {
