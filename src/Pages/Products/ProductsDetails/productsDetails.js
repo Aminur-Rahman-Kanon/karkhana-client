@@ -31,7 +31,7 @@ const ProductsDetails = () => {
 
     const cartItemStorage = sessionStorage.getItem('cart') ? JSON.parse(sessionStorage.getItem('cart')) : null;
 
-    const user = sessionStorage.getItem('user').length ? JSON.parse(sessionStorage.getItem('user')) : {};
+    const user = sessionStorage.getItem('user') ? JSON.parse(sessionStorage.getItem('user')) : {};
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -118,7 +118,7 @@ const ProductsDetails = () => {
                 <button disabled={!quantity}
                         className={styles.productDetailsBtn}
                         id={styles.cartBtn}
-                        onClick={(e) => addToCart(e, context, cartItemStorage, item[0]) }
+                        onClick={(e) => addToCart(e, context, cartItemStorage, item[0], quantity) }
                         >Add to Cart</button>
                 <button className={styles.productDetailsBtn}>+ Wishlist</button>
             </div>

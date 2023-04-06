@@ -38,7 +38,7 @@ export const addToCart = (e, context, cartItem, item, amount) => {
             }
         }
         
-        return toast.success(`${amount} ${item} added to Cart`, {
+        return toast.success(`${amount} ${item.name} added to Cart`, {
             position: toast.POSITION.TOP_RIGHT
         })
     }

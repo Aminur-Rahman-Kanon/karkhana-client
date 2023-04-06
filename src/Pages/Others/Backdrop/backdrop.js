@@ -7,7 +7,7 @@ const Backdrop = ({backdrop, toggleBackdrop}) => {
         height: '100%',
         zIndex: '500',
         backgroundColor: '#1a1a1aa6',
-        position: 'absolute',
+        position: 'fixed',
         top: '0',
         left: '0'
     }

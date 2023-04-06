@@ -25,16 +25,19 @@ function App() {
 
   useEffect(() => {
     if (backdrop) {
-      // document.body.scrollBy(document.documentElement.scrollTop || document.body.scrollTop, document.documentElement.scrollLeft);
-      document.body.style.position = 'fixed';
-      document.body.style.overflowY = 'hidden';
+      disableScroll();
     }
     
     return () => {
-      document.body.style.position = 'unset';
-      document.body.style.overflowY = 'auto';
+      window.onscroll = () => {}
     }
   }, [backdrop])
+  
+  const disableScroll = () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+    window.onscroll = () => window.scrollTo(scrollLeft, scrollTop)
+  }
 
   const closeSidedrawer = () => {
     setSidedrawer(false);
