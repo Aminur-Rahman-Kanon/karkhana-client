@@ -7,6 +7,7 @@ import AdditionalDetails from "./AdditionalDetails/additionalDetails";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { ContextApi } from "../../../App";
+import { addToCart } from "../../Others/HelperFunction/helperFunction";
 
 const ProductsDetails = () => {
 
@@ -28,7 +29,9 @@ const ProductsDetails = () => {
 
     const [quantity, setQuantity] = useState(0);
 
-    const cartItemStorage = sessionStorage.getItem('cart');
+    const cartItemStorage = sessionStorage.getItem('cart') ? JSON.parse(sessionStorage.getItem('cart')) : null;
+
+    const user = sessionStorage.getItem('user').length ? JSON.parse(sessionStorage.getItem('user')) : {};
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -115,7 +118,7 @@ const ProductsDetails = () => {
                 <button disabled={!quantity}
                         className={styles.productDetailsBtn}
                         id={styles.cartBtn}
-                        onClick={(e) => addToCart(e, item[0]) }
+                        onClick={(e) => addToCart(e, context, cartItemStorage, item[0]) }
                         >Add to Cart</button>
                 <button className={styles.productDetailsBtn}>+ Wishlist</button>
             </div>
@@ -159,52 +162,6 @@ const ProductsDetails = () => {
                 </a>
             </div>
         })
-    }
-
-    const addToCart = async (e, item) => {
-        e.preventDefault();
-        const user = sessionStorage.getItem('user')
-        if (!user) {
-            return toast.info("Please log in to continue", {
-                position: toast.POSITION.TOP_RIGHT
-            })
-        }
-        else {
-            const cartItem = JSON.parse(cartItemStorage);
-            if (cartItemStorage === null) {
-                const itemToStore = {};
-                itemToStore[item.name] = [];
-                [...Array(quantity).keys()].map(i => {
-                    return itemToStore[item.name].push(item);
-                })
-                // itemToStore[item.name] = [item];
-                sessionStorage.setItem('cart', JSON.stringify(itemToStore));
-                context.setCartItem(context.cartItem + 1);
-            }
-            else {
-                if (Object.keys(cartItem).includes(item.name)) {
-                    [...Array(quantity).keys()].map(i => {
-                        return cartItem[item.name].push(item);
-                    })
-                    // cartItem[item.name].push(item)
-                    sessionStorage.setItem('cart', JSON.stringify(cartItem));
-                    context.setCartItem(context.cartItem + 1);
-                }
-                else {
-                    cartItem[item.name] = [];
-                    [...Array(quantity).keys()].map(i => {
-                        return cartItem[item.name].push(item)
-                    })
-                    // cartItem[item.name] = [item];
-                    sessionStorage.setItem('cart', JSON.stringify(cartItem))
-                    context.setCartItem(context.cartItem + 1);
-                }
-            }
-            
-            return toast.success(`${quantity} ${item.name} added to Cart`, {
-                position: toast.POSITION.TOP_RIGHT
-            })
-        }
     }
 
     return (

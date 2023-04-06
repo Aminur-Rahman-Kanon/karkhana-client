@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faBagShopping } from '@fortawesome/free-solid-svg-icons';
 import styles from './shoppingCart.module.css';
 import { Link } from "react-router-dom";
+import { removeItem } from "../../Others/HelperFunction/helperFunction";
 
 const ShoppingCart = () => {
 
@@ -23,9 +24,6 @@ const ShoppingCart = () => {
         }
     }, [context.cartItem])
 
-    console.log(cartItems);
-    console.log(context.cartItem);
-
     useEffect(() => {
         if (sessionStorage.getItem('user')){
             const user = JSON.parse(sessionStorage.getItem('user'));
@@ -41,11 +39,9 @@ const ShoppingCart = () => {
         <div className={styles.userContainers}>
             <div className={styles.userContainer}>
                 <div className={styles.profileItem}>
-                    {/* <FontAwesomeIcon className={styles.profileIcon} /> */}
                     <a href="/profile" className={styles.shoppingCartLink}>Profile</a>
                 </div>
                 <div className={styles.profileItem}>
-                    {/* <FontAwesomeIcon className={styles.profileIcon} /> */}
                     <a href="/login" className={styles.shoppingCartLink}>Orders</a>
                 </div>
                 <button className={styles.logoutBtn} onClick={() => {
@@ -65,30 +61,6 @@ const ShoppingCart = () => {
             </div>
         </div>
     </div>
-
-    const removeItem = (item)  => {
-        const data = JSON.parse(sessionStorage.getItem('cart'));
-
-        Object.keys(data).map(items => {
-            if (items === item){
-                data[items].pop();
-                if (!data[items].length){
-                    delete data[items];
-                }
-                sessionStorage.setItem('cart', JSON.stringify(data));
-                context.setCartItem(context.cartItem + 1)
-            }
-        })
-        if (Object.keys(data).length <= 0){
-            sessionStorage.removeItem('cart');
-            if (context.cartItem > 0){
-                context.setCartItem(context.cartItem - 1);
-            }
-            else {
-                context.setCartItem(context.cartItem + 1);
-            }
-        }
-    }
     
     let displayCartItems = <div className={styles.displayCartItemsContainer} style={{width: '150px'}}>
         <h5 className={styles.defaultCartHeader}>Your cart is empty</h5>
@@ -106,7 +78,7 @@ const ShoppingCart = () => {
                             <h5 className={styles.displayCartItemName}>{item[0].name}</h5>
                             <p className={styles.displayCartItemPrice}><span>{item.length}</span> x <span>	&#2547; {item[0].price}</span></p>
                             <p className={styles.displayCartItemName}>Total: &#2547; {item.length * Number(item[0].price)}</p>
-                            <button className={styles.removeBtn} onClick={() => removeItem(item[0].name)}>Remove</button>
+                            <button className={styles.removeBtn} onClick={() => removeItem(context, cartItems, item[0].name)}>Remove</button>
                         </div>
                     </div>
                 })}

@@ -12,6 +12,7 @@ import { faSpinner, faCartShopping } from "@fortawesome/free-solid-svg-icons";
 import Banner from "./banner/banner";
 import { ToastContainer, toast } from 'react-toastify';
 import { ContextApi } from "../../App";
+import { addToCart } from "../Others/HelperFunction/helperFunction";
 
 
 const itemCategories = [
@@ -31,9 +32,7 @@ const Homepage = () => {
 
     const [exclusiveProducts, setExclusiveProducts] = useState([]);
 
-    const cartItemStorage = sessionStorage.getItem('cart');
-
-    console.log(Array.from(Array(2)));
+    const cartItemStorage = sessionStorage.getItem('cart') ? JSON.parse(sessionStorage.getItem('cart')) : null;
 
     useEffect(() => {
         fetch('https://karkhana-server.onrender.com/featuredProducts').then(res => res.json()).then(result => {
@@ -44,41 +43,7 @@ const Homepage = () => {
         }).catch(err => console.log(err))
     }, [])
 
-    const addToCart = async (e, item) => {
-        e.preventDefault();
-        const user = sessionStorage.getItem('user')
-        if (!user) {
-            return toast.info("Please log in to continue", {
-                position: toast.POSITION.TOP_RIGHT
-            })
-        }
-        else {
-            const cartItem = JSON.parse(cartItemStorage);
-            console.log(item.name);
-            if (cartItemStorage === null) {
-                const itemToStore = {};
-                itemToStore[item.name] = [item];
-                sessionStorage.setItem('cart', JSON.stringify(itemToStore));
-                context.setCartItem(context.cartItem + 1);
-            }
-            else {
-                if (Object.keys(cartItem).includes(item.name)) {
-                    cartItem[item.name].push(item)
-                    sessionStorage.setItem('cart', JSON.stringify(cartItem));
-                    context.setCartItem(context.cartItem + 1);
-                }
-                else {
-                    cartItem[item.name] = [item];
-                    sessionStorage.setItem('cart', JSON.stringify(cartItem))
-                    context.setCartItem(context.cartItem + 1);
-                }
-            }
-            
-            return toast.success(`${item.name} added to Cart`, {
-                position: toast.POSITION.TOP_RIGHT
-            })
-        }
-    }
+    console.log(cartItemStorage);
 
     let displayFeaturedProducts = Array.from(Array(6).keys()).map(item => {
         return <div key={item} className={styles.featuredProductsItem} id={styles.loader}>
@@ -117,7 +82,7 @@ const Homepage = () => {
                     <div className={styles.productsImgContainer}>
                         <img src={products.img} alt={products.name} className={styles.productsImg}/>
                     </div>
-                    <div className={styles.addToCartContainer} onClick={(e) => addToCart(e, products) }>
+                    <div className={styles.addToCartContainer} onClick={(e) => addToCart(e, context, cartItemStorage, products, 1) }>
                         <FontAwesomeIcon icon={faCartShopping} className={styles.shoppingIcon}/>
                         <p className={styles.shoppingP}>Add To Cart</p>
                     </div>
@@ -134,7 +99,7 @@ const Homepage = () => {
                 <a href={`https://karkhana.onrender.com/featured/${products.name}`} className={styles.featuredProductLink}>
                     <div className={styles.productsImgContainer}>
                         <img src={products.img} alt={products.name} className={styles.productsImg}/>
-                        <div className={styles.addToCartContainer} onClick={(e) => addToCart(e, products) }>
+                        <div className={styles.addToCartContainer} onClick={(e) => addToCart(e, context, cartItemStorage, products.name, 1) }>
                             <FontAwesomeIcon icon={faCartShopping} className={styles.shoppingIcon}/>
                             <p className={styles.shoppingP}>Add To Cart</p>
                         </div>
@@ -152,7 +117,7 @@ const Homepage = () => {
                 <a href={`https://karkhana.onrender.com/featured/${products.name}`} className={styles.featuredProductLink}>
                     <div className={styles.productsImgContainer}>
                         <img src={products.img} alt={products.name} className={styles.productsImg}/>
-                        <div className={styles.addToCartContainer} onClick={(e) => addToCart(e, products) }>
+                        <div className={styles.addToCartContainer} onClick={(e) => addToCart(e, context, cartItemStorage, products.name, 1) }>
                             <FontAwesomeIcon icon={faCartShopping} className={styles.shoppingIcon}/>
                             <p className={styles.shoppingP}>Add To Cart</p>
                         </div>

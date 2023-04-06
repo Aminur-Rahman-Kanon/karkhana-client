@@ -4,6 +4,7 @@ import styles from './displayCart.module.css';
 import bkash from '../../Assets/bkash.png';
 import visa from '../../Assets/payment.png';
 import { ContextApi } from '../../App';
+import { addToCart, removeItem, removeAllItem } from "../Others/HelperFunction/helperFunction";
 
 const DisplayCart = () => {
 
@@ -18,6 +19,10 @@ const DisplayCart = () => {
     const [totalPrice, setTotalPrice] = useState(0);
 
     const [discount, setDiscount] = useState(10);
+
+    // useEffect(() => {
+    //     console.log(document.getElementById('test').getBoundingClientRect());
+    // }, [])
 
     useEffect(() => {
         if (itemObj !== null){
@@ -50,22 +55,20 @@ const DisplayCart = () => {
                 <div className={styles.panelContainer}>
                     <div className={styles.addItemContainer}>
                         <div className={styles.addItemBtns}>
-                            <button className={styles.addItemBtn}>+</button>
+                            <button className={styles.addItemBtn}
+                                    onClick={(e) => addToCart(e, context, items, item[0], 1)}>+</button>
                             <span className={styles.addItemValue}><p style={{margin: '0'}}>{item.length}</p></span>
-                            <button className={styles.addItemBtn}>-</button>
+                            <button className={styles.addItemBtn}
+                                    onClick={() => removeItem(context, items, item[0].name)}>-</button>
                         </div>
                     </div>
-
                     <div className={styles.priceContainer}>
                         <p className={styles.priceP}>&#2547; {item.length * Number(item[0].price)}</p>
                     </div>
-
-
                     <div className={styles.removeContainer}>
-                        <button className={styles.removeBtn}>Remove</button>
+                        <button className={styles.removeBtn} onClick={() => removeAllItem(context, items, item[0].name)}>Remove</button>
                     </div>
                 </div>
-
             </div>
         })
     }
@@ -81,9 +84,11 @@ const DisplayCart = () => {
                 <div className={styles.displayItems}>
                     <div className={styles.labelContainer}>
                         <div className={styles.label} id={styles.label1}>Product</div>
-                        <div className={styles.label} id={styles.label2}>Quantity</div>
-                        <div className={styles.label} id={styles.label3}>Subtotal</div>
-                        <div className={styles.label} id={styles.label4}>Action</div>
+                        <div className={styles.labelGroups}>
+                            <div className={styles.label} id={styles.label2}>Quantity</div>
+                            <div className={styles.label} id={styles.label3}>Subtotal</div>
+                            <div className={styles.label} id={styles.label4}>Action</div>
+                        </div>
                     </div>
                     {displayShoppingItems}
                 </div>

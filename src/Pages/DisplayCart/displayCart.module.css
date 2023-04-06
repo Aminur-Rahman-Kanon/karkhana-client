@@ -55,7 +55,7 @@
 
 .displayCartItem {
     width: 100%;
-    padding: 10px;
+    padding: 10px 0;
     margin: 5px auto;
     box-sizing: border-box;
     display: flex;
@@ -75,6 +75,13 @@
 
 .displayCartImgContainer {
     width: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.labelGroups {
+    width: 60%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -121,6 +128,7 @@
     background-color: white;
     color: black;
     font-size: 13px;
+    cursor: pointer;
 }
 
 .addItemBtn:nth-child(1){
@@ -228,7 +236,7 @@
 
 .couponBtn {
     width: 30%;
-    height: 35px;
+    height: 37px;
     border-radius: 0 5px 5px 0;
     border: 1px solid #3167eb;
     background-color: #3167eb;
@@ -366,11 +374,7 @@
     }
 
     #label2, #label3, #label4 {
-        width: 20%;
-    }
-
-    .removeBtn {
-        margin-left: 20px;
+        width: 35%;
     }
 
     .summaryContainer {

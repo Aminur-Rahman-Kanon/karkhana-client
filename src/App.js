@@ -26,7 +26,7 @@ function App() {
   useEffect(() => {
     if (backdrop) {
       // document.body.scrollBy(document.documentElement.scrollTop || document.body.scrollTop, document.documentElement.scrollLeft);
-      document.body.style.position = 'sticky';
+      document.body.style.position = 'fixed';
       document.body.style.overflowY = 'hidden';
     }
     
