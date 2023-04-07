@@ -229,8 +229,10 @@
 
 .deliveryInformationContainer {
     position: relative;
-    margin: 15px auto;
-    padding-top: 15px;
+    width: 100%;
+    margin: 20px auto;
+    padding: 20px 0 10px 10px;
+    box-sizing: border-box;
     display: flex;
     flex-flow: column;
     justify-content: center;
@@ -293,23 +295,47 @@
         margin: 10px auto;
     }
 
+    .totalH3 {
+        margin: 5px 0 10px 0;
+    }
+
     .deliveryInformationContainer::before {
         width: 400px;
     }
 }
 
 @media (max-width: 550px) {
-    .paymentMethodBtns {
-        flex-flow: column;
+    .paymentContainer {
+        padding: 10px;
     }
 
     .paymentBtn {
-        width: 100%;
-        margin: 5px auto;
+        width: 25%;
+        margin: 5px;
+        padding: 10px;
+        flex-flow: column;
+    }
+
+    .paymentBtn:hover {
+        transform: none;
+    }
+
+    .paymentP {
+        margin: 5px 0;
+        font-size: 12px;
+    }
+
+    .paymentIcon {
+        font-size: 15px;
     }
 
     .deliveryInformationContainer::before {
-        width: 250px;
+        width: 100%;
+    }
+
+    .purchaseBtn {
+        width: 100%;
+        margin: 20px 0;
     }
 }
 
