@@ -133,33 +133,33 @@ const AdditionalDetails = () => {
                     <table className={styles.chargeTableContainer}>
                         <tr className={styles.tableRow}>
                             <th className={styles.tableHeader}>No of Items</th>
-                            <th className={styles.tableHeader}>Inside Dhaka</th>
-                            <th className={styles.tableHeader}>Outside Dhaka</th>
+                            <th className={styles.tableHeader} style={{textAlign: 'center'}}>Inside Dhaka</th>
+                            <th className={styles.tableHeader} style={{textAlign: 'center'}}>Outside Dhaka</th>
                         </tr>
                         <tr className={styles.tableRow}>
                             <td className={styles.tableData}>Upto 2 Items</td>
-                            <td className={styles.tableData}>Free</td>
-                            <td className={styles.tableData}>120TK</td>
+                            <td className={styles.tableData} style={{textAlign: 'center'}}>Free</td>
+                            <td className={styles.tableData} style={{textAlign: 'center'}}>120TK</td>
                         </tr>
                         <tr className={styles.tableRow}>
                             <td className={styles.tableData}>Upto 4 Items</td>
-                            <td className={styles.tableData}>Free</td>
-                            <td className={styles.tableData}>120TK</td>
+                            <td className={styles.tableData} style={{textAlign: 'center'}}>Free</td>
+                            <td className={styles.tableData} style={{textAlign: 'center'}}>120TK</td>
                         </tr>
                         <tr className={styles.tableRow}>
                             <td className={styles.tableData}>Upto 6 Items</td>
-                            <td className={styles.tableData}>Free</td>
-                            <td className={styles.tableData}>170TK</td>
+                            <td className={styles.tableData} style={{textAlign: 'center'}}>Free</td>
+                            <td className={styles.tableData} style={{textAlign: 'center'}}>170TK</td>
                         </tr>
                         <tr className={styles.tableRow}>
                             <td className={styles.tableData}>Upto 8 Items</td>
-                            <td className={styles.tableData}>Free</td>
-                            <td className={styles.tableData}>200TK</td>
+                            <td className={styles.tableData} style={{textAlign: 'center'}}>Free</td>
+                            <td className={styles.tableData} style={{textAlign: 'center'}}>200TK</td>
                         </tr>
                         <tr className={styles.tableRow}>
                             <td className={styles.tableData}>Over 10 Items</td>
-                            <td className={styles.tableData}>Free</td>
-                            <td className={styles.tableData}>20TK</td>
+                            <td className={styles.tableData} style={{textAlign: 'center'}}>Free</td>
+                            <td className={styles.tableData} style={{textAlign: 'center'}}>20TK</td>
                         </tr>
                     </table>
                 </div>

@@ -321,15 +321,15 @@
     }
 
     .sidebarContainer {
-        position: absolute;
-        top: 15px;
+        position: fixed;
+        top: 0;
         left: 0;
         background-color: white;
         border: 1px solid lightgrey;
         width: 300px;
-        border-radius: 5px;
+        border-radius: 0 5px 5px 0;
         height: 100vh;
-        z-index: 100;
+        z-index: 900;
         transform: translateX(-100%);
         transition: transform 0.3s ease-out;
     }

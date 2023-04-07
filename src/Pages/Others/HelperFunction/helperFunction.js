@@ -12,8 +12,9 @@ export const addToCart = (e, context, cartItem, item, amount) => {
         //if sessionStorage is empty
         if (cartItem === null) {
             const itemToStore = {};
+            itemToStore[item.name] = [];
             [...Array(amount).keys()].map(i => {
-                itemToStore[item.name] = [item];
+                itemToStore[item.name].push(item);
             });
             sessionStorage.setItem('cart', JSON.stringify(itemToStore));
             context.setCartItem(context.cartItem + 1);
@@ -79,4 +80,10 @@ export const removeAllItem = (context, data, item) => {
             context.setCartItem(context.cartItem + 1);
         }
     }
+}
+
+export const disableScroll = () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
+    window.onscroll = () => window.scrollTo(scrollLeft, scrollTop)
 }

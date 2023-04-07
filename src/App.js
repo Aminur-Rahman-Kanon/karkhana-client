@@ -12,6 +12,8 @@ import Profile from './Pages/Profile/profile';
 import ProductsList from './Pages/Products/ProductsList/productsList';
 import ProductsDetails from './Pages/Products/ProductsDetails/productsDetails';
 import DisplayCart from './Pages/DisplayCart/displayCart';
+import { disableScroll } from './Pages/Others/HelperFunction/helperFunction';
+import Checkout from './Pages/Checkout/checkout';
 
 export const ContextApi = createContext(null);
 
@@ -27,17 +29,11 @@ function App() {
     if (backdrop) {
       disableScroll();
     }
-    
-    return () => {
-      window.onscroll = () => {}
+    else {
+      window.onscroll = () => {};
     }
+
   }, [backdrop])
-  
-  const disableScroll = () => {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    const scrollLeft = window.pageXOffset || document.documentElement.scrollLeft;
-    window.onscroll = () => window.scrollTo(scrollLeft, scrollTop)
-  }
 
   const closeSidedrawer = () => {
     setSidedrawer(false);
@@ -63,6 +59,7 @@ function App() {
           <Route path="/register" element={<Register />}/>
           <Route path="/profile" element={<Profile />}/>
           <Route path='/shopping-cart' element={<DisplayCart />}/>
+          <Route path="/checkout" element={<Checkout />}/>
           <Route path="*" element={<h1>404</h1>}/>
         </Routes>
         <Footer />

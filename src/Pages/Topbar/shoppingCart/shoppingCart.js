@@ -76,15 +76,15 @@ const ShoppingCart = () => {
                          </div>   
                         <div className={styles.displayCartItemDetails}>
                             <h5 className={styles.displayCartItemName}>{item[0].name}</h5>
-                            <p className={styles.displayCartItemPrice}><span>{item.length}</span> x <span>	&#2547; {item[0].price}</span></p>
-                            <p className={styles.displayCartItemName}>Total: &#2547; {item.length * Number(item[0].price)}</p>
+                            <p className={styles.displayCartItemPrice}><span>{item.length}</span> x <span>	&#2547;{item[0].price}</span></p>
+                            <p className={styles.displayCartItemName}>Total: &#2547;{item.length * Number(item[0].price)}</p>
                             <button className={styles.removeBtn} onClick={() => removeItem(context, cartItems, item[0].name)}>Remove</button>
                         </div>
                     </div>
                 })}
             </div>
             <div className={styles.displayCartBtns}>
-                <Link to="" className={styles.checkoutBtn}>CHECK OUT NOW</Link>
+                <Link to="/checkout" className={styles.checkoutBtn}>CHECK OUT NOW</Link>
                 <a href="/shopping-cart" className={styles.cartBtn}>VIEW CART</a>
             </div>
         </div>

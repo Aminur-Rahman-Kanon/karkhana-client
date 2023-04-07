@@ -123,7 +123,7 @@ const DisplayCart = () => {
                         </div>
 
                         <div className={styles.purchaseBtnContainer}>
-                            <Link to="" className={styles.purchaseBtn}>CHECKOUT</Link>
+                            <Link to="/checkout" className={styles.purchaseBtn}>CHECKOUT</Link>
                             <button className={styles.purchaseBtn} onClick={() => navigate(-1)}>CONTINUE SHOPPING</button>
                         </div>
                     </div>

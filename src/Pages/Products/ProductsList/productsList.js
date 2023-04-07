@@ -8,6 +8,7 @@ import Modal from '../../Others/Modal/modal';
 import ReactPaginate from 'react-paginate';
 import Slider from 'react-rangeslider';
 import 'react-rangeslider/lib/index.css'
+import { disableScroll } from "../../Others/HelperFunction/helperFunction";
 
 
 const ProductsList = () => {
@@ -90,12 +91,12 @@ const ProductsList = () => {
 
     useEffect(() => {
         if (backdrop){
-            document.body.style.position = 'fixed';
-            document.body.style.overflow = 'hidden';
+            disableScroll()
         }
         else {
-            document.body.style.position = 'unset';
-            document.body.style.overflow = 'auto';
+            window.onscroll = () => {
+                
+            }
         }
     }, [backdrop])
 
@@ -211,8 +212,6 @@ const ProductsList = () => {
         }}>Ok</button>
         </div>
     }
-
-    console.log(productsHeader);
 
     return (
         <>
