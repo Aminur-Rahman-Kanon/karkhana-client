@@ -42,8 +42,6 @@ const ProductsDetails = () => {
                 const filteredItem = [];
                 const relatedItem = [];
 
-                console.log(data);
-
                 data.data.map(item => {
                     if (item.name === productDetails){
                         return filteredItem.push(item);

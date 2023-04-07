@@ -8,4 +8,4 @@ export const states = ['Dhaka', 'Chattogram', 'Comilla', 'Savar', 'Gazipur', 'Sy
                 'Khgrachari', 'Lalmonirhat', 'Dinajpur', 'Nilphamari', 'Thakurgaon', 'Panchagarh', 'Chakaria', 'Maona',
                 'Borguna', 'Joypurhat'];
 
-export const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'September', 'Octaber', 'November', 'December'];
+export const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'Octaber', 'November', 'December'];

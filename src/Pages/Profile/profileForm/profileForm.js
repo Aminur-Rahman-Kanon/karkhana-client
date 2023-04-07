@@ -8,7 +8,7 @@ import Backdrop from '../../Others/Backdrop/backdrop';
 import Spinner from '../../Others/Spinner/spinner';
 
 
-const ProfileForm = ({formType}) => {
+const ProfileForm = ({formType, user}) => {
     
     const [firstname, setFirstname] = useState('');
     const [lastname, setLastname] = useState('');
@@ -38,31 +38,29 @@ const ProfileForm = ({formType}) => {
     const [spinner, setSpinner] = useState(false);
 
     useEffect(() => {
-        if (Object.keys(sessionStorage).length > 0){
-            if (sessionStorage.key(0) === 'user'){
-                const user = JSON.parse(sessionStorage.getItem('user'));
-                setFirstname(user.firstName);
-                setLastname(user.lastName);
-                setEmail(user.email);
-                setPhonenumber(user.phoneNumber)
-                setState(user.state);
-                setCity(user.city);
-                setAddress(user.address);
-                setZipcode(user.zipcode);
-                setThana(user.thana);
-                document.getElementById('state').value = user.state || "Select State";
-            }
+        if (Object.keys(user).length){
+            const user = JSON.parse(sessionStorage.getItem('user'));
+            setFirstname(user.firstName);
+            setLastname(user.lastName);
+            setEmail(user.email);
+            setPhonenumber(user.phoneNumber)
+            setState(user.state);
+            setCity(user.city);
+            setAddress(user.address);
+            setZipcode(user.zipcode);
+            setThana(user.thana);
+            document.getElementById('state').value = user.state || "Select State";
         }
     }, [])
 
     useEffect(() => {
-        if (state && city && address && zipcode && thana){
+        if (state && address && zipcode && thana){
             setAddressBtn(false);
         }
         else {
             setAddressBtn(true);
         }
-    }, [state,  city, address, zipcode, thana])
+    }, [state, address, zipcode, thana])
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -243,14 +241,14 @@ const ProfileForm = ({formType}) => {
                     <option disabled>Select State</option>
                     {options}
                 </select>
-                <div className={styles.profileFormItems}>
+                {/* <div className={styles.profileFormItems}>
                     <input type="text"
                             className={styles.profileFormInput}
                             placeholder="City"
                             defaultValue={city}
                             onChange={(e) => setCity(e.target.value)}
                             />
-                </div>
+                </div> */}
                 <div className={styles.profileFormItems}>
                     <input type="text"
                             className={styles.profileFormInput}

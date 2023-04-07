@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './checkout.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCreditCard, faMoneyBillTransfer } from '@fortawesome/free-solid-svg-icons';
@@ -6,6 +6,8 @@ import { faPaypal } from '@fortawesome/free-brands-svg-icons';
 import { months } from '../../data/data';
 
 function Checkout() {
+
+    const [totalPrice, setTotalPrice] = useState(0);
 
     const itemObj = sessionStorage.getItem('cart') ? JSON.parse(sessionStorage.getItem('cart')) : null;
 
@@ -24,9 +26,12 @@ function Checkout() {
     let displayOrdersummary = <div className={styles.defaultOrdersummary}>
         <h3 className={styles.defaultHeader}>No Item</h3>
     </div>
+    
+    let price = 0;
 
     if (itemObj) {
         displayOrdersummary = Object.values(itemObj).map(item => {
+            price += item.length * Number(item[0].price);
             return <div key={item[0]._id} className={styles.orderDetailsItemContainer}>
                 <div className={styles.orderDetailsItem}>
                     <div className={styles.orderDetailsImgContainer}>
@@ -38,9 +43,6 @@ function Checkout() {
                         <p className={styles.orderDetailsP}>{item.length} x {item[0].price}</p>
                         <p className={styles.orderDetailsP}>&#2547;{item.length * Number(item[0].price)}</p>
                     </div>
-                </div>
-                <div className={styles.orderDetailsContainer}>
-                    {/* <p className={styles.orderDetailsP}>Elevate your fashion game with our men's kurta collection. Made from premium quality fabrics, our kurtas are designed to provide maximum comfort and durability. With a wide range of colors, patterns, and designs to choose from, Experience the perfect blend of traditional elegance and modern style.</p> */}
                 </div>
             </div>
         })
@@ -112,9 +114,9 @@ function Checkout() {
                     <h3 className={styles.nameHeader}>BILLING ADDRESS</h3>
                     <div className={styles.addressDetails}>
                         <p className={styles.address} style={{fontWeight: '600'}}>Name: {`${userObj.firstName} ${userObj.lastName}`}</p>
-                        <p className={styles.address}>Street: 10/1 North Jatrabari</p>
-                        <p className={styles.address}>Thana: Jatrabari</p>
-                        <p className={styles.address}>City: Dhaka</p>
+                        <p className={styles.address}>Street: {userObj.address || 'No information'}</p>
+                        <p className={styles.address}>Thana: {userObj.thana || 'No information'}</p>
+                        <p className={styles.address}>City: {userObj.state || 'No information'}</p>
                         <p className={styles.address}>Country: Bangladesh</p>
                     </div>
                 </div>
@@ -126,9 +128,9 @@ function Checkout() {
                     {displayOrdersummary}
                 </div>
                 <div className={styles.deliveryInformationContainer}>
-                    <p className={styles.address} style={{fontWeight: '600'}}>Subtotal: &#2547;5000</p>
+                    <p className={styles.address} style={{fontWeight: '600'}}>Subtotal: &#2547;{price}</p>
                     <p className={styles.address} style={{fontWeight: '600'}}>Shipping: &#2547;120</p>
-                    <h3 className={styles.totalH3}>Total: &#2547;4880</h3>
+                    <h3 className={styles.totalH3}>Total: &#2547;{price - 120}</h3>
                     <h4 className={styles.deliveryInformationH4}>Estimated Delivery Date</h4>
                     <p className={styles.deliveryInformationP}>Wednesday May 12 2023</p>
                 </div>

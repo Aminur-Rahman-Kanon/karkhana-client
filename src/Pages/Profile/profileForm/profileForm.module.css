@@ -118,13 +118,14 @@ input::file-selector-button:hover {
     height: 45px;
     margin: 10px 0;
     border: 1px solid lightgray;
+    outline: lightgray;
     border-radius: 5px;
     background-color: white;
     padding-left: 10px;
     appearance: none;
-    background-image: url('../../../Assets/downArrow.png');
+    background-image: url('../../../Assets/dropdown.png');
     background-repeat: no-repeat;
-    background-position: calc(100% - 15px) center;
+    background-position: center right 10px;
     background-size: 10px;
     color: rgb(70, 70, 70);
 }

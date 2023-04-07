@@ -84,7 +84,7 @@ const ShoppingCart = () => {
                 })}
             </div>
             <div className={styles.displayCartBtns}>
-                <Link to="/checkout" className={styles.checkoutBtn}>CHECK OUT NOW</Link>
+                <a href="/checkout" className={styles.checkoutBtn}>CHECK OUT NOW</a>
                 <a href="/shopping-cart" className={styles.cartBtn}>VIEW CART</a>
             </div>
         </div>

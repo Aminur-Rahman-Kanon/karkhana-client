@@ -31,8 +31,9 @@ export const addToCart = (e, context, cartItem, item, amount) => {
             }
             //new item to sessionStorage
             else {
+                cartItem[item.name] = [];
                 [...Array(amount).keys()].map(i => {
-                    cartItem[item.name] = [item];
+                    cartItem[item.name].push(item);
                 })
                 sessionStorage.setItem('cart', JSON.stringify(cartItem))
                 context.setCartItem(context.cartItem + 1);

@@ -47,12 +47,13 @@
 
 .avatarContainer {
     width: 100%;
+    min-height: 200px;
     display: flex;
     justify-content: center;
     align-items: center;
     border: 1px solid lightgray;
     border-radius: 5px;
-    background-color: #dab29740;
+    /* background-color: #dab29740; */
 }
 
 .avatar {
@@ -102,15 +103,19 @@
     width: 150px;
     min-width: 100px;
     height: 30px;
-    border: none;
+    margin: 0 5px;
+    border: 1px solid #ad6c4d;
     outline: none;
-    background-color: transparent;
-    color: #d89060;
+    background-color: #ad6c4d;
+    color: white;
     cursor: pointer;
 }
 
 .profileSettingsBtnInactive {
-    color: #ca926d9f;
+    border: 1px solid #ad6c4d;
+    background-color: white;
+    margin: 0 5px;
+    color: #ad6c4d;
 }
 
 @media (max-width: 850px) {

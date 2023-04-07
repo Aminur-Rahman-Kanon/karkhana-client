@@ -7,24 +7,21 @@ const Profile = () => {
 
     const [formType, setFormTYpe] = useState('user information');
 
-    const [img, setImg] = useState(null);
+    const [img, setImg] = useState('');
 
     const [name, setName] = useState('');
 
-    if (Object.keys(sessionStorage).length > 0){
-        if (sessionStorage.key(0) === 'user'){
-            const user = JSON.parse(sessionStorage.getItem('user'));
-            const userName = `${user.firstName} ${user.lastName}`
-            if (!name){
-                setName(userName);
-            }
-            if (user.imgLink && !img){
-                setImg(user.imgLink);
-            }
+    const userObj = sessionStorage.getItem('user') ? JSON.parse(sessionStorage.getItem('user')) : null;
+
+    if (Object.keys(userObj).length){
+        const userName = `${userObj.firstName} ${userObj.lastName}`
+        if (!name){
+            setName(userName);
+        }
+        if (!img){
+            setImg(userObj.imgLink);
         }
     }
-
-    console.log(img);
 
     return (
         <div className={styles.profileMain}>
@@ -54,7 +51,7 @@ const Profile = () => {
                             <button className={formType === 'orders' ? styles.profileSettingsBtn : `${styles.profileSettingsBtn} ${styles.profileSettingsBtnInactive}`}
                                     onClick={() => setFormTYpe('orders')}>Orders</button>
                         </div>
-                        <ProfileForm formType={formType} />
+                        <ProfileForm formType={formType} user={userObj} />
                     </div>
                 </div>
             </div>
