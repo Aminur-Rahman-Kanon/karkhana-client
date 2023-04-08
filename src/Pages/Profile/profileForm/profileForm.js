@@ -7,8 +7,6 @@ import Spinner from '../../Others/Spinner/spinner';
 
 
 const ProfileForm = ({formType, user}) => {
-
-    const testRef = useRef(null);
     
     const [firstname, setFirstname] = useState('');
     const [lastname, setLastname] = useState('');
@@ -270,7 +268,6 @@ const ProfileForm = ({formType, user}) => {
                             onChange={(e) => setLastname(e.target.value)}
                             onFocus={() => focusEnter(1)}
                             onBlur={() => focusLeave(1)}/>
-                    {/* <FontAwesomeIcon icon={faSignature} className={styles.profileFormIcon}/> */}
                     <div className={styles.profileLabel} id='label'>Last Name</div>
                 </div>
                 <div className={styles.profileFormItems}>
@@ -387,6 +384,10 @@ const ProfileForm = ({formType, user}) => {
 
                 <button disabled={ passwordBtn && passwordMatch } className={styles.updateBtn} onClick={ submitFormHandler }>Update</button>
             </form>
+        </div>
+        
+        <div className={styles.profileMain} style={formType === 'orders' ? {display: 'flex'} : {display: 'none'}}>
+            <h3 className={styles.header3}>You dont have any orders</h3>
         </div>
         </>
     )

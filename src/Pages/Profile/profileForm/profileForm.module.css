@@ -2,6 +2,10 @@
     width: 100%;
 }
 
+input[type='text'], input[type='number'] {
+    font-size: 14px;
+}
+
 .profileFormContainer {
     min-height: 450px;
     width: 100%;
@@ -84,20 +88,21 @@
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
+    outline: none;
 }
 
 input::file-selector-button {
     height: 30px;
     width: 100px;
-    border: 1px solid #d5b199;
+    border: 1px solid #b66a47;
     border-radius: 3px;
-    background-color: #d5b199;
+    background-color: #b66a47;
     color: rgb(245, 245, 245);
     cursor: pointer;
 }
 
 input::file-selector-button:hover {
-    background-color: rgb(212, 166, 135);
+    background-color: #a0481f;
     color: white;
 }
 
@@ -121,6 +126,7 @@ input::file-selector-button:hover {
     width: 250px;
     margin: 30px auto;
     border: 1px solid #d5b199;
+    outline: none;
     border-radius: 5px;
     background-color: #d5b199;
     color: rgb(245, 245, 245);
@@ -190,6 +196,10 @@ input::file-selector-button:hover {
 
 .statusDisplayBtn:hover {
     background-color: #c79471;
+}
+
+.header3 {
+    font-size: 15px;
 }
 
 @media (max-width: 850px) {
