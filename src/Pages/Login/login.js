@@ -4,12 +4,10 @@ import { faLock, faAt } from '@fortawesome/free-solid-svg-icons';
 import styles from './login.module.css';
 import Backdrop from "../Others/Backdrop/backdrop";
 import Modal from "../Others/Modal/modal";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Spinner from "../Others/Spinner/spinner";
 
 const Login = () => {
-
-    const navigate = useNavigate();
 
     const [email ,setEmail] = useState('');
     const [emailValidity, setEmailValidty] = useState(true);
@@ -73,9 +71,8 @@ const Login = () => {
             })
         }).then(res => res.json()).then(data => {
             if (data.status === 'success'){
-                console.log(data);
                 sessionStorage.setItem('user', JSON.stringify(data.user));
-                navigate(-1);
+                window.location.href = '/';
             }
             else if (data.status === 'user not found'){
                 setSpinner(false);
