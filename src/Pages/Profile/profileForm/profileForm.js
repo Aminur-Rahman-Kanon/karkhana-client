@@ -1,6 +1,4 @@
-import React, { useEffect, useState } from 'react';
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSignature, faAt, faPhone } from '@fortawesome/free-solid-svg-icons';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './profileForm.module.css';
 import { states } from '../../../data/data';
 import Modal from '../../Others/Modal/modal';
@@ -9,6 +7,8 @@ import Spinner from '../../Others/Spinner/spinner';
 
 
 const ProfileForm = ({formType, user}) => {
+
+    const testRef = useRef(null);
     
     const [firstname, setFirstname] = useState('');
     const [lastname, setLastname] = useState('');
@@ -38,7 +38,7 @@ const ProfileForm = ({formType, user}) => {
     const [spinner, setSpinner] = useState(false);
 
     useEffect(() => {
-        if (Object.keys(user).length){
+        if (user){
             const user = JSON.parse(sessionStorage.getItem('user'));
             setFirstname(user.firstName);
             setLastname(user.lastName);
@@ -49,9 +49,30 @@ const ProfileForm = ({formType, user}) => {
             setAddress(user.address);
             setZipcode(user.zipcode);
             setThana(user.thana);
-            document.getElementById('state').value = user.state || "Select State";
+            document.getElementById('selectEl').value = user.state || "Select State";
         }
-    }, [])
+    }, []);
+
+    useEffect(() => {
+        const ids = document.querySelectorAll(`.${styles.profileLabel}`)
+        const items = document.querySelectorAll(`.${styles.profileFormInput}`);
+        const selectLabel = document.getElementById('selectLabel')
+        const selectInput = document.querySelector(`.${styles.selectInput}`)
+        console.log(items);
+        
+        items.forEach((item, index) => {
+            if (item.value){
+                return ids[index]['className'] = `${styles.profileLabel} ${styles.activeLabel}`
+            }
+        })
+
+        if (state){
+            selectLabel.className = `${styles.selectLabel} ${styles.activeLabel}`
+        }
+
+        console.log(selectInput.value);
+    }, [firstname, lastname, email, phonenumber, state, address, zipcode, thana])
+
 
     useEffect(() => {
         if (state && address && zipcode && thana){
@@ -94,7 +115,7 @@ const ProfileForm = ({formType, user}) => {
                 setUserInfoBtn(true);
             }
         }
-    }, [avatar])
+    }, [avatar]);
 
     const submitFormHandler = async(e) => {
         e.preventDefault();
@@ -181,6 +202,47 @@ const ProfileForm = ({formType, user}) => {
         </div>
     }
 
+    const focusEnter = (index) => {
+        const inputDiv = document.querySelectorAll(`.${styles.profileFormItems}`);
+        const selectDiv = document.querySelector(`.${styles.selectItems}`)
+        const ids = document.querySelectorAll(`.${styles.profileLabel}`)
+        const selectEl = document.getElementById('selectLabel')
+
+        if (index === 10){
+            selectEl.className = `${styles.selectLabel} ${styles.activeLabel}`;
+            selectDiv.style.border = '1px solid #ad6c4d'
+        }
+        else {
+            ids.item(index).className = `${styles.profileLabel} ${styles.activeLabel}`;
+            inputDiv[index].style.border = '1px solid #ad6c4d'
+        }
+    }
+
+    const focusLeave = (index) => {
+        const inputDiv = document.querySelectorAll(`.${styles.profileFormItems}`);
+        const selectDiv = document.querySelector(`.${styles.selectItems}`)
+        const ids = document.querySelectorAll(`.${styles.profileLabel}`)
+        const selectLabel = document.querySelector(`.${styles.selectLabel}`)
+        const inputs = document.querySelectorAll(`.${styles.profileFormInput}`);
+        const selectEl = document.getElementById('selectEl');
+
+        if (index === 10) {
+            console.log(index);
+            if (selectEl.value === "Select State" || selectEl.value === null) {
+                selectLabel.className = `${styles.selectLabel} ${styles.inActiveLabel}`;
+            }
+            selectDiv.style.border = '1px solid lightgray';
+            
+        }
+        else {
+            if (inputs.item(index).value === "" || inputs.item(index).value === null) {
+                ids.item(index).className = `${styles.profileLabel} ${styles.inActiveLabel}`;
+            }
+            inputDiv[index].style.border = '1px solid lightgray'
+        }
+
+    }
+
     return (
         <>
         <Spinner spinner={spinner} />
@@ -195,33 +257,42 @@ const ProfileForm = ({formType, user}) => {
                             className={styles.profileFormInput}
                             placeholder="First name"
                             defaultValue={firstname}
-                            onChange={(e) => setFirstname(e.target.value)}/>
-                    <FontAwesomeIcon icon={faSignature} className={styles.profileFormIcon}/>
+                            onChange={(e) => setFirstname(e.target.value)}
+                            onFocus={() => focusEnter(0)}
+                            onBlur={() => focusLeave(0)}/>
+                    <div className={styles.profileLabel} id='label'>First Name</div>
                 </div>
                 <div className={styles.profileFormItems}>
                     <input type="text"
                             className={styles.profileFormInput}
                             placeholder="Last name"
                             defaultValue={lastname}
-                            onChange={(e) => setLastname(e.target.value)}/>
-                    <FontAwesomeIcon icon={faSignature} className={styles.profileFormIcon}/>
+                            onChange={(e) => setLastname(e.target.value)}
+                            onFocus={() => focusEnter(1)}
+                            onBlur={() => focusLeave(1)}/>
+                    {/* <FontAwesomeIcon icon={faSignature} className={styles.profileFormIcon}/> */}
+                    <div className={styles.profileLabel} id='label'>Last Name</div>
                 </div>
                 <div className={styles.profileFormItems}>
                     <input type="email"
                             className={styles.profileFormInput}
                             placeholder="Email"
                             defaultValue={email}
+                            onFocus={() => focusEnter(2)}
+                            onBlur={() => focusLeave(2)}
                             disabled
                             />
-                    <FontAwesomeIcon icon={faAt} className={styles.profileFormIcon}/>
+                    <div className={styles.profileLabel} id='label'>Email</div>
                 </div>
                 <div className={styles.profileFormItems}>
                     <input type="number"
                             className={styles.profileFormInput}
                             placeholder="Phone number"
                             defaultValue={phonenumber}
-                            onChange={(e) => setPhonenumber(e.target.value)}/>
-                    <FontAwesomeIcon icon={faPhone} className={styles.profileFormIcon}/>
+                            onChange={(e) => setPhonenumber(e.target.value)}
+                            onFocus={() => focusEnter(3)}
+                            onBlur={() => focusLeave(3)}/>
+                    <div className={styles.profileLabel} id='label'>Phone</div>
                 </div>
 
                 <div className={ avatarValidity ? styles.profileFormFileInput : `${styles.profileFormFileInput} ${styles.wrongFileInput}`}>
@@ -234,28 +305,27 @@ const ProfileForm = ({formType, user}) => {
 
         <div className={styles.profileMain} style={formType === 'address' ? {display: 'flex'} : {display: 'none'}}>
             <form className={styles.profileFormContainer} encType="multipart/form-data">
-                <select defaultValue="Select State"
-                        className={styles.selectInput}
-                        id="state"
-                        onChange={(e) => setState(e.target.value)}>
-                    <option disabled>Select State</option>
-                    {options}
-                </select>
-                {/* <div className={styles.profileFormItems}>
-                    <input type="text"
-                            className={styles.profileFormInput}
-                            placeholder="City"
-                            defaultValue={city}
-                            onChange={(e) => setCity(e.target.value)}
-                            />
-                </div> */}
+                <div className={styles.selectItems}>
+                    <select defaultValue="Select State"
+                            className={styles.selectInput}
+                            id="selectEl"
+                            onChange={(e) => setState(e.target.value)}
+                            onFocus={() => focusEnter(10)}
+                            onBlur={() => focusLeave(10)}>
+                        <option disabled>Select State</option>
+                        {options}
+                    </select>
+                    <div className={styles.selectLabel} id='selectLabel'>State</div>
+                </div>
                 <div className={styles.profileFormItems}>
                     <input type="text"
                             className={styles.profileFormInput}
-                            placeholder="Address"
+                            placeholder="Street"
                             defaultValue={address}
                             onChange={(e) => setAddress(e.target.value)}
-                            />
+                            onFocus={() => focusEnter(4)}
+                            onBlur={() => focusLeave(4)}/>
+                    <div className={styles.profileLabel} id='label'>Street</div>
                 </div>
                 <div className={styles.profileFormItems}>
                     <input type="text"
@@ -263,7 +333,9 @@ const ProfileForm = ({formType, user}) => {
                             placeholder="Zip / Postal code"
                             defaultValue={zipcode}
                             onChange={(e) => setZipcode(e.target.value)}
-                            />
+                            onFocus={() => focusEnter(5)}
+                            onBlur={() => focusLeave(5)}/>
+                    <div className={styles.profileLabel} id='label'>Zip / Postal code</div>
                 </div>
 
                 <div className={styles.profileFormItems}>
@@ -272,7 +344,9 @@ const ProfileForm = ({formType, user}) => {
                             placeholder="Thana"
                             defaultValue={thana}
                             onChange={(e) => setThana(e.target.value)}
-                            />
+                            onFocus={() => focusEnter(6)}
+                            onBlur={() => focusLeave(6)}/>
+                    <div className={styles.profileLabel} id='label'>Thana</div>
                 </div>
 
                 <button disabled={addressBtn} className={styles.updateBtn} onClick={ submitFormHandler }>Update</button>
@@ -285,21 +359,30 @@ const ProfileForm = ({formType, user}) => {
                     <input type="password"
                             className={styles.profileFormInput}
                             placeholder="Current Password"
-                            onChange={(e) => setCurrentpassword(e.target.value)}/>
+                            onChange={(e) => setCurrentpassword(e.target.value)}
+                            onFocus={() => focusEnter(7)}
+                            onBlur={() => focusLeave(7)}/>
+                    <div className={styles.profileLabel} id='label'>Current Password</div>
                 </div>
                 <div className={styles.profileFormItems}>
                     <input type="password"
                             className={styles.profileFormInput}
                             placeholder="New Password"
-                            onChange={(e) => setNewpassword(e.target.value)}/>
+                            onChange={(e) => setNewpassword(e.target.value)}
+                            onFocus={() => focusEnter(8)}
+                            onBlur={() => focusLeave(8)}/>
+                    <div className={styles.profileLabel} id='label'>New Password</div>
                 </div>
                 <div className={styles.profileFormItems}>
                     <input type="password"
                             className={styles.profileFormInput}
                             placeholder="Confirm Password"
-                            onChange={(e) => setConfirmpassword(e.target.value)}/>
+                            onChange={(e) => setConfirmpassword(e.target.value)}
+                            onFocus={() => focusEnter(9)}
+                            onBlur={() => focusLeave(9)}/>
                     <p style={ passwordMatch ? {display: 'none'} : {display: 'block'}} className={styles.passwordMatch}>Password doesn't match</p>
                     <p style={ invalidPassword ? {display: 'block'}: {display:'none'} } className={styles.passwordMatch}>Current password is invalid</p>
+                    <div className={styles.profileLabel} id='label'>Confirm Password</div>
                 </div>
 
                 <button disabled={ passwordBtn && passwordMatch } className={styles.updateBtn} onClick={ submitFormHandler }>Update</button>

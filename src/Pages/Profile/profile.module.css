@@ -32,7 +32,7 @@
     width: 100%;
     margin-top: 30px;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: flex-start;
 }
 
@@ -58,6 +58,8 @@
 
 .avatar {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
     border-radius: 5px;
 }
 
@@ -82,28 +84,26 @@
 }
 
 .profileSettings {
-    width: calc(100% - 350px);
-    padding: 0 40px;
+    width: 60%;
     box-sizing: border-box;
     display: flex;
     flex-flow: column;
     justify-content: flex-start;
-    align-items: center;
+    align-items: flex-start;
 }
 
 .profileSettingsNavContainer {
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 
 .profileSettingsBtn {
     position: relative;
-    width: 150px;
-    min-width: 100px;
+    width: 22%;
+    min-width: 125px;
     height: 30px;
-    margin: 0 5px;
     border: 1px solid #ad6c4d;
     outline: none;
     background-color: #ad6c4d;
@@ -114,11 +114,73 @@
 .profileSettingsBtnInactive {
     border: 1px solid #ad6c4d;
     background-color: white;
-    margin: 0 5px;
     color: #ad6c4d;
 }
 
-@media (max-width: 850px) {
+@media (max-width: 992px) {
+
+    .profileMain {
+        padding-top: 0;
+    }
+    .profileContainer {
+        align-items: center;
+    }
+    .profileSection {
+        flex-flow: column;
+        align-items: center;
+    }
+
+    .profileAvatarContainer {
+        width: 90%;
+        min-width: unset;
+        margin: 20px auto;
+    }
+
+    .avatarContainer {
+        width: 60%;
+        min-width: 480px;
+        min-height: unset;
+    }
+
+    .categoryContainer {
+        width: 60%;
+        min-width: 480px;
+    }
+
+    .profileSettings {
+        width: 90%;
+        min-width: 480px;
+        margin: 20px auto;
+    }
+}
+
+@media (max-width: 650px) {
+    .avatarContainer {
+        width: 90%;
+        min-width: unset;
+    }
+
+    .categoryContainer {
+        width: 90%;
+        min-width: unset;
+    }
+    .profileSettingsNavContainer {
+        flex-flow: column;
+    }
+
+    .profileSettings {
+        min-width: unset;
+    }
+
+    .profileSettingsBtn {
+        width: 90%;
+        height: 35px;
+        min-width: unset;
+        margin: 10px auto;
+    }
+}
+
+/* @media (max-width: 850px) {
     .profileSettings {
         width: 70%;
     }
@@ -167,4 +229,4 @@
         margin: 10px auto;
         justify-content: center;
     }
-}
+} */

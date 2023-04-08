@@ -13,7 +13,7 @@ const Profile = () => {
 
     const userObj = sessionStorage.getItem('user') ? JSON.parse(sessionStorage.getItem('user')) : null;
 
-    if (Object.keys(userObj).length){
+    if (userObj){
         const userName = `${userObj.firstName} ${userObj.lastName}`
         if (!name){
             setName(userName);

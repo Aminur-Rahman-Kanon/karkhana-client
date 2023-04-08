@@ -130,7 +130,7 @@ function Checkout() {
                 <div className={styles.deliveryInformationContainer}>
                     <p className={styles.address} style={{fontWeight: '600'}}>Subtotal: &#2547;{price}</p>
                     <p className={styles.address} style={{fontWeight: '600'}}>Shipping: &#2547;120</p>
-                    <h3 className={styles.totalH3}>Total: &#2547;{price - 120}</h3>
+                    <h3 className={styles.totalH3}>Total: &#2547;{price + 120}</h3>
                     <h4 className={styles.deliveryInformationH4}>Estimated Delivery Date</h4>
                     <p className={styles.deliveryInformationP}>Wednesday May 12 2023</p>
                 </div>
