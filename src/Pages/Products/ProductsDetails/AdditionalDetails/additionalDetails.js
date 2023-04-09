@@ -171,8 +171,6 @@ const AdditionalDetails = () => {
             break;
     }
 
-    console.log(infoDisplayToggle, displayItem);
-
     const detailsIntoView = (item) => {
         switch(item){
             case "details":
