@@ -51,7 +51,7 @@ const ShoppingCart = () => {
         </div>
     </div>
     :
-    <div className={styles.shoppingCartContainer} id={styles.user}>
+    <div className={styles.shoppingCartContainer}>
         <FontAwesomeIcon icon={faUser} className={styles.shoppingCartIcon}/>
         <div className={styles.userContainers}>
             <div style={{padding: '15px', boxSizing: 'border-box'}}>
@@ -92,8 +92,10 @@ const ShoppingCart = () => {
     return (
         <div className={styles.shoppingCartMain}>
             {loginSection}
-            <div className={styles.shoppingCartContainer} id={styles.cart}>
-                <FontAwesomeIcon icon={faBagShopping} className={styles.shoppingCartIcon}/>
+            <div className={styles.shoppingCartContainer}>
+                <div className={styles.shoppingCartItem}>
+                    <FontAwesomeIcon icon={faBagShopping} className={styles.shoppingCartIcon}/>
+                </div>
                 <span className={styles.itemCount}>{Object.keys(cartItems).length || 0}</span>
                 <div className={styles.cartContainer}>
                     {displayCartItems}

@@ -12,26 +12,30 @@
 
 .shoppingCartContainer {
     position: relative;
-    margin: 5px 8px;
-    z-index: 1;
+    margin: 5px;
 }
 
 .userContainers {
     position: absolute;
-    top: 0;
+    top: 21px;
     left:50%;
-    transform: translate(-50%, 22%);
-    width: 152px;
-    /* height: 0; */
+    transform: translate(-50%, 0);
+    width: 120px;
+    max-height: 0;
     margin-top: 0.7px;
     border: 1px solid lightgray;
     background-color: white;
-    display: none;
-    /* visibility: hidden; */
+    display: flex;
     flex-flow: column;
     border-radius: 10px;
     justify-content: center;
     align-items: center;
+    opacity: 0;
+    overflow: hidden;
+    transition-property: all;
+    transition-duration: .5s;
+    transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+    z-index: 100;
 }
 
 .userContainer {
@@ -49,8 +53,7 @@
 }
 
 .shoppingCartIcon {
-    height: 22px;
-    width: 22px;
+    font-size: 25px;
     margin: 0 5px;
     color: #ca9876;
     cursor: pointer;
@@ -71,12 +74,12 @@
     font-size: 12px;
 }
 
-
-#user:hover .userContainers {
-    display: flex;
+.shoppingCartContainer:hover .userContainers {
+    max-height: 120px;
+    opacity: 1;
 }
 
-#cart:hover + .shoppingCartIcon {
+.shoppingCartContainer:hover .shoppingCartIcon {
     animation: cartItem 0.2s ease-out forwards;
 }
 
@@ -114,29 +117,32 @@
     background-color: #cea284;
 }
 
-.cartContainer {
+.shoppingCartContainer:hover .displayCartItemsContainer {
+    /* display: block; */
+    max-height: 550px;
+    opacity: 1;
+}
+
+.displayCartItemsContainer, .defaultCartContainer {
     position: absolute;
-    top: 0;
+    top: 22px;
     right: 0;
-    transform: translate(18%, 22%);
-    max-width: 300px;
-    min-height: 100px;
-    display: none;
+    width: 300px;
+    max-height: 0;
+    display: block;
     flex-flow: column;
     justify-content: flex-start;
     align-items: center;
     background-color: white;
     border: 1px solid lightgray;
     border-radius: 5px;
-    z-index: 500;
+    opacity: 0;
+    overflow: hidden;
+    transition-property: all;
+    transition-duration: 0.8s;
+    transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+    z-index: 100;
 }
-
-#cart:hover .cartContainer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 
 .displayCarts {
     width: 100%;
