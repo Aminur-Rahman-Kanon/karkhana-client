@@ -12,30 +12,26 @@
 
 .shoppingCartContainer {
     position: relative;
-    margin: 5px;
+    margin: 5px 8px;
+    z-index: 1;
 }
 
 .userContainers {
     position: absolute;
-    top: 21px;
+    top: 0;
     left:50%;
-    transform: translate(-50%, 0);
-    width: 120px;
-    max-height: 0;
+    transform: translate(-50%, 22%);
+    width: 152px;
+    /* height: 0; */
     margin-top: 0.7px;
     border: 1px solid lightgray;
     background-color: white;
-    display: flex;
+    display: none;
+    /* visibility: hidden; */
     flex-flow: column;
     border-radius: 10px;
     justify-content: center;
     align-items: center;
-    opacity: 0;
-    overflow: hidden;
-    transition-property: all;
-    transition-duration: .5s;
-    transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
-    z-index: 100;
 }
 
 .userContainer {
@@ -53,7 +49,8 @@
 }
 
 .shoppingCartIcon {
-    font-size: 25px;
+    height: 22px;
+    width: 22px;
     margin: 0 5px;
     color: #ca9876;
     cursor: pointer;
@@ -74,12 +71,12 @@
     font-size: 12px;
 }
 
-.shoppingCartContainer:hover .userContainers {
-    max-height: 120px;
-    opacity: 1;
+
+#user:hover .userContainers {
+    display: flex;
 }
 
-.shoppingCartContainer:hover .shoppingCartIcon {
+#cart:hover + .shoppingCartIcon {
     animation: cartItem 0.2s ease-out forwards;
 }
 
@@ -117,15 +114,13 @@
     background-color: #cea284;
 }
 
-.shoppingCartContainer:hover .displayCartItemsContainer {
-    display: block;
-}
-
-.displayCartItemsContainer, .defaultCartContainer {
+.cartContainer {
     position: absolute;
-    top: 22px;
+    top: 0;
     right: 0;
-    width: 300px;
+    transform: translate(18%, 22%);
+    max-width: 300px;
+    min-height: 100px;
     display: none;
     flex-flow: column;
     justify-content: flex-start;
@@ -135,6 +130,13 @@
     border-radius: 5px;
     z-index: 500;
 }
+
+#cart:hover .cartContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 
 .displayCarts {
     width: 100%;

@@ -3,7 +3,6 @@ import { ContextApi } from "../../../App";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faBagShopping } from '@fortawesome/free-solid-svg-icons';
 import styles from './shoppingCart.module.css';
-import { Link } from "react-router-dom";
 import { removeItem } from "../../Others/HelperFunction/helperFunction";
 
 const ShoppingCart = () => {
@@ -52,7 +51,7 @@ const ShoppingCart = () => {
         </div>
     </div>
     :
-    <div className={styles.shoppingCartContainer}>
+    <div className={styles.shoppingCartContainer} id={styles.user}>
         <FontAwesomeIcon icon={faUser} className={styles.shoppingCartIcon}/>
         <div className={styles.userContainers}>
             <div style={{padding: '15px', boxSizing: 'border-box'}}>
@@ -93,10 +92,8 @@ const ShoppingCart = () => {
     return (
         <div className={styles.shoppingCartMain}>
             {loginSection}
-            <div className={styles.shoppingCartContainer}>
-                <div className={styles.shoppingCartItem}>
-                    <FontAwesomeIcon icon={faBagShopping} className={styles.shoppingCartIcon}/>
-                </div>
+            <div className={styles.shoppingCartContainer} id={styles.cart}>
+                <FontAwesomeIcon icon={faBagShopping} className={styles.shoppingCartIcon}/>
                 <span className={styles.itemCount}>{Object.keys(cartItems).length || 0}</span>
                 <div className={styles.cartContainer}>
                     {displayCartItems}
