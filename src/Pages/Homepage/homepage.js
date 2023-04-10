@@ -78,7 +78,7 @@ const Homepage = () => {
     if (featuredProducts.length) {
         displayFeaturedProducts = featuredProducts.slice(0, 6).map(products => {
             return <div key={products._id} className={styles.featuredProductsItem}>
-                <a href={`http://localhost:8000/featured/${products.name}`} className={styles.featuredProductLink}>
+                <a href={`https://karkhana.onrender.com/featured/${products.name}`} className={styles.featuredProductLink}>
                     <div className={styles.productsImgContainer}>
                         <img src={products.img} alt={products.name} className={styles.productsImg}/>
                     </div>
@@ -88,7 +88,7 @@ const Homepage = () => {
                     </div>
                 </a>
                 <div className={styles.productDetails}>
-                    <a href={`http://localhost:8000/featured/${products.name}`} className={styles.productsName}>{products.name}</a>
+                    <a href={`https://karkhana.onrender.com/featured/${products.name}`} className={styles.productsName}>{products.name}</a>
                     <p className={styles.productPrice}>	&#2547; {products.price}</p>
                 </div>
             </div>
@@ -96,7 +96,7 @@ const Homepage = () => {
         
         trendingCategories = featuredProducts.slice(6, 12).map(products => {
             return <div key={products._id} className={styles.featuredProductsItem}>
-                <a href={`http://localhost:8000/featured/${products.name}`} className={styles.featuredProductLink}>
+                <a href={`https://karkhana.onrender.com/featured/${products.name}`} className={styles.featuredProductLink}>
                     <div className={styles.productsImgContainer}>
                         <img src={products.img} alt={products.name} className={styles.productsImg}/>
                         <div className={styles.addToCartContainer} onClick={(e) => addToCart(e, context, cartItemStorage, products.name, 1) }>
@@ -106,7 +106,7 @@ const Homepage = () => {
                     </div>
                 </a>
                 <div className={styles.productDetails}>
-                    <a href={`http://localhost:8000/featured/${products.name}`} className={styles.productsName}>{products.name}</a>
+                    <a href={`https://karkhana.onrender.com/featured/${products.name}`} className={styles.productsName}>{products.name}</a>
                     <p className={styles.productPrice}>	&#2547; {products.price}</p>
                 </div>
             </div>
@@ -114,7 +114,7 @@ const Homepage = () => {
 
         topSellers = featuredProducts.slice(12, 18).map(products => {
             return <div key={products._id} className={styles.featuredProductsItem}>
-                <a href={`http://localhost:8000/featured/${products.name}`} className={styles.featuredProductLink}>
+                <a href={`https://karkhana.onrender.com/featured/${products.name}`} className={styles.featuredProductLink}>
                     <div className={styles.productsImgContainer}>
                         <img src={products.img} alt={products.name} className={styles.productsImg}/>
                         <div className={styles.addToCartContainer} onClick={(e) => addToCart(e, context, cartItemStorage, products.name, 1) }>
@@ -124,7 +124,7 @@ const Homepage = () => {
                     </div>
                 </a>
                 <div className={styles.productDetails}>
-                    <a href={`http://localhost:8000/featured/${products.name}`} className={styles.productsName}>{products.name}</a>
+                    <a href={`https://karkhana.onrender.com/featured/${products.name}`} className={styles.productsName}>{products.name}</a>
                     <p className={styles.productPrice}>	&#2547; {products.price}</p>
                 </div>
             </div>
