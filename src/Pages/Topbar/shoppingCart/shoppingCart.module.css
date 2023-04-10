@@ -17,7 +17,7 @@
 
 .userContainers {
     position: absolute;
-    top: 22px;
+    top: 20px;
     left: -50px;
     width: 120px;
     margin-top: 0.7px;
@@ -46,7 +46,7 @@
 }
 
 .shoppingCartIcon {
-    font-size: 25px;
+    font-size: 22px;
     margin: 0 5px;
     color: #ca9876;
     cursor: pointer;
@@ -105,7 +105,7 @@
 
 .displayCartItemsContainer, .defaultCartContainer {
     position: absolute;
-    top: 26px;
+    top: 22px;
     right: -26px;
     width: 300px;
     display: none;

@@ -56,7 +56,6 @@ const ProfileForm = ({formType, user}) => {
         const items = document.querySelectorAll(`.${styles.profileFormInput}`);
         const selectLabel = document.getElementById('selectLabel')
         const selectInput = document.querySelector(`.${styles.selectInput}`)
-        console.log(items);
         
         items.forEach((item, index) => {
             if (item.value){
@@ -67,8 +66,6 @@ const ProfileForm = ({formType, user}) => {
         if (state){
             selectLabel.className = `${styles.selectLabel} ${styles.activeLabel}`
         }
-
-        console.log(selectInput.value);
     }, [firstname, lastname, email, phonenumber, state, address, zipcode, thana])
 
 
@@ -105,7 +102,6 @@ const ProfileForm = ({formType, user}) => {
                 const ext = avatar.name.split('.').at(-1);
                 setAvatarValidity(true);
                 setImgLink(`https://karkhana-server.onrender.com/assets/users/${email}.${ext}`);
-                // setImgLink(`http://localhost:8000/assets/users/${email}.${ext}`);
                 setUserInfoBtn(false);
             }
             else {

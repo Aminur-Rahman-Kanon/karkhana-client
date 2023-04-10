@@ -9,7 +9,7 @@ import ReactPaginate from 'react-paginate';
 import Slider from 'react-rangeslider';
 import 'react-rangeslider/lib/index.css'
 import { disableScroll } from "../../Others/HelperFunction/helperFunction";
-
+import './slider.css';
 
 const ProductsList = () => {
 
@@ -174,6 +174,7 @@ const ProductsList = () => {
     const resetFilter = () => {
         setPriceFrom(0);
         setPriceTo(0);
+        setFilteredProducts([]);
     }
 
     const openSidebar = () => {
@@ -243,13 +244,13 @@ const ProductsList = () => {
                         <Slider value={priceFrom}
                                 min={0}
                                 max={5000}
-                                className={styles.slider}
+                                className="slider"
                                 onChange={(value) => setPriceFrom(value)}/>
                         <p className={styles.rangeLabel}>To: {priceTo}</p>
                         <Slider value={priceTo}
                                 min={0}
                                 max={5000}
-                                className={styles.slider}
+                                className="slider"
                                 onChange={(value) => setPriceTo(value)}/>
                         <button disabled={!priceFrom || !priceTo}
                                 className={styles.filterBtn}
@@ -269,7 +270,7 @@ const ProductsList = () => {
             </div>
 
             <ReactPaginate breakLabel="..."
-                           nextLabel="next >"
+                           nextLabel=">"
                            className={styles.paginationContainer}
                            pageClassName={styles.paginationItem}
                            previousClassName={styles.previousItem}
@@ -279,7 +280,7 @@ const ProductsList = () => {
                            onPageChange={handlePageClick}
                            pageRangeDisplayed={5}
                            pageCount={itemNotFound ? 0 : pageCount}
-                           previousLabel="< previous"
+                           previousLabel="<"
                            renderOnZeroPageCount={null}/>
         </div>
         </>

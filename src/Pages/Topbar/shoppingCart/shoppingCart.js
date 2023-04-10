@@ -53,7 +53,7 @@ const ShoppingCart = () => {
     </div>
     :
     <div className={styles.userDisplayContainer}>
-        <FontAwesomeIcon icon={faUser} className={styles.shoppingCartIcon}/>
+        <FontAwesomeIcon icon={faUser} className={styles.shoppingCartIcon} style={{fontSize: '20px'}}/>
         <div className={styles.userContainers}>
             <div style={{padding: '15px', boxSizing: 'border-box'}}>
                 <a href="/login" className={styles.shoppingCartLink}>Login</a>

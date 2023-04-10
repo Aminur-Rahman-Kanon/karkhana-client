@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import styles from './profile.module.css';
 import user from '../../Assets/avatar.png';
 import ProfileForm from "./profileForm/profileForm";
@@ -7,23 +8,17 @@ import { faUser, faLocationDot, faShieldHalved, faCube } from '@fortawesome/free
 
 const Profile = () => {
 
+    const navigate = useNavigate();
+
     const [formType, setFormTYpe] = useState('user information');
-
-    const [img, setImg] = useState('');
-
-    const [name, setName] = useState('');
 
     const userObj = sessionStorage.getItem('user') ? JSON.parse(sessionStorage.getItem('user')) : null;
 
-    if (userObj){
-        const userName = `${userObj.firstName} ${userObj.lastName}`
-        if (!name){
-            setName(userName);
-        }
-        if (!img){
-            setImg(userObj.imgLink);
-        }
-    }
+    useEffect(() => {
+        window.scrollTo(0, 0);
+        if (!userObj) return navigate('/');
+    }, [])
+
 
     return (
         <div className={styles.profileMain}>
@@ -32,10 +27,10 @@ const Profile = () => {
                 <div className={styles.profileSection}>
                     <div className={styles.profileAvatarContainer}>
                         <div className={styles.avatarContainer}>
-                            <img src={img || user} alt="karkhana user" className={styles.avatar}/>
+                            <img src={userObj ? userObj.imgLink : user} alt="karkhana user" className={styles.avatar}/>
                         </div>
                         <div className={styles.profileInfoContainer}>
-                            <h3 className={styles.profileInfoH3}>Name: {name || 'No information'}</h3>
+                            <h3 className={styles.profileInfoH3}>Name: {userObj ?`${userObj.firstName} ${userObj.lastName}` : 'No information'}</h3>
                         </div>
                     </div>
 
