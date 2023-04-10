@@ -160,6 +160,32 @@ const Register = () => {
         </div>
     }
 
+    const focusElement = (index) => {
+        const elementDiv = document.querySelectorAll(`.${styles.inputContainer}`);
+        const input = document.querySelectorAll(`.${styles.input}`);
+        const label = document.querySelectorAll(`.${styles.label}`);
+
+        label.item(index).className = `${styles.label} ${styles.activeLabel}`;
+        elementDiv.item(index).style.border = '1px solid white';
+        input.item(index).placeholder = '';
+    }
+
+    const leaveFocus = (index, item) => {
+        const elementDiv = document.querySelectorAll(`.${styles.inputContainer}`);
+        const input = document.querySelectorAll(`.${styles.input}`);
+        const label = document.querySelectorAll(`.${styles.label}`);
+
+        if (input.item(index).value === '' || input.item(index).value === null){
+            label.item(index).className = `${styles.label} ${styles.label}`;
+            elementDiv.item(index).style.border = '1px solid rgb(194, 194, 194)';
+            input.item(index).placeholder = item;
+        }
+        else {
+            input.item(index).placeholder = ''
+            elementDiv.item(index).style.border = '1px solid rgb(194, 194, 194)';
+        }
+    }
+
     return (
         <>
         <Backdrop backdrop={backdrop} toggleBackdrop={() => {
@@ -183,20 +209,26 @@ const Register = () => {
                     <input type="text"
                            className={styles.input}
                            placeholder="First name"
-                           onChange={(e) => setFisrtName(e.target.value)}/>
+                           onChange={(e) => setFisrtName(e.target.value)}
+                           onFocus={() => focusElement(0)}
+                           onBlur={() => leaveFocus(0, 'First Name')} />
                     <FontAwesomeIcon icon={faSignature} className={styles.inputIcon}/>
+                    <div className={styles.label}>{` First Name `}</div>
                 </div>
                 <div className={styles.inputContainer}>
                     <input type="text"
                            className={styles.input}
                            placeholder="Last name"
-                           onChange={(e) => setLastName(e.target.value)}/>
+                           onChange={(e) => setLastName(e.target.value)}
+                           onFocus={() => focusElement(1)}
+                           onBlur={() => leaveFocus(1, 'Last Name')} />
                     <FontAwesomeIcon icon={faSignature} className={styles.inputIcon}/>
+                    <div className={styles.label}>Last Name</div>
                 </div>
                 <div className={emailValidity ? styles.inputContainer : `${styles.inputContainer} ${styles.wrongInput}`}>
                     <input type="email"
                         className={styles.input}
-                        placeholder="Email address"
+                        placeholder="Email Address"
                         onChange={(e) => {
                             if (status){
                                 setStatus('')
@@ -205,37 +237,49 @@ const Register = () => {
                             else {
                                 setEmail(e.target.value)
                             }
-                        }}/>
+                        }}
+                        onFocus={() => focusElement(2)}
+                        onBlur={() => leaveFocus(2, 'Email Address')} />
                     <FontAwesomeIcon icon={faAt} className={styles.inputIcon}/>
                     <p className={styles.errorMsg} style={status === 'user exist' ? {display: 'block'} : {display: 'none'}}>User exists</p>
+                    <div className={styles.label}>Email</div>
                 </div>
                 <div className={phoneNumberValidity ? styles.inputContainer : `${styles.inputContainer} ${styles.wrongInput}`}>
                     <input type="number"
                            className={styles.input}
                            placeholder="Phone number"
-                           onChange={(e) => setPhoneNumber(e.target.value)}/>
+                           onChange={(e) => setPhoneNumber(e.target.value)}
+                           onFocus={() => focusElement(3)}
+                           onBlur={() => leaveFocus(3, 'Phone Number')} />
                     <FontAwesomeIcon icon={faPhone} className={styles.inputIcon}/>
+                    <div className={styles.label}>Phone Number</div>
                 </div>
                 <div className={styles.inputContainer}>
                     <input type="password"
                            className={styles.input}
                            placeholder="Password"
-                           onChange={(e) => setPassword(e.target.value)}/>
+                           onChange={(e) => setPassword(e.target.value)}
+                           onFocus={() => focusElement(4)}
+                           onBlur={() => leaveFocus(4, 'Password')} />
                     <FontAwesomeIcon icon={faLock} className={styles.inputIcon}/>
+                    <div className={styles.label}>Password</div>
                 </div>
                 <div className={styles.inputContainer}>
                     <input type="password"
                            className={styles.input}
                            placeholder="Confirm password"
-                           onChange={(e) => setConfirmPassword(e.target.value)}/>
+                           onChange={(e) => setConfirmPassword(e.target.value)}
+                           onFocus={() => focusElement(5)}
+                           onBlur={() => leaveFocus(5, 'Confirm Password')} />
                     <FontAwesomeIcon icon={faLock} className={styles.inputIcon}/>
                     <p className={styles.errorMsg} style={!passwordMatch ? {display: 'block'} : {display: 'none'}}>Password doesn't match</p>
+                    <div className={styles.label}>Confirm Password</div>
                 </div>
 
                 <button disabled={btnDisable} className={styles.registerBtn} onClick={ submitFormHandler }>Register</button>
 
                 <div className={styles.loginPrompt}>
-                    <p style={{color: '#4a4a4a'}}>Registered Already</p>
+                    <p style={{color: 'lightgray'}}>Registered Already</p>
                     <Link to="/login" className={styles.loginLink}>Login</Link>
                 </div>
             </form>

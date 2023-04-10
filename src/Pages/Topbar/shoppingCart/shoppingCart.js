@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import { ContextApi } from "../../../App";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faBagShopping } from '@fortawesome/free-solid-svg-icons';
+import { faUser, faCartShopping } from '@fortawesome/free-solid-svg-icons';
 import styles from './shoppingCart.module.css';
 import { removeItem } from "../../Others/HelperFunction/helperFunction";
 
@@ -30,7 +30,7 @@ const ShoppingCart = () => {
         }
     }, [])
 
-    const loginSection =  Object.keys(loggedInUser).length > 0 ? <div className={styles.shoppingCartContainer}>
+    const loginSection =  Object.keys(loggedInUser).length > 0 ? <div className={styles.userDisplayContainer}>
         <div className={styles.userProfile}>
             <p className={styles.userProfileP}>{loggedInUser.firstName}</p>
             <p className={styles.userProfileP}>{loggedInUser.lastName}</p>
@@ -45,13 +45,14 @@ const ShoppingCart = () => {
                 </div>
                 <button className={styles.logoutBtn} onClick={() => {
                     sessionStorage.removeItem('user');
+                    sessionStorage.removeItem('cart');
                     window.location.reload();
                 }}>Log out</button>
             </div>
         </div>
     </div>
     :
-    <div className={styles.shoppingCartContainer}>
+    <div className={styles.userDisplayContainer}>
         <FontAwesomeIcon icon={faUser} className={styles.shoppingCartIcon}/>
         <div className={styles.userContainers}>
             <div style={{padding: '15px', boxSizing: 'border-box'}}>
@@ -94,12 +95,10 @@ const ShoppingCart = () => {
             {loginSection}
             <div className={styles.shoppingCartContainer}>
                 <div className={styles.shoppingCartItem}>
-                    <FontAwesomeIcon icon={faBagShopping} className={styles.shoppingCartIcon}/>
+                    <FontAwesomeIcon icon={faCartShopping} className={styles.shoppingCartIcon}/>
                 </div>
                 <span className={styles.itemCount}>{Object.keys(cartItems).length || 0}</span>
-                <div className={styles.cartContainer}>
                     {displayCartItems}
-                </div>
             </div>
         </div>
     )

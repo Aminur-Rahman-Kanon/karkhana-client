@@ -1,6 +1,7 @@
 .registerMain {
     position: relative;
     width: 100%;
+    margin: 30px auto 0;
 }
 
 .registerContainerBg {
@@ -23,7 +24,7 @@
     padding: 40px 20px;
     box-sizing: border-box;
     border-radius: 10px;
-    background-color: #dab0c4ad;
+    background-color: #4a4a4ac9;
     display: flex;
     flex-flow: column;
     justify-content: space-between;
@@ -32,14 +33,32 @@
 
 .inputContainer {
     position: relative;
-    width: 350px;
+    width: 90%;
+    min-width: 350px;
     height: 45px;
     margin: 10px;
-    border: 1px solid #ffffffad;
+    border: 1px solid rgb(194, 194, 194);
     border-radius: 5px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+}
+
+.label {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    opacity: 0;
+    padding: 0 5px;
+    background-color: #4a4a4ac9;
+    color: white;
+    font-size: 12px;
+    transition: all 0.3s ease;
+}
+
+.label.activeLabel {
+    top: -9px;
+    opacity: 1;
 }
 
 .inputContainer:nth-child(3), .inputContainer:nth-child(5) {
@@ -52,9 +71,9 @@
 }
 
 .input {
-    width: 80%;
+    width: 90%;
     height: 35px;
-    padding: 0 10px;
+    padding-left: 10px;
     border: none;
     outline: none;
     background-color: transparent;
@@ -62,7 +81,7 @@
 }
 
 .input::placeholder {
-    color: rgb(105, 105, 105);
+    color: lightgray;
 }
 
 .inputIcon {
@@ -70,31 +89,33 @@
     padding: 10px;
     margin: 5px;
     border-radius: 5px;
-    background-color: #b1909e;
+    background-color: #c7601d;
     color: white;
 }
 
 .errorMsg {
     display: block;
     position: absolute;
-    top: 50px;
+    top: 55px;
+    left: 50%;
+    transform: translate(-50%, 0);
     margin: 0px;
-    color: darkred;
+    color: #c7601d;
 }
 
 .registerBtn {
     height: 40px;
     width: 350px;
-    margin: 20px 0;
-    border: 1px solid #b1909e;
-    background-color: #b1909e;
-    /* background-color: #ad6c4d; */
+    margin: 40px 0;
+    border: 1px solid #c7601d;
+    background-color: #c7601d;
     color: white;
     cursor: pointer;
+    opacity: 0.8;
 }
 
 .registerBtn:hover {
-    background-color: #ad7f92;
+    background-color: #c7601d;
     /* background-color: #a85f3d; */
 }
 
@@ -104,7 +125,7 @@
 }
 
 .registerBtn:disabled:hover {
-    background-color: #b1909e;
+    background-color: #c7601d;
 }
 
 .loginPrompt {
@@ -116,12 +137,15 @@
 
 .loginLink {
     text-decoration: none;
-    color: #603c32;
+    color: #c7601d;
     margin: 0 10px;
+    opacity: 0.8;
+    transition: all 0.3s ease-out;
 }
 
 .loginLink:hover {
-    animation: loginLink 0.3s ease-out forwards;
+    transform: scale(1.1);
+    font-weight: 600;
 }
 
 @keyframes loginLink {
@@ -138,9 +162,9 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
+/* input[type=number] {
   -moz-appearance: textfield;
-}
+} */
 
 .displayStatusMsgMain {
     width: 100%;
@@ -176,13 +200,47 @@ input[type=number] {
     background-color: #be7ea0c9;
 }
 
+@media (max-width: 768px) {
+    .resgisteFormContainer {
+        width: 80%;
+        min-width: unset;
+    }
+
+    .inputContainer {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .loginPrompt {
+        width: 100%;
+    }
+
+    .input {
+        width: 90%;
+    }
+
+    .registerBtn {
+        width: 100%;
+    }
+
+    .displayStatusMsgBtn {
+        width: 100%;
+    }
+}
+
+
 @media (max-width: 550px) {
     .resgisteFormContainer {
         width: 95%;
         min-width: unset;
     }
 
-    .inputContainer, .loginPrompt {
+    .inputContainer {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .loginPrompt {
         width: 100%;
     }
 

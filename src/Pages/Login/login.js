@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLock, faAt } from '@fortawesome/free-solid-svg-icons';
+import { faFacebook, faGoogle } from '@fortawesome/free-brands-svg-icons'
 import styles from './login.module.css';
 import Backdrop from "../Others/Backdrop/backdrop";
 import Modal from "../Others/Modal/modal";
@@ -8,6 +10,8 @@ import { Link } from "react-router-dom";
 import Spinner from "../Others/Spinner/spinner";
 
 const Login = () => {
+
+    const navigate = useNavigate()
 
     const [email ,setEmail] = useState('');
     const [emailValidity, setEmailValidty] = useState(true);
@@ -22,8 +26,12 @@ const Login = () => {
 
     const [btnDisable, setBtnDisable] = useState(true);
 
+    const user = sessionStorage.getItem('user') ? JSON.parse(sessionStorage.getItem('user')) : null;
+    
+
     useEffect(() => {
         window.scrollTo(0, 0);
+        if (user) return navigate('/');
     }, [])
 
     useEffect(() => {
@@ -101,6 +109,28 @@ const Login = () => {
         }}>Ok</button>
     </div>
 
+    const focusElement = (index) => {
+        const input = document.querySelectorAll(`.${styles.loginInput}`);
+        const elementDiv = document.querySelectorAll(`.${styles.loginInputContainer}`);
+        const label = document.querySelectorAll(`.${styles.inputLabel}`);
+
+        elementDiv.item(index).style.border = '1px solid white';
+        label.item(index).className = `${styles.inputLabel} ${styles.activeLabel}`;
+        input.item(index).placeholder = '';
+    }
+
+
+    const leaveFocus = (index) => {
+        const input = document.querySelectorAll(`.${styles.loginInput}`);
+        const elementDiv = document.querySelectorAll(`.${styles.loginInputContainer}`);
+        const label = document.querySelectorAll(`.${styles.inputLabel}`);
+
+        if (input.item(index).value === '' || input.item(index).value === null){
+            elementDiv.item(index).style.border = '1px solid #b3b3b3'
+            label.item(index).className = `${styles.inputLabel} ${styles.inActiveLabel}`;
+            index === 0 ? input.item(index).placeholder = 'Email Address' : input.item(index).placeholder = "Password";
+        }
+    }
     
     return (
         <>
@@ -127,12 +157,15 @@ const Login = () => {
                         <input type="email"
                             className={styles.loginInput}
                             placeholder="Email address"
-                            onChange={(e) => setEmail(e.target.value)} />
+                            onChange={(e) => setEmail(e.target.value)}
+                            onFocus={() => focusElement(0)}
+                            onBlur={() => leaveFocus(0)} />
                         <FontAwesomeIcon icon={faAt} className={styles.loginInputIcon} />
                     </div>
                     <div className={styles.errorDisplay} style={status === 'user not found' ? {backgroundColor: '#8b000054'} : {backgroundColor: 'transparent'}}>
                         <p className={styles.errorMsg} style={status === 'user not found' ? {display: 'block'} : {display: 'none'}}>User not found</p>
                     </div>
+                    <div className={styles.inputLabel}>Email Address</div>
                 </div>
 
                 <div className={styles.loginInputSection}>
@@ -140,19 +173,37 @@ const Login = () => {
                         <input type="password"
                             className={styles.loginInput}
                             placeholder="Password"
-                            onChange={(e) => setPassword(e.target.value)} />
+                            onChange={(e) => setPassword(e.target.value)}
+                            onFocus={() => focusElement(1)}
+                            onBlur={() => leaveFocus(1)} />
                         <FontAwesomeIcon icon={faLock} className={styles.loginInputIcon} />
                     </div>
                     <div className={styles.errorDisplay} style={status === "password doesn't match" ? {backgroundColor: '#8b000054'} : {backgroundColor: 'transparent'}}>
                         <p className={styles.errorMsg} style={status === "password doesn't match" ? {display: 'block'} : {display: 'none'}}>Password doesn't match</p>
                     </div>
+                    <div className={styles.inputLabel}>Password</div>
                 </div>
 
                 <button disabled={btnDisable}
                         className={styles.loginBtn}
                         onClick={ submitFormHandler }>Login</button>
 
-                <Link to="/register" className={styles.registerLink}>Create Account</Link>
+                <div className={styles.otherLoginOptions}>OR LOGIN WITH</div>
+
+                <div className={styles.otherLogin}>
+                    <Link to="" className={styles.otherLoginLink}>
+                        <FontAwesomeIcon icon={faFacebook} className={styles.otherLoginIcon}/>
+                    </Link>
+                    <Link to="" className={styles.otherLoginLink}>
+                        <FontAwesomeIcon icon={faGoogle} className={styles.otherLoginIcon}/>
+                    </Link>
+                </div>
+
+                <div className={styles.otherOption}>
+                    <Link to="/register" className={styles.registerLink}>Create Account</Link>
+                    <Link to="" className={styles.registerLink}>Forgot Password ?</Link>
+                </div>
+
             </form>
         </div>
         </>

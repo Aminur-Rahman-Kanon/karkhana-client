@@ -1,11 +1,15 @@
 .loginMain {
     position: relative;
     width: 100%;
+    height: 100vh;
+    margin: 50px auto 0;
+    min-height: 900px;
 }
 
 .loginBg {
     width: 100%;
-    height: 800px;
+    height: 100%;
+    /* min-height: 800px; */
     background-image: url('../../Assets/login.jpg');
     background-position: center;
     background-size: cover;
@@ -17,7 +21,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: #9554008a;
+    /* background-color: #9554008a; */
+    background-color: #1b1811b8;
     width: 50%;
     min-width: 400px;
     padding: 50px 15px;
@@ -30,10 +35,36 @@
 }
 
 .loginInputSection {
+    position: relative;
+    width: 90%;
     display: flex;
     flex-flow: column;
     justify-content: center;
     align-items: center;
+}
+
+.inputLabel {
+    position: absolute;
+    left: 10px;
+    padding: 0 5px;
+    box-sizing: border-box;
+    background-color: #1b1811f0;
+    color: white;
+    opacity: 0;
+    transition: all 0.3s ease-out;
+    font-size: 12px;
+}
+
+.inputLabel.activeLabel {
+    top: 2px;
+    opacity: 1;
+    /* left: 0; */
+}
+
+.inputLabel.inActiveLabel {
+    top: 8px;
+    /* left: 0; */
+
 }
 
 .errorDisplay {
@@ -49,13 +80,14 @@
 }
 
 .loginInputContainer {
-    width: 300px;
+    width: 100%;
+    min-width: 300px;
     height: 45px;
     margin: 10px;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    border: 1px solid rgb(226, 226, 226);
+    border: 1px solid #b3b3b3;
     border-radius: 5px;
 }
 
@@ -69,6 +101,7 @@
     height: 35px;
     border: none;
     outline: none;
+    padding-left: 15px;
     background-color: transparent;
     color: white;
 }
@@ -80,25 +113,27 @@
 .loginInputIcon {
     width: 20px;
     padding: 8px;
-    background-color: #8b080869;
+    margin-right: 5px;
+    background-color: #c7601d;
     color: rgb(230, 229, 229);
-    border: 1px solid #8b080869;
+    border: 1px solid #c7601d;
     border-radius: 5px;
 }
 
 .loginBtn {
     height: 40px;
     width: 200px;
-    margin: 30px 0;
-    border: 1px solid #8b080869;
-    border-radius: 2px;
-    background-color: #8b080869;
+    margin: 30px 0 50px 0;
+    border: 1px solid #c7601d;
+    border-radius: 5px;
+    background-color: #c7601d;
+    opacity: 0.8;
     color: white;
     cursor: pointer;
 }
 
 .loginBtn:hover {
-    background-color: #8b0808a6;
+    opacity: 1;
 }
 
 .loginBtn:disabled {
@@ -107,23 +142,18 @@
 }
 
 .loginBtn:disabled:hover {
-    background-color: #8b080869;
+    background-color: #c7601d;
 }
 
 .registerLink {
     text-decoration: none;
     color: rgb(226, 226, 226);
+    transition: all 0.3s ease;
+    font-size: 13px;
 }
 
 .registerLink:hover {
-    animation: registerLink 0.3s ease-out forwards;
-}
-
-@keyframes registerLink {
-    100% {
-        transform: scale(1.1);
-        color: white;
-    }
+    transform: scale(1.1);
 }
 
 .statusMsgMain {
@@ -160,6 +190,82 @@
     background-color: #be7ea0c9;
 }
 
+.otherLogin {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.otherLoginOptions {
+    position: relative;
+    width: 100%;
+    padding: 30px 0;
+    color: white;
+    font-size: 15px;
+}
+
+.otherLoginOptions::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0);
+    height: 1px;
+    width: 70%;
+    background-color: white;
+    border-radius: 20px;
+}
+
+.otherLoginLink {
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.795);
+    border: 1px solid transparent;
+    height: 25px;
+    width: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.otherLoginIcon {
+    width: 30px;
+    height: 30px;
+}
+
+.otherLoginLink:nth-child(1){
+    color: #3b5998;
+    border: 1px solid #3b5998;
+    margin: 0 15px;
+}
+
+.otherLoginLink:nth-child(2){
+    color: rgb(15, 157, 88);
+    margin: 0 15px;
+    border: 1px solid rgb(15, 157, 88);
+}
+
+.otherLoginLink:nth-child(1):hover {
+    box-shadow: 0 0 12px 5px #3b5998;
+    transform: scale(1.2);
+}
+
+.otherLoginLink:nth-child(2):hover {
+    box-shadow: 0 0 12px 5px rgb(15, 157, 88);
+    transform: scale(1.2);
+}
+
+.otherOption {
+    width: 100%;
+    margin: 30px auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 @media (max-width: 500px) {
     .loginContainer {
         width: 95%;
@@ -167,9 +273,16 @@
     }
     .loginInputContainer {
         width: 100%;
+        min-width: unset;
     }
 
     .errorDisplay {
         width: 100%;
+    }
+}
+
+@media (max-width: 350px) {
+    .otherOption {
+        padding: 0 5px;
     }
 }

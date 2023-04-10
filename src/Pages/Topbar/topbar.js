@@ -17,7 +17,7 @@ const Topbar = ({toggleSidedrawer}) => {
             <div className={styles.topbarItems} id={styles.navbar}>
                 <Navbar />
             </div>
-            <div className={styles.topbarItems} style={{minWidth: '125px'}}>
+            <div className={styles.topbarItems} style={{minWidth: '125px', justifyContent: 'flex-end'}}>
                 <ShoppingCart />
             </div>
         </div>

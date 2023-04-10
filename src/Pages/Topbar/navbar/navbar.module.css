@@ -138,7 +138,7 @@
     }
 }
 
-@media (max-height: 550px) {
+@media (max-width: 932px) and (max-height: 550px) {
     .navBarMain {
         flex-flow: row;
         align-items: center;
