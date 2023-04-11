@@ -14,6 +14,7 @@ import ProductsDetails from './Pages/Products/ProductsDetails/productsDetails';
 import DisplayCart from './Pages/DisplayCart/displayCart';
 import { disableScroll } from './Pages/Others/HelperFunction/helperFunction';
 import Checkout from './Pages/Checkout/checkout';
+import ForgotPassword from './Pages/Login/ForgotPassword/forgotPassword';
 
 export const ContextApi = createContext(null);
 
@@ -57,6 +58,7 @@ function App() {
           <Route path='/:productId/:productDetails' element={<ProductsDetails />}/>
           <Route path="/login" element={<Login />}/>
           <Route path="/register" element={<Register />}/>
+          <Route path='/forgot-password' element={<ForgotPassword />}/>
           <Route path="/profile" element={<Profile />}/>
           <Route path='/shopping-cart' element={<DisplayCart />}/>
           <Route path="/checkout" element={<Checkout />}/>

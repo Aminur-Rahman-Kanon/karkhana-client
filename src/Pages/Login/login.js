@@ -201,7 +201,7 @@ const Login = () => {
 
                 <div className={styles.otherOption}>
                     <Link to="/register" className={styles.registerLink}>Create Account</Link>
-                    <Link to="" className={styles.registerLink}>Forgot Password ?</Link>
+                    <Link to="/forgot-password" className={styles.registerLink}>Forgot Password ?</Link>
                 </div>
 
             </form>
