@@ -119,7 +119,7 @@ const ProductsList = () => {
                             <img src={item.img} className={styles.productsImg}/>
                         </div>
                         <div className={styles.productsName}>{item.name}</div>
-                        <div className={styles.productsPrice}>৳ {item.price}</div>
+                        <div className={styles.productsPrice}>৳{item.price}</div>
                     </a>
                 </div>
             });
@@ -138,7 +138,7 @@ const ProductsList = () => {
                             <img src={item.img} className={styles.productsImg}/>
                         </div>
                         <div className={styles.productsName}>{item.name}</div>
-                        <div className={styles.productsPrice}><span className={styles.currency}>৳</span> {item.price}</div>
+                        <div className={styles.productsPrice}>৳{item.price}</div>
                     </a>
                 </div>
             });

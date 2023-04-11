@@ -17,8 +17,9 @@
 
 .userContainers {
     position: absolute;
-    top: 20px;
-    left: -50px;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, 15%);
     width: 120px;
     margin-top: 0.7px;
     border: 1px solid lightgray;
@@ -106,7 +107,7 @@
 .displayCartItemsContainer, .defaultCartContainer {
     position: absolute;
     top: 22px;
-    right: -26px;
+    right: -15px;
     width: 300px;
     display: none;
     flex-flow: column;
@@ -225,4 +226,10 @@
 .cartBtn:hover {
     background-color: black;
     color: white;
+}
+
+@media (max-width: 768px) {
+    .userDisplayContainer, .shoppingCartContainer {
+        margin: 5px 0;
+    }
 }

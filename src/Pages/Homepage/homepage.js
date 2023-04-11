@@ -32,18 +32,22 @@ const Homepage = () => {
 
     const [exclusiveProducts, setExclusiveProducts] = useState([]);
 
+    const [trendingProducts, setTrendingProducts] = useState([]);
+
+    const [topSeller, setTopSeller] = useState([]);
+
     const cartItemStorage = sessionStorage.getItem('cart') ? JSON.parse(sessionStorage.getItem('cart')) : null;
 
     useEffect(() => {
-        fetch('https://karkhana-server.onrender.com/featuredProducts').then(res => res.json()).then(result => {
+        fetch('https://karkhana-server.onrender.com/products/initial-display').then(res => res.json()).then(result => {
             if (result.status === 'success'){
                 setFeaturedProducts(result.data.featured);
                 setExclusiveProducts(result.data.exclusive)
+                setTrendingProducts(result.data.trending);
+                setTopSeller(result.data.topSeller)
             }
         }).catch(err => console.log(err))
     }, [])
-
-    console.log(cartItemStorage);
 
     let displayFeaturedProducts = Array.from(Array(6).keys()).map(item => {
         return <div key={item} className={styles.featuredProductsItem} id={styles.loader}>
@@ -75,8 +79,25 @@ const Homepage = () => {
     </div>
     });
 
+    let exclusiveItem = <div className={styles.defaultExclusiveItems}>
+        <div className={styles.defaultExclusiveItem}>
+                <div className={styles.defaultExclusiveItemImgContainer}>
+                    <FontAwesomeIcon icon={faSpinner} spinPulse className={styles.spinnerPulse} />
+                </div>
+                <div className={styles.defaultExclusiveName}></div>
+                <div className={styles.defaultExclusiveLink}></div>
+            </div>
+            <div className={styles.defaultExclusiveItem}>
+                <div className={styles.defaultExclusiveItemImgContainer}>
+                    <FontAwesomeIcon icon={faSpinner} spinPulse className={styles.spinnerPulse} />
+                </div>
+                <div className={styles.defaultExclusiveName}></div>
+                <div className={styles.defaultExclusiveLink}></div>
+            </div>
+    </div>;
+
     if (featuredProducts.length) {
-        displayFeaturedProducts = featuredProducts.slice(0, 6).map(products => {
+        displayFeaturedProducts = featuredProducts.map(products => {
             return <div key={products._id} className={styles.featuredProductsItem}>
                 <a href={`https://karkhana.onrender.com/featured/${products.name}`} className={styles.featuredProductLink}>
                     <div className={styles.productsImgContainer}>
@@ -93,13 +114,14 @@ const Homepage = () => {
                 </div>
             </div>
         })
-        
-        trendingCategories = featuredProducts.slice(6, 12).map(products => {
+    }
+    if (trendingProducts.length){
+        trendingCategories = trendingProducts.map(products => {
             return <div key={products._id} className={styles.featuredProductsItem}>
                 <a href={`https://karkhana.onrender.com/featured/${products.name}`} className={styles.featuredProductLink}>
                     <div className={styles.productsImgContainer}>
                         <img src={products.img} alt={products.name} className={styles.productsImg}/>
-                        <div className={styles.addToCartContainer} onClick={(e) => addToCart(e, context, cartItemStorage, products.name, 1) }>
+                        <div className={styles.addToCartContainer} onClick={(e) => addToCart(e, context, cartItemStorage, products, 1) }>
                             <FontAwesomeIcon icon={faCartShopping} className={styles.shoppingIcon}/>
                             <p className={styles.shoppingP}>Add To Cart</p>
                         </div>
@@ -111,13 +133,15 @@ const Homepage = () => {
                 </div>
             </div>
         })
+    }
 
-        topSellers = featuredProducts.slice(12, 18).map(products => {
+    if (topSeller.length){
+        topSellers = topSeller.map(products => {
             return <div key={products._id} className={styles.featuredProductsItem}>
                 <a href={`https://karkhana.onrender.com/featured/${products.name}`} className={styles.featuredProductLink}>
                     <div className={styles.productsImgContainer}>
                         <img src={products.img} alt={products.name} className={styles.productsImg}/>
-                        <div className={styles.addToCartContainer} onClick={(e) => addToCart(e, context, cartItemStorage, products.name, 1) }>
+                        <div className={styles.addToCartContainer} onClick={(e) => addToCart(e, context, cartItemStorage, products, 1) }>
                             <FontAwesomeIcon icon={faCartShopping} className={styles.shoppingIcon}/>
                             <p className={styles.shoppingP}>Add To Cart</p>
                         </div>
@@ -139,23 +163,6 @@ const Homepage = () => {
             <p className={styles.itemCategoryP}>{item.name}</p>
         </Link>
     })
-
-    let exclusiveItem = <div className={styles.defaultExclusiveItems}>
-        <div className={styles.defaultExclusiveItem}>
-                <div className={styles.defaultExclusiveItemImgContainer}>
-                    <FontAwesomeIcon icon={faSpinner} spinPulse className={styles.spinnerPulse} />
-                </div>
-                <div className={styles.defaultExclusiveName}></div>
-                <div className={styles.defaultExclusiveLink}></div>
-            </div>
-            <div className={styles.defaultExclusiveItem}>
-                <div className={styles.defaultExclusiveItemImgContainer}>
-                    <FontAwesomeIcon icon={faSpinner} spinPulse className={styles.spinnerPulse} />
-                </div>
-                <div className={styles.defaultExclusiveName}></div>
-                <div className={styles.defaultExclusiveLink}></div>
-            </div>
-    </div>;
 
     if (exclusiveProducts.length){
         exclusiveItem = exclusiveProducts.map(exclusiveItem => {

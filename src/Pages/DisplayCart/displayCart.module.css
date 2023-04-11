@@ -146,7 +146,6 @@
 .addItemValue {
     height: 28.5px;
     width: 29px;
-    /* padding: 0px; */
     border: 1px solid lightgray;
     background-color: white;
     color: black;
@@ -351,6 +350,10 @@
     border: 1px solid white;
     background-color: rgb(53, 52, 52);
     color: white;
+}
+
+.defultDisplay {
+    width: 100%;
 }
 
 @media (max-width: 992px) {

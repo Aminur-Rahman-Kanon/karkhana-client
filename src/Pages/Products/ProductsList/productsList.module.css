@@ -63,6 +63,7 @@
 }
 
 .sidebarLink {
+    font-size: 13px;
     text-decoration: none;
 }
 
@@ -184,9 +185,15 @@
     height: 250px;
     object-fit: cover;
     cursor: pointer;
+    transition: all 0.3s ease-out;
+}
+
+.productsName {
+    font-size: 13px;
 }
 
 .productsPrice {
+    font-size: 13px;
     font-weight: 600;
 }
 
@@ -195,13 +202,7 @@
 }
 
 .productsImgContainer:hover  .productsImg{
-    animation: productsImg 0.4s ease-out forwards;
-}
-
-@keyframes productsImg {
-    100% {
-        transform: scale(1.2);
-    }
+    transform: scale(1.2);
 }
 
 .statusMsgContainer {
@@ -211,6 +212,10 @@
     justify-content: center;
     align-items: center;
     color: #ad6c4d;
+}
+
+.rangeLabel {
+    font-size: 13px;
 }
 
 .statusMsgHeader {
