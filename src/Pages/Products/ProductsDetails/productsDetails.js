@@ -33,12 +33,14 @@ const ProductsDetails = () => {
 
     const user = sessionStorage.getItem('user') ? JSON.parse(sessionStorage.getItem('user')) : {};
 
+    console.log(productId, productDetails);
+
     useEffect(() => {
         window.scrollTo(0, 0);
 
         fetch(`https://karkhana-server.onrender.com/products/${productId}`)
         .then(res => res.json()).then(data => {
-            if (data.status === 'success' && data.data.length){
+            if (data.status === 'success'){
                 const filteredItem = [];
                 const relatedItem = [];
 
