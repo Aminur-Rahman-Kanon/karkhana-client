@@ -54,8 +54,8 @@ function App() {
         <Sidedrawer sidedrawer={sidedrawer}/>
         <Routes>
           <Route path='/' element={<Homepage />}/>
-          <Route path='/:productId' element={<ProductsList />}/>
-          <Route path='/:productId/:productDetails' element={<ProductsDetails />}/>
+          <Route path='/products/:productId' element={<ProductsList />}/>
+          <Route path='/products/:productId/:productDetails' element={<ProductsDetails />}/>
           <Route path="/login" element={<Login />}/>
           <Route path="/register" element={<Register />}/>
           <Route path='/forgot-password' element={<ForgotPassword />}/>
