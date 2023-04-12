@@ -114,7 +114,7 @@ const ProductsList = () => {
         if (!itemNotFound &&filteredProducts.length){
             defaultView = filteredProducts.slice(itemOffset, endOffset).map(item => {
             return <div key={item._id} className={styles.productsContainer} id={styles.loader}>
-                    <a href={`/${params.productId}/${item.name}`} className={styles.productsLink}>
+                    <a href={`/products/${params.productId}/${item.name}`} className={styles.productsLink}>
                         <div className={styles.productsImgContainer}>
                             <img src={item.img} className={styles.productsImg}/>
                         </div>
@@ -133,7 +133,7 @@ const ProductsList = () => {
         else {
             defaultView = products.slice(itemOffset, endOffset).map(item => {
             return <div key={item._id} className={styles.productsContainer} id={styles.loader}>
-                    <a href={`/${params.productId}/${item.name}`} className={styles.productsLink}>
+                    <a href={`/products/${params.productId}/${item.name}`} className={styles.productsLink}>
                         <div className={styles.productsImgContainer}>
                             <img src={item.img} className={styles.productsImg}/>
                         </div>

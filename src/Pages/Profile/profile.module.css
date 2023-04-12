@@ -48,7 +48,7 @@
 
 .avatarContainer {
     width: 100%;
-    min-height: 200px;
+    height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -161,7 +161,7 @@
     .avatarContainer {
         width: 60%;
         min-width: 480px;
-        min-height: unset;
+        height: 350px;
     }
 
     .categoryContainer {

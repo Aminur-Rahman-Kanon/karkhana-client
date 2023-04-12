@@ -156,7 +156,6 @@ const Homepage = () => {
     }
 
     let itemCategory = itemCategories.map(item => {
-        console.log(item);
         return <Link key={item.item} to={`/products/${item.id}`} className={styles.itemCategory}>
             <div className={styles.itemCategoryImgContainer}>
                 <img src={item.img} alt={item.name} className={styles.itemCategoryImg}/>

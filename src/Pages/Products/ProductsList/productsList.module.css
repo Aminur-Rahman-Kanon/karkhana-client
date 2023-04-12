@@ -201,6 +201,10 @@
     font-size: 18px;
 }
 
+.notFoundHeader {
+    font-size: 18px;
+}
+
 .productsImgContainer:hover  .productsImg{
     transform: scale(1.2);
 }
