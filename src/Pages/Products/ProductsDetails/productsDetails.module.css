@@ -124,20 +124,14 @@
 }
 
 .availablity {
-    height: 50px;
     width: 100%;
-    margin: 10px 0;
-    padding: 10px;
-    box-sizing: border-box;
-    background-color: darkgreen;
-    color: white;
-    border-radius: 5px;
-    font-weight: 600;
-    font-size: 15px;
     letter-spacing: 1px;
     display: flex;
     justify-content: flex-start;
     align-items: center;
+    margin: 10px 0;
+    font-weight: 600;
+    font-size: 15px;
 }
 
 .productDetailsBtnGroup {

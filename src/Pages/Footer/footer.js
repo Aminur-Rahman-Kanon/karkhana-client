@@ -51,12 +51,13 @@ const Footer = () => {
                 <div className={styles.topSectionContainer}>
                     <h2 className={styles.headerH2}>CATALOG</h2>
                     <div className={styles.topSectionContainerItem}>
-                        <Link to="" className={styles.topSectionLink}>Earrings</Link>
-                        <Link to="" className={styles.topSectionLink}>Nacklaces</Link>
-                        <Link to="" className={styles.topSectionLink}>Bracelets</Link>
-                        <Link to="" className={styles.topSectionLink}>Rings</Link>
-                        <Link to="" className={styles.topSectionLink}>Jewellary Box</Link>
-                        <Link to="" className={styles.topSectionLink}>Studs</Link>
+                        <a href="/products/ear-rings" className={styles.topSectionLink}>Earrings</a>
+                        <a href="/products/necklace" className={styles.topSectionLink}>Nacklaces</a>
+                        <a href="/products/bracelet" className={styles.topSectionLink}>Bracelets</a>
+                        <a href="/products/finger-rings" className={styles.topSectionLink}>Finger Rings</a>
+                        <a href="/products/toe-rings" className={styles.topSectionLink}>Toe Rings</a>
+                        <a href="/products/nepali" className={styles.topSectionLink}>Nepali</a>
+                        <a href="/products/others" className={styles.topSectionLink}>Others</a>
                     </div>
                 </div>
             </div>

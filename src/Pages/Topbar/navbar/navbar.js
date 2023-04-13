@@ -22,9 +22,9 @@ const Navbar = () => {
                         </a>
                     </li>
                     <li className={styles.navList}>
-                        <a href="/shop" className={location === '/shop' ? `${styles.navItem} ${styles.navActive}` : styles.navItem}>
+                        <a href="/products/latest" className={location === '/products/latest' ? `${styles.navItem} ${styles.navActive}` : styles.navItem}>
                             <FontAwesomeIcon icon={faStore} className={styles.navIcon} />
-                            <span className={styles.navP}>Shop</span>
+                            <span className={styles.navP}>Latest</span>
                         </a>
                     </li>
                     <li className={styles.navList} id={styles.parentNavItem}>

@@ -96,10 +96,10 @@ const ProductsDetails = () => {
             </div>
 
             <div className={styles.productsDetails}><span className={styles.currency}>&#2547; </span>{item[0].price}</div>
-            <div className={styles.availablity}>Available: Yes</div>
+            <div className={styles.availablity}>Item Available: ${item[0].quantity ? item[0].quantity : 1}</div>
             <div className={styles.productDetailsContainer}>
                 <h2 className={styles.productHeader}>Details</h2>
-                <p className={styles.productDetailsP}>Elevate your fashion game with our men's kurta collection. Made from premium quality fabrics, our kurtas are designed to provide maximum comfort and durability. With a wide range of colors, patterns, and designs to choose from, Experience the perfect blend of traditional elegance and modern style.</p>
+                <p className={styles.productDetailsP}>{item[0].details ? item[0].details : "Elevate your fashion game with our men's kurta collection. Made from premium quality fabrics, our kurtas are designed to provide maximum comfort and durability. With a wide range of colors, patterns, and designs to choose from, Experience the perfect blend of traditional elegance and modern style."}</p>
             </div>
 
             <div className={styles.quantityContainer}>
@@ -109,7 +109,7 @@ const ProductsDetails = () => {
                         <span className={styles.iconContainer}><FontAwesomeIcon icon={faAngleDown} className={styles.angle}/></span>
                     </button>
                     <div className={styles.quantityAmount}>{quantity}</div>
-                    <button className={styles.quantityBtn} onClick={() => setQuantity(quantity + 1)}>
+                    <button disabled={item[0].quantity ? item[0].quantity >= quantity : false} className={styles.quantityBtn} onClick={() => setQuantity(quantity + 1)}>
                         <span className={styles.iconContainer}><FontAwesomeIcon icon={faAngleUp} className={styles.angle}/></span>
                     </button>
                 </div>

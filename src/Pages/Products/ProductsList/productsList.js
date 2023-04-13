@@ -64,6 +64,8 @@ const ProductsList = () => {
         }
     }
 
+    console.log(params.productId);
+
     useEffect(() => {
         window.scrollTo(0, 0);
         if (params.hasOwnProperty("productId")){
@@ -229,12 +231,12 @@ const ProductsList = () => {
                     <div className={styles.categoryType}>
                         <h2 className={styles.categoryH2}>Categories</h2>
                         <ul className={styles.sidebarLists}>
-                            <a href="/bracelet" className={styles.sidebarLink}><li className={params.productId === 'bracelet' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Bracelets</li></a>
-                            <a href="/finger-rings" className={styles.sidebarLink}><li className={params.productId === 'finger-rings' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Finger Rings</li></a>
-                            <a href="/ear-rings" className={styles.sidebarLink}><li className={params.productId === 'ear-rings' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Ear Rings</li></a>
-                            <a href="/necklace" className={styles.sidebarLink}><li className={params.productId === 'necklace' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Necklace</li></a>
-                            <a href="/toe-rings" className={styles.sidebarLink}><li className={params.productId === 'toe-rings' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Toe Ring</li></a>
-                            <a href="others" className={styles.sidebarLink}><li className={params.productId === 'others' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Others</li></a>
+                            <a href="/products/bracelet" className={styles.sidebarLink}><li className={params.productId === 'bracelet' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Bracelets</li></a>
+                            <a href="/products/finger-rings" className={styles.sidebarLink}><li className={params.productId === 'finger-rings' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Finger Rings</li></a>
+                            <a href="/products/ear-rings" className={styles.sidebarLink}><li className={params.productId === 'ear-rings' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Ear Rings</li></a>
+                            <a href="/products/necklace" className={styles.sidebarLink}><li className={params.productId === 'necklace' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Necklace</li></a>
+                            <a href="/products/toe-rings" className={styles.sidebarLink}><li className={params.productId === 'toe-rings' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Toe Ring</li></a>
+                            <a href="/products/others" className={styles.sidebarLink}><li className={params.productId === 'others' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Others</li></a>
                         </ul>
                     </div>
 

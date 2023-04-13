@@ -29,6 +29,8 @@
     position: relative;
     width: 20%;
     min-width: 200px;
+    display: flex;
+    flex-flow: column;
 }
 
 .sidebarItems {
@@ -411,5 +413,11 @@
 
     .statusMsgBtn {
         width: 100%;
+    }
+}
+
+@media (max-width: 932px) and (max-height: 550px) {
+    .sidebarContainer {
+        flex-flow: row;
     }
 }
