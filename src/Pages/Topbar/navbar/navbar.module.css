@@ -43,7 +43,7 @@
 
 .navList {
     position: relative;
-    padding: 0 8px;
+    padding: 10px 8px;
 }
 
 .navItem {
@@ -55,12 +55,15 @@
     text-decoration: none;
     color: #7a7a7a;
     transition: all 0.3s ease-out;
-    font-size: 14px;
+    font-size: 15px;
 }
 
-.navItem:hover, .childNavItem:hover {
+.navItem:hover {
     color: #cb5d27;
 }
+
+.childNavList
+
 
 .navItem.navActive, .childNavItem.childActive {
     color: #cb5d27;
@@ -77,13 +80,14 @@
     position: absolute;
     top: 0;
     right: 0%;
-    transform: translate(66%, 19%);
-    width: 650px;
-    height: 90px;
-    padding: 15px;
+    transform: translate(66%, 14%);
+    width: 900px;
+    height: 280px;
+    /* padding: 10px 0; */
     box-sizing: border-box;
     display: none;
-    justify-content: center;
+    flex-wrap: wrap;
+    justify-content: flex-start;
     align-items: center;
     background-color: white;
     border: 1px solid lightgray;
@@ -102,14 +106,34 @@
 
 .childNavList {
     margin: 10px;
+    border-radius: 10px;
+    transition: all 0.3s ease-out;
+}
+
+.childNavList:hover {
+    box-shadow: 5px 5px 15px 5px #d0b09b;
 }
 
 .childNavItem {
+    width: 190px;
     text-decoration: none;
     color: grey;
     transition: all 0.3s ease-out;
     font-size: 14px;
+    padding: 10px;
+    box-sizing: border-box;
+    /* margin: 10px; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
 }
+
+.childNavImg {
+    height: 70px;
+    width: 70px;
+    margin-right: 10px;
+}
+
 
 @media (max-width: 1045px) {
     .navBarMain {
@@ -180,7 +204,8 @@
         flex-flow: column;
         width: 225px;
         height: unset;
-        transform: translate(100%, -40%);
+        padding: 0;
+        transform: translate(100%, -50%);
         background-color: #555568;
         border: 1px solid #555568;
     }
@@ -194,23 +219,44 @@
     }
 
     .childNavList {
-        width: 90px;
+        /* width: 90px; */
         text-align: left;
+    }
+
+    .childNavImg {
+        height: 50px;
+        width: 50px;
     }
 }
 
 @media (max-width: 415px) {
     .childNavElement {
-        transform: translate(80%, -40%);
+        transform: translate(80%, -57%);
     }
 }
 
-@media (max-width: 500px) {
-    .childNavElement {
-        width: 170px;
+@media (max-width: 415px) and (max-height: 700px) {
+    #logoEl {
+        height: 150px;
     }
-    
+
+    .navList {
+        margin: 10px;
+    }
+    .childNavElement {
+        transform: translate(80%, -50%);
+        padding: 10px;
+    }
+
+    .childNavList {
+        margin: 5px;
+    }
+
+    .childNavItem {
+        padding: 5px;
+    }
 }
+
 
 @media (max-width: 932px) and (max-height: 550px) {
     .navBarMain {
@@ -241,6 +287,18 @@
     }
 
     .childNavElement {
-        transform: translate(80%, -70%);
+        transform: translate(100%, -69%);
+        width: 500px;
+        padding: 10px;
+        flex-flow: unset;
+        flex-wrap: wrap;
+    }
+
+    .childNavList {
+        margin: 5px;
+    }
+
+    .childNavItem {
+        padding: 5px;
     }
 }

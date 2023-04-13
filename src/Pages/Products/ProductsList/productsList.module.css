@@ -416,8 +416,12 @@
     }
 }
 
-@media (max-width: 932px) and (max-height: 550px) {
+@media (max-width: 850px) and (max-height: 550px) {
     .sidebarContainer {
         flex-flow: row;
+    }
+
+    #categoryType2 {
+        justify-content: space-evenly;
     }
 }

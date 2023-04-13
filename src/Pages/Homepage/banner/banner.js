@@ -28,7 +28,7 @@ const Banner = (img) => {
                     <div className={styles.bannerHeading}>
                         <h2 className={styles.bannerH2}>{bannerItems[0].firstHeader}</h2>
                         <p className={styles.bannerP}>{bannerItems[0].secondHeader}</p>
-                        <Link to="" className={styles.shoppingLink}>Shop Now</Link>
+                        <Link to="/products/latest" className={styles.shoppingLink}>Shop Now</Link>
                     </div>
                 </div>
             },

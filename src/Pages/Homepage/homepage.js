@@ -177,7 +177,7 @@ const Homepage = () => {
                     <div className={styles.exclusiveItemP}>{exclusiveItem.details}</div>
                     <div className={styles.exclusiveItemPrice}>	&#2547; {exclusiveItem.price}</div>
                 </div>
-                <Link to={`/exclusive/${exclusiveItem.name}`} className={styles.exclusiveLink}>SHOP NOW</Link>
+                <Link to={`/products/exclusive/${exclusiveItem.name}`} className={styles.exclusiveLink}>SHOP NOW</Link>
             </div>
         })
     }

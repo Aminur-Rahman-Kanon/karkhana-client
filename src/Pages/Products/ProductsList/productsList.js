@@ -240,7 +240,7 @@ const ProductsList = () => {
                         </ul>
                     </div>
 
-                    <div className={styles.categoryType}>
+                    <div className={styles.categoryType} id={styles.categoryType2}>
                         <h2 className={styles.categoryH2}>Price Range</h2>
                         <p className={styles.rangeLabel}>From: {priceFrom}</p>
                         <Slider value={priceFrom}
