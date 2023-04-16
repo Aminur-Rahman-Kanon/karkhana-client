@@ -1,6 +1,5 @@
 .drawToggleMain {
     width: 30px;
-    margin-right: 10px;
     display: none;
     flex-flow: column;
     justify-content: center;

@@ -26,6 +26,17 @@ function App() {
 
   const [cartItem, setCartItem] = useState(0);
 
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetch('https://karkhana-server.onrender.com/products/get-products').then(res => res.json())
+    .then(result => {
+      if (result.status === 'success'){
+        setProducts(result.data);
+      }
+    }).catch(err => console.log(err));
+  }, [])
+
   useEffect(() => {
     if (backdrop) {
       disableScroll();
@@ -48,7 +59,7 @@ function App() {
 
   return (
     <div className="App">
-      <ContextApi.Provider value={{cartItem, setCartItem}} >
+      <ContextApi.Provider value={{cartItem, setCartItem, products}} >
         <Backdrop backdrop={ backdrop } toggleBackdrop={ closeSidedrawer }/>
         <Topbar toggleSidedrawer={ openSideDrawer }/>
         <Sidedrawer sidedrawer={sidedrawer}/>

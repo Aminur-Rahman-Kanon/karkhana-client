@@ -33,13 +33,12 @@ const ProductsDetails = () => {
 
     const user = sessionStorage.getItem('user') ? JSON.parse(sessionStorage.getItem('user')) : {};
 
-    console.log(productId, productDetails);
-
     useEffect(() => {
         window.scrollTo(0, 0);
 
         fetch(`https://karkhana-server.onrender.com/products/${productId}`)
         .then(res => res.json()).then(data => {
+            console.log(data);
             if (data.status === 'success'){
                 const filteredItem = [];
                 const relatedItem = [];
@@ -57,7 +56,7 @@ const ProductsDetails = () => {
                 setRelatedItem(relatedItem);
             }
         })
-        .catch(err => setError(true));
+        .catch(err => console.log(err));
     }, []);
 
     let displayProduct = <div className={styles.defaultProductContainer}>
@@ -137,7 +136,7 @@ const ProductsDetails = () => {
     if (relatedItem.length){
         relatedProducts = relatedItem.map(products => {
             return <div key={products._id} className={styles.relatedProduct}>
-                <a href={`https://karkhana.onrender.com/products/${productId}/${products.name}`} className={styles.relatedProductLink}>
+                <a href={`https://karkhana.onrender.com/products/${products.category}/${products.name}`} className={styles.relatedProductLink}>
                     <div className={styles.relatedProductImgContainer}>
                         <img src={products.img} alt={products.name} className={styles.relatedProductImg}/>
                     </div>
@@ -151,7 +150,7 @@ const ProductsDetails = () => {
 
         otherProducts = relatedItem.slice(-8).map(products => {
             return <div key={products._id} className={styles.relatedProduct}>
-                <a href={`https://karkhana.onrender.com/products/${productId}/${products.name}`} className={styles.relatedProductLink}>
+                <a href={`https://karkhana.onrender.com/products/${products.category}/${products.name}`} className={styles.relatedProductLink}>
                     <div className={styles.relatedProductImgContainer}>
                         <img src={products.img} alt={products.name} className={styles.relatedProductImg}/>
                     </div>

@@ -82,7 +82,7 @@
     right: 0%;
     transform: translate(66%, 14%);
     width: 900px;
-    height: 280px;
+    height: 250px;
     /* padding: 10px 0; */
     box-sizing: border-box;
     display: none;
@@ -202,9 +202,9 @@
 
     .childNavElement {
         flex-flow: column;
-        width: 225px;
+        width: 280px;
         height: unset;
-        padding: 0;
+        padding: 10px;
         transform: translate(100%, -50%);
         background-color: #555568;
         border: 1px solid #555568;
@@ -212,6 +212,7 @@
 
     .childNavItem {
         color: lightgray;
+        padding: 5px;
     }
     
     .childNavItem.childActive {
@@ -219,13 +220,24 @@
     }
 
     .childNavList {
-        /* width: 90px; */
+        margin: 5px;
         text-align: left;
+        transition: none;
+    }
+
+    .childNavList:hover {
+        
     }
 
     .childNavImg {
         height: 50px;
         width: 50px;
+    }
+}
+
+@media (max-width: 500px) {
+    .childNavElement {
+        width: 230px;
     }
 }
 
@@ -246,14 +258,6 @@
     .childNavElement {
         transform: translate(80%, -50%);
         padding: 10px;
-    }
-
-    .childNavList {
-        margin: 5px;
-    }
-
-    .childNavItem {
-        padding: 5px;
     }
 }
 
