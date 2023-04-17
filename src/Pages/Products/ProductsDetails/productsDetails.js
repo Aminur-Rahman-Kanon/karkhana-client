@@ -38,7 +38,6 @@ const ProductsDetails = () => {
 
         fetch(`https://karkhana-server.onrender.com/products/${productId}`)
         .then(res => res.json()).then(data => {
-            console.log(data);
             if (data.status === 'success'){
                 const filteredItem = [];
                 const relatedItem = [];

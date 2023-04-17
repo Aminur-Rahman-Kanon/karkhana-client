@@ -185,7 +185,7 @@
 .productsImg {
     width: 95%;
     height: 250px;
-    object-fit: cover;
+    /* object-fit: cover; */
     cursor: pointer;
     transition: all 0.3s ease-out;
 }

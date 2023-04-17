@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState, useTransition } from 'react';
 import Navbar from './navbar/navbar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass, faRectangleXmark, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { faMagnifyingGlass, faXmark, faSpinner } from '@fortawesome/free-solid-svg-icons';
 import ShoppingCart from './shoppingCart/shoppingCart';
 import DrawToggle from '../Others/Drawtoggle/drawToggle';
 import styles from './topbar.module.css';
 import { ContextApi } from '../../App';
+import Backdrop from '../Others/Backdrop/backdrop';
+import { disableScroll } from '../Others/HelperFunction/helperFunction';
 
 const Topbar = ({toggleSidedrawer}) => {
 
@@ -18,6 +20,8 @@ const Topbar = ({toggleSidedrawer}) => {
     const [isPending, startTransition] = useTransition();
 
     const [noItemFound, setNoItemFound] = useState(false);
+
+    const [backdrop, setBackdrop] = useState(false);
 
     useEffect(() => {
         startTransition(() => {
@@ -39,23 +43,19 @@ const Topbar = ({toggleSidedrawer}) => {
         })
     }, [searchInput])
 
-    console.log(context.products);
+    useEffect(() => {
+        if (backdrop){
+            disableScroll()
+        }
+        else {
+            window.onscroll = () => {};
+        }
+    }, [backdrop])
 
     const showSearchBar = () => {
         const searchBar = document.querySelector(`.${styles.searchInputMain}`);
-        searchBar.className = `${styles.searchInputMain} ${styles.show}`
-    }
-
-    const closeSearchBar = () => {
-        const searchBar = document.querySelector(`.${styles.searchInputMain}`);
-        const input = document.getElementById('input');
-
-        if (document.activeElement === input ){
-            searchBar.className = `${styles.searchInputMain} ${styles.show}`
-        }
-        else {
-            searchBar.className = styles.searchInputMain
-        }
+        searchBar.className = `${styles.searchInputMain} ${styles.show}`;
+        setBackdrop(true);
     }
 
     const exitSearchBar = () => {
@@ -66,7 +66,8 @@ const Topbar = ({toggleSidedrawer}) => {
         searchBar.className = styles.searchInputMain;
         input.value = '';
         setSearchInput('');
-        setSearchResult([])
+        setSearchResult([]);
+        setBackdrop(false);
         if (noResult){
             if(noResult.style.display === 'block'){
                 noResult.style.display = 'none'
@@ -75,30 +76,41 @@ const Topbar = ({toggleSidedrawer}) => {
     }
 
     return (
+        <>
         <div className={styles.topbarMain}>
+            <Backdrop backdrop={backdrop} toggleBackdrop={ exitSearchBar } />
             <div className={styles.topbarItems}>
                 <DrawToggle toggleSidedrawer={toggleSidedrawer}/>
-                <div className={styles.searchContainer} onMouseOver={ showSearchBar } onMouseLeave={ closeSearchBar }>
-                    <FontAwesomeIcon icon={faMagnifyingGlass} className={styles.searchIcon}/>
+                <div className={styles.searchContainer}>
+                    <FontAwesomeIcon icon={faMagnifyingGlass}
+                                     className={styles.searchIcon}
+                                     onClick={ showSearchBar } />
                     <div className={styles.searchInputMain}>
                         <div className={styles.searchInputBox}>
                             <div className={styles.searchInputContainer}>
-                                <input type='text'
-                                    className={styles.searchInput}
-                                    placeholder='Search Product'
-                                    onChange={ (e) => setSearchInput(e.target.value) }
-                                    id="input"/>
-                                <FontAwesomeIcon icon={faSpinner}
-                                                spinPulse
-                                                style={isPending ? {visibility: 'visible'} : {display: 'hidden'}}
-                                                className={styles.spinnerIcon}/>
+                                <div className={styles.inputItemContainer}>
+                                    <FontAwesomeIcon icon={faMagnifyingGlass} className={styles.searchItemIcon}/>
+                                    <input type='text'
+                                        className={styles.searchInput}
+                                        placeholder='Search Product'
+                                        onChange={ (e) => setSearchInput(e.target.value) }
+                                        id="input"/>
+                                </div>
+                                <div className={styles.searchInputIconContainer}>
+                                    <FontAwesomeIcon icon={faSpinner}
+                                                    spinPulse
+                                                    style={isPending ? {visibility: 'visible'} : {display: 'hidden'}}
+                                                    className={styles.spinnerIcon}/>
+                                    <FontAwesomeIcon icon={faXmark}
+                                                    className={styles.xBtn}
+                                                    onClick={ exitSearchBar }/>
+                                </div>
                             </div>
-                            <FontAwesomeIcon icon={faRectangleXmark} className={styles.xBtn} onClick={ exitSearchBar }/>
+                        </div>
+                        <div className={styles.defaultResultContainer} style={noItemFound ? {display: 'block'} : {display: 'none'}}>
+                            <p className={styles.itemCounter}>{`${searchResult.length} item found`}</p>
                         </div>
                         <div className={styles.searchInputResultContainer} style={searchInput.length ? {display: 'flex'}: {display: 'none'}}>
-                            <div className={styles.defaultResultContainer} style={noItemFound ? {display: 'block'} : {display: 'none'}}>
-                                <p className={styles.itemCounter}>{`${searchResult.length} item found`}</p>
-                            </div>
                             {searchResult.length > 0 ? searchResult.map(item => <a href={`/products/${item.category}/${item.name}`} key={item._id} className={styles.searchResultItem}>
                                 <div className={styles.searchResultImgContainer}>
                                     <img src={item.img} alt={item.name} className={styles.searchResultImg}/>
@@ -120,6 +132,7 @@ const Topbar = ({toggleSidedrawer}) => {
                 <ShoppingCart />
             </div>
         </div>
+        </>
     )
 }
 
