@@ -19,6 +19,8 @@ const Navbar = () => {
 
     const splitLocation = location.split('/');
 
+    console.log(location);
+
     return (
         <div className={styles.navBarMain}>
             <div className={styles.navElements}>
@@ -38,7 +40,7 @@ const Navbar = () => {
                     <li className={styles.navList} id={styles.parentNavItem}>
                         <div className={styles.navItem}>
                             <FontAwesomeIcon icon={faGem} className={styles.navIcon} />
-                            <span className={styles.navP}>Products</span>
+                            <span className={splitLocation[1] === 'products' && splitLocation[2] !== 'latest' && splitLocation[2] !== 'featured' ? `${styles.navP} ${styles.navActive}` : styles.navP}>Products</span>
                         </div>
                         <ul className={styles.childNavElement}>
                             <li className={styles.childNavList}>
@@ -107,7 +109,7 @@ const Navbar = () => {
                         </a>
                     </li>
                     <li className={styles.navList}>
-                        <a href="/about" className={location === '/about' ? `${styles.navItem} ${styles.navActive}` : styles.navItem}>
+                        <a href="/about-us" className={location === '/about-us' ? `${styles.navItem} ${styles.navActive}` : styles.navItem}>
                             <FontAwesomeIcon icon={faDesktop} className={styles.navIcon} />
                             <span className={styles.navP}>About Us</span>
                         </a>

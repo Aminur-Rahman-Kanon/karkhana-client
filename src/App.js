@@ -15,6 +15,8 @@ import DisplayCart from './Pages/DisplayCart/displayCart';
 import { disableScroll } from './Pages/Others/HelperFunction/helperFunction';
 import Checkout from './Pages/Checkout/checkout';
 import ForgotPassword from './Pages/Login/ForgotPassword/forgotPassword';
+import AboutUs from './Pages/AboutUs/aboutUs';
+
 
 export const ContextApi = createContext(null);
 
@@ -57,6 +59,8 @@ function App() {
     setBackdrop(true);
   }
 
+  console.log(products);
+
   return (
     <div className="App">
       <ContextApi.Provider value={{cartItem, setCartItem, products}} >
@@ -64,15 +68,16 @@ function App() {
         <Topbar toggleSidedrawer={ openSideDrawer }/>
         <Sidedrawer sidedrawer={sidedrawer}/>
         <Routes>
-          <Route path='/' element={<Homepage />}/>
-          <Route path='/products/:productId' element={<ProductsList />}/>
-          <Route path='/products/:productId/:productDetails' element={<ProductsDetails />}/>
-          <Route path="/login" element={<Login />}/>
-          <Route path="/register" element={<Register />}/>
-          <Route path='/forgot-password' element={<ForgotPassword />}/>
+          <Route path='/' element={<Homepage />} />
+          <Route path='/products/:productId' element={<ProductsList />} />
+          <Route path='/products/:productId/:productDetails' element={<ProductsDetails />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path='/forgot-password' element={<ForgotPassword />} />
           <Route path="/profile" element={<Profile />}/>
-          <Route path='/shopping-cart' element={<DisplayCart />}/>
-          <Route path="/checkout" element={<Checkout />}/>
+          <Route path='/shopping-cart' element={<DisplayCart />} />
+          <Route path="/checkout" element={<Checkout />} />
+          <Route path='/about-us' element={<AboutUs />} />
           <Route path="*" element={<h1>404</h1>}/>
         </Routes>
         <Footer />

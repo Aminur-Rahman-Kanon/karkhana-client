@@ -17,7 +17,6 @@ const bannerItems = [
 const Banner = (img) => {
 
     const { carouselFragment, slideToNextItem, slideToPrevItem } = useSpringCarousel({
-        withLoop: true,
         items: [
             {
                 id: 1,

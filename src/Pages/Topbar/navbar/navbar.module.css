@@ -59,14 +59,19 @@
 }
 
 .navItem:hover {
-    color: #cb5d27;
+    color: #ad6c4d;
 }
 
-.childNavList
+.navP.navActive {
+    color: #ad6c4d;
+}
 
+.navItem.navActive {
+    color: #ad6c4d!important;
+}
 
-.navItem.navActive, .childNavItem.childActive {
-    color: #cb5d27;
+.childNavItem.childActive {
+    color: #ad6c4d;
 }
 
 .navIcon {
@@ -192,8 +197,8 @@
         color: lightgray;
     }
 
-    .navItem.navActive {
-        color: #d7a381;
+    .navItem.navActive, .navP.navActive {
+        color: #d7a381!important;
     }
 
     .navItem:hover {
