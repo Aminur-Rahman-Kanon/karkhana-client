@@ -64,8 +64,6 @@ const ProductsList = () => {
         }
     }
 
-    console.log(params.productId);
-
     useEffect(() => {
         window.scrollTo(0, 0);
         if (params.hasOwnProperty("productId")){

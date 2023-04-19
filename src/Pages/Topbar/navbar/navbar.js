@@ -19,8 +19,6 @@ const Navbar = () => {
 
     const splitLocation = location.split('/');
 
-    console.log(location);
-
     return (
         <div className={styles.navBarMain}>
             <div className={styles.navElements}>
