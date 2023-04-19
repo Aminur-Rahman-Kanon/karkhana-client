@@ -1,0 +1,101 @@
+.defaultViewMain {
+    width: 100%;
+    margin: 20px auto;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.defaultViewItem1 {
+    width: 80%;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.defaultViewItem1E1 {
+    width: 65%;
+    height: 300px;
+    background-color: rgb(247, 246, 246);
+    margin: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.defaultViewItem2E2 {
+    width: 35%;
+    height: 300px;
+    margin: 5px;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.defaultViewItem2Content {
+    width: 100%;
+    height: 140px;
+    background-color: rgb(247, 246, 246);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.blogSpinner {
+    color: #cb8557;
+    font-size: 18px;
+}
+
+.defaultViewBottom {
+    width: 80%;
+    margin: 20px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.defaultViewBottomItem1 {
+    width: 65%;
+    margin: 5px;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.BottomContent {
+    width: 100%;
+    height: 200px;
+    margin: 5px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(247, 246, 246);
+}
+
+.defaultViewBottomItem2 {
+    width: 35%;
+    margin: 5px;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+@media (max-width: 992px) {
+    .defaultViewItem1, .defaultViewBottom {
+        width: 90%;
+        flex-flow: column;
+    }
+    .defaultViewItem1E1, .defaultViewItem2E2 {
+        width: 100%;
+    }
+
+    .defaultViewBottomItem1, .defaultViewBottomItem2 {
+        width: 100%;
+    }
+}

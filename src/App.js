@@ -16,7 +16,7 @@ import { disableScroll } from './Pages/Others/HelperFunction/helperFunction';
 import Checkout from './Pages/Checkout/checkout';
 import ForgotPassword from './Pages/Login/ForgotPassword/forgotPassword';
 import AboutUs from './Pages/AboutUs/aboutUs';
-
+import Blog from './Pages/Blog/blog';
 
 export const ContextApi = createContext(null);
 
@@ -59,8 +59,6 @@ function App() {
     setBackdrop(true);
   }
 
-  console.log(products);
-
   return (
     <div className="App">
       <ContextApi.Provider value={{cartItem, setCartItem, products}} >
@@ -78,6 +76,7 @@ function App() {
           <Route path='/shopping-cart' element={<DisplayCart />} />
           <Route path="/checkout" element={<Checkout />} />
           <Route path='/about-us' element={<AboutUs />} />
+          <Route path='/blog' element={<Blog />} />
           <Route path="*" element={<h1>404</h1>}/>
         </Routes>
         <Footer />

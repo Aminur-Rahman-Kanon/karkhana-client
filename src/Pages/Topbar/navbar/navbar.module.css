@@ -88,7 +88,6 @@
     transform: translate(66%, 14%);
     width: 900px;
     height: 250px;
-    /* padding: 10px 0; */
     box-sizing: border-box;
     display: none;
     flex-wrap: wrap;
@@ -139,7 +138,6 @@
     margin-right: 10px;
 }
 
-
 @media (max-width: 1045px) {
     .navBarMain {
         flex-flow: column;
@@ -183,9 +181,11 @@
         order: 2;
         margin-left: 20px;
     }
+
     .navElements:nth-child(2){
         order: 1;
     }
+
     .navElements:nth-child(3){
         order: 3;
         margin-left: 20px;
@@ -231,7 +231,7 @@
     }
 
     .childNavList:hover {
-        
+        box-shadow: unset;
     }
 
     .childNavImg {
