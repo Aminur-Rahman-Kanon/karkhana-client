@@ -81,7 +81,7 @@ function aboutUs() {
                     </div>
 
                     <div className={`${styles.teamMemberDetails} ${styles.details2}`}>
-                        <h3 className={styles.teamMemberDetailsH3}>OUR VISSION</h3>
+                        <h3 className={styles.teamMemberDetailsH3}>OUR VISION</h3>
                         <p className={styles.bottomPartP}>Cupidatat et pariatur quis dolor consectetur amet amet cillum sint elit ut enim.Quis cupidatat est ad eiusmod.Enim dolor ut in dolor laborum non exercitation occaecat laborum occaecat fugiat in laborum exercitation.Mollit dolore amet sit officia.</p>
                     </div>
                 </div>
