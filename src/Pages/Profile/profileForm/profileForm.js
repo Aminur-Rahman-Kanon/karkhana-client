@@ -129,7 +129,6 @@ const ProfileForm = ({formType, user}) => {
             method: 'POST',
             body: formData
         }).then(res => res.json()).then(data => {
-            console.log(data);
             if (data.status === 'success'){
                 setSpinner(false);
                 setStatus(data.status);
