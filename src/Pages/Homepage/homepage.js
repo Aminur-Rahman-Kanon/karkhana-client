@@ -39,7 +39,7 @@ const Homepage = () => {
     const cartItemStorage = sessionStorage.getItem('cart') ? JSON.parse(sessionStorage.getItem('cart')) : null;
 
     useEffect(() => {
-        fetch('http://localhost:8000/products/initial-display').then(res => res.json()).then(result => {
+        fetch('https://karkhana-server.onrender.com/products/initial-display').then(res => res.json()).then(result => {
             if (result.status === 'success'){
                 setFeaturedProducts(result.data.featuredItem);
                 setExclusiveProducts(result.data.exclusiveItem)
