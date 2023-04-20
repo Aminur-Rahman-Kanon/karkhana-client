@@ -39,12 +39,12 @@ const Homepage = () => {
     const cartItemStorage = sessionStorage.getItem('cart') ? JSON.parse(sessionStorage.getItem('cart')) : null;
 
     useEffect(() => {
-        fetch('https://karkhana-server.onrender.com/products/initial-display').then(res => res.json()).then(result => {
+        fetch('http://localhost:8000/products/initial-display').then(res => res.json()).then(result => {
             if (result.status === 'success'){
-                setFeaturedProducts(result.data.featured);
-                setExclusiveProducts(result.data.exclusive)
-                setTrendingProducts(result.data.trending);
-                setTopSeller(result.data.topSeller)
+                setFeaturedProducts(result.data.featuredItem);
+                setExclusiveProducts(result.data.exclusiveItem)
+                setTrendingProducts(result.data.trendingItem);
+                setTopSeller(result.data.topSellerItem)
             }
         }).catch(err => console.log(err))
     }, [])
@@ -95,6 +95,8 @@ const Homepage = () => {
                 <div className={styles.defaultExclusiveLink}></div>
             </div>
     </div>;
+
+    console.log(featuredProducts)
 
     if (featuredProducts.length) {
         displayFeaturedProducts = featuredProducts.map(products => {
