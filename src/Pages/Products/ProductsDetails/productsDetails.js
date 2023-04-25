@@ -135,7 +135,7 @@ const ProductsDetails = () => {
     if (relatedItem.length){
         relatedProducts = relatedItem.map(products => {
             return <div key={products._id} className={styles.relatedProduct}>
-                <a href={`https://karkhana.onrender.com/products/${products.category}/${products.name}`} className={styles.relatedProductLink}>
+                <a href={`/products/${products.category}/${products.name}`} className={styles.relatedProductLink}>
                     <div className={styles.relatedProductImgContainer}>
                         <img src={products.img} alt={products.name} className={styles.relatedProductImg}/>
                     </div>
@@ -149,7 +149,7 @@ const ProductsDetails = () => {
 
         otherProducts = relatedItem.slice(-8).map(products => {
             return <div key={products._id} className={styles.relatedProduct}>
-                <a href={`https://karkhana.onrender.com/products/${products.category}/${products.name}`} className={styles.relatedProductLink}>
+                <a href={`/products/${products.category}/${products.name}`} className={styles.relatedProductLink}>
                     <div className={styles.relatedProductImgContainer}>
                         <img src={products.img} alt={products.name} className={styles.relatedProductImg}/>
                     </div>

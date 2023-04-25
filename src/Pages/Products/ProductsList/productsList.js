@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import styles from './productsList.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpinner, faCartShopping } from '@fortawesome/free-solid-svg-icons'
+import { faSpinner } from '@fortawesome/free-solid-svg-icons'
 import Backdrop from "../../Others/Backdrop/backdrop";
 import Modal from '../../Others/Modal/modal';
 import ReactPaginate from 'react-paginate';
@@ -50,8 +50,6 @@ const ProductsList = () => {
     else {
         pageCount = Math.ceil(products.length / itemPerPage);
     }
-
-    const productsHeader = params.productId && params.productId.split('-').join(' ');
 
     const handlePageClick = (event) => {
         if (filteredProducts.length){
@@ -229,12 +227,12 @@ const ProductsList = () => {
                     <div className={styles.categoryType}>
                         <h2 className={styles.categoryH2}>Categories</h2>
                         <ul className={styles.sidebarLists}>
-                            <a href="/products/bracelet" className={styles.sidebarLink}><li className={params.productId === 'bracelet' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Bracelets</li></a>
-                            <a href="/products/finger-rings" className={styles.sidebarLink}><li className={params.productId === 'finger-rings' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Finger Rings</li></a>
-                            <a href="/products/ear-rings" className={styles.sidebarLink}><li className={params.productId === 'ear-rings' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Ear Rings</li></a>
-                            <a href="/products/necklace" className={styles.sidebarLink}><li className={params.productId === 'necklace' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Necklace</li></a>
-                            <a href="/products/toe-rings" className={styles.sidebarLink}><li className={params.productId === 'toe-rings' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Toe Ring</li></a>
-                            <a href="/products/others" className={styles.sidebarLink}><li className={params.productId === 'others' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Others</li></a>
+                            <a href="/products/Bracelet" className={styles.sidebarLink}><li className={params.productId === 'Bracelet' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Bracelets</li></a>
+                            <a href="/products/Finger Ring" className={styles.sidebarLink}><li className={params.productId === 'Finger Ring' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Finger Rings</li></a>
+                            <a href="/products/Ear Ring" className={styles.sidebarLink}><li className={params.productId === 'Ear Ring' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Ear Rings</li></a>
+                            <a href="/products/Necklace" className={styles.sidebarLink}><li className={params.productId === 'Necklace' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Necklace</li></a>
+                            <a href="/products/Toe Ring" className={styles.sidebarLink}><li className={params.productId === 'Toe Ring' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Toe Ring</li></a>
+                            <a href="/products/Other" className={styles.sidebarLink}><li className={params.productId === 'Other' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Others</li></a>
                         </ul>
                     </div>
 
@@ -262,7 +260,7 @@ const ProductsList = () => {
                 </div>
 
                 <div className={styles.ProductsLists}>
-                    <h2 className={styles.productHeader}>{products.length ? productsHeader : null}</h2>
+                    <h2 className={styles.productHeader}>{products.length ? params.productId : null}</h2>
                     <div className={styles.productsDisplayContainer}>
                         {defaultView}
                     </div>
