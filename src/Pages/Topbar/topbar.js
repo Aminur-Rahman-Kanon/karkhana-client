@@ -113,7 +113,7 @@ const Topbar = ({toggleSidedrawer}) => {
                         <div className={styles.searchInputResultContainer} style={searchInput.length ? {display: 'flex'}: {display: 'none'}}>
                             {searchResult.length > 0 ? searchResult.map(item => <a href={`/products/${item.category}/${item.name}`} key={item._id} className={styles.searchResultItem}>
                                 <div className={styles.searchResultImgContainer}>
-                                    <img src={item.img} alt={item.name} className={styles.searchResultImg}/>
+                                    <img src={item.img[0]} alt={item.name} className={styles.searchResultImg}/>
                                 </div>
                                 <div className={styles.searchRsultDetails}>
                                     <h4 className={styles.searchResultHeading}>{item.name}</h4>

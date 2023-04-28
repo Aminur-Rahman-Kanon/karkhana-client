@@ -7,7 +7,7 @@ const Spinner = ({spinner}) => {
 
     return (
         <div className={styles.spinner}>
-            <SpinnerDotted size={70} thickness={100} speed={100} color="#d0b09b" secondaryColor="rgba(0, 0, 0, 0.44)" />
+            <SpinnerDotted size={70} thickness={100} speed={100} color="#d0b09b" secondarycolor="rgba(0, 0, 0, 0.44)" />
             <p className={styles.spinnerP}>Please wait</p>
         </div>
     )

@@ -41,6 +41,7 @@ const Homepage = () => {
     useEffect(() => {
         fetch('https://karkhana-server.onrender.com/products/initial-display').then(res => res.json()).then(result => {
             if (result.status === 'success'){
+                console.log(result)
                 setFeaturedProducts(result.data.featuredItem);
                 setExclusiveProducts(result.data.exclusiveItem)
                 setTrendingProducts(result.data.trendingItem);
@@ -101,7 +102,7 @@ const Homepage = () => {
             return <div key={products._id} className={styles.featuredProductsItem}>
                 <a href={`/products/Featured/${products.name}`} className={styles.featuredProductLink}>
                     <div className={styles.productsImgContainer}>
-                        <img src={products.img} alt={products.name} className={styles.productsImg}/>
+                        <img src={products.img[0]} alt={products.name} className={styles.productsImg}/>
                     </div>
                     <div className={styles.addToCartContainer} onClick={(e) => addToCart(e, context, cartItemStorage, products, 1) }>
                         <FontAwesomeIcon icon={faCartShopping} className={styles.shoppingIcon}/>
@@ -120,7 +121,7 @@ const Homepage = () => {
             return <div key={products._id} className={styles.featuredProductsItem}>
                 <a href={`/products/Trending/${products.name}`} className={styles.featuredProductLink}>
                     <div className={styles.productsImgContainer}>
-                        <img src={products.img} alt={products.name} className={styles.productsImg}/>
+                        <img src={products.img[0]} alt={products.name} className={styles.productsImg}/>
                         <div className={styles.addToCartContainer} onClick={(e) => addToCart(e, context, cartItemStorage, products, 1) }>
                             <FontAwesomeIcon icon={faCartShopping} className={styles.shoppingIcon}/>
                             <p className={styles.shoppingP}>Add To Cart</p>
@@ -140,7 +141,7 @@ const Homepage = () => {
             return <div key={products._id} className={styles.featuredProductsItem}>
                 <a href={`/products/Top Seller/${products.name}`} className={styles.featuredProductLink}>
                     <div className={styles.productsImgContainer}>
-                        <img src={products.img} alt={products.name} className={styles.productsImg}/>
+                        <img src={products.img[0]} alt={products.name} className={styles.productsImg}/>
                         <div className={styles.addToCartContainer} onClick={(e) => addToCart(e, context, cartItemStorage, products, 1) }>
                             <FontAwesomeIcon icon={faCartShopping} className={styles.shoppingIcon}/>
                             <p className={styles.shoppingP}>Add To Cart</p>
@@ -168,7 +169,7 @@ const Homepage = () => {
         exclusiveItem = exclusiveProducts.map(exclusiveItem => {
             return <div key={exclusiveItem._id} className={styles.exclusiveItem}>
                 <div className={styles.exclusiveItemImgContainer}>
-                    <img src={exclusiveItem.img} alt={exclusiveItem.name} className={styles.exclusiveItemImg}/>
+                    <img src={exclusiveItem.img[0]} alt={exclusiveItem.name} className={styles.exclusiveItemImg}/>
                     <div className={styles.exclusiveItemHeader}>
                         <h2>{exclusiveItem.name}</h2>
                     </div>

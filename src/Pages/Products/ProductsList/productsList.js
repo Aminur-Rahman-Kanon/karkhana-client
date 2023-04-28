@@ -114,10 +114,10 @@ const ProductsList = () => {
             return <div key={item._id} className={styles.productsContainer} id={styles.loader}>
                     <a href={`/products/${params.productId}/${item.name}`} className={styles.productsLink}>
                         <div className={styles.productsImgContainer}>
-                            <img src={item.img} className={styles.productsImg}/>
+                            <img src={item.img[0]} className={styles.productsImg}/>
                         </div>
                         <div className={styles.productsName}>{item.name}</div>
-                        <div className={styles.productsPrice}>৳{item.price}</div>
+                        <div className={styles.productsPrice}>&#2547;{item.price}</div>
                     </a>
                 </div>
             });
@@ -133,10 +133,10 @@ const ProductsList = () => {
             return <div key={item._id} className={styles.productsContainer} id={styles.loader}>
                     <a href={`/products/${params.productId}/${item.name}`} className={styles.productsLink}>
                         <div className={styles.productsImgContainer}>
-                            <img src={item.img} className={styles.productsImg}/>
+                            <img src={item.img[0]} className={styles.productsImg}/>
                         </div>
                         <div className={styles.productsName}>{item.name}</div>
-                        <div className={styles.productsPrice}>৳{item.price}</div>
+                        <div className={styles.productsPrice}>&#2547;{item.price}</div>
                     </a>
                 </div>
             });

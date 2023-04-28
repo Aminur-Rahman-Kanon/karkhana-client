@@ -125,7 +125,7 @@ const ProfileForm = ({formType, user}) => {
         formData.append("data", JSON.stringify(userData))
 
         
-        await fetch('https://karkhana-server.onrender.com/update-profile', {
+        await fetch('http://localhost:8000/update-profile', {
             method: 'POST',
             body: formData
         }).then(res => res.json()).then(data => {

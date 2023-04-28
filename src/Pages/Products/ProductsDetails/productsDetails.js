@@ -21,6 +21,8 @@ const ProductsDetails = () => {
 
     const [item, setItem] = useState([]);
 
+    const [addImg, setAddImg] = useState(0);
+
     const [relatedItem, setRelatedItem] = useState([]);
 
     const [status, setStatus] = useState('');
@@ -74,8 +76,17 @@ const ProductsDetails = () => {
 
     if (item.length){
         displayProduct = <div className={styles.displayProductContainer}>
-        <div className={styles.displayProductImgContainer}>
-            <img src={item[0].img} alt={item[0].name} className={styles.displayProductImg}/>
+        <div className={styles.displayProductImgsContainer}>
+            <div className={styles.displayProductImgContainer}>
+                <img src={item[0].img[addImg]} alt={item[0].name} className={styles.displayProductImg}/>
+            </div>
+            <div className={styles.additionalImgsContainer}>
+                {item[0].img.map((img, index) => <div key={index}
+                                                      className={ addImg === index ? `${styles.additionalImgContainer} ${styles.addImgActive}` : styles.additionalImgContainer}
+                                                      onClick={() => setAddImg(index)}>
+                    <img src={img} alt={item[0].name} className={styles.additionalImg}/>
+                </div>)}
+            </div>
         </div>
 
         <div className={styles.sidePanelContainer}>
@@ -93,7 +104,7 @@ const ProductsDetails = () => {
                 <p className={styles.watchListP}>10 customers are watching this products</p>
             </div>
 
-            <div className={styles.productsDetails}><span className={styles.currency}>&#2547; </span>{item[0].price}</div>
+            <p className={styles.productsDetails}>&#2547;{item[0].price}</p>
             <div className={styles.availablity}>Item Available: {item[0].quantity ? item[0].quantity : 1}</div>
             <div className={styles.productDetailsContainer}>
                 <h2 className={styles.productHeader}>Details</h2>
@@ -137,11 +148,11 @@ const ProductsDetails = () => {
             return <div key={products._id} className={styles.relatedProduct}>
                 <a href={`/products/${products.category}/${products.name}`} className={styles.relatedProductLink}>
                     <div className={styles.relatedProductImgContainer}>
-                        <img src={products.img} alt={products.name} className={styles.relatedProductImg}/>
+                        <img src={products.img[0]} alt={products.name} className={styles.relatedProductImg}/>
                     </div>
                     <div className={styles.relatedProductDetailsContainer}>
                         <h3 className={styles.relatedProductDetailsHeader}>{products.name}</h3>
-                        <p className={styles.relatedProductDetailsP}>&#2547; {products.price}</p>
+                        <p className={styles.relatedProductDetailsP}>&#2547;{products.price}</p>
                     </div>
                 </a>
             </div>
@@ -151,11 +162,11 @@ const ProductsDetails = () => {
             return <div key={products._id} className={styles.relatedProduct}>
                 <a href={`/products/${products.category}/${products.name}`} className={styles.relatedProductLink}>
                     <div className={styles.relatedProductImgContainer}>
-                        <img src={products.img} alt={products.name} className={styles.relatedProductImg}/>
+                        <img src={products.img[0]} alt={products.name} className={styles.relatedProductImg}/>
                     </div>
                     <div className={styles.relatedProductDetailsContainer}>
                         <h3 className={styles.relatedProductDetailsHeader}>{products.name}</h3>
-                        <p className={styles.relatedProductDetailsP}>&#2547; {products.price}</p>
+                        <p className={styles.relatedProductDetailsP}>&#2547;{products.price}</p>
                     </div>
                 </a>
             </div>

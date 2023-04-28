@@ -25,7 +25,7 @@
 }
 
 .defaultImgContainer {
-    width: 60%;
+    width: 45%;
     height: 500px;
     background-color: rgb(238, 237, 237);
     border-radius: 5px;
@@ -74,7 +74,6 @@
     border-radius: 5px;
 }
 
-
 .displayProductContainer {
     width: 100%;
     padding: 5px;
@@ -84,19 +83,55 @@
     align-items: flex-start;
 }
 
-.displayProductImgContainer {
-    width: 50%;
-    /* height: 600px; */
+.displayProductImgsContainer {
+    width: 45%;
+    min-width: 500px;
     padding: 5px;
     box-sizing: border-box;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.displayProductImgContainer {
+    width: 100%;
+    height: 500px;
+}
+
+.displayProductImg {
+    width: 100%;
+    height: 100%;
+    border-radius: 5px;
+}
+
+.additionalImgsContainer {
+    width: 100%;
+    margin: 20px auto;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.displayProductImg {
+.additionalImgContainer {
+    width: 60px;
+    height: 60px;
+    border: 1px solid lightgray;
+    border-radius: 2px;
+    margin: 10px;
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.additionalImgContainer.addImgActive {
+    opacity: 1;
+    border: 1px solid transparent;
+    box-shadow: 0 0 12px 5px #ad6c4d;
+}
+
+.additionalImg {
     width: 100%;
-    border-radius: 5px;
+    height: 100%;
 }
 
 .sidePanelContainer {
@@ -413,6 +448,11 @@
         flex-flow: column;
     }
 
+    .displayProductImgsContainer {
+        width: 90%;
+        min-width: unset;
+    }
+
     .defaultImgContainer {
         width: 90%;
         height: 400px;
@@ -427,7 +467,12 @@
         align-items: center;
     }
 
-    .displayProductImgContainer, .defaultSidePanel {
+    .displayProductImgContainer {
+        width: 95%;
+        height: 600px;
+    }
+
+    .defaultSidePanel {
         width: 95%;
     }
 
@@ -484,13 +529,12 @@
     .displayProductImgContainer {
         width: 100%;
         padding: 0;
-        max-height: 450px;
+        max-height: 400px;
     }
 
     .displayProductImg {
         width: 100%;
         min-width: unset;
-        /* object-fit: cover; */
     }
 
     .sidePanelContainer {
@@ -519,6 +563,10 @@
 }
 
 @media (max-width: 432px) {
+
+    .displayProductImgsContainer {
+        width: 100%;
+    }
 
     .relatedProductImg {
         width: 90%;
