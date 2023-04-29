@@ -72,7 +72,7 @@ const ShoppingCart = () => {
                 {Object.values(cartItems).map((item, index) => {
                     return <div key={index} className={styles.displayCartItem}>
                         <div className={styles.displayCartItemImgContainer}>
-                            <img src={item[0].img} alt={item[0].name} className={styles.displayCartItemImg}/>
+                            <img src={`data:image/jpeg;base64, ${item[0].img[0].data}`} alt={item[0].name} className={styles.displayCartItemImg}/>
                          </div>   
                         <div className={styles.displayCartItemDetails}>
                             <h5 className={styles.displayCartItemName}>{item[0].name}</h5>

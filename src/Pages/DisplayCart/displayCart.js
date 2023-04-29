@@ -45,7 +45,7 @@ const DisplayCart = () => {
         displayShoppingItems = Object.values(items).map(item => {
             return <div key={item[0]._id} className={styles.displayCartItem}>
                 <div className={styles.displayCartImgContainer}>
-                    <img src={item[0].img} alt={item[0].name} className={styles.displayCartImg} />
+                    <img src={`data:image/jpeg;base64, ${item[0].img[0].data}`} alt={item[0].name} className={styles.displayCartImg} />
                     <div className={styles.displayCartImgDetails}>
                         <p className={styles.displayCartP}>{item[0].name}</p>
                         <p className={styles.displayCartP}>&#2547;{item[0].price} / Item</p>
