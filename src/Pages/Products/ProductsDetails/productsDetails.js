@@ -80,13 +80,13 @@ const ProductsDetails = () => {
         displayProduct = <div className={styles.displayProductContainer}>
         <div className={styles.displayProductImgsContainer}>
             <div className={styles.displayProductImgContainer}>
-                <img src={`data:image/jpeg;base64,${item[0].img[addImg].data}`} alt={item[0].name} className={styles.displayProductImg}/>
+                <img src={item[0].img[addImg]} alt={item[0].name} className={styles.displayProductImg}/>
             </div>
             <div className={styles.additionalImgsContainer}>
                 {item[0].img.map((img, index) => <div key={index}
                                                       className={ addImg === index ? `${styles.additionalImgContainer} ${styles.addImgActive}` : styles.additionalImgContainer}
                                                       onClick={() => setAddImg(index)}>
-                    <img src={`data:image/jpeg;base64,${img.data}`} alt={item[0].name} className={styles.additionalImg}/>
+                    <img src={img} alt={item[0].name} className={styles.additionalImg}/>
                 </div>)}
             </div>
         </div>
@@ -150,7 +150,7 @@ const ProductsDetails = () => {
             return <div key={products._id} className={styles.relatedProduct}>
                 <a href={`/products/${products.category}/${products.name}`} className={styles.relatedProductLink}>
                     <div className={styles.relatedProductImgContainer}>
-                        <img src={`data:image/jpeg;base64, ${products.img[0].data}`} alt={products.name} className={styles.relatedProductImg}/>
+                        <img src={products.img[0]} alt={products.name} className={styles.relatedProductImg}/>
                     </div>
                     <div className={styles.relatedProductDetailsContainer}>
                         <h3 className={styles.relatedProductDetailsHeader}>{products.name}</h3>
@@ -164,7 +164,7 @@ const ProductsDetails = () => {
             return <div key={products._id} className={styles.relatedProduct}>
                 <a href={`/products/${products.category}/${products.name}`} className={styles.relatedProductLink}>
                     <div className={styles.relatedProductImgContainer}>
-                        <img src={`data:image/jpeg;base64, ${products.img[0].data}`} alt={products.name} className={styles.relatedProductImg}/>
+                        <img src={products.img[0]} alt={products.name} className={styles.relatedProductImg}/>
                     </div>
                     <div className={styles.relatedProductDetailsContainer}>
                         <h3 className={styles.relatedProductDetailsHeader}>{products.name}</h3>

@@ -35,7 +35,7 @@ function Checkout() {
             return <div key={item[0]._id} className={styles.orderDetailsItemContainer}>
                 <div className={styles.orderDetailsItem}>
                     <div className={styles.orderDetailsImgContainer}>
-                        <img src={`data:image/jpeg;base64, ${item[0].img[0].data}`} alt={item[0].name} className={styles.orderDetailsImg} />
+                        <img src={item[0].img[0]} alt={item[0].name} className={styles.orderDetailsImg} />
                     </div>
 
                     <div className={styles.orderDetailsSummaryContainer}>

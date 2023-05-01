@@ -29,6 +29,7 @@ const Topbar = ({toggleSidedrawer}) => {
         startTransition(() => {
             if (searchInput.length){
                 const result = searchInput.length && context.products.filter(item => item.name.toLowerCase().slice(0, searchInput.length) === searchInput.toLowerCase());
+                console.log(result);
                 if (result.length){
                     setSearchResult(result);
                     setNoItemFound(true);
@@ -115,7 +116,7 @@ const Topbar = ({toggleSidedrawer}) => {
                         <div className={styles.searchInputResultContainer} style={searchInput.length ? {display: 'flex'}: {display: 'none'}}>
                             {searchResult.length > 0 ? searchResult.map(item => <a href={`/products/${item.category}/${item.name}`} key={item._id} className={styles.searchResultItem}>
                                 <div className={styles.searchResultImgContainer}>
-                                    <img src={`data:image/jpeg;base64,${item.img[0].data}`} alt={item.name} className={styles.searchResultImg}/>
+                                    <img src={item.img[0]} alt={item.name} className={styles.searchResultImg}/>
                                 </div>
                                 <div className={styles.searchRsultDetails}>
                                     <h4 className={styles.searchResultHeading}>{item.name}</h4>

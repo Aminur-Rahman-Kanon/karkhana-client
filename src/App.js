@@ -30,8 +30,10 @@ function App() {
 
   const [products, setProducts] = useState([]);
 
+  console.log(products);
+
   useEffect(() => {
-    fetch('https://karkhana-server.onrender.com/products/get-products').then(res => res.json())
+    fetch('http://localhost:8000/products/get-products').then(res => res.json())
     .then(result => {
       if (result.status === 'success'){
         setProducts(result.data);
