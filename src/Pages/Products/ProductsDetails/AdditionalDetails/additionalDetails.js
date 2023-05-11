@@ -191,15 +191,12 @@ const AdditionalDetails = () => {
     }
 
     const displayItemHanlder = (item) => {
-        console.log('working');
         if (window.screen.width <= 992){
             if (displayItem === item && infoDisplayToggle === item){
-                console.log('foo');
                 setDisplayItem('');
                 setInfoDisplayToggle('');
             }
             else {
-                console.log('bar');
                 setDisplayItem(item);
                 setInfoDisplayToggle(item);
                 detailsIntoView(item);

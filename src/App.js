@@ -17,6 +17,7 @@ import Checkout from './Pages/Checkout/checkout';
 import ForgotPassword from './Pages/Login/ForgotPassword/forgotPassword';
 import AboutUs from './Pages/AboutUs/aboutUs';
 import Blog from './Pages/Blog/blog';
+import { useQuery } from 'react-query';
 
 export const ContextApi = createContext(null);
 
@@ -28,18 +29,10 @@ function App() {
 
   const [cartItem, setCartItem] = useState(0);
 
-  const [products, setProducts] = useState([]);
-
-  console.log(products);
-
-  useEffect(() => {
-    fetch('http://localhost:8000/products/get-products').then(res => res.json())
-    .then(result => {
-      if (result.status === 'success'){
-        setProducts(result.data);
-      }
-    }).catch(err => console.log(err));
-  }, [])
+  const { data, isLoading, isError, error } = useQuery(['data'], async () => {
+    const data = await fetch('http://localhost:8000/products').then(res => res.json()).then(result => result.data);
+    return data;
+  }, { staleTime: 60000 })
 
   useEffect(() => {
     if (backdrop) {
@@ -63,7 +56,7 @@ function App() {
 
   return (
     <div className="App">
-      <ContextApi.Provider value={{cartItem, setCartItem, products}} >
+      <ContextApi.Provider value={{cartItem, setCartItem, data}} >
         <Backdrop backdrop={ backdrop } toggleBackdrop={ closeSidedrawer }/>
         <Topbar toggleSidedrawer={ openSideDrawer }/>
         <Sidedrawer sidedrawer={sidedrawer}/>

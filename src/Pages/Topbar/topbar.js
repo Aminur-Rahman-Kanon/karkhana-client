@@ -13,6 +13,8 @@ const Topbar = ({toggleSidedrawer}) => {
 
     const context = useContext(ContextApi);
 
+    const [products, setProducts] = useState([]);
+
     const [searchInput, setSearchInput] = useState('');
 
     const [searchResult, setSearchResult] = useState([]);
@@ -23,13 +25,21 @@ const Topbar = ({toggleSidedrawer}) => {
 
     const [backdrop, setBackdrop] = useState(false);
 
-    console.log(context.products);
+    useEffect(() => {
+        if (context.data !== undefined){
+            const copiedData = {...context.data}
+            if (copiedData.hasOwnProperty('blog')){
+                delete copiedData['blog'];
+                const dataToSave = Object.values(copiedData).flat();
+                setProducts(dataToSave);
+            }
+        }
+    }, [ context.data ])
 
     useEffect(() => {
         startTransition(() => {
-            if (searchInput.length){
-                const result = searchInput.length && context.products.filter(item => item.name.toLowerCase().slice(0, searchInput.length) === searchInput.toLowerCase());
-                console.log(result);
+            if (searchInput.length && products.length){
+                const result = searchInput.length && products.filter(item => item.name.toLowerCase().slice(0, searchInput.length) === searchInput.toLowerCase());
                 if (result.length){
                     setSearchResult(result);
                     setNoItemFound(true);
@@ -114,7 +124,7 @@ const Topbar = ({toggleSidedrawer}) => {
                             <p className={styles.itemCounter}>{`${searchResult.length} item found`}</p>
                         </div>
                         <div className={styles.searchInputResultContainer} style={searchInput.length ? {display: 'flex'}: {display: 'none'}}>
-                            {searchResult.length > 0 ? searchResult.map(item => <a href={`/products/${item.category}/${item.name}`} key={item._id} className={styles.searchResultItem}>
+                            {searchResult.length > 0 ? searchResult.map(item => <a href={`/products/${item.category.split(' ').join('').toLowerCase()}/${item.name}`} key={item._id} className={styles.searchResultItem}>
                                 <div className={styles.searchResultImgContainer}>
                                     <img src={item.img[0]} alt={item.name} className={styles.searchResultImg}/>
                                 </div>

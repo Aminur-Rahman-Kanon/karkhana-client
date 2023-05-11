@@ -1,19 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router-dom";
 import styles from './productsList.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSpinner } from '@fortawesome/free-solid-svg-icons'
+import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 import Backdrop from "../../Others/Backdrop/backdrop";
 import Modal from '../../Others/Modal/modal';
 import ReactPaginate from 'react-paginate';
 import Slider from 'react-rangeslider';
-import 'react-rangeslider/lib/index.css'
+import 'react-rangeslider/lib/index.css';
 import { disableScroll } from "../../Others/HelperFunction/helperFunction";
+import { ContextApi } from "../../../App";
 import './slider.css';
 
 const ProductsList = () => {
 
-    const params = useParams();
+    const context = useContext(ContextApi);
+
+    const productId = useParams().productId;
 
     const [sidebar, setSidebar] = useState(false);
 
@@ -62,34 +65,28 @@ const ProductsList = () => {
         }
     }
 
-    useEffect(() => {
-        window.scrollTo(0, 0);
-        if (params.hasOwnProperty("productId")){
-            fetch(`https://karkhana-server.onrender.com/products/${params.productId}`)
-            .then(res => res.json())
-            .then(result => {
-                if (result.status === 'success'){
-                    setProducts(result.data);
-                }
-                else {
-                    setStatus(result.status);
-                    setModal(true);
-                }
-            })
-            .catch(err => {
-                setError(true);
-                setModal(true);
-            });
-        }
-    }, [])
 
     useEffect(() => {
         window.scrollTo(0, 0);
-    }, [itemOffset, filteredProducts.length])
+        if (context.data !== undefined){
+            const product = context.data[productId] !== undefined ? context.data[productId] : [];
+            if (product.length){
+                setProducts(product);
+                setStatus('success');
+            }
+            else {
+                setStatus('not found');
+            }
+        }
+    }, [context.data] );
+
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, [itemOffset, filteredProducts.length]);
 
     useEffect(() => {
         if (backdrop){
-            disableScroll()
+            disableScroll();
         }
         else {
             window.onscroll = () => {
@@ -112,7 +109,7 @@ const ProductsList = () => {
         if (!itemNotFound &&filteredProducts.length){
             defaultView = filteredProducts.slice(itemOffset, endOffset).map(item => {
             return <div key={item._id} className={styles.productsContainer} id={styles.loader}>
-                    <a href={`/products/${params.productId}/${item.name}`} className={styles.productsLink}>
+                    <a href={`/products/${productId}/${item.name}`} className={styles.productsLink}>
                         <div className={styles.productsImgContainer}>
                             <img src={item.img[0]} className={styles.productsImg}/>
                         </div>
@@ -131,7 +128,7 @@ const ProductsList = () => {
         else {
             defaultView = products.slice(itemOffset, endOffset).map(item => {
             return <div key={item._id} className={styles.productsContainer} id={styles.loader}>
-                    <a href={`/products/${params.productId}/${item.name}`} className={styles.productsLink}>
+                    <a href={`/products/${productId}/${item.name}`} className={styles.productsLink}>
                         <div className={styles.productsImgContainer}>
                             <img src={item.img[0]} className={styles.productsImg}/>
                         </div>
@@ -142,9 +139,7 @@ const ProductsList = () => {
             });
         }
     }
-
     else if(status === 'not found') {
-        console.log(status);
         defaultView = <div className={styles.fallbackContainer}>
             <h2 className={styles.fallbackHeader}>Nothing found</h2>
         </div>
@@ -153,7 +148,6 @@ const ProductsList = () => {
     const filterItem = () => {
         if (priceFrom && priceTo) {
             const filteredData = products.filter(item => Number(item.price) >= priceFrom && Number(item.price) <= priceTo);
-            console.log(filteredData);
             if (filteredData.length){
                 setItemNotFound(false)
                 setFilteredProducts(filteredData);
@@ -185,7 +179,7 @@ const ProductsList = () => {
     const closeSidebar = () => {
         if (sidebar){
             setSidebar(false);
-            setBackdrop(false)
+            setBackdrop(false);
         }
         else {
             setBackdrop(false);
@@ -227,12 +221,12 @@ const ProductsList = () => {
                     <div className={styles.categoryType}>
                         <h2 className={styles.categoryH2}>Categories</h2>
                         <ul className={styles.sidebarLists}>
-                            <a href="/products/Bracelet" className={styles.sidebarLink}><li className={params.productId === 'Bracelet' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Bracelets</li></a>
-                            <a href="/products/Finger Ring" className={styles.sidebarLink}><li className={params.productId === 'Finger Ring' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Finger Rings</li></a>
-                            <a href="/products/Ear Ring" className={styles.sidebarLink}><li className={params.productId === 'Ear Ring' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Ear Rings</li></a>
-                            <a href="/products/Necklace" className={styles.sidebarLink}><li className={params.productId === 'Necklace' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Necklace</li></a>
-                            <a href="/products/Toe Ring" className={styles.sidebarLink}><li className={params.productId === 'Toe Ring' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Toe Ring</li></a>
-                            <a href="/products/Other" className={styles.sidebarLink}><li className={params.productId === 'Other' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Others</li></a>
+                            <a href="/products/Bracelet" className={styles.sidebarLink}><li className={productId === 'Bracelet' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Bracelets</li></a>
+                            <a href="/products/Finger Ring" className={styles.sidebarLink}><li className={productId === 'Finger Ring' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Finger Rings</li></a>
+                            <a href="/products/Ear Ring" className={styles.sidebarLink}><li className={productId === 'Ear Ring' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Ear Rings</li></a>
+                            <a href="/products/Necklace" className={styles.sidebarLink}><li className={productId === 'Necklace' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Necklace</li></a>
+                            <a href="/products/Toe Ring" className={styles.sidebarLink}><li className={productId === 'Toe Ring' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Toe Ring</li></a>
+                            <a href="/products/Other" className={styles.sidebarLink}><li className={productId === 'Other' ? `${styles.sidebarList} ${styles.active}` : styles.sidebarList}>Others</li></a>
                         </ul>
                     </div>
 
@@ -260,7 +254,7 @@ const ProductsList = () => {
                 </div>
 
                 <div className={styles.ProductsLists}>
-                    <h2 className={styles.productHeader}>{products.length ? params.productId : null}</h2>
+                    <h2 className={styles.productHeader}>{products.length ? products[0].category : null}</h2>
                     <div className={styles.productsDisplayContainer}>
                         {defaultView}
                     </div>

@@ -16,12 +16,12 @@ import { addToCart } from "../Others/HelperFunction/helperFunction";
 
 
 const itemCategories = [
-    {item: 1, img: bracelet, name: 'Bracelet'},
-    {item: 2, img: others, name: 'Other'},
-    {item: 3, img: fingerRing, name: 'Finger Ring'},
-    {item: 4, img: earRing, name: 'Ear Ring'},
-    {item: 5, img: necklace, name: 'Necklace'},
-    {item: 6, img: toeRing, name: 'Toe Ring'},
+    {item: 1, img: bracelet, routeName: 'bracelet', name: 'Bracelet'},
+    {item: 2, img: others, routeName: 'other', name: 'Others'},
+    {item: 3, img: fingerRing, routeName: 'fingerring', name: 'Finger Rings'},
+    {item: 4, img: earRing, routeName: 'earring', name: 'Ear Rings'},
+    {item: 5, img: necklace, routeName: 'necklace', name: 'Necklaces'},
+    {item: 6, img: toeRing, routeName: 'toering', name: 'Toe Rings'},
 ]
 
 const Homepage = () => {
@@ -39,16 +39,13 @@ const Homepage = () => {
     const cartItemStorage = sessionStorage.getItem('cart') ? JSON.parse(sessionStorage.getItem('cart')) : null;
 
     useEffect(() => {
-        fetch('https://karkhana-server.onrender.com/products/initial-display').then(res => res.json()).then(result => {
-            if (result.status === 'success'){
-                console.log(result)
-                setFeaturedProducts(result.data.featuredItem);
-                setExclusiveProducts(result.data.exclusiveItem)
-                setTrendingProducts(result.data.trendingItem);
-                setTopSeller(result.data.topSellerItem)
-            }
-        }).catch(err => console.log(err))
-    }, [])
+        if (context.data !== undefined){
+            setFeaturedProducts(context.data.featured);
+            setExclusiveProducts(context.data.exclusive)
+            setTrendingProducts(context.data.trending);
+            setTopSeller(context.data.topseller);
+        }
+    }, [context.data])
 
     let displayFeaturedProducts = Array.from(Array(6).keys()).map(item => {
         return <div key={item} className={styles.featuredProductsItem} id={styles.loader}>
@@ -100,7 +97,7 @@ const Homepage = () => {
     if (featuredProducts.length) {
         displayFeaturedProducts = featuredProducts.map(products => {
             return <div key={products._id} className={styles.featuredProductsItem}>
-                <a href={`/products/Featured/${products.name}`} className={styles.featuredProductLink}>
+                <a href={`/products/featured/${products.name}`} className={styles.featuredProductLink}>
                     <div className={styles.productsImgContainer}>
                         <img src={products.img[0]} alt={products.name} className={styles.productsImg}/>
                     </div>
@@ -110,7 +107,7 @@ const Homepage = () => {
                     </div>
                 </a>
                 <div className={styles.productDetails}>
-                    <a href={`/products/Featured/${products.name}`} className={styles.productsName}>{products.name}</a>
+                    <a href={`/products/featured/${products.name}`} className={styles.productsName}>{products.name}</a>
                     <p className={styles.productPrice}>	&#2547; {products.price}</p>
                 </div>
             </div>
@@ -119,7 +116,7 @@ const Homepage = () => {
     if (trendingProducts.length){
         trendingCategories = trendingProducts.map(products => {
             return <div key={products._id} className={styles.featuredProductsItem}>
-                <a href={`/products/Trending/${products.name}`} className={styles.featuredProductLink}>
+                <a href={`/products/trending/${products.name}`} className={styles.featuredProductLink}>
                     <div className={styles.productsImgContainer}>
                         <img src={products.img[0]} alt={products.name} className={styles.productsImg}/>
                         <div className={styles.addToCartContainer} onClick={(e) => addToCart(e, context, cartItemStorage, products, 1) }>
@@ -129,7 +126,7 @@ const Homepage = () => {
                     </div>
                 </a>
                 <div className={styles.productDetails}>
-                    <a href={`/products/Trending/${products.name}`} className={styles.productsName}>{products.name}</a>
+                    <a href={`/products/trending/${products.name}`} className={styles.productsName}>{products.name}</a>
                     <p className={styles.productPrice}>	&#2547; {products.price}</p>
                 </div>
             </div>
@@ -139,7 +136,7 @@ const Homepage = () => {
     if (topSeller.length){
         topSellers = topSeller.map(products => {
             return <div key={products._id} className={styles.featuredProductsItem}>
-                <a href={`/products/Top Seller/${products.name}`} className={styles.featuredProductLink}>
+                <a href={`/products/topseller/${products.name}`} className={styles.featuredProductLink}>
                     <div className={styles.productsImgContainer}>
                         <img src={products.img[0]} alt={products.name} className={styles.productsImg}/>
                         <div className={styles.addToCartContainer} onClick={(e) => addToCart(e, context, cartItemStorage, products, 1) }>
@@ -149,7 +146,7 @@ const Homepage = () => {
                     </div>
                 </a>
                 <div className={styles.productDetails}>
-                    <a href={`/products/Top Seller/${products.name}`} className={styles.productsName}>{products.name}</a>
+                    <a href={`/products/topseller/${products.name}`} className={styles.productsName}>{products.name}</a>
                     <p className={styles.productPrice}>	&#2547; {products.price}</p>
                 </div>
             </div>
@@ -157,7 +154,7 @@ const Homepage = () => {
     }
 
     let itemCategory = itemCategories.map(item => {
-        return <Link key={item.item} to={`/products/${item.name}`} className={styles.itemCategory}>
+        return <Link key={item.item} to={`/products/${item.routeName}`} className={styles.itemCategory}>
             <div className={styles.itemCategoryImgContainer}>
                 <img src={item.img} alt={item.name} className={styles.itemCategoryImg}/>
             </div>
@@ -178,7 +175,7 @@ const Homepage = () => {
                     <div className={styles.exclusiveItemP}>{exclusiveItem.details}</div>
                     <div className={styles.exclusiveItemPrice}>	&#2547; {exclusiveItem.price}</div>
                 </div>
-                <Link to={`/products/Exclusive/${exclusiveItem.name}`} className={styles.exclusiveLink}>SHOP NOW</Link>
+                <Link to={`/products/exclusive/${exclusiveItem.name}`} className={styles.exclusiveLink}>SHOP NOW</Link>
             </div>
         })
     }

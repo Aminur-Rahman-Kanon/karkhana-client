@@ -25,6 +25,8 @@ const ProductsDetails = () => {
 
     const [relatedItem, setRelatedItem] = useState([]);
 
+    const [otherItem, setOtherItem] = useState([]);
+
     const [status, setStatus] = useState('');
 
     const [error, setError] = useState(false);
@@ -38,13 +40,17 @@ const ProductsDetails = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
 
-        fetch(`https://karkhana-server.onrender.com/products/${productId}`)
-        .then(res => res.json()).then(data => {
-            if (data.status === 'success'){
+        if (context.data !== undefined){
+            const copiedData = {...context.data};
+            if (copiedData.hasOwnProperty('blog')){
+                delete copiedData.blog;
+            }
+
+            if (copiedData[productId] !== undefined){
                 const filteredItem = [];
                 const relatedItem = [];
-
-                data.data.map(item => {
+    
+                copiedData[productId].forEach(item => {
                     if (item.name === productDetails){
                         return filteredItem.push(item);
                     }
@@ -53,14 +59,18 @@ const ProductsDetails = () => {
                     }
                 })
 
+                const otherProducts = Object.values(copiedData).filter(item => item.name !== productId);
+
+                const otherFilteredProducts = otherProducts.map(product => {
+                    return product.shift();
+                })
+    
                 setItem(filteredItem);
                 setRelatedItem(relatedItem);
+                setOtherItem(otherFilteredProducts);
             }
-        })
-        .catch(err => console.log(err));
-    }, []);
-
-    console.log(item);
+        }
+    }, [ context.data ]);
 
     let displayProduct = <div className={styles.defaultProductContainer}>
         <div className={styles.defaultImgContainer}>
@@ -148,7 +158,7 @@ const ProductsDetails = () => {
     if (relatedItem.length){
         relatedProducts = relatedItem.map(products => {
             return <div key={products._id} className={styles.relatedProduct}>
-                <a href={`/products/${products.category}/${products.name}`} className={styles.relatedProductLink}>
+                <a href={`/products/${products.category.split(' ').join('').toLowerCase()}/${products.name}`} className={styles.relatedProductLink}>
                     <div className={styles.relatedProductImgContainer}>
                         <img src={products.img[0]} alt={products.name} className={styles.relatedProductImg}/>
                     </div>
@@ -160,9 +170,9 @@ const ProductsDetails = () => {
             </div>
         })
 
-        otherProducts = relatedItem.slice(-8).map(products => {
+        otherProducts = otherItem.map(products => {
             return <div key={products._id} className={styles.relatedProduct}>
-                <a href={`/products/${products.category}/${products.name}`} className={styles.relatedProductLink}>
+                <a href={`/products/${products.category.split(' ').join('').toLowerCase()}/${products.name}`} className={styles.relatedProductLink}>
                     <div className={styles.relatedProductImgContainer}>
                         <img src={products.img[0]} alt={products.name} className={styles.relatedProductImg}/>
                     </div>
