@@ -300,6 +300,7 @@
     .infoHeader.active {
         border-top: none;
         background-color: #f7f8f9;
+        border: 1px solid #e5e5e5;
     }
 
     .infoHeader::before {

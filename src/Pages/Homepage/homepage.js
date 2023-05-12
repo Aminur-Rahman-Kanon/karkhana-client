@@ -47,9 +47,9 @@ const Homepage = () => {
         }
     }, [context.data])
 
-    let displayFeaturedProducts = Array.from(Array(6).keys()).map(item => {
-        return <div key={item} className={styles.featuredProductsItem} id={styles.loader}>
-        <div className={styles.productsImgContainer}>
+    let displayFeaturedProducts = Array.from(Array(8).keys()).map(item => {
+        return <div key={item} className={styles.defaultProductsItem} id={styles.loader}>
+        <div className={styles.defaultImgContainer}>
             <FontAwesomeIcon icon={faSpinner} spinPulse className={styles.spinnerPulse} />
         </div>
         <div className={styles.loadingName}></div>
@@ -57,9 +57,9 @@ const Homepage = () => {
     </div>
     });
 
-    let topSellers = Array.from(Array(6).keys()).map(item => {
-        return <div key={item} className={styles.featuredProductsItem} id={styles.loader}>
-        <div className={styles.productsImgContainer}>
+    let topSellers = Array.from(Array(8).keys()).map(item => {
+        return <div key={item} className={styles.defaultProductsItem} id={styles.loader}>
+        <div className={styles.defaultImgContainer}>
             <FontAwesomeIcon icon={faSpinner} spinPulse className={styles.spinnerPulse} />
         </div>
         <div className={styles.loadingName}></div>
@@ -67,9 +67,9 @@ const Homepage = () => {
     </div>
     });
 
-    let trendingCategories = Array.from(Array(6).keys()).map(item => {
-        return <div key={item} className={styles.featuredProductsItem} id={styles.loader}>
-        <div className={styles.productsImgContainer}>
+    let trendingCategories = Array.from(Array(8).keys()).map(item => {
+        return <div key={item} className={styles.defaultProductsItem} id={styles.loader}>
+        <div className={styles.defaultImgContainer}>
             <FontAwesomeIcon icon={faSpinner} spinPulse className={styles.spinnerPulse} />
         </div>
         <div className={styles.loadingName}></div>

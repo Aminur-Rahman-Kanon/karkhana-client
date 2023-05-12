@@ -95,7 +95,7 @@ const Navbar = () => {
             <div className={styles.navElements}>
                 <ul className={styles.navElement} id={styles.rightElements}>
                     <li className={styles.navList}>
-                        <a href="/products/Featured" className={location === '/products/Featured' ? `${styles.navItem} ${styles.navActive}` : styles.navItem}>
+                        <a href="/products/featured" className={location === '/products/featured' ? `${styles.navItem} ${styles.navActive}` : styles.navItem}>
                             <FontAwesomeIcon icon={faHeart} className={styles.navIcon} />
                             <span className={styles.navP}>Featured</span>
                         </a>

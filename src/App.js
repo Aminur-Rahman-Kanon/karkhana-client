@@ -18,6 +18,8 @@ import ForgotPassword from './Pages/Login/ForgotPassword/forgotPassword';
 import AboutUs from './Pages/AboutUs/aboutUs';
 import Blog from './Pages/Blog/blog';
 import { useQuery } from 'react-query';
+import spinner from './Assets/spinner.gif';
+import logo from './Assets/logo.jpg';
 
 export const ContextApi = createContext(null);
 
@@ -30,9 +32,11 @@ function App() {
   const [cartItem, setCartItem] = useState(0);
 
   const { data, isLoading, isError, error } = useQuery(['data'], async () => {
-    const data = await fetch('http://localhost:8000/products').then(res => res.json()).then(result => result.data);
+    const data = await fetch('https://karkhana-server.onrender.com/products').then(res => res.json()).then(result => result.data);
     return data;
-  }, { staleTime: 60000 })
+  }, { staleTime: 180000 })
+
+  console.log(isLoading)
 
   useEffect(() => {
     if (backdrop) {
@@ -55,6 +59,16 @@ function App() {
   }
 
   return (
+    <>
+    <div className="spinner-container" style={ isLoading ? {display: 'flex'} : {display: 'none'}}>
+      <div className='logo-container'>
+        <img src={logo} alt="karkhana" className='spinner-container-logo'/>
+      </div>
+      <div className='spinner-effect-container'>
+        <img src={spinner} alt="karkhana" className='spinner-effect'/>
+        <p className='spinner-effect-p'>Loading...</p>
+      </div>
+    </div>
     <div className="App">
       <ContextApi.Provider value={{cartItem, setCartItem, data}} >
         <Backdrop backdrop={ backdrop } toggleBackdrop={ closeSidedrawer }/>
@@ -77,6 +91,7 @@ function App() {
         <Footer />
       </ContextApi.Provider>
     </div>
+    </>
   );
 }
 

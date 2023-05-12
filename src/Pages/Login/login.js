@@ -8,6 +8,7 @@ import Backdrop from "../Others/Backdrop/backdrop";
 import Modal from "../Others/Modal/modal";
 import { Link } from "react-router-dom";
 import Spinner from "../Others/Spinner/spinner";
+import google from '../../Assets/google.png';
 
 const Login = () => {
 
@@ -195,7 +196,7 @@ const Login = () => {
                         <FontAwesomeIcon icon={faFacebook} className={styles.otherLoginIcon}/>
                     </Link>
                     <Link to="" className={styles.otherLoginLink}>
-                        <FontAwesomeIcon icon={faGoogle} className={styles.otherLoginIcon}/>
+                        <img src={google} alt="google login" className={styles.glogin}/>
                     </Link>
                 </div>
 

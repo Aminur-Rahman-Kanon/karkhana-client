@@ -240,20 +240,14 @@
     margin: 0 15px;
 }
 
-.otherLoginLink:nth-child(2){
-    color: rgb(15, 157, 88);
-    margin: 0 15px;
-    border: 1px solid rgb(15, 157, 88);
-}
-
 .otherLoginLink:nth-child(1):hover {
     box-shadow: 0 0 12px 5px #3b5998;
     transform: scale(1.2);
 }
 
-.otherLoginLink:nth-child(2):hover {
-    box-shadow: 0 0 12px 5px rgb(15, 157, 88);
-    transform: scale(1.2);
+.glogin {
+    width: 30px;
+    height: 30px;
 }
 
 .otherOption {

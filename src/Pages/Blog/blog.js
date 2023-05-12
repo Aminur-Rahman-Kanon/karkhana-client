@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import styles from './blog.module.css';
 import DefaultView from './DefaultView/defaultView';
+import { ContextApi } from '../../App';
 
 function Blog() {
+
+    const context = useContext(ContextApi);
 
     const [blogs, setBlogs] = useState([]);
 
@@ -36,13 +39,10 @@ function Blog() {
 
     useEffect(() => {
         window.scrollTo(0, 0);
-        fetch('https://karkhana-server.onrender.com/get-blogs').then(res => res.json())
-        .then(data => {
-            if (data.status === 'success'){
-                setBlogs(data.data);
-            }
-        }).catch(err => console.log(err));
-    }, [])
+        if (context.data !== undefined){
+            setBlogs(context.data.blog);
+        }
+    }, [ context.data ])
 
     let primaryDisplayBlogs = null;
 

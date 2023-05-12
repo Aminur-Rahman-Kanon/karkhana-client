@@ -18,6 +18,7 @@
 
 .productsListContainer {
     width: 100%;
+    margin-top: 50px;
     padding: 5px;
     box-sizing: border-box;
     display: flex;
@@ -152,6 +153,7 @@
     /* padding: 10px; */
     box-sizing: border-box;
     display: flex;
+    flex-grow: 3;
     flex-flow: column;
     justify-content: center;
     align-items: center;
@@ -353,6 +355,10 @@
 @media (max-width: 900px) {
     .defaultItemContainer {
         width: 45%;
+    }
+
+    .productsListContainer {
+        margin-top: 15px!important;
     }
 
     .fallbackHeader {
