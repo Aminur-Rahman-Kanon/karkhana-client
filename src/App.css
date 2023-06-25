@@ -40,17 +40,16 @@ body {
   width: 200px;
   padding: 15px;
   box-sizing: border-box;
-  border-radius: 50%;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: #d0b09b;
+  border-radius: 50%;
 }
 
 .spinner-container-logo {
   width: 100%;
-  /* height: 100%; */
 }
 
 .spinner-effect-container {
@@ -58,6 +57,7 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  width: 300px;
   display: flex;
   flex-flow: column;
   justify-content: center;
@@ -65,10 +65,12 @@ body {
 }
 
 .spinner-effect {
-  width: 300px;
-  height: 300px;
+  width: 100%;
+  /* height: 300px; */
 }
 
 .spinner-effect-p {
-  margin: 10px;
+  margin: 10px 0 10px 10px;
+  letter-spacing: 1px;
+  font-weight: 600;
 }

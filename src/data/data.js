@@ -1,3 +1,10 @@
+import bracelet from '../Assets/bracelet.jpg';
+import others from '../Assets/nepali.jpg';
+import fingerRing from '../Assets/fingerRing.jpg';
+import earRing from '../Assets/earRing.jpg';
+import necklace from '../Assets/necklace.jpg';
+import toeRing from '../Assets/toeRing.jpg';
+
 export const states = ['Dhaka', 'Chattogram', 'Comilla', 'Savar', 'Gazipur', 'Sylhet', 'Khulna', 'Jhenaidah', 'Kushtia',
                'Khulna', 'Magura', 'Rajshahi', 'Barisal', 'Rangpur', 'Mymensingh', 'Munshiganj', 'Narayanganj',
                 'Narshindi', 'Kishoregonj', 'Coxs Bazar', 'Tangail', 'Manikgonj', 'Rajbari', 'Faridpur', 'Madaripur',
@@ -9,3 +16,12 @@ export const states = ['Dhaka', 'Chattogram', 'Comilla', 'Savar', 'Gazipur', 'Sy
                 'Borguna', 'Joypurhat'];
 
 export const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'Octaber', 'November', 'December'];
+
+export const itemCategories = [
+    {item: 1, img: bracelet, routeName: 'bracelet', name: 'Bracelet'},
+    {item: 2, img: others, routeName: 'other', name: 'Others'},
+    {item: 3, img: fingerRing, routeName: 'fingerring', name: 'Finger Rings'},
+    {item: 4, img: earRing, routeName: 'earring', name: 'Ear Rings'},
+    {item: 5, img: necklace, routeName: 'necklace', name: 'Necklaces'},
+    {item: 6, img: toeRing, routeName: 'toering', name: 'Toe Rings'},
+]

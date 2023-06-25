@@ -1,0 +1,45 @@
+.fallbackContainer {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.fallbackBtn {
+    text-decoration: none;
+    width: 200px;
+    height: 35px;
+    color: black;
+    border: 1px solid black;
+    background-color: white;
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.fallbackBtn:hover {
+    background-color: black;
+    color: white;
+}
+
+.logoContainer {
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #d0b09b;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    box-sizing: border-box;
+    margin: 30px auto;
+}
+
+.logo {
+    width: 100%;
+}

@@ -3,17 +3,27 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { BrowserRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
+import ErrorBoundary from './Components/ErrorBoundary/errorBoundary';
+import FallbackUI from './Components/ErrorBoundary/FallbackUI/fallbackUI';
+import { BrowserRouter } from 'react-router-dom';
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: false
+    }
+  }
+});
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <QueryClientProvider client={queryClient}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <ErrorBoundary fallbackUI={<FallbackUI />}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </ErrorBoundary>
   </QueryClientProvider>
 );
 
