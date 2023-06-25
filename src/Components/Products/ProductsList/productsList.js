@@ -10,6 +10,8 @@ import ReactSlider from 'react-slider';
 import { disableScroll } from "../../Others/HelperFunction/helperFunction";
 import { ContextProvider } from "../../Others/AuthContext/authContext";
 import './slider.css';
+import AddToCart from "../../Homepage/DisplayProducts/AddToCart/addToCart";
+import { ToastContainer } from "react-toastify";
 
 const ProductsList = () => {
 
@@ -38,6 +40,8 @@ const ProductsList = () => {
     const [itemOffset, setItemOffset] = useState(0);
 
     const [itemNotFound, setItemNotFound] = useState(false);
+
+    const cartItemStorage = sessionStorage.getItem('cart') ? JSON.parse(sessionStorage.getItem('cart')) : null;
 
     const itemPerPage = 9;
 
@@ -111,6 +115,9 @@ const ProductsList = () => {
                         <div className={styles.productsImgContainer}>
                             <img src={item.img[0]} alt={item.name} className={styles.productsImg}/>
                         </div>
+                        <div className={styles.addToCartContainer}>
+                            <AddToCart context={context} cartStorage={cartItemStorage} product={item} amount={1} />
+                        </div>
                         <div className={styles.productsName}>{item.name}</div>
                         <div className={styles.productsPrice}>&#2547;{item.price}</div>
                     </a>
@@ -129,6 +136,9 @@ const ProductsList = () => {
                     <a href={`/products/${productId}/${item.name}`} className={styles.productsLink}>
                         <div className={styles.productsImgContainer}>
                             <img src={item.img[0]} alt={item.name} className={styles.productsImg}/>
+                        </div>
+                        <div className={styles.addToCartContainer}>
+                            <AddToCart context={context} cartStorage={cartItemStorage} product={item} amount={1} />
                         </div>
                         <div className={styles.productsName}>{item.name}</div>
                         <div className={styles.productsPrice}>&#2547;{item.price}</div>
@@ -210,6 +220,7 @@ const ProductsList = () => {
         <Modal modal={modal}>
             {displayStatus}
         </Modal>
+        <ToastContainer autoClose={1500} limit={5} />
         <div className={styles.productsListMain}>
             <div className={styles.productsListContainer}>
                 <div className={styles.sidebarSwitcher} onClick={ openSidebar }>

@@ -116,7 +116,7 @@
     background-color: white;
     border: 1px solid lightgray;
     border-radius: 5px;
-    z-index: 100;
+    z-index: 500;
 }
 
 .shoppingCartContainer:hover .displayCartItemsContainer {

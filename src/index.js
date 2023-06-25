@@ -8,13 +8,7 @@ import ErrorBoundary from './Components/ErrorBoundary/errorBoundary';
 import FallbackUI from './Components/ErrorBoundary/FallbackUI/fallbackUI';
 import { BrowserRouter } from 'react-router-dom';
 
-const queryClient = new QueryClient({
-  defaultOptions: {
-    queries: {
-      retry: false
-    }
-  }
-});
+const queryClient = new QueryClient();
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

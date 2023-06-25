@@ -1,8 +1,6 @@
 import React from 'react';
 import styles from './displayProducts.module.css';
-import { addToCart } from '../../Others/HelperFunction/helperFunction';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartShopping } from '@fortawesome/free-solid-svg-icons';
+import AddToCart from './AddToCart/addToCart';
 
 function DisplayProducts ( { product, data, cartItem, route } ) {
 
@@ -12,9 +10,8 @@ function DisplayProducts ( { product, data, cartItem, route } ) {
         <a href={`/products/${route}/${products.name}`} className={styles.productLink}>
             <div className={styles.productsImgContainer}>
                 <img src={products.img[0]} alt={products.name} className={styles.productsImg}/>
-                <div className={styles.addToCartContainer} onClick={(e) => addToCart(e, data, cartItem, products, 1) }>
-                    <FontAwesomeIcon icon={faCartShopping} className={styles.shoppingIcon}/>
-                    <p className={styles.shoppingP}>Add To Cart</p>
+                <div className={styles.addToCartContainer}>
+                    <AddToCart data={data} cartItem={cartItem} products={products} amount={1}/>
                 </div>
             </div>
         </a>

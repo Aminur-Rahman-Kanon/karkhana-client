@@ -58,22 +58,22 @@ const Homepage = () => {
 
     if (featuredProducts.length) {
         displayFeatured = <DisplayProducts product={featuredProducts}
-                                                   data={context}
-                                                   cartItem={cartItemStorage}
-                                                   route={'featured'}/>
+                                            data={context}
+                                            cartStorage={cartItemStorage}
+                                            route={'featured'}/>
     }
     if (trendingProducts.length){
         displayTrending = <DisplayProducts product={trendingProducts}
-                                              data={context}
-                                              cartItem={cartItemStorage}
-                                              route={'trending'}/>
+                                            data={context}
+                                            cartStorage={cartItemStorage}
+                                            route={'trending'}/>
     }
 
     if (topSellerProducts.length){
         displayTopSeller = <DisplayProducts product={topSellerProducts}
-                                      data={context}
-                                      cartItem={cartItemStorage}
-                                      route={'topseller'}/>
+                                            data={context}
+                                            cartStorage={cartItemStorage}
+                                            route={'topseller'}/>
     }
 
     let itemCategory = itemCategories.map(item => {
