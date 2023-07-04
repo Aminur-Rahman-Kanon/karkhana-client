@@ -1,0 +1,27 @@
+.registerMain {
+    position: relative;
+    width: 100%;
+    margin: 30px auto 0;
+}
+
+.registerContainerBg {
+    width: 100%;
+    height: 950px;
+    background-image: url('../../../Assets/Register/register.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    filter: brightness(0.8);
+}
+
+@media (max-width: 768px) {
+    .displayStatusMsgBtn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 550px) {
+    .displayStatusMsgBtn {
+        width: 100%;
+    }
+}

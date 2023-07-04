@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
 
-export const addToCart = (e, context, cartStorage, item, amount) => {
+export const addToCart = (e, context, cartStorage, product, amount) => {
     e.preventDefault();
     //checking whether user logged in or not. If not then request to login
     const user = sessionStorage.getItem('user');
@@ -14,9 +14,9 @@ export const addToCart = (e, context, cartStorage, item, amount) => {
         //value will be an array storing the item as first element
         if (cartStorage === null) {
             const itemToStore = {};
-            itemToStore[item.name] = [];
+            itemToStore[product.name] = [];
             [...Array(amount).keys()].map(i => {
-                itemToStore[item.name].push(item);
+                itemToStore[product.name].push(product);
             });
             sessionStorage.setItem('cart', JSON.stringify(itemToStore));
             context.setCartItem(context.cartItem + 1);
@@ -25,18 +25,18 @@ export const addToCart = (e, context, cartStorage, item, amount) => {
         //then we store in the same array otherwise we create a new array and store it into the object
         else {
             //if similiar item exist in the sessionStorage
-            if (Object.keys(cartStorage).includes(item.name)) {
+            if (Object.keys(cartStorage).includes(product.name)) {
                 [...Array(amount).keys()].map(i => {
-                    cartStorage[item.name].push(item);
+                    cartStorage[product.name].push(product);
                 })
                 sessionStorage.setItem('cart', JSON.stringify(cartStorage));
                 context.setCartItem(context.cartItem + 1);
             }
             //new item to sessionStorage
             else {
-                cartStorage[item.name] = [];
+                cartStorage[product.name] = [];
                 [...Array(amount).keys()].map(i => {
-                    cartStorage[item.name].push(item);
+                    cartStorage[product.name].push(product);
                 })
                 sessionStorage.setItem('cart', JSON.stringify(cartStorage))
                 context.setCartItem(context.cartItem + 1);
@@ -44,7 +44,7 @@ export const addToCart = (e, context, cartStorage, item, amount) => {
         }
         
         //finally display a message that n amount of item was stored into the cart
-        return toast.success(`${amount} ${item.name} added to Cart`, {
+        return toast.success(`${amount} ${product.name} added to Cart`, {
             position: toast.POSITION.TOP_RIGHT
         })
     }

@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Proza+Libre:wght@400;500&display=swap');
+
+.productsDetailsMain {
+    width: 100%;
+}
+
+.productsDetailsContainer {
+    width: 100%;
+    margin: 50px auto;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#cartBtn {
+    background-color: #ad6c4d;
+    color: white;
+}
+
+.relatedProductsContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+    color: #ad6c4d;
+    letter-spacing: 1px;
+    font-family: 'Proza Libre', sans-serif;
+}
+
+.relatedProductsMain {
+    position: relative;
+    width: 100%;
+    margin: 50px auto;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.relatedProductsHeader {
+    text-align: left;
+    font-size: 20px;
+    color: #ad6c4d;
+    letter-spacing: 1px;
+}
+
+.relatedItemsItemContainer {
+    width: 1080px;
+    margin-top: 15px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    overflow-x: scroll;
+}
+
+.relatedItemsItemContainer::-webkit-scrollbar {
+    display: none;
+}
+
+.pagintaionContainer {
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.angleIconContainer {
+    height: 30px;
+    width: 30px;
+    margin: 0 8px;
+    border: 1px solid transparent;
+    outline: none;
+    border-radius: 50%;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.angleIcon {
+    color: #ad6c4d;
+}
+
+.angleIconContainer:hover {
+    animation: angleIcon 0.3s ease forwards;
+}
+
+.angleIconContainer:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.angleIconContainer:disabled:hover {
+    animation:none;
+}
+
+@keyframes angleIcon {
+    100% {
+        background-color: #ad6b4d3f;
+        border: 1px solid #ad6c4d;
+    }
+}
+
+@keyframes relatedProducts {
+    100% {
+        transform: scale(1.1);
+    }
+}
+
+@media (max-width: 1086px) {
+    .relatedItemsItemContainer {
+        width: 810px;
+    }
+}
+
+@media (max-width: 990px) {
+    .productsDetailsContainer {
+        margin: 10px auto;
+    }
+
+    .pagintaionContainer {
+        display: none;
+    }
+}
+
+@media (max-width: 850px) {
+    .relatedItemsItemContainer {
+        width: 95%;
+    }
+}
+
+@media (max-width: 550px) {
+    .cart, .details {
+        width: 100%;
+    }
+}

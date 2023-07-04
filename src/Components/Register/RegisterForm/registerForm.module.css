@@ -1,0 +1,189 @@
+.resgisteFormContainer {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%;
+    min-width: 450px;
+    padding: 40px 20px;
+    box-sizing: border-box;
+    border-radius: 10px;
+    background-color: #4a4a4ac9;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.inputContainer {
+    position: relative;
+    width: 90%;
+    min-width: 350px;
+    height: 45px;
+    margin: 10px;
+    border: 1px solid rgb(194, 194, 194);
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.inputContainer:nth-child(3), .inputContainer:nth-child(5) {
+    margin-bottom: 15px;
+}
+
+.inputContainer.wrongInput {
+    border: 1px solid #8b000063;
+    background-color: #8b000063;
+}
+
+.input {
+    width: 90%;
+    height: 35px;
+    padding-left: 10px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: white;
+}
+
+.input::placeholder {
+    color: lightgray;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.inputIcon {
+    width: 20px;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    background-color: #b38567;
+    color: white;
+}
+
+.label {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    opacity: 0;
+    padding: 0 5px;
+    background-color: #4a4a4ac9;
+    color: white;
+    font-size: 12px;
+    transition: all 0.3s ease;
+}
+
+.label.activeLabel {
+    top: -9px;
+    opacity: 1;
+}
+
+.errorMsg {
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 100%);
+    margin: 0px;
+    color: #c7601d;
+}
+
+.registerBtn {
+    height: 40px;
+    width: 350px;
+    margin: 40px 0;
+    border: 1px solid #b38567;
+    background-color: #b38567;
+    color: white;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.registerBtn:hover {
+    background-color: #ac7551;
+}
+
+.registerBtn:disabled {
+    opacity: 0.5;
+    cursor: default;
+}
+
+.registerBtn:disabled:hover {
+    background-color: #b38567;
+}
+
+.loginPrompt {
+    width: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loginLink {
+    text-decoration: none;
+    color: #c7601d;
+    margin: 0 10px;
+    opacity: 0.8;
+    transition: all 0.3s ease-out;
+}
+
+.loginLink:hover {
+    transform: scale(1.1);
+    font-weight: 600;
+}
+
+@keyframes loginLink {
+    100% {
+        color: #7e5448;
+        transform: scale(1.1);
+    }
+}
+
+@media (max-width: 768px) {
+    .resgisteFormContainer {
+        width: 80%;
+        min-width: unset;
+    }
+
+    .inputContainer {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .input {
+        width: 90%;
+    }
+
+    .registerBtn {
+        width: 100%;
+    }
+
+    .loginPrompt {
+        width: 100%;
+    }
+}
+
+@media (max-width: 550px) {
+    .resgisteFormContainer {
+        width: 95%;
+        min-width: unset;
+    }
+
+    .inputContainer {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .input {
+        width: 90%;
+    }
+
+    .loginPrompt {
+        width: 100%;
+    }
+}

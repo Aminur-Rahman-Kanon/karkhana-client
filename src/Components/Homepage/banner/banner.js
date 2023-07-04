@@ -1,8 +1,8 @@
 import React from "react";
-import styles from '../homepage.module.css';
-import banner1 from '../../../Assets/bg/bannerBg1.jpg';
-import banner2 from '../../../Assets/bg/bannerBg2.jpg';
-import banner3 from '../../../Assets/bg/baisakh.jpg';
+import styles from '../HomepageMain/homepageMain.module.css';
+import banner1 from '../../../Assets/Homepage/Banner/bannerBg1.jpg';
+import banner2 from '../../../Assets/Homepage/Banner/bannerBg2.jpg';
+import banner3 from '../../../Assets/Homepage/Banner/baisakh.jpg';
 import { useSpringCarousel } from 'react-spring-carousel';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons";

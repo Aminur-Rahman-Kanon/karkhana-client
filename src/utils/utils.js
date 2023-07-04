@@ -6,7 +6,7 @@ import { render } from '@testing-library/react';
 import { MemoryRouter } from 'react-router-dom';
 
 export const handlers = [
-    rest.get('https://karkhana-server.onrender.com/products', (req, res, ctx) => {
+    rest.get('*/products', (req, res, ctx) => {
         return res(
             ctx.status(200),
             ctx.json({
@@ -22,7 +22,7 @@ export const handlers = [
         )
     }), 
 
-    rest.post('https://karkhana-server.onrender.com/register', (req, res, ctx) => {
+    rest.post('*/register', (req, res, ctx) => {
         return res(
             ctx.status(200),
             ctx.json({

@@ -1,8 +1,9 @@
 import React from 'react';
 import styles from './defaultRoute.module.css';
-import notFound from '../../Assets/404.gif';
+import notFound from '../../Assets/DefaultRoute/404.gif';
 
 function DefaultRoute () {
+    //this will render when requested route coudn't found
     return (
         <div className={styles.defaultRouteContainer}>
             <div className={styles.defaultImgContainer}>

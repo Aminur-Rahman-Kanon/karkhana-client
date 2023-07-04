@@ -2,33 +2,33 @@ import React from 'react';
 import { fireEvent, waitForElementToBeRemoved } from '@testing-library/react';
 import { renderWithClient } from './utils/utils';
 import App from './App';
-import Homepage from './Components/Homepage/homepage';
-import ProductsList from './Components/Products/ProductsList/productsList';
-import ProductsDetails from './Components/Products/ProductsDetails/productsDetails';
-import Blog from './Components/Blog/blog';
-import Login from './Components/Login/login';
-import Register from './Components/Register/register';
+import HomepageMain from './Components/Homepage/HomepageMain/homepageMain';
+import ProductsListMain from './Components/Products/ProductsList/ProductsListMain/productsListMain';
+import ProductsDetailsMain from './Components/Products/ProductsDetails/ProductsDetailsMain/productsDetailsMain';
+import BlogMain from './Components/Blog/BlogMain/blogMain';
+import LoginMain from './Components/Login/LoginMain/loginMain';
+import RegisterMain from './Components/Register/RegisterMain/registerMain';
 import ForgotPassword from './Components/Login/ForgotPassword/forgotPassword';
-import Profile from './Components/Profile/profile';
-import ShoppingCart from './Components/Topbar/shoppingCart/shoppingCart';
-import Checkout from './Components/Checkout/checkout';
+import ProfileMain from './Components/Profile/ProfileMain/profileMain';
+import ShoppingCartMain from './Components/Topbar/ShoppingCart/ShoppingCartMain/shoppingCartMain';
+import CheckoutMain from './Components/Checkout/CheckoutMain/checkoutMain';
 import AboutUs from './Components/AboutUs/aboutUs';
 import DefaultRoute from './Components/DefaultRoute/defaultRoute';
 
-jest.mock('./Components/Homepage/homepage.js');
-jest.mock('./Components/Products/ProductsList/productsList.js');
-jest.mock('./Components/Products/ProductsDetails/productsDetails.js');
-jest.mock('./Components/Blog/blog.js');
-jest.mock('./Components/Login/login.js');
-jest.mock('./Components/Register/register.js');
+jest.mock('./Components/Homepage/HomepageMain/homepageMain.js');
+jest.mock('./Components/Products/ProductsList/ProductsListMain/productsListMain.js');
+jest.mock('./Components/Products/ProductsDetails/ProductsDetailsMain/productsDetailsMain.js');
+jest.mock('./Components/Blog/BlogMain/blogMain.js');
+jest.mock('./Components/Login/LoginMain/loginMain.js');
+jest.mock('./Components/Register/RegisterMain/registerMain.js');
 jest.mock('./Components/Login/ForgotPassword/forgotPassword.js');
-jest.mock('./Components/Profile/profile.js');
-jest.mock('./Components/Topbar/shoppingCart/shoppingCart.js');
-jest.mock('./Components/Checkout/checkout.js');
+jest.mock('./Components/Profile/ProfileMain/profileMain.js');
+jest.mock('./Components/Topbar/ShoppingCart/ShoppingCartMain/shoppingCartMain.js');
+jest.mock('./Components/Checkout/CheckoutMain/checkoutMain.js');
 jest.mock('./Components/AboutUs/aboutUs.js');
 jest.mock('./Components/DefaultRoute/defaultRoute.js');
 
-describe('should render app and all the routes', () => {
+describe('<App />', () => {
   test("should render app, topbar, footer and backdrop and sidedrawer conditionally", async () => {
     const result = renderWithClient({ children: <App/>, route: ['/'] });
 
@@ -47,31 +47,31 @@ describe('should render app and all the routes', () => {
   })
 
   test('should render homepage route', () => {
-    Homepage.mockImplementation(() => <div>Homepage</div>);
+    HomepageMain.mockImplementation(() => <div>Homepage</div>);
     const result = renderWithClient({children: <App />, route: ['/']});
     expect(result.getByText('Homepage')).toBeInTheDocument();
   })
 
   test('should render product list route', () => {
-    ProductsList.mockImplementation(() => <div>ProductList</div>);
+    ProductsListMain.mockImplementation(() => <div>ProductList</div>);
     const result = renderWithClient({children: <App />, route: ['/products/productsId']});
     expect(result.getByText('ProductList')).toBeInTheDocument();
   })
   
   test('should render productDetails route', () => {
-    ProductsDetails.mockImplementation(() => <div>ProductDetails</div>);
+    ProductsDetailsMain.mockImplementation(() => <div>ProductDetails</div>);
     const result = renderWithClient({children: <App />, route: ['/products/productId/productDetails']});
     expect(result.queryByText('ProductDetails')).toBeInTheDocument();
   })
 
   test('should render login route', () => {
-    Login.mockImplementation(() => <div>Login</div>);
+    LoginMain.mockImplementation(() => <div>Login</div>);
     const result = renderWithClient({children: <App />, route: ['/login']});
     expect(result.queryByText('Login')).toBeInTheDocument();
   })
 
   test('should render register route', () => {
-    Register.mockImplementation(() => <div>Register</div>);
+    RegisterMain.mockImplementation(() => <div>Register</div>);
     const result = renderWithClient({children: <App />, route: ['/register']});
     expect(result.queryByText('Register')).toBeInTheDocument();
   })
@@ -83,19 +83,19 @@ describe('should render app and all the routes', () => {
   })
 
   test('should render profile route', () => {
-    Profile.mockImplementation(() => <div>Profile</div>);
+    ProfileMain.mockImplementation(() => <div>Profile</div>);
     const result = renderWithClient({children: <App />, route: ['/profile']});
     expect(result.queryByText('Profile')).toBeInTheDocument();
   })
 
   test('should render shopping cart route', () => {
-    ShoppingCart.mockImplementation(() => <div>ShoppingCart</div>);
+    ShoppingCartMain.mockImplementation(() => <div>ShoppingCart</div>);
     const result = renderWithClient({children: <App />, route: ['/shopping-cart']});
     expect(result.queryByText('ShoppingCart')).toBeInTheDocument();
   })
   
   test('should render checkout route', () => {
-    Checkout.mockImplementation(() => <div>Checkout</div>);
+    CheckoutMain.mockImplementation(() => <div>Checkout</div>);
     const result = renderWithClient({children: <App />, route: ['/checkout']});
     expect(result.queryByText('Checkout')).toBeInTheDocument();
   })
@@ -107,7 +107,7 @@ describe('should render app and all the routes', () => {
   })
 
   test('should render blog route', () => {
-    Blog.mockImplementation(() => <div>BlogPost</div>);
+    BlogMain.mockImplementation(() => <div>BlogPost</div>);
     const result = renderWithClient({children: <App />, route: ['/blog']});
     expect(result.queryByText('BlogPost')).toBeInTheDocument();
   })

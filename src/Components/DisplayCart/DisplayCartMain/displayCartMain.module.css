@@ -1,0 +1,43 @@
+.displayCartContainer {
+    width: 100%;
+    margin: 100px auto;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.displayCartMain {
+    width: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.itemContainer {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.defultDisplay {
+    width: 100%;
+}
+
+@media (max-width: 992px) {
+    .displayCartMain {
+        flex-flow: column;
+    }
+}
+
+@media (max-width: 550px) {
+    .displayCartContainer {
+        margin: 50px auto;
+    }
+    
+    .displayCartMain {
+        width: 95%;
+    }
+}

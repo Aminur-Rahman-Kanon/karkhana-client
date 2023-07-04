@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './fallbackUI.module.css';
-import logo from '../../../Assets/logo.jpg';
+import logo from '../../../Assets/Logo/logo.jpg';
 
 function FallbackUI() {
     return (

@@ -1,8 +1,8 @@
-import React, { useEffect, useState, useLayoutEffect, useRef } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styles from './additionalDetails.module.css';
-import profile from '../../../../Assets/profile.jpg';
-import avatar from '../../../../Assets/avatar.png'
-import obama from '../../../../Assets/obama.jpg';
+import profile from '../../../../Assets/Products/AdditionalDetails/profile.jpg';
+import avatar from '../../../../Assets/Products/AdditionalDetails/avatar.png'
+import obama from '../../../../Assets/Products/AdditionalDetails/obama.jpg';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar, faAngleUp, faAngleDown } from "@fortawesome/free-solid-svg-icons";
 
@@ -28,20 +28,20 @@ const AdditionalDetails = () => {
         }
     }, [])
 
-    useLayoutEffect(() => {
-        function updateDisplay() {
-            if (window.screen.width >= 991){
-                Array.from(document.querySelector(`.${styles.infoHeaderDetails}`)).map(item => {
-                    if (item.style.display === 'block'){
-                        item.style.display = 'none'
-                    }
-                })
-            }
-        }
-        window.addEventListener('resize', () => updateDisplay());
+    // useLayoutEffect(() => {
+    //     function updateDisplay() {
+    //         if (window.screen.width >= 991){
+    //             Array.from(document.querySelectorAll(`.${styles.infoHeaderDetails}`)).map(item => {
+    //                 if (item.style.display === 'block'){
+    //                     item.style.display = 'none'
+    //                 }
+    //             })
+    //         }
+    //     }
+    //     window.addEventListener('resize', () => updateDisplay());
         
-        return () => window.removeEventListener('resize', updateDisplay);
-    }, []);
+    //     return () => window.removeEventListener('resize', updateDisplay);
+    // }, []);
 
     
     

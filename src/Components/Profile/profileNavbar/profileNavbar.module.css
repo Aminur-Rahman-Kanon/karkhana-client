@@ -1,0 +1,57 @@
+.profileSettingsNavContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.profileSettingsBtn {
+    position: relative;
+    width: 22%;
+    min-width: 125px;
+    height: 30px;
+    border: 1px solid #ad6c4d;
+    outline: none;
+    background-color: #ad6c4d;
+    color: white;
+    cursor: pointer;
+    font-size: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.4s ease-out;
+}
+
+.profileSettingsBtn:hover {
+    background-color: #ad6c4d;
+    color: white;
+}
+
+.profileSettingsBtnInactive {
+    border: 1px solid #ad6c4d;
+    background-color: white;
+    color: #ad6c4d;
+}
+
+.profileSettingsBtnIcon {
+    display: none;
+}
+
+@media (max-width: 992px) {
+    .profileSettingsBtn {
+        width: 20%;
+        height: 50px;
+        border-radius: 5px;
+        min-width: unset;
+        margin: 10px auto;
+    }
+
+    .btn {
+        display: none;
+    }
+
+    .profileSettingsBtnIcon {
+        display: block;
+        font-size: 22px;
+    }
+}

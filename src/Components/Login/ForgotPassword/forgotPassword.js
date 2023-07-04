@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import styles from './forgotPassword.module.css';
-import logo from '../../../Assets/logo.jpg'
+import logo from '../../../Assets/Logo/logo.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import Modal from '../../Others/Modal/modal';
 import Backdrop from '../../Others/Backdrop/backdrop';
 import Spinner from '../../Others/Spinner/spinner';
-
+import { ForgotPasswordHandlerMessage } from '../../Others/DisplayMessage/displayMessage';
 
 function ForgotPassword() {
 
@@ -24,7 +24,7 @@ function ForgotPassword() {
 
     const [spinner, setSpinner] = useState(false);
 
-    //update emailValidity and btnDisable after 1300ms of on onChange event
+    //custom hook to update emailValidity and btnDisable after 1300ms of on onChange event
     useEffect(() => {
         const checkEmail = setTimeout(() => {
             const elementDiv = document.querySelector(`.${styles.inputContainer}`);
@@ -60,6 +60,7 @@ function ForgotPassword() {
         return () => clearTimeout(checkEmail);
     }, [email]);
 
+    //handle sumit function
     const submitFormHandler = (e) => {
         e.preventDefault();
         setSpinner(true);
@@ -80,10 +81,11 @@ function ForgotPassword() {
         .catch(err => {
             setSpinner(false);
             setStatus('something went wrong');
+            setModal(true);
         });
     }
-
-    //label moving up effect on mouseClick on input field
+    
+    //custom onClick effect on input elements
     const focusElement = () => {
         const elementDiv = document.querySelector(`.${styles.inputContainer}`);
         const input = document.querySelector(`.${styles.input}`);
@@ -94,7 +96,7 @@ function ForgotPassword() {
         input.placeholder = '';
     }
 
-    //label moving up effect on mouseClick on input field
+    //custom leaveFocus effect on input elements
     const leaveFocus = () => {
         const elementDiv = document.querySelector(`.${styles.inputContainer}`);
         const input = document.querySelector(`.${styles.input}`);
@@ -107,43 +109,18 @@ function ForgotPassword() {
         }
     }
 
-    //display message depending on the response from server
-    let displayStatus = null;
-
-    if (status === 'success'){
-        displayStatus = <div className={styles.displayStatusContainer}>
-            <h3 className={styles.displayStatusHeading}>A link has been sent to your email</h3>
-            <p className={styles.displayStatusP}>PLease follow the instruction to reset your password and dont forget to check the spam folder id you can't find the email</p>
-            <button className={styles.displayStatusBtn} onClick={() => window.location.href = '/login'}>Ok</button>
-        </div>
+    //method to close modal
+    const displayMessagehandler = () => {
+        setStatus('');
+        setModal(false);
+        setBackdrop(false);
     }
-    else if (status === 'user not found') {
-        displayStatus = <div className={styles.displayStatusContainer}>
-            <h3 className={styles.displayStatusHeading}>User not found</h3>
-            <p className={styles.displayStatusP}>Please make sure you are registered  with us</p>
-            <button className={styles.displayStatusBtn} onClick={() => {
-                setStatus('');
-                setModal(false);
-                setBackdrop(false);
-            }}>Ok</button>
-        </div>
-    }
-    else {
-        displayStatus = <div className={styles.displayStatusContainer}>
-            <h3 className={styles.displayStatusHeading}>Something went wrong</h3>
-            <p className={styles.displayStatusP}>Please try again</p>
-            <button className={styles.displayStatusBtn} onClick={() => {
-                setStatus('');
-                setModal(false);
-                setBackdrop(false);
-            }}>Ok</button>
-        </div>
-    }
+    
   return (
     <>
     <Backdrop backdrop={backdrop}/>
     <Modal modal={modal}>
-        {displayStatus}
+        <ForgotPasswordHandlerMessage status={status} buttonHandler={displayMessagehandler}/>
     </Modal>
     <Spinner spinner={spinner} />
     <div className={styles.forgotPasswordMain}>

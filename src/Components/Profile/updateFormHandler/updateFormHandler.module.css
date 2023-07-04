@@ -1,0 +1,27 @@
+.statusDisplayMain {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    font-family: "lato", sans-serif;
+}
+
+.statusDisplayH2 {
+
+}
+
+.statusDisplayBtn {
+    height: 40px;
+    width: 120px;
+    margin-top: 20px;
+    border: 1px solid #d5b199;
+    border-radius: 5px;
+    background-color: #d5b199;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+.statusDisplayBtn:hover {
+    background-color: #c79471;
+}

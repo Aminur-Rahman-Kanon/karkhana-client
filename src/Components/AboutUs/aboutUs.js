@@ -1,12 +1,12 @@
 import React from 'react';
 import styles from './aboutUs.module.css';
-import header from '../../Assets/about.jpg';
-import admin from '../../Assets/admin.jpg';
-import team1 from '../../Assets/team1.jpg';
-import team2 from '../../Assets/team2.jpg';
-import team3 from '../../Assets/team3.jpg';
-import signature1 from '../../Assets/signature1.png';
-import signature2 from '../../Assets/signature2.png';
+import header from '../../Assets/AboutUs/about.jpg';
+import admin from '../../Assets/AboutUs/admin.jpg';
+import team1 from '../../Assets/AboutUs/team1.jpg';
+import team2 from '../../Assets/AboutUs/team2.jpg';
+import team3 from '../../Assets/AboutUs/team3.jpg';
+import signature1 from '../../Assets/AboutUs/signature1.png';
+import signature2 from '../../Assets/AboutUs/signature2.png';
 
 function aboutUs() {
   return (
@@ -102,7 +102,6 @@ function aboutUs() {
                 </div>
             </div>
         </div>
-      
     </div>
   )
 }

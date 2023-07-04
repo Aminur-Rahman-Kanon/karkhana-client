@@ -1,8 +1,6 @@
 import DisplayProducts from "./displayProducts";
-import { renderWithClient } from '../../../utils/utils';
-import AuthContext from "../../Others/AuthContext/authContext";
 import { render } from '@testing-library/react';
-import { featuredData, trendingData, topSellerData, exclusiveData } from "./MockDisplayData/mockDisplayData";
+import { featuredData, trendingData, topSellerData, exclusiveData } from "../../Others/MockDisplayData/mockDisplayData";
 
 describe('should render product details as per products category', () => {
   

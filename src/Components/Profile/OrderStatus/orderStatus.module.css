@@ -1,0 +1,104 @@
+.orderStatusMain {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.orderStatusHeader {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.orderStatusH3 {
+    text-align: left;
+    margin: 5px;
+}
+
+.orderDetailsP {
+    text-align: left;
+    margin: 5px;
+    font-size: 14px;
+}
+
+.orderStatusContainer {
+    width: 100%;
+    margin: 10px 0;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.productsContainer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.productDetailsContainer {
+    /* width: 45%; */
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.productImgContainer {
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.productImg {
+    width: 70px;
+    height: 70px;
+}
+
+.productNameContainer {
+    margin: 5px;
+}
+
+
+.productPriceH4, .productPriceP, .productNameP {
+    margin: 2px;
+    font-size: 12px;
+}
+
+.hr {
+    height: 1px;
+    border: none;
+    background-color: rgb(225, 225, 225);
+    border-radius: 5px;
+    width: 98%;
+    margin-top: 20px;
+}
+
+.orderStatusTrailer {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    text-align: left;
+}
+
+.paymentStatusContainer {
+    padding: 5px;
+}
+
+.paymentStatusContainer:nth-child(2){
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.paymentStatusP {
+    margin: 2px 0;
+    font-size: 13px;
+}

@@ -1,0 +1,138 @@
+.exclusiveItem {
+    position: relative;
+    width: 48%;
+    min-height: 500px;
+    padding-bottom: 30px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    margin: 30px auto;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.exclusiveItemImgContainer {
+    position: relative;
+    height: 320px;
+    width: 100%;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.exclusiveItemImg {
+    width: 100%;
+    height: 100%;
+    max-height: 500px;
+    object-fit: cover;
+}
+
+.exclusiveItemHeader {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    width: 300px;
+    height: 45px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 5px 12px 5px lightgray;
+    font-family: 'Proza Libre', sans-serif;
+    font-weight: 600;
+    color: #ad6c4d;
+}
+
+.exclusiveItemDetailsContainer {
+    width: 100%;
+    min-height: 160px;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.exclusiveItemP {
+    width: 85%;
+    margin: 20px auto;
+    font-family: "lato", sans-serif;
+    text-align: left;
+}
+
+.exclusiveItemPrice {
+    width: 100%;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Proza Libre', sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    color: #ad6c4d;
+}
+
+.exclusiveLink {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    text-decoration: none;
+    height: 40px;
+    width: 200px;
+    background-color: #ad6c4d;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    font-size: 14px;
+    box-shadow: 0 5px 12px 5px #ad6b4d5d;
+}
+
+.exclusiveLink:hover {
+    animation: exclusiveLink 0.2s ease-out forwards;
+}
+
+@keyframes exclusiveLink {
+    100% {
+        background-color: white;
+        color: #ad6c4d;
+        box-shadow: 0px 5px 12px 5px lightgray;
+    }
+}
+
+@media (max-width: 950px) {
+    .exclusiveItemImgContainer {
+        height: 250px;
+    }
+}
+
+@media (max-width: 767px) {
+    .exclusiveItem {
+        width: 80%;
+    }
+    .exclusiveItemImgContainer {
+        height: auto;
+    }
+}
+
+@media (max-width: 569px) {
+    .exclusiveLink {
+        width: 70%;
+    }
+}
+
+@media (max-width: 650px) {
+    .exclusiveItem {
+        width: 95%;
+    }
+}
+
+@media (max-width: 569px) {
+    .exclusiveItemHeader {
+        width: 70%;
+    }
+}

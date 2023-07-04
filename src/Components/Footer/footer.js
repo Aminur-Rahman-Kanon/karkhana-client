@@ -1,10 +1,9 @@
 import React from "react";
 import styles from './footer.module.css'
-import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faInstagram, faTwitter, faYoutube } from '@fortawesome/free-brands-svg-icons';
-import bkash from '../../Assets/bkash.png';
-import visa from '../../Assets/visa.png';
+import bkash from '../../Assets/DisplayCart/DisplayCartSummary/bkash.png';
+import visa from '../../Assets/DisplayCart/DisplayCartSummary/visa.png';
 
 const Footer = () => {
 

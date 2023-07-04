@@ -1,9 +1,9 @@
-import bracelet from '../Assets/bracelet.jpg';
-import others from '../Assets/nepali.jpg';
-import fingerRing from '../Assets/fingerRing.jpg';
-import earRing from '../Assets/earRing.jpg';
-import necklace from '../Assets/necklace.jpg';
-import toeRing from '../Assets/toeRing.jpg';
+import bracelet from '../Assets/Topbar/Navbar/bracelet.jpg';
+import others from '../Assets/Topbar/Navbar/nepali.jpg';
+import fingerRing from '../Assets/Topbar/Navbar/fingerRing.jpg';
+import earRing from '../Assets/Topbar/Navbar/earRing.jpg';
+import necklace from '../Assets/Topbar/Navbar/necklace.jpg';
+import toeRing from '../Assets/Topbar/Navbar/toeRing.jpg';
 
 export const states = ['Dhaka', 'Chattogram', 'Comilla', 'Savar', 'Gazipur', 'Sylhet', 'Khulna', 'Jhenaidah', 'Kushtia',
                'Khulna', 'Magura', 'Rajshahi', 'Barisal', 'Rangpur', 'Mymensingh', 'Munshiganj', 'Narayanganj',

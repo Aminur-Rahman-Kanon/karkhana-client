@@ -1,0 +1,84 @@
+.shoppingCartContainer, .userDisplayContainer {
+    position: relative;
+    margin: 5px;
+}
+
+.userContainers {
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, 15%);
+    width: 120px;
+    margin-top: 0.7px;
+    border: 1px solid lightgray;
+    background-color: white;
+    display: none;
+    flex-flow: column;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+}
+
+.userIcon {
+    font-size: 22px;
+    margin: 0 5px;
+    color: #ca9876;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.userProfile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.userProfileP {
+    margin: 2px;
+    text-transform: capitalize;
+    color: #7a7a7a;
+}
+
+.userContainer {
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+.shoppingCartLink {
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(68, 68, 68);
+    margin: 10px;
+}
+
+.userDisplayContainer:hover .userContainers {
+    display: flex;
+}
+
+.userDisplayContainer:hover .userIcon {
+    color: #b6652f;
+}
+
+.logoutBtn {
+    height: 30px;
+    width: 100px;
+    border: 1px solid #d5b199;
+    border-radius: 2px;
+    background-color: #d5b199;
+    color: white;
+    cursor: pointer;
+}
+
+.logoutBtn:hover {
+    background-color: #cea284;
+}
+
+@media (max-width: 768px) {
+    .userDisplayContainer {
+        margin: 5px 0;
+    }
+}
