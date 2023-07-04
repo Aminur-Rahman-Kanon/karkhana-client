@@ -11,12 +11,12 @@ const ProfileMain = () => {
 
     const [formType, setFormTYpe] = useState('user information');
 
-    const userObj = sessionStorage.getItem('user') ? JSON.parse(sessionStorage.getItem('user')) : null;
+    const userObj = sessionStorage.getItem('user') ? JSON.parse(sessionStorage.getItem('user')) : {};
 
     //if user not logged in then we redirect to the homepage
     useEffect(() => {
         window.scrollTo(0, 0);
-        if (!userObj) return navigate('/');
+        if (!userObj.firstName) return navigate('/');
     }, [])
 
     return (

@@ -62,7 +62,7 @@ const ProfileForm = ({formType, user}) => {
     //if user logged in then this hook auto fill the input value of the following user information
     useEffect(() => {
         if (user){
-            const user = JSON.parse(sessionStorage.getItem('user'));
+            // const user = JSON.parse(sessionStorage.getItem('user'));
             setFirstname(user.firstName);
             setLastname(user.lastName);
             setEmail(user.email);
@@ -81,7 +81,6 @@ const ProfileForm = ({formType, user}) => {
         const ids = document.querySelectorAll(`.${styles.profileLabel}`)
         const items = document.querySelectorAll(`.${styles.profileFormInput}`);
         const selectLabel = document.getElementById('selectLabel')
-        const selectInput = document.querySelector(`.${styles.selectInput}`)
         
         items.forEach((item, index) => {
             if (item.value){
@@ -184,7 +183,6 @@ const ProfileForm = ({formType, user}) => {
             inputDiv[index].style.border = '1px solid lightgray'
         }
     }
-
 
     return (
         <>
@@ -337,9 +335,10 @@ const ProfileForm = ({formType, user}) => {
             </form>
         </div>
         
+        {/*display user purchased products*/}
         <div className={styles.profileMain} style={formType === 'orders' ? {display: 'flex'} : {display: 'none'}}>
             <div className={styles.profileFormContainer}>
-                <OrderStatus orders={user !== null ? user.purchased : {}}/>
+                <OrderStatus ordersObj={user}/>
             </div>
         </div>
         </>

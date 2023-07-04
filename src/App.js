@@ -27,6 +27,7 @@ import Modal from './Components/Others/Modal/modal';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 
+//return Stripe promise to pass it to the Elements component
 const stripePromise = loadStripe('pk_test_51NPRurHZovVrLdmoqBHc4bdzZoZ6QfG8WvAKIpCtnUtGtF9ADsjJgQIYmEuQ4DMR0o20qCe8uWFH2SuG5GZ4HSFj00BLGIlN1j');
 
 function App() {

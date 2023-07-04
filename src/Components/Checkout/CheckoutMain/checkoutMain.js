@@ -206,9 +206,9 @@ function CheckoutMain() {
                             onChange={(e) => setName(e.target.value)} />
                     </div>
 
-                    <div className={styles.nameContainer}>
+                    <div data-testid="stripe-container" className={styles.nameContainer}>
                         <h3 className={styles.nameHeader}>CARD NUMBER</h3>  
-                        <CardElement options={cardStyle} className={styles.cardElements} />
+                        <CardElement options={cardStyle} className={styles.cardElements} id='stripe'/>
                     </div>
 
                     <div className={styles.otherInputContainer}>
