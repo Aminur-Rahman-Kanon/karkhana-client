@@ -77,7 +77,7 @@ export const PaymentHandlerMessage = ({status, responseHandler}) => {
                 <h2 className={styles.messageH2}>Payment failed</h2>
                 <p className={styles.messageP}>Please check your credentials and try again</p>
                 <p className={styles.messageP}>This event was logged to the server. Contact with us if any issues</p>
-                <button className={styles.displayStatusBtn} onClick={responseHandler.otherResponseHandler}>Ok</button>
+                <button className={styles.displayStatusBtn} onClick={responseHandler.otherMessageHandler}>Ok</button>
             </div>
         )
     }
@@ -86,7 +86,7 @@ export const PaymentHandlerMessage = ({status, responseHandler}) => {
             <div className={styles.displayMsgContainer}>
                 <h2 className={styles.messageH2}>Something went wrong</h2>
                 <p className={styles.messageP}>Please try again or contact admin</p>
-                <button className={styles.displayStatusBtn} onClick={responseHandler.otherResponseHandler}>Ok</button>
+                <button className={styles.displayStatusBtn} onClick={responseHandler.otherMessageHandler}>Ok</button>
             </div>
         )
     }
