@@ -94,6 +94,7 @@ function App() {
             <Route path="/register" element={<RegisterMain />} />
             <Route path='/forgot-password' element={<ForgotPassword />} />
             <Route path="/profile" element={<ProfileMain />}/>
+            <Route path="/profile/:orders" element={<ProfileMain />}/>
             <Route path='/shopping-cart' element={<DisplayCartMain />} />
             <Route path="/checkout" element={<CheckoutMain />} />
             <Route path='/about-us' element={<AboutUs />} />

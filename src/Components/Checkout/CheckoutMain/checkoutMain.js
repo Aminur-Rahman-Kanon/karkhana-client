@@ -168,7 +168,7 @@ function CheckoutMain() {
 
     const successResponseHandler = () => {
         sessionStorage.removeItem('cart');
-        window.location.href = '/';
+        window.location.href = '/profile/orders';
     }
 
     return (
@@ -208,7 +208,7 @@ function CheckoutMain() {
 
                     <div data-testid="stripe-container" className={styles.nameContainer}>
                         <h3 className={styles.nameHeader}>CARD NUMBER</h3>  
-                        <CardElement options={cardStyle} className={styles.cardElements} id='stripe'/>
+                        <CardElement options={cardStyle} className={styles.cardElements}/>
                     </div>
 
                     <div className={styles.otherInputContainer}>
