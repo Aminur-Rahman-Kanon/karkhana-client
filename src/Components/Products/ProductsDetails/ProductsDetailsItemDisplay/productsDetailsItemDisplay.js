@@ -18,19 +18,19 @@ const ProductsDetailsItemDisplay = ({item,
         <div className={styles.displayProductContainer}>
             <div className={styles.displayProductImgsContainer}>
                 <div className={styles.displayProductImgContainer}>
-                    <img src={item[0].img[additionalImg]} alt={item[0].name} className={styles.displayProductImg}/>
+                    <img src={item.img[additionalImg]} alt={item.name} className={styles.displayProductImg}/>
                 </div>
                 <div className={styles.additionalImgsContainer}>
-                    {item[0].img.map((img, index) => <div key={index}
+                    {item.img.map((img, index) => <div key={index}
                                                         className={ additionalImg === index ? `${styles.additionalImgContainer} ${styles.addImgActive}` : styles.additionalImgContainer}
                                                         onClick={() => changeAdditionalImg(index)}>
-                        <img src={img} alt={item[0].name} className={styles.additionalImg}/>
+                        <img src={img} alt={item.name} className={styles.additionalImg}/>
                     </div>)}
                 </div>
             </div>
 
             <div className={styles.sidePanelContainer}>
-                <div className={styles.productsDetails} style={{fontSize: '20px'}}>{item[0].name}</div>
+                <div className={styles.productsDetails} style={{fontSize: '20px'}}>{item.name}</div>
                 <div className={styles.ratingContainer}>
                     <FontAwesomeIcon icon={faStar} className={styles.star}/>
                     <FontAwesomeIcon icon={faStar} className={styles.star}/>
@@ -44,11 +44,11 @@ const ProductsDetailsItemDisplay = ({item,
                     <p className={styles.watchListP}>10 customers are watching this products</p>
                 </div>
 
-                <p className={styles.productsDetails}>&#2547;{item[0].price}</p>
-                <div className={styles.availablity}>Item Available: {item[0].quantity ? item[0].quantity : 1}</div>
+                <p className={styles.productsDetails}>&#2547;{item.price}</p>
+                <div className={styles.availablity}>Item Available: {item.quantity ? item.quantity : 1}</div>
                 <div className={styles.productDetailsContainer}>
                     <h2 className={styles.productHeader}>Details</h2>
-                    <p className={styles.productDetailsP}>{item[0].details ? item[0].details : "Elevate your fashion game with our men's kurta collection. Made from premium quality fabrics, our kurtas are designed to provide maximum comfort and durability. With a wide range of colors, patterns, and designs to choose from, Experience the perfect blend of traditional elegance and modern style."}</p>
+                    <p className={styles.productDetailsP}>{item.details ? item.details : "Elevate your fashion game with our men's kurta collection. Made from premium quality fabrics, our kurtas are designed to provide maximum comfort and durability. With a wide range of colors, patterns, and designs to choose from, Experience the perfect blend of traditional elegance and modern style."}</p>
                 </div>
 
                 <div className={styles.quantityContainer}>
@@ -61,7 +61,7 @@ const ProductsDetailsItemDisplay = ({item,
                             <span className={styles.iconContainer}><FontAwesomeIcon icon={faAngleDown} className={styles.angle}/></span>
                         </button>
                         <div data-testid="item-count" className={styles.quantityAmount}>{quantity}</div>
-                        <button disabled={item[0].quantity ? quantity >= item[0].quantity : false}
+                        <button disabled={item.quantity ? quantity >= item.quantity : false}
                                 className={styles.quantityBtn}
                                 onClick={() => changeQuantity(quantity + 1)}
                                 aria-label="increment">
@@ -73,7 +73,7 @@ const ProductsDetailsItemDisplay = ({item,
                     <button disabled={!quantity}
                             className={styles.productDetailsBtn}
                             id={styles.cartBtn}
-                            onClick={(e) => addToCart(e, context, cartItemStorage, item[0], quantity) }
+                            onClick={(e) => addToCart(e, context, cartItemStorage, item, quantity) }
                             >Add to Cart</button>
                     <button className={styles.productDetailsBtn}>+ Wishlist</button>
                 </div>

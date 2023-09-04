@@ -19,7 +19,7 @@ const ProductsDetailsMain = () => {
 
     const otherItemRef = useRef(null);
 
-    const { productId, productDetails } = useParams();
+    const { category, productId } = useParams();
 
     const [item, setItem] = useState([]);
 
@@ -27,55 +27,45 @@ const ProductsDetailsMain = () => {
 
     const [relatedItem, setRelatedItem] = useState([]);
 
-    const [otherItem, setOtherItem] = useState([]);
-
     const [quantity, setQuantity] = useState(0);
 
     const cartItemStorage = sessionStorage.getItem('cart') ? JSON.parse(sessionStorage.getItem('cart')) : null;
 
-    // const user = sessionStorage.getItem('user') ? JSON.parse(sessionStorage.getItem('user')) : {};
+    const user = sessionStorage.getItem('user') ? JSON.parse(sessionStorage.getItem('user')) : {};
 
-    //this hook separate the products into different category and store them into local state
+    // this hook separate the products into different category and store them into local state
     useEffect(() => {
         window.scrollTo(0, 0);
-        if (context.data !== undefined){
-            const copiedData = JSON.parse(JSON.stringify(context.data));
-            //first we check if there is blog products is present, if yes then remove it
-            if (copiedData.hasOwnProperty('blog')){
-                delete copiedData.blog;
-            }
-
+        fetch(`https://karkhana-server.onrender.com/product/${category}`)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
             //here we seaprate products into different category
-            if (copiedData[productId] !== undefined){
-                const product = copiedData[productId]
-                delete copiedData[productId]
-
+            if (data.data){
                 let filteredProducts;
                 const relatedProducts = [];
     
-                product.forEach((item, idx) => {
-                    if (item.name === productDetails){
-                        return filteredProducts = product.splice(idx, 1);
+                data.data.forEach((item, idx) => {
+                    if (item.name === productId){
+                        return filteredProducts = item;
                     }
                     else {
                         return relatedProducts.push(item);
                     }
                 })
-
-                const otherProducts = Object.values(copiedData).map(item => item.shift())
-    
                 setItem(filteredProducts);
                 setRelatedItem(relatedProducts);
-                setOtherItem(otherProducts);
             }
-        }
-    }, [ context.data ]);
+        }).catch(err => console.log(err));
+    }, []);
 
-    // //default product template
+    console.log(item)
+
+    //default product template
     let displayProduct = <ProductsDetailsTemplate />
 
     //display products
-    if (item.length){
+    if (item.name){
         displayProduct = <ProductsDetailsItemDisplay item={item}
                                                      additionalImg={additionalImg}
                                                      changeAdditionalImg={setAdditionalImg}
@@ -90,17 +80,9 @@ const ProductsDetailsMain = () => {
         <h2 className={styles.defaultHeadings}>No Products Found</h2>
     </div>
 
-    let otherProducts = <div className={styles.relatedProductsContainer}>
-        <h2 className={styles.defaultHeadings}>No Products Found</h2>
-        </div>
-
     //display related or other products found
     if (relatedItem.length){
         relatedProducts = <OtherProducts product={relatedItem} />
-    }
-
-    if (otherItem.length){
-        otherProducts = <OtherProducts product={otherItem} />
     }
 
     return (
@@ -124,22 +106,6 @@ const ProductsDetailsMain = () => {
                     </button>
 
                     <button disabled={!relatedItem.length} className={styles.angleIconContainer} onClick={() => relatedItemRef.current.scrollBy(270, 0)}>
-                        <FontAwesomeIcon icon={faAngleRight} className={styles.angleIcon}/>
-                    </button>
-                </div>
-            </section>
-
-            <section className={styles.relatedProductsMain}>
-                <h2 className={styles.relatedProductsHeader}>Customers Also Viewed</h2>
-                <div className={styles.relatedItemsItemContainer} ref={otherItemRef}>
-                    {otherProducts}
-                </div>
-                <div className={styles.pagintaionContainer}>
-                    <button disabled={!relatedItem.length} className={styles.angleIconContainer} onClick={() => otherItemRef.current.scrollBy(-270, 0)}>
-                        <FontAwesomeIcon icon={faAngleLeft} className={styles.angleIcon}/>
-                    </button>
-
-                    <button disabled={!relatedItem.length} className={styles.angleIconContainer} onClick={() => otherItemRef.current.scrollBy(270, 0)}>
                         <FontAwesomeIcon icon={faAngleRight} className={styles.angleIcon}/>
                     </button>
                 </div>

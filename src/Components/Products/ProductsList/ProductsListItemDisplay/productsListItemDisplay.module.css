@@ -1,8 +1,6 @@
 .productsContainer {
-    width: 30%;
+    width: 100%;
     min-height: 260px;
-    margin: 10px;
-    /* padding: 10px; */
     box-sizing: border-box;
     display: flex;
     flex-grow: 3;
@@ -27,6 +25,7 @@
 
 .productsImgContainer {
     width: 100%;
+    height: 250px;
     margin-bottom: 25px;
     display: flex;
     justify-content: center;
@@ -40,7 +39,7 @@
 
 .productsImg {
     width: 100%;
-    height: 250px;
+    height: 100%;
     cursor: pointer;
     transition: all 0.3s ease-out;
 }
@@ -67,20 +66,14 @@
     font-weight: 600;
 }
 
-@media (max-width: 900px) {
-    .productsContainer {
-        width: 28%;
-    }
-}
-
 @media (max-width: 767px) {
-    .productsContainer {
-        width: 45%;
+    .productsImgContainer {
+        height: 200px;
     }
 }
 
-@media (max-width: 500px) {
-    .productsContainer {
-        width: 90%;
+@media (max-width: 450px) {
+    .productsImgContainer {
+        height: 150px;
     }
 }

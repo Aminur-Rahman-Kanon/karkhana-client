@@ -2,10 +2,10 @@ import React from "react";
 import styles from './productsListItemDisplay.module.css';
 import AddToCart from "../../../Others/AddToCart/addToCart";
 
-const ProductsListItemDisplay = ({products, itemOffset, endOffset, productId, context, cartItemStorage}) => {
+const ProductsListItemDisplay = ({products, itemOffset, endOffset, category, context, cartItemStorage}) => {
     return products.slice(itemOffset, endOffset).map(item => {
         return <div key={item._id} className={styles.productsContainer} id={styles.loader}>
-                <a href={`/products/${productId}/${item.name}`} className={styles.productsLink}>
+                <a href={`/products/${category}/${item.name}`} className={styles.productsLink}>
                     <div className={styles.productsImgContainer}>
                         <img src={item.img[0]} alt={item.name} className={styles.productsImg}/>
                     </div>

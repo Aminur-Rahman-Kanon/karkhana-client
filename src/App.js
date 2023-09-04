@@ -38,9 +38,9 @@ function App() {
 
   const [cartItem, setCartItem] = useState(0);
 
-  const [modal, setModal] = useState(true)
+  const [modal, setModal] = useState(true);
 
-  const {data, isLoading, isError} = useQuery(['data'], async () => await fetch('https://karkhana-server.onrender.com/products').then(result => result.json()).then(res => res.data), { staleTime: 1800000, cacheTime: 1800000});
+  // const {data, isLoading, isError} = useQuery(['data'], async () => await fetch('https://karkhana-server.onrender.com/products').then(result => result.json()).then(res => res.data), { staleTime: 1800000, cacheTime: 1800000});
   
   useEffect(() => {
     //when backdrop is on we disable scrolling
@@ -68,7 +68,7 @@ function App() {
 
   return (
     <>
-    <div className="spinner-container" style={ isLoading ? {display: 'flex'} : {display: 'none'}}>
+    {/* <div className="spinner-container" style={ isLoading ? {display: 'flex'} : {display: 'none'}}>
       <div className='logo-container'>
         <img src={logo} alt="karkhana" className='spinner-container-logo'/>
       </div>
@@ -76,20 +76,20 @@ function App() {
         <img src={thunder} alt="karkhana" className='spinner-effect'/>
         <p className='spinner-effect-p'>Loading...</p>
       </div>
-    </div>
+    </div> */}
     <div className="App">
-      <Modal modal={isError && modal}>
+      {/* <Modal modal={isError && modal}>
         <NetworkError closeModal={() => setModal(false)}/>
-      </Modal>
-      <AuthContext value={ {cartItem, setCartItem, data} }>
+      </Modal> */}
+      <AuthContext value={ {cartItem, setCartItem} }>
         <Elements stripe={stripePromise}>
           <Backdrop backdrop={ backdrop } toggleBackdrop={ closeSidedrawer }/>
           <TopbarMain toggleSidedrawer={ openSideDrawer }/>
           <Sidedrawer sidedrawer={sidedrawer}/>
           <Routes>
             <Route path='/' element={<HomepageMain />} />
-            <Route path='/products/:productId' element={<ProductsListMain />} />
-            <Route path='/products/:productId/:productDetails' element={<ProductsDetailsMain />} />
+            <Route path='/products/:category' element={<ProductsListMain />} />
+            <Route path='/products/:category/:productId' element={<ProductsDetailsMain />} />
             <Route path="/login" element={<LoginMain />} />
             <Route path="/register" element={<RegisterMain />} />
             <Route path='/forgot-password' element={<ForgotPassword />} />
@@ -98,7 +98,7 @@ function App() {
             <Route path='/shopping-cart' element={<DisplayCartMain />} />
             <Route path="/checkout" element={<CheckoutMain />} />
             <Route path='/about-us' element={<AboutUs />} />
-            <Route path='/blog' element={<BlogMain />} />
+            {/* <Route path='/blog' element={<BlogMain />} /> */}
             <Route path="*" element={<DefaultRoute />} />
           </Routes>
           <Footer />

@@ -83,10 +83,9 @@
 
 .productsDisplayContainer {
     width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
 }
 
 .fallbackHeader {
@@ -243,7 +242,13 @@
 
 @media (max-width: 900px) {
     .productsListContainer {
+        justify-content: flex-end;
         margin-top: 15px!important;
+    }
+
+    .productsDisplayContainer {
+        padding: 5px;
+        box-sizing: border-box;
     }
 
     .fallbackHeader {
@@ -282,6 +287,12 @@
 @media (max-width: 767px) {
     .ProductsLists {
         width: 90%;
+    }
+}
+
+@media (max-width: 600px) {
+    .productsDisplayContainer {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 

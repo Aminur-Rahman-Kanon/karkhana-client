@@ -13,6 +13,8 @@ const HomepageMain = () => {
 
     const context = useContext(ContextProvider);
 
+    const [initialProducts, setinitialProducts] = useState({});
+
     const [featuredProducts, setFeaturedProducts] = useState([]);
 
     const [exclusiveProducts, setExclusiveProducts] = useState([]);
@@ -23,15 +25,14 @@ const HomepageMain = () => {
 
     const cartItemStorage = sessionStorage.getItem('cart') ? JSON.parse(sessionStorage.getItem('cart')) : null;
 
-    //saving products from context
     useEffect(() => {
-        if (context.data !== undefined){
-            setFeaturedProducts(context.data.featured);
-            setExclusiveProducts(context.data.exclusive)
-            setTrendingProducts(context.data.trending);
-            setTopSellerProducts(context.data.topseller);
-        }
-    }, [context.data])
+        fetch('https://karkhana-server.onrender.com/products/initial-products')
+        .then(res => res.json())
+        .then(data => setinitialProducts(data.data))
+        .catch(err => console.log(err));
+      }, [])
+    
+    console.log(initialProducts);
 
     let displayFeatured = <ProductsTemplateAll item={8} />
 
@@ -43,29 +44,29 @@ const HomepageMain = () => {
     let exclusiveItem = <ProductsTemplateExclusive />
 
     //rendering featured products
-    if (featuredProducts.length) {
-        displayFeatured = <DisplayProducts product={featuredProducts}
+    if (initialProducts.featured) {
+        displayFeatured = <DisplayProducts product={initialProducts.featured}
                                             data={context}
                                             cartStorage={cartItemStorage}
                                             route={'featured'}/>
     }
     //rendering trending products
-    if (trendingProducts.length){
-        displayTrending = <DisplayProducts product={trendingProducts}
+    if (initialProducts.trending){
+        displayTrending = <DisplayProducts product={initialProducts.trending}
                                             data={context}
                                             cartStorage={cartItemStorage}
                                             route={'trending'}/>
     }
     //rendering topSeller products
-    if (topSellerProducts.length){
-        displayTopSeller = <DisplayProducts product={topSellerProducts}
+    if (initialProducts.topSeller){
+        displayTopSeller = <DisplayProducts product={initialProducts.topSeller}
                                             data={context}
                                             cartStorage={cartItemStorage}
                                             route={'topseller'}/>
     }
     //rendering exclusive products
-    if (exclusiveProducts.length){
-        exclusiveItem = <DisplayExclusiveProducts product={exclusiveProducts} />
+    if (initialProducts.exclusive){
+        exclusiveItem = <DisplayExclusiveProducts product={initialProducts.exclusive} />
     }
     
     return (

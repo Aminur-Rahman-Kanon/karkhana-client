@@ -19,9 +19,9 @@ export const months = ['January', 'February', 'March', 'April', 'May', 'June', '
 
 export const itemCategories = [
     {item: 1, img: bracelet, routeName: 'bracelet', name: 'Bracelet'},
-    {item: 2, img: others, routeName: 'other', name: 'Others'},
-    {item: 3, img: fingerRing, routeName: 'fingerring', name: 'Finger Rings'},
-    {item: 4, img: earRing, routeName: 'earring', name: 'Ear Rings'},
+    {item: 2, img: others, routeName: 'others', name: 'Others'},
+    {item: 3, img: fingerRing, routeName: 'finger-ring', name: 'Finger Rings'},
+    {item: 4, img: earRing, routeName: 'ear-ring', name: 'Ear Rings'},
     {item: 5, img: necklace, routeName: 'necklace', name: 'Necklaces'},
-    {item: 6, img: toeRing, routeName: 'toering', name: 'Toe Rings'},
+    {item: 6, img: toeRing, routeName: 'toe-ring', name: 'Toe Rings'},
 ]

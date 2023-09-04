@@ -18,7 +18,7 @@ const ProductsListMain = () => {
 
     const context = useContext(ContextProvider);
 
-    const productId = useParams().productId;
+    const category = useParams().category;
 
     const [sidebar, setSidebar] = useState(false);
 
@@ -54,17 +54,14 @@ const ProductsListMain = () => {
     //and scroll to the top when products were filtered
     useEffect(() => {
         window.scrollTo(0, 0);
-        if (context.data !== undefined){
-            const product = context.data[productId] !== undefined ? context.data[productId] : [];
-            if (product.length){
-                setProducts(product);
-                setStatus('success');
-            }
-            else {
-                setStatus('not found');
-            }
-        }
-    }, [context.data] );
+        fetch(`https://karkhana-server.onrender.com/products/${category}`)
+        .then(res => res.json())
+        .then(data => {
+            setProducts(data.data);
+            setStatus('success');
+        }).catch(err => setStatus('not found'))
+    }, []);
+
     
     //this hook also scroll to the top when products were filtered
     useEffect(() => {
@@ -113,7 +110,7 @@ const ProductsListMain = () => {
             defaultView = <ProductsListItemDisplay products={filteredProducts}
                                                    itemOffset={itemOffset}
                                                    endOffset={endOffset}
-                                                   productId={productId}
+                                                   category={category}
                                                    context={context}
                                                    cartItemStorage={cartItemStorage} />
         }
@@ -128,7 +125,7 @@ const ProductsListMain = () => {
             defaultView = <ProductsListItemDisplay products={products}
                                                    itemOffset={itemOffset}
                                                    endOffset={endOffset}
-                                                   productId={productId}
+                                                   category={category}
                                                    context={context}
                                                    cartItemStorage={cartItemStorage}/>
         }
@@ -211,7 +208,7 @@ const ProductsListMain = () => {
                     <p className={styles.sidebarSwitcherP}>Show Sidebar</p>
                 </div>
                 <div className={ sidebar ? `${styles.sidebarContainer} ${styles.on}` : styles.sidebarContainer}>
-                    <ProductsListSidebar productId={productId} />
+                    <ProductsListSidebar category={category} />
                     <div className={styles.categoryType} id={styles.categoryType2}>
                         <h2 className={styles.categoryH2}>Price Range</h2>
                         <ReactSlider
