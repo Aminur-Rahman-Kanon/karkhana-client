@@ -48,13 +48,13 @@ const Navbar = () => {
                                 </a>
                             </li>
                             <li className={styles.childNavList}>
-                                <a href='/products/fingerring' className={splitLocation[2] ? splitLocation[2] === 'fingerring' ? `${styles.childNavItem} ${styles.childActive}` : styles.childNavItem : styles.childNavItem}>
+                                <a href='/products/finger-ring' className={splitLocation[2] ? splitLocation[2] === 'finger-ring' ? `${styles.childNavItem} ${styles.childActive}` : styles.childNavItem : styles.childNavItem}>
                                     <img src={fingerRing} alt="finger ring" className={styles.childNavImg}/>
                                     <p className={styles.childNavP}>Finger Rings</p>
                                 </a>
                             </li>
                             <li className={styles.childNavList}>
-                                <a href='/products/earring' className={splitLocation[2] ? splitLocation[2] === 'earring' ? `${styles.childNavItem} ${styles.childActive}` : styles.childNavItem : styles.childNavItem}>
+                                <a href='/products/ear-ring' className={splitLocation[2] ? splitLocation[2] === 'ear-ring' ? `${styles.childNavItem} ${styles.childActive}` : styles.childNavItem : styles.childNavItem}>
                                     <img src={earRing} alt="ear ring" className={styles.childNavImg}/>
                                     <p className={styles.childNavP}>Ear Rings</p>
                                 </a>
@@ -66,7 +66,7 @@ const Navbar = () => {
                                 </a>
                             </li>
                             <li className={styles.childNavList}>
-                                <a href='/products/toering' className={splitLocation[2] ? splitLocation[2] === 'toering' ? `${styles.childNavItem} ${styles.childActive}` : styles.childNavItem : styles.childNavItem}>
+                                <a href='/products/toe-ring' className={splitLocation[2] ? splitLocation[2] === 'toe-ring' ? `${styles.childNavItem} ${styles.childActive}` : styles.childNavItem : styles.childNavItem}>
                                     <img src={toeRing} alt="toe ring" className={styles.childNavImg}/>
                                     <p className={styles.childNavP}>Toe Rings</p>
                                 </a>
