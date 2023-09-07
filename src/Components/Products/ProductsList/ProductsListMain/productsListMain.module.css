@@ -2,10 +2,10 @@
 
 
 .productsListMain {
-    /* position: relative; */
     width: 100%;
     margin: 20px auto;
     display: flex;
+    flex-flow: column;
     justify-content: center;
     align-items: center;
 }
@@ -76,6 +76,16 @@
     flex-flow: column;
     justify-content: flex-start;
     align-items: center;
+}
+
+.priceRangeContainer {
+    width: 100%;
+    padding: 0 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: flex-start;
 }
 
 .categoryH2 {
