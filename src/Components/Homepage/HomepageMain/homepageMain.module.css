@@ -24,8 +24,7 @@
 
 .bannerBg {
     width: 100%;
-    height: 600px;
-    filter: brightness(0.7);
+    height: 100%;
     overflow: hidden;
 }
 
@@ -115,9 +114,19 @@
     opacity: 1;
 }
 
+.productDisplayContainer {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+}
+
 .featuredProducts {
     width: 100%;
-    margin: 20px auto;
+    margin-top: 10px;
+    box-sizing: border-box;
     display: flex;
     flex-flow: column;
     justify-content: center;
@@ -206,6 +215,12 @@
     }
 }
 
+@media (max-width: 980px) {
+    .productDisplayContainer {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
 @media (max-width: 850px) {
     .itemCategories {
         overflow: scroll;
@@ -225,6 +240,10 @@
 }
 
 @media (max-width: 650px) {
+    .productDisplayContainer {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
     .bannerH2 {
         font-size: 20px;
     }

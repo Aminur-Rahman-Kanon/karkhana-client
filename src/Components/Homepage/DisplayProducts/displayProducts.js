@@ -24,11 +24,7 @@ function DisplayProducts ( { product, data, cartStorage, route } ) {
         </div>
     </div>)
 
-    return (
-        <div className={styles.productMain}>
-            {displayProducts}
-        </div>
-    )
+    return displayProducts;
 }
 
 export default DisplayProducts;

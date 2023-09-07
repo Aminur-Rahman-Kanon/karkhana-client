@@ -2,9 +2,6 @@
     width: 100%;
     padding: 10px;
     box-sizing: border-box;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 5px;
 }
 
 .productContainer {
@@ -84,18 +81,8 @@
 }
 
 @media (max-width: 980px) {
-    .productMain {
-        grid-template-columns: repeat(3, 1fr);
-    }
-
     .productsImgContainer {
         height: 200px;
-    }
-}
-
-@media (max-width:650px) {
-    .productMain {
-        grid-template-columns: repeat(2, 1fr);
     }
 }
 

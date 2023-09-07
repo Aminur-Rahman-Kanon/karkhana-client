@@ -15,14 +15,6 @@ const HomepageMain = () => {
 
     const [initialProducts, setinitialProducts] = useState({});
 
-    const [featuredProducts, setFeaturedProducts] = useState([]);
-
-    const [exclusiveProducts, setExclusiveProducts] = useState([]);
-
-    const [trendingProducts, setTrendingProducts] = useState([]);
-
-    const [topSellerProducts, setTopSellerProducts] = useState([]);
-
     const cartItemStorage = sessionStorage.getItem('cart') ? JSON.parse(sessionStorage.getItem('cart')) : null;
 
     useEffect(() => {
@@ -31,8 +23,6 @@ const HomepageMain = () => {
         .then(data => setinitialProducts(data.data))
         .catch(err => console.log(err));
       }, [])
-    
-    console.log(initialProducts);
 
     let displayFeatured = <ProductsTemplateAll item={8} />
 
@@ -84,17 +74,23 @@ const HomepageMain = () => {
             
             <section className={styles.featuredProducts}>
                 <h2 className={styles.featuredProductsH2}>Featured Products</h2>
-                {displayFeatured}
+                <div className={styles.productDisplayContainer}>
+                    {displayFeatured}
+                </div>
             </section>
 
             <section className={styles.featuredProducts}>
                 <h2 className={styles.featuredProductsH2}>Trending Categories</h2>
-                {displayTrending}
+                <div className={styles.productDisplayContainer}>
+                    {displayTrending}
+                </div>
             </section>
 
             <section className={styles.featuredProducts}>
                 <h2 className={styles.featuredProductsH2}>Top Sellers</h2>
-                {displayTopSeller}
+                <div className={styles.productDisplayContainer}>
+                    {displayTopSeller}
+                </div>
             </section>
 
             <section className={styles.exclusiveItemContainer}>

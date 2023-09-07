@@ -16,9 +16,10 @@ function BlogMain() {
     //this hook store the blog data to the blogs state and scroll to the top onLoad
     useEffect(() => {
         window.scrollTo(0, 0);
-        if (context.data !== undefined){
-            setBlogs(context.data.blog);
-        }
+        fetch('http://localhost:8000/product/blog')
+        .then(res => res.json())
+        .then(data => setBlogs(data.data))
+        .catch(err => console.log(err));
     }, [ context.data ])
 
     //Hook to validate email

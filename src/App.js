@@ -98,7 +98,7 @@ function App() {
             <Route path='/shopping-cart' element={<DisplayCartMain />} />
             <Route path="/checkout" element={<CheckoutMain />} />
             <Route path='/about-us' element={<AboutUs />} />
-            {/* <Route path='/blog' element={<BlogMain />} /> */}
+            <Route path='/blog' element={<BlogMain />} />
             <Route path="*" element={<DefaultRoute />} />
           </Routes>
           <Footer />

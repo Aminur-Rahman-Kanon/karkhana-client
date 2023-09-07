@@ -1,16 +1,5 @@
-.defaultProductContainer {
-    width: 100%;
-    padding: 10px;
-    box-sizing: border-box;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-}
-
 .defaultProductsItem {
-    width: 265px;
-    margin: 5px;
+    width: 100%;
     padding: 5px;
     height: 265px;
     box-sizing: border-box;
@@ -84,5 +73,15 @@
 @media (max-width: 569px) {
     .loadingName, .loadingLink {
         width: 90%;
+    }
+
+    .defaultProductsItem {
+        height: 220px;
+    }
+}
+
+@media (max-width: 450px) {
+    .defaultProductsItem {
+        height: 150px;
     }
 }

@@ -104,38 +104,38 @@ const ProductsListMain = () => {
     //if no response from server then we display a defaut template
     let defaultView = <ProductsTemplateAll item={12} />
 
-    if (products.length){
-        //if product found and products been filtered based on price then we iterate through the products and display it
-        if (!itemNotFound && filteredProducts.length){
-            defaultView = <ProductsListItemDisplay products={filteredProducts}
-                                                   itemOffset={itemOffset}
-                                                   endOffset={endOffset}
-                                                   category={category}
-                                                   context={context}
-                                                   cartItemStorage={cartItemStorage} />
-        }
-        //if no product found
-        else if (itemNotFound) {
-            defaultView = <div className={styles.notFoundContainer}>
-                <h2 className={styles.notFoundHeader}>Nothing found based on your range</h2>
-            </div>
-        }
-        //iterate though the products and display
-        else {
-            defaultView = <ProductsListItemDisplay products={products}
-                                                   itemOffset={itemOffset}
-                                                   endOffset={endOffset}
-                                                   category={category}
-                                                   context={context}
-                                                   cartItemStorage={cartItemStorage}/>
-        }
-    }
-    //if server is good and no products are returned
-    else if(status === 'not found') {
-        defaultView = <div className={styles.fallbackContainer}>
-            <h2 className={styles.fallbackHeader}>Nothing found</h2>
-        </div>
-    }
+    // if (products.length){
+    //     //if product found and products been filtered based on price then we iterate through the products and display it
+    //     if (!itemNotFound && filteredProducts.length){
+    //         defaultView = <ProductsListItemDisplay products={filteredProducts}
+    //                                                itemOffset={itemOffset}
+    //                                                endOffset={endOffset}
+    //                                                category={category}
+    //                                                context={context}
+    //                                                cartItemStorage={cartItemStorage} />
+    //     }
+    //     //if no product found
+    //     else if (itemNotFound) {
+    //         defaultView = <div className={styles.notFoundContainer}>
+    //             <h2 className={styles.notFoundHeader}>Nothing found based on your range</h2>
+    //         </div>
+    //     }
+    //     //iterate though the products and display
+    //     else {
+    //         defaultView = <ProductsListItemDisplay products={products}
+    //                                                itemOffset={itemOffset}
+    //                                                endOffset={endOffset}
+    //                                                category={category}
+    //                                                context={context}
+    //                                                cartItemStorage={cartItemStorage}/>
+    //     }
+    // }
+    // //if server is good and no products are returned
+    // else if(status === 'not found') {
+    //     defaultView = <div className={styles.fallbackContainer}>
+    //         <h2 className={styles.fallbackHeader}>Nothing found</h2>
+    //     </div>
+    // }
 
     //filter products function
     const filterItem = () => {
