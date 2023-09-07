@@ -4,7 +4,6 @@ import AddToCart from '../../Others/AddToCart/addToCart';
 
 function DisplayProducts ( { product, data, cartStorage, route } ) {
 
-    console.log(product);
     //if there is no product then it simply return from here
     if (!product.length) return;
 

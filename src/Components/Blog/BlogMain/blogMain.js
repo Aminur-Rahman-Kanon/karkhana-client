@@ -16,7 +16,7 @@ function BlogMain() {
     //this hook store the blog data to the blogs state and scroll to the top onLoad
     useEffect(() => {
         window.scrollTo(0, 0);
-        fetch('https://karkhana-server.onrender.com/product/blog')
+        fetch('https://karkhana-server.onrender.com/products/blog')
         .then(res => res.json())
         .then(data => setBlogs(data.data))
         .catch(err => console.log(err));
