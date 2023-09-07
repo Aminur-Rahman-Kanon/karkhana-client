@@ -54,7 +54,7 @@ const ProductsListMain = () => {
     //and scroll to the top when products were filtered
     useEffect(() => {
         window.scrollTo(0, 0);
-        fetch(`http://localhost:8000/products/${category}`)
+        fetch(`https://karkhana-server.onrender.com/products/${category}`)
         .then(res => res.json())
         .then(data => {
             console.log(data);
