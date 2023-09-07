@@ -57,7 +57,6 @@ const ProductsListMain = () => {
         fetch(`https://karkhana-server.onrender.com/products/${category}`)
         .then(res => res.json())
         .then(data => {
-            console.log(data);
             setProducts(data.data);
             setStatus('success');
         }).catch(err => setStatus('not found'))
