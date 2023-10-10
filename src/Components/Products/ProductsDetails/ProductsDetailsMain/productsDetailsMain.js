@@ -17,8 +17,6 @@ const ProductsDetailsMain = () => {
 
     const relatedItemRef = useRef(null);
 
-    const otherItemRef = useRef(null);
-
     const { category, productId } = useParams();
 
     const [item, setItem] = useState([]);
@@ -39,7 +37,6 @@ const ProductsDetailsMain = () => {
         fetch(`https://karkhana-server.onrender.com/product/${category}`)
         .then(res => res.json())
         .then(data => {
-            console.log(data);
             //here we seaprate products into different category
             if (data.data){
                 let filteredProducts;
@@ -58,8 +55,6 @@ const ProductsDetailsMain = () => {
             }
         }).catch(err => console.log(err));
     }, []);
-
-    console.log(item)
 
     //default product template
     let displayProduct = <ProductsDetailsTemplate />

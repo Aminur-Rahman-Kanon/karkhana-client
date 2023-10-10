@@ -5,69 +5,20 @@ import { ToastContainer, toast } from 'react-toastify';
 import { ContextProvider } from "../../Others/AuthContext/authContext";
 import DisplayProducts from "../DisplayProducts/displayProducts";
 import DisplayExclusiveProducts from "../DisplayExclusiveProducts/displayExclusiveProducts";
-import ProductsTemplateAll from "../ProductsTemplates/productsTemplateAll";
-import ProductsTemplateExclusive from "../ProductsTemplates/productsTemplateExclusive";
 import ItemCategory from "../ItemCategory/itemCategory";
 
 const HomepageMain = () => {
 
     const context = useContext(ContextProvider);
 
-    const [initialProducts, setinitialProducts] = useState({});
-
-    const [featuredProducts, setFeaturedProducts] = useState([]);
-
-    const [exclusiveProducts, setExclusiveProducts] = useState([]);
-
-    const [trendingProducts, setTrendingProducts] = useState([]);
-
-    const [topSellerProducts, setTopSellerProducts] = useState([]);
-
     const cartItemStorage = sessionStorage.getItem('cart') ? JSON.parse(sessionStorage.getItem('cart')) : null;
 
     useEffect(() => {
-        fetch('https://karkhana-server.onrender.com/products/initial-products')
-        .then(res => res.json())
-        .then(data => setinitialProducts(data.data))
-        .catch(err => console.log(err));
-      }, [])
-    
-    console.log(initialProducts);
-
-    let displayFeatured = <ProductsTemplateAll item={8} />
-
-    let displayTopSeller = <ProductsTemplateAll item={8} />
-
-    let displayTrending = <ProductsTemplateAll item={8} />
-
-    //display default exclusive template
-    let exclusiveItem = <ProductsTemplateExclusive />
-
-    //rendering featured products
-    if (initialProducts.featured) {
-        displayFeatured = <DisplayProducts product={initialProducts.featured}
-                                            data={context}
-                                            cartStorage={cartItemStorage}
-                                            route={'featured'}/>
-    }
-    //rendering trending products
-    if (initialProducts.trending){
-        displayTrending = <DisplayProducts product={initialProducts.trending}
-                                            data={context}
-                                            cartStorage={cartItemStorage}
-                                            route={'trending'}/>
-    }
-    //rendering topSeller products
-    if (initialProducts.topSeller){
-        displayTopSeller = <DisplayProducts product={initialProducts.topSeller}
-                                            data={context}
-                                            cartStorage={cartItemStorage}
-                                            route={'topseller'}/>
-    }
-    //rendering exclusive products
-    if (initialProducts.exclusive){
-        exclusiveItem = <DisplayExclusiveProducts product={initialProducts.exclusive} />
-    }
+        // fetch('https://karkhana-server.onrender.com/products/initial-products')
+        // .then(res => res.json())
+        // .then(data => setinitialProducts(data.data))
+        // .catch(err => console.log(err));
+      }, []);
     
     return (
         <>
@@ -84,23 +35,23 @@ const HomepageMain = () => {
             
             <section className={styles.featuredProducts}>
                 <h2 className={styles.featuredProductsH2}>Featured Products</h2>
-                {displayFeatured}
+                <DisplayProducts category={'featured'} data={context} cartStorage={cartItemStorage} />
             </section>
 
             <section className={styles.featuredProducts}>
                 <h2 className={styles.featuredProductsH2}>Trending Categories</h2>
-                {displayTrending}
+                <DisplayProducts category={'trending'} data={context} cartStorage={cartItemStorage} />
             </section>
 
             <section className={styles.featuredProducts}>
                 <h2 className={styles.featuredProductsH2}>Top Sellers</h2>
-                {displayTopSeller}
+                <DisplayProducts category={'top-seller'} data={context} cartStorage={cartItemStorage}/>
             </section>
 
             <section className={styles.exclusiveItemContainer}>
                 <h2 className={styles.featuredProductsH2}>Exclusive Items</h2>
                 <div className={styles.exclusiveItems}>
-                    {exclusiveItem}
+                    <DisplayExclusiveProducts />
                 </div>
             </section>
         </div>

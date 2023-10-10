@@ -16,9 +16,6 @@ import { disableScroll } from './Components/Others/HelperFunction/helperFunction
 import CheckoutMain from './Components/Checkout/CheckoutMain/checkoutMain';
 import ForgotPassword from './Components/Login/ForgotPassword/forgotPassword';
 import AboutUs from './Components/AboutUs/aboutUs';
-import BlogMain from './Components/Blog/BlogMain/blogMain';
-import thunder from './Assets/Others/test.gif';
-import logo from './Assets/Logo/logo.jpg';
 import DefaultRoute from './Components/DefaultRoute/defaultRoute';
 import AuthContext from './Components/Others/AuthContext/authContext';
 import { useQuery } from 'react-query';
