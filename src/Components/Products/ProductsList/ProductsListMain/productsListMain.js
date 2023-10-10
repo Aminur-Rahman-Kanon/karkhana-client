@@ -61,7 +61,6 @@ const ProductsListMain = () => {
             setStatus('success');
         }).catch(err => setStatus('not found'))
     }, []);
-
     
     //this hook also scroll to the top when products were filtered
     useEffect(() => {
@@ -209,7 +208,7 @@ const ProductsListMain = () => {
                 </div>
                 <div className={ sidebar ? `${styles.sidebarContainer} ${styles.on}` : styles.sidebarContainer}>
                     <ProductsListSidebar category={category} />
-                    <div className={styles.categoryType} id={styles.categoryType2}>
+                    <div className={styles.priceRangeContainer}>
                         <h2 className={styles.categoryH2}>Price Range</h2>
                         <ReactSlider
                             max={10000}

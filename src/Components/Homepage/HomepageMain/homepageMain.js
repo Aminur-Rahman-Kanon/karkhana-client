@@ -12,13 +12,6 @@ const HomepageMain = () => {
     const context = useContext(ContextProvider);
 
     const cartItemStorage = sessionStorage.getItem('cart') ? JSON.parse(sessionStorage.getItem('cart')) : null;
-
-    useEffect(() => {
-        // fetch('https://karkhana-server.onrender.com/products/initial-products')
-        // .then(res => res.json())
-        // .then(data => setinitialProducts(data.data))
-        // .catch(err => console.log(err));
-      }, []);
     
     return (
         <>
@@ -35,17 +28,23 @@ const HomepageMain = () => {
             
             <section className={styles.featuredProducts}>
                 <h2 className={styles.featuredProductsH2}>Featured Products</h2>
-                <DisplayProducts category={'featured'} data={context} cartStorage={cartItemStorage} />
+                <div className={styles.productDisplayContainer}>
+                    <DisplayProducts category={'featured'} data={context} cartStorage={cartItemStorage} />
+                </div>
             </section>
 
             <section className={styles.featuredProducts}>
                 <h2 className={styles.featuredProductsH2}>Trending Categories</h2>
-                <DisplayProducts category={'trending'} data={context} cartStorage={cartItemStorage} />
+                <div className={styles.productDisplayContainer}>
+                    <DisplayProducts category={'trending'} data={context} cartStorage={cartItemStorage} />
+                </div>
             </section>
 
             <section className={styles.featuredProducts}>
                 <h2 className={styles.featuredProductsH2}>Top Sellers</h2>
-                <DisplayProducts category={'top-seller'} data={context} cartStorage={cartItemStorage}/>
+                <div className={styles.productDisplayContainer}>
+                    <DisplayProducts category={'top-seller'} data={context} cartStorage={cartItemStorage}/>
+                </div>
             </section>
 
             <section className={styles.exclusiveItemContainer}>

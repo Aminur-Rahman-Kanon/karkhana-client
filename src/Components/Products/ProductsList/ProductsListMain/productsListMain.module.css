@@ -2,9 +2,12 @@
 
 
 .productsListMain {
-    /* position: relative; */
     width: 100%;
     margin: 20px auto;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .productHeader {
@@ -52,13 +55,14 @@
 .sidebarSwitcher {
     position: fixed;
     top: 50%;
-    left: -36px;
+    left: -35px;
     transform: translateY(-50%);
     display: none;
-    padding: 10px;
+    padding: 5px 10px;
     transform: rotate(270deg);
     background-color: #b95b1d;
     color: white;
+    font-size: 12px;
     z-index: 100;
 }
 
@@ -74,6 +78,16 @@
     align-items: center;
 }
 
+.priceRangeContainer {
+    width: 100%;
+    padding: 0 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: flex-start;
+}
+
 .categoryH2 {
     font-family: 'Proza Libre', sans-serif;
     font-size: 20px;
@@ -83,6 +97,8 @@
 
 .productsDisplayContainer {
     width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
@@ -242,7 +258,8 @@
 
 @media (max-width: 900px) {
     .productsListContainer {
-        justify-content: flex-end;
+        width: 100%;
+        justify-content: center;
         margin-top: 15px!important;
     }
 
@@ -262,7 +279,7 @@
         background-color: white;
         border: 1px solid lightgrey;
         width: 50%;
-        min-width: 280px;
+        min-width: 250px;
         border-radius: 0 5px 5px 0;
         height: 100vh;
         z-index: 900;
@@ -297,11 +314,6 @@
 }
 
 @media (max-width: 500px) {
-    .sidebarSwitcher {
-        padding: 10px;
-        left: -45px;
-    }
-
     .statusMsgBtn {
         width: 100%;
     }

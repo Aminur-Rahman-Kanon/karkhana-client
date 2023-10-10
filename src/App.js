@@ -23,6 +23,7 @@ import {NetworkError} from './Components/Others/DisplayMessage/displayMessage';
 import Modal from './Components/Others/Modal/modal';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
+import BlogMain from './Components/Blog/BlogMain/blogMain';
 
 //return Stripe promise to pass it to the Elements component
 const stripePromise = loadStripe('pk_test_51NPRurHZovVrLdmoqBHc4bdzZoZ6QfG8WvAKIpCtnUtGtF9ADsjJgQIYmEuQ4DMR0o20qCe8uWFH2SuG5GZ4HSFj00BLGIlN1j');
@@ -95,7 +96,7 @@ function App() {
             <Route path='/shopping-cart' element={<DisplayCartMain />} />
             <Route path="/checkout" element={<CheckoutMain />} />
             <Route path='/about-us' element={<AboutUs />} />
-            {/* <Route path='/blog' element={<BlogMain />} /> */}
+            <Route path='/blog' element={<BlogMain />} />
             <Route path="*" element={<DefaultRoute />} />
           </Routes>
           <Footer />

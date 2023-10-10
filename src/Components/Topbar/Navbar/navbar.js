@@ -78,7 +78,7 @@ const Navbar = () => {
                                 </a>
                             </li>
                             <li className={styles.childNavList}>
-                                <a href='/products/other' className={splitLocation[2] ? splitLocation[2] === 'other' ? `${styles.childNavItem} ${styles.childActive}` : styles.childNavItem : styles.childNavItem}>
+                                <a href='/products/others' className={splitLocation[2] ? splitLocation[2] === 'others' ? `${styles.childNavItem} ${styles.childActive}` : styles.childNavItem : styles.childNavItem}>
                                     <img src={others} alt="other" className={styles.childNavImg}/>
                                     <p className={styles.childNavP}>Others</p>
                                 </a>

@@ -16,11 +16,11 @@ function ProductsTemplateAll ({item}) {
     </div>
     });
 
-    return (
-        <div className={styles.defaultProductContainer}>
-            {displayDefaultProduct}
-        </div>
-    )
+    // return (
+    //     <div className={styles.defaultProductContainer}>
+    //     </div>
+    // )
+    return displayDefaultProduct;
 }
 
 export default ProductsTemplateAll;

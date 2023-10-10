@@ -53,6 +53,10 @@
     margin: 20px;
     text-decoration: none;
     color: inherit;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
 }
 
 .aboutUsLink::before {
@@ -210,7 +214,7 @@
 .outerDiv {
     position: relative;
     /* background-color: #79cf99d1; */
-    background-color: #e48353;
+    background-color: #A2C579;
     width: 250px;
     height: 300px;
 }
@@ -242,7 +246,8 @@
     width: 120px;
     height: 25px;
     /* background-color: #79cf99d1; */
-    background-color: #e48353;
+    /* background-color: #e48353; */
+    background-color: #A2C579;
     border-radius: 2px;
     color: white;
     display: flex;
@@ -285,7 +290,8 @@
     content: '“';
     height: 30px;
     width: 30px;
-    color: #e48353;
+    /* color: #e48353; */
+    color: #A2C579;
     font-size: 50px;
 }
 

@@ -51,11 +51,7 @@ function DisplayProducts ( { category, data, cartStorage } ) {
         displayProducts = <h3>Nothing to display</h3>
     }
 
-    return (
-        <div className={styles.productMain}>
-            {displayProducts}
-        </div>
-    )
+    return displayProducts;
 }
 
 export default DisplayProducts;
