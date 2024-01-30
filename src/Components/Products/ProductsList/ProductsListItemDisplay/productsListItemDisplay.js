@@ -4,7 +4,7 @@ import AddToCart from "../../../Others/AddToCart/addToCart";
 
 const ProductsListItemDisplay = ({products, itemOffset, endOffset, category, context, cartItemStorage}) => {
     return products.slice(itemOffset, endOffset).map(item => {
-        return <div key={item._id} className={styles.productsContainer} id={styles.loader}>
+        return <div data-testid='product-list-item' key={item._id} className={styles.productsContainer} id={styles.loader}>
                 <a href={`/products/${category}/${item.name}`} className={styles.productsLink}>
                     <div className={styles.productsImgContainer}>
                         <img src={item.img[0]} alt={item.name} className={styles.productsImg}/>

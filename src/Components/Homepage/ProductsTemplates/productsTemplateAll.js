@@ -7,7 +7,7 @@ function ProductsTemplateAll ({item}) {
 
     //if there is no products found then we render a template to the UI
     const displayDefaultProduct = Array.from(Array(item).keys()).map(item => {
-        return <div key={item} className={styles.defaultProductsItem} id={styles.loader}>
+        return <div data-testid='product-spinner' key={item} className={styles.defaultProductsItem} id={styles.loader}>
         <div className={styles.defaultImgContainer}>
             <FontAwesomeIcon icon={faSpinner} spinPulse className={styles.spinnerPulse} />
         </div>

@@ -16,4 +16,5 @@ function DefaultRoute () {
     )
 }
 
-export default DefaultRoute
+export default DefaultRoute;
+

@@ -10,7 +10,7 @@ import './banner.css';
 const Banner = () => {
 
     return (
-        <section className={styles.bannerContainer}>
+        <section data-testid='carousel-container' className={styles.bannerContainer}>
             <Carousel autoPlay={true}
                     infiniteLoop={true}
                     interval={5000}
@@ -22,17 +22,17 @@ const Banner = () => {
                     className="carousel-container">
                 <div className={styles.bannerMain}>
                     <div className={styles.bannerBg}>
-                        <img src={banner1} alt="karkhana-slider" className={styles.bannerBgImg}/>
+                        <img src={banner1} alt="karkhana-slider-1" className={styles.bannerBgImg}/>
                     </div>
                 </div>
                 <div className={styles.bannerMain}>
                     <div className={styles.bannerBg}>
-                        <img src={banner2} alt="karkhana-slider" className={styles.bannerBgImg}/>
+                        <img src={banner2} alt="karkhana-slider-2" className={styles.bannerBgImg}/>
                     </div>
                 </div>
                 <div className={styles.bannerMain}>
                     <div className={styles.bannerBg}>
-                        <img src={banner3} alt="karkhana-slider" className={styles.bannerBgImg}/>
+                        <img src={banner3} alt="karkhana-slider-3" className={styles.bannerBgImg}/>
                     </div>
                 </div>
             </Carousel>

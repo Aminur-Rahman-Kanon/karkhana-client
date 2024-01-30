@@ -13,7 +13,6 @@ function DisplayProducts ( { category, data, cartStorage } ) {
         fetch(`https://karkhana-server.onrender.com/products/${category}`)
         .then(res => res.json())
         .then(data => {
-            console.log(data);
             setIsLoading(false);
             if (data.data) {
                 setProduct(data.data);
@@ -23,7 +22,7 @@ function DisplayProducts ( { category, data, cartStorage } ) {
             setIsLoading(false);
             console.log(err);
         })
-    }, [])
+    }, []);
 
     let displayProducts = null;
 

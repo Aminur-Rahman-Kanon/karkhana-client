@@ -41,7 +41,7 @@ const ProductsDetailsMain = () => {
             if (data.data){
                 let filteredProducts;
                 const relatedProducts = [];
-    
+                
                 data.data.forEach((item, idx) => {
                     if (item.name === productId){
                         return filteredProducts = item;

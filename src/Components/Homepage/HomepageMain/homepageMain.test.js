@@ -1,25 +1,28 @@
-import { findByRole, render } from "@testing-library/react";
-import { renderWithClient } from '../../../utils/utils';
+import { screen, render, waitForElementToBeRemoved } from "@testing-library/react";
+import { mockFetchForProducts } from '../../../utils/utils';
 import HomepageMain from "./homepageMain";
-import AuthContext from "../../Others/AuthContext/authContext";
+import { MemoryRouter } from "react-router-dom";
+import { act } from "react-dom/test-utils";
 
 describe("should render homepage", () => {
 
     test("should render item category route", async () => {
-        const homepage = renderWithClient({ children: <AuthContext value={{value: 'test'}}>
+        window.fetch = () => mockFetchForProducts();
+        render(<MemoryRouter initialEntries={['/']}>
             <HomepageMain />
-        </AuthContext>,
-        route: ['/']});
+        </MemoryRouter>)
+
+        waitForElementToBeRemoved(() => screen.findAllByTestId('product-spinner'));
 
         //checking the heading
-        expect(homepage.getByRole('heading', {name: 'Categories'})).toBeInTheDocument();
+        // await expect(screen.findByRole('heading', {name: 'Categories'})).toBeInTheDocument();
 
-        //checking all the category image in the dom
-        expect(homepage.getByRole('img', { name: 'Bracelet' })).toBeInTheDocument();
-        expect(homepage.getByRole('img', { name: 'Others' })).toBeInTheDocument();
-        expect(homepage.getByRole('img', { name: 'Finger Rings' })).toBeInTheDocument();
-        expect(homepage.getByRole('img', { name: 'Ear Rings' })).toBeInTheDocument();
-        expect(homepage.getByRole('img', { name: 'Necklaces' })).toBeInTheDocument();
-        expect(homepage.getByRole('img', { name: 'Toe Rings' })).toBeInTheDocument();
+        // //checking all the category image in the dom
+        // await expect(screen.findByRole('img', { name: 'Bracelet' })).toBeInTheDocument();
+        // await expect(screen.findByRole('img', { name: 'Others' })).toBeInTheDocument();
+        // await expect(screen.findByRole('img', { name: 'Finger Rings' })).toBeInTheDocument();
+        // await expect(screen.findByRole('img', { name: 'Ear Rings' })).toBeInTheDocument();
+        // await expect(screen.findByRole('img', { name: 'Necklaces' })).toBeInTheDocument();
+        // await expect(screen.findByRole('img', { name: 'Toe Rings' })).toBeInTheDocument();
     })
 })

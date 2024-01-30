@@ -22,6 +22,8 @@ function BlogMain() {
         .catch(err => console.log(err));
     }, [ context.data ])
 
+    // console.log(blogs);
+
     //Hook to validate email
     useEffect(() => {
         const timer = setTimeout(() => {
