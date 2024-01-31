@@ -18,9 +18,7 @@ import ForgotPassword from './Components/Login/ForgotPassword/forgotPassword';
 import AboutUs from './Components/AboutUs/aboutUs';
 import DefaultRoute from './Components/DefaultRoute/defaultRoute';
 import AuthContext from './Components/Others/AuthContext/authContext';
-import { useQuery } from 'react-query';
 import {NetworkError} from './Components/Others/DisplayMessage/displayMessage';
-import Modal from './Components/Others/Modal/modal';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import BlogMain from './Components/Blog/BlogMain/blogMain';
@@ -66,19 +64,7 @@ function App() {
 
   return (
     <>
-    {/* <div className="spinner-container" style={ isLoading ? {display: 'flex'} : {display: 'none'}}>
-      <div className='logo-container'>
-        <img src={logo} alt="karkhana" className='spinner-container-logo'/>
-      </div>
-      <div className='spinner-effect-container'>
-        <img src={thunder} alt="karkhana" className='spinner-effect'/>
-        <p className='spinner-effect-p'>Loading...</p>
-      </div>
-    </div> */}
     <div className="App">
-      {/* <Modal modal={isError && modal}>
-        <NetworkError closeModal={() => setModal(false)}/>
-      </Modal> */}
       <AuthContext value={ {cartItem, setCartItem} }>
         <Elements stripe={stripePromise}>
           <Backdrop backdrop={ backdrop } toggleBackdrop={ closeSidedrawer }/>

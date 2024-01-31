@@ -229,11 +229,11 @@ function CheckoutMain() {
                         </div>
 
                         <div className={styles.otherInput}>
-                            <h3 className={styles.nameHeader}>CVV</h3>
+                            <h3 className={styles.nameHeader}>CVC</h3>
                             <input type='number'
                                 data-testid="cvv"
                                 className={styles.nameInput}
-                                placeholder='CVV'/>
+                                placeholder='CVC'/>
                         </div>
                     </div>
 

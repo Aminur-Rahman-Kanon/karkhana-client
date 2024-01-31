@@ -6,6 +6,7 @@ import aboutUs from "./aboutUs";
 
 
 test('should render aboutUs component', () => {
+    window.scrollTo = jest.fn();
     const aboutUs = render(
         <MemoryRouter initialEntries={['/about-us']}>
             <AuthContext value={{ data: 'test' }}>

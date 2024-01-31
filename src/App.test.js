@@ -1,6 +1,7 @@
-import React from 'react';
+// import React from 'react';
+import { render, screen } from '@testing-library/react';
 import { fireEvent, waitForElementToBeRemoved } from '@testing-library/react';
-import { renderWithClient } from './utils/utils';
+import { renderWithClient, mockFallback } from './utils/utils';
 import App from './App';
 import HomepageMain from './Components/Homepage/HomepageMain/homepageMain';
 import ProductsListMain from './Components/Products/ProductsList/ProductsListMain/productsListMain';
@@ -14,6 +15,8 @@ import ShoppingCartMain from './Components/Topbar/ShoppingCart/ShoppingCartMain/
 import CheckoutMain from './Components/Checkout/CheckoutMain/checkoutMain';
 import AboutUs from './Components/AboutUs/aboutUs';
 import DefaultRoute from './Components/DefaultRoute/defaultRoute';
+import ErrorBoundary from './Components/ErrorBoundary/errorBoundary';
+import { MemoryRouter } from 'react-router-dom';
 
 jest.mock('./Components/Homepage/HomepageMain/homepageMain.js');
 jest.mock('./Components/Products/ProductsList/ProductsListMain/productsListMain.js');
@@ -30,92 +33,167 @@ jest.mock('./Components/DefaultRoute/defaultRoute.js');
 
 describe('<App />', () => {
   test("should render app, topbar, footer and backdrop and sidedrawer conditionally", async () => {
-    const result = renderWithClient({ children: <App/>, route: ['/'] });
-
+    render(
+      <ErrorBoundary fallbackUI={mockFallback}>
+        <MemoryRouter initialEntries={['/']}>
+            <App />
+        </MemoryRouter>
+      </ErrorBoundary>
+    )
     //checking loading... text to be removed from dom
-    waitForElementToBeRemoved(async () => await result.findByText(/Loading.../))
-    // expect(result.queryByText('Loading...')).toBeInTheDocument();
-
+    waitForElementToBeRemoved(async () => await screen.findByText(/Loading.../))
     //checking topbar and footer is rendered
-    expect(result.getByTestId('topbar')).toBeInTheDocument();
-    expect(result.getByTestId('footer')).toBeInTheDocument();
-
+    expect(screen.getByTestId('topbar')).toBeInTheDocument();
+    expect(screen.getByTestId('footer')).toBeInTheDocument();
     //checking backdrop and sidedrawer is working properly
-    fireEvent.click(result.getByTestId('drawToggle'));
-    expect(result.getByTestId('backdrop')).toBeInTheDocument();
-    expect(result.getByTestId('sidedrawer')).toBeInTheDocument();
+    fireEvent.click(screen.getByTestId('drawToggle'));
+    expect(screen.getByTestId('backdrop')).toBeInTheDocument();
+    expect(screen.getByTestId('sidedrawer')).toBeInTheDocument();
   })
 
   test('should render homepage route', () => {
     HomepageMain.mockImplementation(() => <div>Homepage</div>);
-    const result = renderWithClient({children: <App />, route: ['/']});
-    expect(result.getByText('Homepage')).toBeInTheDocument();
+    render(
+      <ErrorBoundary fallbackUI={mockFallback}>
+        <MemoryRouter initialEntries={['/']}>
+            <App />
+        </MemoryRouter>
+      </ErrorBoundary>
+    )
+    //checking for element to be present
+    expect(screen.getByText('Homepage')).toBeInTheDocument();
   })
 
   test('should render product list route', () => {
     ProductsListMain.mockImplementation(() => <div>ProductList</div>);
-    const result = renderWithClient({children: <App />, route: ['/products/productsId']});
-    expect(result.getByText('ProductList')).toBeInTheDocument();
+    render(
+      <ErrorBoundary fallbackUI={mockFallback}>
+        <MemoryRouter initialEntries={['/products/productsId']}>
+            <App />
+        </MemoryRouter>
+      </ErrorBoundary>
+    )
+    expect(screen.getByText('ProductList')).toBeInTheDocument();
   })
   
   test('should render productDetails route', () => {
     ProductsDetailsMain.mockImplementation(() => <div>ProductDetails</div>);
-    const result = renderWithClient({children: <App />, route: ['/products/productId/productDetails']});
-    expect(result.queryByText('ProductDetails')).toBeInTheDocument();
+    render(
+      <ErrorBoundary fallbackUI={mockFallback}>
+        <MemoryRouter initialEntries={['/products/productId/productDetails']}>
+            <App />
+        </MemoryRouter>
+      </ErrorBoundary>
+    )
+    expect(screen.queryByText('ProductDetails')).toBeInTheDocument();
   })
 
   test('should render login route', () => {
     LoginMain.mockImplementation(() => <div>Login</div>);
-    const result = renderWithClient({children: <App />, route: ['/login']});
-    expect(result.queryByText('Login')).toBeInTheDocument();
+    render(
+      <ErrorBoundary fallbackUI={mockFallback}>
+        <MemoryRouter initialEntries={['/login']}>
+            <App />
+        </MemoryRouter>
+      </ErrorBoundary>
+    )
+    expect(screen.queryByText('Login')).toBeInTheDocument();
   })
 
   test('should render register route', () => {
     RegisterMain.mockImplementation(() => <div>Register</div>);
-    const result = renderWithClient({children: <App />, route: ['/register']});
-    expect(result.queryByText('Register')).toBeInTheDocument();
+    render(
+      <ErrorBoundary fallbackUI={mockFallback}>
+        <MemoryRouter initialEntries={['/register']}>
+            <App />
+        </MemoryRouter>
+      </ErrorBoundary>
+    )
+    expect(screen.queryByText('Register')).toBeInTheDocument();
   })
 
   test('should render forgot password route', () => {
     ForgotPassword.mockImplementation(() => <div>ForgotPassword</div>);
-    const result = renderWithClient({children: <App />, route: ['/forgot-password']});
-    expect(result.queryByText('ForgotPassword')).toBeInTheDocument();
+    render(
+      <ErrorBoundary fallbackUI={mockFallback}>
+        <MemoryRouter initialEntries={['/forgot-password']}>
+            <App />
+        </MemoryRouter>
+      </ErrorBoundary>
+    )
+    expect(screen.queryByText('ForgotPassword')).toBeInTheDocument();
   })
 
   test('should render profile route', () => {
     ProfileMain.mockImplementation(() => <div>Profile</div>);
-    const result = renderWithClient({children: <App />, route: ['/profile']});
-    expect(result.queryByText('Profile')).toBeInTheDocument();
+    render(
+      <ErrorBoundary fallbackUI={mockFallback}>
+        <MemoryRouter initialEntries={['/profile']}>
+            <App />
+        </MemoryRouter>
+      </ErrorBoundary>
+    )
+    expect(screen.queryByText('Profile')).toBeInTheDocument();
   })
 
   test('should render shopping cart route', () => {
     ShoppingCartMain.mockImplementation(() => <div>ShoppingCart</div>);
-    const result = renderWithClient({children: <App />, route: ['/shopping-cart']});
-    expect(result.queryByText('ShoppingCart')).toBeInTheDocument();
+    render(
+      <ErrorBoundary fallbackUI={mockFallback}>
+        <MemoryRouter initialEntries={['/shopping-cart']}>
+            <App />
+        </MemoryRouter>
+      </ErrorBoundary>
+    )
+    expect(screen.queryByText('ShoppingCart')).toBeInTheDocument();
   })
   
   test('should render checkout route', () => {
     CheckoutMain.mockImplementation(() => <div>Checkout</div>);
-    const result = renderWithClient({children: <App />, route: ['/checkout']});
-    expect(result.queryByText('Checkout')).toBeInTheDocument();
+    render(
+      <ErrorBoundary fallbackUI={mockFallback}>
+        <MemoryRouter initialEntries={['/checkout']}>
+            <App />
+        </MemoryRouter>
+      </ErrorBoundary>
+    )
+    expect(screen.queryByText('Checkout')).toBeInTheDocument();
   })
 
   test('should render about us route', () => {
     AboutUs.mockImplementation(() => <div>AboutUs</div>);
-    const result = renderWithClient({children: <App />, route: ['/about-us']});
-    expect(result.queryByText('AboutUs')).toBeInTheDocument();
+    render(
+      <ErrorBoundary fallbackUI={mockFallback}>
+        <MemoryRouter initialEntries={['/about-us']}>
+            <App />
+        </MemoryRouter>
+      </ErrorBoundary>
+    )
+    expect(screen.queryByText('AboutUs')).toBeInTheDocument();
   })
 
   test('should render blog route', () => {
     BlogMain.mockImplementation(() => <div>BlogPost</div>);
-    const result = renderWithClient({children: <App />, route: ['/blog']});
-    expect(result.queryByText('BlogPost')).toBeInTheDocument();
+    render(
+      <ErrorBoundary fallbackUI={mockFallback}>
+        <MemoryRouter initialEntries={['/blog']}>
+            <App />
+        </MemoryRouter>
+      </ErrorBoundary>
+    )
+    expect(screen.queryByText('BlogPost')).toBeInTheDocument();
   })
 
   test('should render no match route route', () => {
     DefaultRoute.mockImplementation(() => <div>NoMatchRoute</div>);
-    const result = renderWithClient({children: <App />, route: ['/*']});
-    expect(result.queryByText('NoMatchRoute')).toBeInTheDocument();
+    render(
+      <ErrorBoundary fallbackUI={mockFallback}>
+        <MemoryRouter initialEntries={['/*']}>
+            <App />
+        </MemoryRouter>
+      </ErrorBoundary>
+    )
+    expect(screen.queryByText('NoMatchRoute')).toBeInTheDocument();
   })
 })
 

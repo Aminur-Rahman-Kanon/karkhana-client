@@ -6,6 +6,7 @@ import { ContextProvider } from "../../Others/AuthContext/authContext";
 import DisplayProducts from "../DisplayProducts/displayProducts";
 import DisplayExclusiveProducts from "../DisplayExclusiveProducts/displayExclusiveProducts";
 import ItemCategory from "../ItemCategory/itemCategory";
+import PromoteBanner from "../../PromoteBanner/promoteBanner";
 
 const HomepageMain = () => {
 
@@ -25,6 +26,8 @@ const HomepageMain = () => {
                     <ItemCategory />
                 </div>
             </section>
+
+            <PromoteBanner category={'cat1'}/>
             
             <section className={styles.featuredProducts}>
                 <h2 className={styles.featuredProductsH2}>Featured Products</h2>
@@ -33,12 +36,16 @@ const HomepageMain = () => {
                 </div>
             </section>
 
+            <PromoteBanner category={'cat2'}/>
+
             <section className={styles.featuredProducts}>
                 <h2 className={styles.featuredProductsH2}>Trending Categories</h2>
                 <div className={styles.productDisplayContainer}>
                     <DisplayProducts category={'trending'} data={context} cartStorage={cartItemStorage} />
                 </div>
             </section>
+
+            <PromoteBanner category={'cat3'}/>
 
             <section className={styles.featuredProducts}>
                 <h2 className={styles.featuredProductsH2}>Top Sellers</h2>

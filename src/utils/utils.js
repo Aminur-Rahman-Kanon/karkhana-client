@@ -47,7 +47,7 @@ export const mockFetchForProducts = () => {
 }
 
 export const mockBlogProducts = () => Promise.resolve({
-    json: Promise.resolve({
+    json: () => Promise.resolve({
         data: [
             {
                 _id: "643f751554e9733784aef34c",
@@ -104,7 +104,7 @@ const createTestQueryClient = () => new QueryClient({
     }
 })
 
-const mockFallback = <h1>Helllo</h1>
+export const mockFallback = <h1>Helllo</h1>
 
 export const renderWithClient = ({children, route}) => {
     const testQueryClient = createTestQueryClient();

@@ -31,11 +31,11 @@ test('<Navbar />', async () => {
     fireEvent.mouseOver(productsParentLink);
     await waitFor(() => navbar.getByTestId('products-childs-link'));
     expect(navbar.getByRole('link', { name: 'bracelet Bracelets' })).toHaveAttribute('href', '/products/bracelet');
-    expect(navbar.getByRole('link', { name: 'finger ring Finger Rings' })).toHaveAttribute('href', '/products/fingerring');
-    expect(navbar.getByRole('link', { name: 'ear ring Ear Rings' })).toHaveAttribute('href', '/products/earring');
+    expect(navbar.getByRole('link', { name: 'finger ring Finger Rings' })).toHaveAttribute('href', '/products/finger-ring');
+    expect(navbar.getByRole('link', { name: 'ear ring Ear Rings' })).toHaveAttribute('href', '/products/ear-ring');
     expect(navbar.getByRole('link', { name: 'necklace Necklaces' })).toHaveAttribute('href', '/products/necklace');
-    expect(navbar.getByRole('link', { name: 'toe ring Toe Rings' })).toHaveAttribute('href', '/products/toering');
+    expect(navbar.getByRole('link', { name: 'toe ring Toe Rings' })).toHaveAttribute('href', '/products/toe-ring');
     expect(navbar.getByRole('link', { name: 'nepali Nepali' })).toHaveAttribute('href', '/products/nepali');
-    expect(navbar.getByRole('link', { name: 'other Others' })).toHaveAttribute('href', '/products/other');
+    expect(navbar.getByRole('link', { name: 'other Others' })).toHaveAttribute('href', '/products/others');
 })
     

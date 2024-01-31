@@ -2,7 +2,6 @@ import { screen, render, waitForElementToBeRemoved } from "@testing-library/reac
 import { mockFetchForProducts } from '../../../utils/utils';
 import HomepageMain from "./homepageMain";
 import { MemoryRouter } from "react-router-dom";
-import { act } from "react-dom/test-utils";
 
 describe("should render homepage", () => {
 
@@ -11,18 +10,16 @@ describe("should render homepage", () => {
         render(<MemoryRouter initialEntries={['/']}>
             <HomepageMain />
         </MemoryRouter>)
-
+        //a spinner should render and then remove
         waitForElementToBeRemoved(() => screen.findAllByTestId('product-spinner'));
-
-        //checking the heading
-        // await expect(screen.findByRole('heading', {name: 'Categories'})).toBeInTheDocument();
-
-        // //checking all the category image in the dom
-        // await expect(screen.findByRole('img', { name: 'Bracelet' })).toBeInTheDocument();
-        // await expect(screen.findByRole('img', { name: 'Others' })).toBeInTheDocument();
-        // await expect(screen.findByRole('img', { name: 'Finger Rings' })).toBeInTheDocument();
-        // await expect(screen.findByRole('img', { name: 'Ear Rings' })).toBeInTheDocument();
-        // await expect(screen.findByRole('img', { name: 'Necklaces' })).toBeInTheDocument();
-        // await expect(screen.findByRole('img', { name: 'Toe Rings' })).toBeInTheDocument();
+        // checking the heading
+        expect(screen.getByText('Categories')).toBeInTheDocument();
+        //checking all the category image in the dom
+        expect(screen.getByAltText('Bracelet')).toBeInTheDocument();
+        expect(screen.getByAltText('Others')).toBeInTheDocument();
+        expect(screen.getByAltText('Finger Rings')).toBeInTheDocument();
+        expect(screen.getByAltText('Ear Rings')).toBeInTheDocument();
+        expect(screen.getByAltText('Necklaces')).toBeInTheDocument();
+        expect(screen.getByAltText('Toe Rings')).toBeInTheDocument();
     })
 })

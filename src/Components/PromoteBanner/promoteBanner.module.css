@@ -1,0 +1,31 @@
+.bannerContainer {
+    width: 100%;
+    max-width: 1500px;
+    height: 100vh;
+    padding: 10px;
+    box-sizing: border-box;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bannerImg {
+    width: 100%;
+    display: none;
+}
+
+@media (max-width: 989px) {
+    .bannerContainer {
+        background-attachment: unset;
+        height: auto;
+        margin: 20px auto;
+    }
+
+    .bannerImg {
+        display: block;
+    }
+}
