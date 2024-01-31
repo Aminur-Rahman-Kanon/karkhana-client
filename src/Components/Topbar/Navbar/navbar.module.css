@@ -153,11 +153,10 @@
     }
 
     #logoEl {
-        width: 150px;
+        width: 100px;
         height: 100px;
         margin: 0;
-        margin-bottom: 20px;
-        border-radius: 5px;
+        /* margin-bottom: 20px; */
     }
 
     .logo {
@@ -167,7 +166,11 @@
     }
 
     .navList {
-        margin: 15px;
+        margin: 5px;
+    }
+
+    .navElements {
+        margin: 0 5px;
     }
 
     .navElement {
@@ -179,7 +182,7 @@
 
     .navElements:nth-child(1){
         order: 2;
-        margin-left: 20px;
+        /* margin-left: 20px; */
     }
 
     .navElements:nth-child(2){
@@ -189,13 +192,14 @@
 
     .navElements:nth-child(3){
         order: 3;
-        margin-left: 20px;
+        /* margin-left: 20px; */
     }
 
     .navItem {
         min-width: unset;
         justify-content: flex-start;
-        color: lightgray;
+        /* color: lightgray; */
+        color: #787676;
     }
 
     .navItem.navActive, .navP.navActive {
@@ -211,9 +215,10 @@
         width: 280px;
         height: unset;
         padding: 10px;
-        transform: translate(100%, -50%);
+        transform: translate(100%, -42%);
         background-color: #555568;
-        border: 1px solid #555568;
+        border: 1px solid transparent;
+        box-shadow: -9px 20px 25px 2px #606066;
     }
 
     .childNavItem {
@@ -254,10 +259,6 @@
 }
 
 @media (max-width: 415px) and (max-height: 700px) {
-    #logoEl {
-        height: 150px;
-    }
-
     .navList {
         margin: 10px;
     }

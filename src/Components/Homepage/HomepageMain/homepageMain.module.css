@@ -115,7 +115,7 @@
 }
 
 .productDisplayContainer {
-    width: 100%;
+    width: 95%;
     max-width: 1500px;
     padding: 10px;
     box-sizing: border-box;
@@ -135,7 +135,7 @@
 }
 
 .featuredProductsH2 {
-    font-size: 30px;
+    font-size: 28px;
     margin: 10px;
     letter-spacing: 1px;
     color: #ad6c4d;
@@ -238,6 +238,10 @@
 
     .exclusiveItems {
         flex-flow: column;
+    }
+
+    .featuredProductsH2 {
+        font-size: 20px;
     }
 }
 

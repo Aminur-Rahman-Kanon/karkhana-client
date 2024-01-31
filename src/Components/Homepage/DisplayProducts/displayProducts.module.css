@@ -81,6 +81,10 @@
 }
 
 @media (max-width: 980px) {
+    .addToCartContainer {
+        display: none;
+    }
+    
     .productsImgContainer {
         height: 200px;
     }
